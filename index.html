@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WIN HART | Official Artist</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="fade-up">
+<h1>WIN HART</h1>
+<p>
+Techno • DJ • Rock • Religious • Pop<br>
+Cybersecurity Specialist | Software & Web Developer
+</p>
+</header>
+
+<section class="profile fade-up">
+<img src="img/profile.jpg">
+<div>
+<h2>Artist Profile</h2>
+<p>
+WIN HART adalah musisi independen dengan eksplorasi musik religi,
+electronic modern berpadu rock, serta pop.
+Aktif sebagai ahli cybersecurity, software engineer, dan web developer.
+</p>
+</div>
+</section>
+
+<!-- RELIGI -->
+<section class="genre fade-up">
+<h2>🎼 Religious Music</h2>
+<div class="track">
+<h3>Religious Track</h3>
+<audio id="r1" src="audio/religi1.mp3"></audio>
+<button onclick="playTrack('relig1','r1')">▶ Play</button>
+<button onclick="downloadTrack('relig1','audio/religi1.mp3')">⬇ Download</button>
+<div class="stats">Plays: <span id="relig1_play">0</span> | Downloads: <span id="relig1_download">0</span></div>
+</div>
+</section>
+
+<!-- ELECTRONIC ROCK -->
+<section class="genre fade-up">
+<h2>🎧 Electronic & Rock</h2>
+<div class="track">
+<h3>Running Red</h3>
+<audio id="e1" src="audio/running-red.mp3"></audio>
+<button onclick="playTrack('elec1','e1')">▶ Play</button>
+<button onclick="downloadTrack('elec1','audio/running-red.mp3')">⬇ Download</button>
+<div class="stats">Plays: <span id="elec1_play">0</span> | Downloads: <span id="elec1_download">0</span></div>
+</div>
+</section>
+
+<!-- POP -->
+<section class="genre fade-up">
+<h2>🎤 Pop</h2>
+<div class="track">
+<h3>Echoes of Home</h3>
+<audio id="p1" src="audio/echoes-of-home.mp3"></audio>
+<button onclick="playTrack('pop1','p1')">▶ Play</button>
+<button onclick="downloadTrack('pop1','audio/echoes-of-home.mp3')">⬇ Download</button>
+<div class="stats">Plays: <span id="pop1_play">0</span> | Downloads: <span id="pop1_download">0</span></div>
+</div>
+</section>
+
+<!-- STREAMING -->
+<section class="fade-up">
+<h2>Listen on Streaming</h2>
+
+<!-- SPOTIFY -->
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/artist/ARTIST_ID"
+width="100%" height="352" frameBorder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+<br><br>
+
+<!-- APPLE MUSIC -->
+<iframe allow="autoplay *; encrypted-media *;"
+height="450"
+style="width:100%;max-width:660px;"
+sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+src="https://embed.music.apple.com/id/artist/ARTIST_ID">
+</iframe>
+</section>
+
+<section class="donate fade-up">
+<h2>Support the Artist</h2>
+<a href="https://saweria.co/USERNAME" target="_blank">🎁 Donasi via Saweria / Trakteer</a>
+</section>
+
+<footer>
+© 2025 WIN HART – All Rights Reserved<br><br>
+📞 WhatsApp: <a href="https://wa.me/6282121785751">0821-2178-5751</a><br>
+✉️ Email: <a href="mailto:wijayawimala5@gmail.com">wijayawimala5@gmail.com</a>
+</footer>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "ISI_DARI_FIREBASE",
+  authDomain: "PROJECT.firebaseapp.com",
+  projectId: "PROJECT_ID"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+</script>
+
+<script src="js/player.js"></script>
+</body>
+</html>
