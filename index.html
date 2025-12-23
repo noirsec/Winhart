@@ -1,115 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="utf-8">
-<title>WIN HART | Official Artist</title>
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIN HART | Official Music</title>
 
-<header class="fade-up">
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b0b;
+    color: #f1f1f1;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    border-left: 5px solid #e50914;
+    padding-left: 10px;
+}
+
+.track {
+    background: #161616;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.track h3 {
+    margin: 0 0 10px;
+}
+
+button, a.download {
+    background: #e50914;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+button:hover, a.download:hover {
+    background: #ff1f2d;
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 50px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
 <h1>WIN HART</h1>
-<p>
+<p class="subtitle">
 Techno • DJ • Rock • Religious • Pop<br>
 Cybersecurity Specialist | Software & Web Developer
 </p>
-</header>
 
-<section class="profile fade-up">
-<img src="img/profile.jpg">
-<div>
+<div class="section">
 <h2>Artist Profile</h2>
 <p>
-WIN HART adalah musisi independen dengan eksplorasi musik religi,
-electronic modern berpadu rock, serta pop.
-Aktif sebagai ahli cybersecurity, software engineer, dan web developer.
+WIN HART adalah musisi independen yang menggabungkan musik religi,
+electronic modern, rock, dan pop. Aktif juga sebagai ahli cybersecurity,
+software engineer, dan web developer.
 </p>
 </div>
-</section>
 
-<!-- RELIGI -->
-<section class="genre fade-up">
-<h2>🎼 Religious Music</h2>
+<div class="section">
+<h2>🎵 Religious Music</h2>
+
 <div class="track">
-<h3>Religious Track</h3>
-<audio id="r1" src="audio/religi1.mp3"></audio>
-<button onclick="playTrack('relig1','r1')">▶ Play</button>
-<button onclick="downloadTrack('relig1','audio/religi1.mp3')">⬇ Download</button>
-<div class="stats">Plays: <span id="relig1_play">0</span> | Downloads: <span id="relig1_download">0</span></div>
+<h3>Glory of the Prophet</h3>
+<audio controls src="Glory_of_the_Prophet.mp3"></audio><br><br>
+<a class="download" href="Glory_of_the_Prophet.mp3" download>⬇ Download</a>
 </div>
-</section>
 
-<!-- ELECTRONIC ROCK -->
-<section class="genre fade-up">
+<div class="track">
+<h3>The Guiding Light</h3>
+<audio controls src="The_Guiding_Light.mp3"></audio><br><br>
+<a class="download" href="The_Guiding_Light.mp3" download>⬇ Download</a>
+</div>
+</div>
+
+<div class="section">
 <h2>🎧 Electronic & Rock</h2>
+
 <div class="track">
 <h3>Running Red</h3>
-<audio id="e1" src="audio/running-red.mp3"></audio>
-<button onclick="playTrack('elec1','e1')">▶ Play</button>
-<button onclick="downloadTrack('elec1','audio/running-red.mp3')">⬇ Download</button>
-<div class="stats">Plays: <span id="elec1_play">0</span> | Downloads: <span id="elec1_download">0</span></div>
+<audio controls src="Running Red.mp3"></audio><br><br>
+<a class="download" href="Running Red.mp3" download>⬇ Download</a>
 </div>
-</section>
 
-<!-- POP -->
-<section class="genre fade-up">
-<h2>🎤 Pop</h2>
+<div class="track">
+<h3>Gravity</h3>
+<audio controls src="gravity.mp3"></audio><br><br>
+<a class="download" href="gravity.mp3" download>⬇ Download</a>
+</div>
+</div>
+
+<div class="section">
+<h2>🎶 Pop</h2>
+
 <div class="track">
 <h3>Echoes of Home</h3>
-<audio id="p1" src="audio/echoes-of-home.mp3"></audio>
-<button onclick="playTrack('pop1','p1')">▶ Play</button>
-<button onclick="downloadTrack('pop1','audio/echoes-of-home.mp3')">⬇ Download</button>
-<div class="stats">Plays: <span id="pop1_play">0</span> | Downloads: <span id="pop1_download">0</span></div>
+<audio controls src="Echoes of Home.mp3"></audio><br><br>
+<a class="download" href="Echoes of Home.mp3" download>⬇ Download</a>
 </div>
-</section>
+</div>
 
-<!-- STREAMING -->
-<section class="fade-up">
-<h2>Listen on Streaming</h2>
+<div class="section">
+<h2>❤️ Support the Artist</h2>
+<p>
+<a class="download" href="https://saweria.co/" target="_blank">Donasi via Saweria / Trakteer</a>
+</p>
+</div>
 
-<!-- SPOTIFY -->
-<iframe style="border-radius:12px"
-src="https://open.spotify.com/embed/artist/ARTIST_ID"
-width="100%" height="352" frameBorder="0"
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
+<div class="footer">
+<p>© 2025 WIN HART – All Rights Reserved</p>
+<p>
+WhatsApp: <a href="https://wa.me/6282121785751" style="color:#e50914">0821-2178-5751</a><br>
+Email: <a href="mailto:wijayawimala5@gmail.com" style="color:#e50914">wijayawimala5@gmail.com</a>
+</p>
+</div>
 
-<br><br>
-
-<!-- APPLE MUSIC -->
-<iframe allow="autoplay *; encrypted-media *;"
-height="450"
-style="width:100%;max-width:660px;"
-sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-src="https://embed.music.apple.com/id/artist/ARTIST_ID">
-</iframe>
-</section>
-
-<section class="donate fade-up">
-<h2>Support the Artist</h2>
-<a href="https://saweria.co/USERNAME" target="_blank">🎁 Donasi via Saweria / Trakteer</a>
-</section>
-
-<footer>
-© 2025 WIN HART – All Rights Reserved<br><br>
-📞 WhatsApp: <a href="https://wa.me/6282121785751">0821-2178-5751</a><br>
-✉️ Email: <a href="mailto:wijayawimala5@gmail.com">wijayawimala5@gmail.com</a>
-</footer>
-
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-
-<script>
-const firebaseConfig = {
-  apiKey: "ISI_DARI_FIREBASE",
-  authDomain: "PROJECT.firebaseapp.com",
-  projectId: "PROJECT_ID"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-</script>
-
-<script src="js/player.js"></script>
+</div>
 </body>
 </html>
