@@ -17,19 +17,20 @@ header{
     text-align:center;
     background:linear-gradient(180deg,#000,#111);
 }
-header h1{
-    margin:0;
-    font-size:32px;
-}
-header p{
-    color:#aaa;
-    margin-top:8px;
-}
+header h1{margin:0;font-size:32px;}
+header p{color:#aaa;margin-top:8px;}
 
 .section{
     padding:30px 20px;
     max-width:1200px;
     margin:auto;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s ease;
+}
+.section.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .section h2{
@@ -47,56 +48,56 @@ header p{
 .card{
     background:#161616;
     padding:15px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,.5);
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,.6);
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-6px) scale(1.02);
+    box-shadow:0 0 25px rgba(229,9,20,.3);
 }
 
-.card h3{
-    margin-top:0;
-    font-size:16px;
-}
+.card h3{margin:0 0 8px 0;font-size:16px;}
 
-audio{
-    width:100%;
-    margin-top:8px;
+audio{width:100%;margin-top:6px;}
+
+.stats{
+    font-size:13px;
+    color:#bbb;
+    margin-top:6px;
 }
 
 .download{
     display:inline-block;
     margin-top:10px;
-    padding:6px 12px;
+    padding:6px 14px;
     background:#e50914;
     color:#fff;
     text-decoration:none;
     border-radius:6px;
     font-size:14px;
+    transition:.3s;
 }
+.download:hover{background:#ff1f2d;}
 
 .support{
     text-align:center;
     padding:40px 20px;
     background:#000;
 }
-
 .support a{
     display:inline-block;
     margin:10px;
-    padding:12px 20px;
+    padding:12px 22px;
     border-radius:25px;
     color:#fff;
     text-decoration:none;
     font-weight:bold;
 }
-
 .saweria{background:#1db954;}
 .trakteer{background:#ff7a00;}
 
-footer{
-    text-align:center;
-    font-size:13px;
-    color:#777;
-    padding:15px;
-}
+footer{text-align:center;font-size:13px;color:#777;padding:15px;}
 </style>
 </head>
 
@@ -108,85 +109,121 @@ footer{
 Cybersecurity Specialist | Software & Web Developer</p>
 </header>
 
+<!-- TEMPLATE CARD -->
+<script>
+function initTrack(id){
+    if(!localStorage[id+"_play"]) localStorage[id+"_play"]=0;
+    if(!localStorage[id+"_dl"]) localStorage[id+"_dl"]=0;
+    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
+    document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
+}
+function playTrack(id){
+    localStorage[id+"_play"]++;
+    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
+}
+function downloadTrack(id){
+    localStorage[id+"_dl"]++;
+    document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
+}
+</script>
+
+<!-- RELIGIOUS -->
 <div class="section">
 <h2>🎵 Religious Music</h2>
 <div class="grid">
+
 <div class="card">
 <h3>Glory of the Prophet</h3>
-<audio controls src="glory of the prophet.mp3"></audio>
-<a class="download" href="glory of the prophet.mp3" download>⬇ Download</a>
+<audio controls src="glory of the prophet.mp3" onplay="playTrack('gop')"></audio>
+<div class="stats">👂 <span id="gop_play">0</span> | ⬇ <span id="gop_dl">0</span></div>
+<a class="download" href="glory of the prophet.mp3" download onclick="downloadTrack('gop')">Download</a>
 </div>
 
 <div class="card">
 <h3>The Guiding Lights</h3>
-<audio controls src="the guiding lights.mp3"></audio>
-<a class="download" href="the guiding lights.mp3" download>⬇ Download</a>
+<audio controls src="the guiding lights.mp3" onplay="playTrack('tgl')"></audio>
+<div class="stats">👂 <span id="tgl_play">0</span> | ⬇ <span id="tgl_dl">0</span></div>
+<a class="download" href="the guiding lights.mp3" download onclick="downloadTrack('tgl')">Download</a>
 </div>
+
 </div>
 </div>
 
+<!-- ELECTRONIC -->
 <div class="section">
 <h2>🎧 Electronic / Techno / Rock</h2>
 <div class="grid">
+
 <div class="card">
 <h3>Redline</h3>
-<audio controls src="redline.mp3"></audio>
-<a class="download" href="redline.mp3" download>⬇ Download</a>
+<audio controls src="redline.mp3" onplay="playTrack('red')"></audio>
+<div class="stats">👂 <span id="red_play">0</span> | ⬇ <span id="red_dl">0</span></div>
+<a class="download" href="redline.mp3" download onclick="downloadTrack('red')">Download</a>
 </div>
 
 <div class="card">
 <h3>Gravity</h3>
-<audio controls src="gravity.mp3"></audio>
-<a class="download" href="gravity.mp3" download>⬇ Download</a>
+<audio controls src="gravity.mp3" onplay="playTrack('gra')"></audio>
+<div class="stats">👂 <span id="gra_play">0</span> | ⬇ <span id="gra_dl">0</span></div>
+<a class="download" href="gravity.mp3" download onclick="downloadTrack('gra')">Download</a>
 </div>
 
 <div class="card">
 <h3>Running Red</h3>
-<audio controls src="running red.mp3"></audio>
-<a class="download" href="running red.mp3" download>⬇ Download</a>
+<audio controls src="running red.mp3" onplay="playTrack('run')"></audio>
+<div class="stats">👂 <span id="run_play">0</span> | ⬇ <span id="run_dl">0</span></div>
+<a class="download" href="running red.mp3" download onclick="downloadTrack('run')">Download</a>
 </div>
+
 </div>
 </div>
 
+<!-- POP -->
 <div class="section">
 <h2>🎸 Pop / Rock</h2>
 <div class="grid">
+
 <div class="card">
 <h3>Echoes of Home</h3>
-<audio controls src="echoes of home.mp3"></audio>
-<a class="download" href="echoes of home.mp3" download>⬇ Download</a>
+<audio controls src="echoes of home.mp3" onplay="playTrack('eoh')"></audio>
+<div class="stats">👂 <span id="eoh_play">0</span> | ⬇ <span id="eoh_dl">0</span></div>
+<a class="download" href="echoes of home.mp3" download onclick="downloadTrack('eoh')">Download</a>
 </div>
 
 <div class="card">
 <h3>Where Do I Begin</h3>
-<audio controls src="where do i begin.mp3"></audio>
-<a class="download" href="where do i begin.mp3" download>⬇ Download</a>
+<audio controls src="where do i begin.mp3" onplay="playTrack('wdi')"></audio>
+<div class="stats">👂 <span id="wdi_play">0</span> | ⬇ <span id="wdi_dl">0</span></div>
+<a class="download" href="where do i begin.mp3" download onclick="downloadTrack('wdi')">Download</a>
 </div>
 
 <div class="card">
 <h3>The Weight of the Silence</h3>
-<audio controls src="the weight of the silence.mp3"></audio>
-<a class="download" href="the weight of the silence.mp3" download>⬇ Download</a>
+<audio controls src="the weight of the silence.mp3" onplay="playTrack('wos')"></audio>
+<div class="stats">👂 <span id="wos_play">0</span> | ⬇ <span id="wos_dl">0</span></div>
+<a class="download" href="the weight of the silence.mp3" download onclick="downloadTrack('wos')">Download</a>
 </div>
+
 </div>
 </div>
 
 <div class="support">
 <h2>❤️ Support the Artist</h2>
-<p>Dukung karya original agar terus berkembang</p>
-
-<a class="saweria" href="https://saweria.co/WinHart" target="_blank">
-Donasi via Saweria
-</a>
-
-<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">
-Dukung via Trakteer
-</a>
+<a class="saweria" href="https://saweria.co/WinHart" target="_blank">Donasi via Saweria</a>
+<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">Dukung via Trakteer</a>
 </div>
 
-<footer>
-© 2025 WIN HART – All Rights Reserved
-</footer>
+<footer>© 2025 WIN HART</footer>
+
+<script>
+document.querySelectorAll(".section").forEach(sec=>{
+    const o=new IntersectionObserver(e=>{
+        if(e[0].isIntersecting){sec.classList.add("show");}
+    });
+    o.observe(sec);
+});
+["gop","tgl","red","gra","run","eoh","wdi","wos"].forEach(initTrack);
+</script>
 
 </body>
 </html>
