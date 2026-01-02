@@ -3,25 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WIN HART – Official Music</title>
+<title>WIN HART — Official Music</title>
 
 <style>
+:root{
+    --accent:#e50914;
+    --bg:#0b0b0b;
+    --card:#161616;
+    --soft:#aaa;
+}
+
+*{box-sizing:border-box}
+
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#0b0b0b;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:var(--bg);
     color:#fff;
+    line-height:1.6;
 }
-header{
-    padding:40px 20px;
-    text-align:center;
-    background:linear-gradient(180deg,#000,#111);
-}
-header h1{margin:0;font-size:32px;}
-header p{color:#aaa;margin-top:8px;}
 
+/* NAV */
+nav{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(0,0,0,.8);
+    backdrop-filter:blur(10px);
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+nav strong{letter-spacing:2px}
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:15px;
+    font-size:14px;
+    opacity:.8;
+}
+nav a:hover{opacity:1}
+
+/* HERO */
+header{
+    min-height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    background:
+        linear-gradient(180deg,rgba(0,0,0,.4),#000),
+        radial-gradient(circle at top,#222,#000);
+}
+header h1{
+    font-size:44px;
+    letter-spacing:4px;
+    margin:0;
+}
+header p{
+    color:var(--soft);
+    margin-top:14px;
+    max-width:700px;
+}
+
+/* SECTION */
 .section{
-    padding:30px 20px;
+    padding:60px 20px;
     max-width:1200px;
     margin:auto;
     opacity:0;
@@ -30,227 +79,22 @@ header p{color:#aaa;margin-top:8px;}
 }
 .section.show{
     opacity:1;
-    transform:translateY(0);
+    transform:none;
 }
-
 .section h2{
-    border-left:4px solid #e50914;
-    padding-left:10px;
-    margin-bottom:20px;
+    font-size:22px;
+    margin-bottom:30px;
+    border-left:4px solid var(--accent);
+    padding-left:12px;
 }
 
+/* GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
 }
 
+/* CARD */
 .card{
-    background:#161616;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 0 20px rgba(0,0,0,.6);
-    transition:.3s;
-}
-.card:hover{
-    transform:translateY(-6px) scale(1.02);
-    box-shadow:0 0 25px rgba(229,9,20,.3);
-}
-
-.card h3{margin:0 0 8px 0;font-size:16px;}
-
-audio{width:100%;margin-top:6px;}
-
-.stats{
-    font-size:13px;
-    color:#bbb;
-    margin-top:6px;
-}
-
-.download{
-    display:inline-block;
-    margin-top:10px;
-    padding:6px 14px;
-    background:#e50914;
-    color:#fff;
-    text-decoration:none;
-    border-radius:6px;
-    font-size:14px;
-    transition:.3s;
-}
-.download:hover{background:#ff1f2d;}
-
-.support{
-    text-align:center;
-    padding:40px 20px;
-    background:#000;
-}
-.support a{
-    display:inline-block;
-    margin:10px;
-    padding:12px 22px;
-    border-radius:25px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-}
-.saweria{background:#1db954;}
-.trakteer{background:#ff7a00;}
-
-footer{text-align:center;font-size:13px;color:#777;padding:15px;}
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>WIN HART</h1>
-<p>Techno • DJ • Rock • Religious • Pop<br>
-Cybersecurity Specialist | Software & Web Developer</p>
-</header>
-
-<script>
-function initTrack(id){
-    if(!localStorage[id+"_play"]) localStorage[id+"_play"]=0;
-    if(!localStorage[id+"_dl"]) localStorage[id+"_dl"]=0;
-    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
-    document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
-}
-function playTrack(id){
-    localStorage[id+"_play"]++;
-    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
-}
-function downloadTrack(id){
-    localStorage[id+"_dl"]++;
-    document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
-}
-</script>
-
-<!-- RELIGIOUS -->
-<div class="section">
-<h2>🎵 Religious Music</h2>
-<div class="grid">
-
-<div class="card">
-<h3>Glory of the Prophet</h3>
-<audio controls src="glory of the prophet.mp3" onplay="playTrack('gop')"></audio>
-<div class="stats">👂 <span id="gop_play">0</span> | ⬇ <span id="gop_dl">0</span></div>
-<a class="download" href="glory of the prophet.mp3" download onclick="downloadTrack('gop')">Download</a>
-</div>
-
-<div class="card">
-<h3>The Guiding Lights</h3>
-<audio controls src="the guiding lights.mp3" onplay="playTrack('tgl')"></audio>
-<div class="stats">👂 <span id="tgl_play">0</span> | ⬇ <span id="tgl_dl">0</span></div>
-<a class="download" href="the guiding lights.mp3" download onclick="downloadTrack('tgl')">Download</a>
-</div>
-
-</div>
-</div>
-
-<!-- ELECTRONIC -->
-<div class="section">
-<h2>🎧 Electronic / Techno / Rock</h2>
-<div class="grid">
-
-<div class="card">
-<h3>Redline</h3>
-<audio controls src="redline.mp3" onplay="playTrack('red')"></audio>
-<div class="stats">👂 <span id="red_play">0</span> | ⬇ <span id="red_dl">0</span></div>
-<a class="download" href="redline.mp3" download onclick="downloadTrack('red')">Download</a>
-</div>
-
-<div class="card">
-<h3>Gravity</h3>
-<audio controls src="gravity.mp3" onplay="playTrack('gra')"></audio>
-<div class="stats">👂 <span id="gra_play">0</span> | ⬇ <span id="gra_dl">0</span></div>
-<a class="download" href="gravity.mp3" download onclick="downloadTrack('gra')">Download</a>
-</div>
-
-<div class="card">
-<h3>Running Red</h3>
-<audio controls src="Running Red.mp3" onplay="playTrack('run')"></audio>
-<div class="stats">👂 <span id="run_play">0</span> | ⬇ <span id="run_dl">0</span></div>
-<a class="download" href="Running Red.mp3" download onclick="downloadTrack('run')">Download</a>
-</div>
-
-<!-- 🔥 TAMBAHAN BARU -->
-<div class="card">
-<h3>Bullet Proof</h3>
-<audio controls src="bullet proof.mp3" onplay="playTrack('bp')"></audio>
-<div class="stats">👂 <span id="bp_play">0</span> | ⬇ <span id="bp_dl">0</span></div>
-<a class="download" href="bullet proof.mp3" download onclick="downloadTrack('bp')">Download</a>
-</div>
-
-<div class="card">
-<h3>I'm Alive</h3>
-<audio controls src="i'm alive.mp3" onplay="playTrack('ia')"></audio>
-<div class="stats">👂 <span id="ia_play">0</span> | ⬇ <span id="ia_dl">0</span></div>
-<a class="download" href="i'm alive.mp3" download onclick="downloadTrack('ia')">Download</a>
-</div>
-
-</div>
-</div>
-
-<!-- POP -->
-<div class="section">
-<h2>🎸 Pop / Rock</h2>
-<div class="grid">
-
-<div class="card">
-<h3>Echoes of Home</h3>
-<audio controls src="echoes of home.mp3" onplay="playTrack('eoh')"></audio>
-<div class="stats">👂 <span id="eoh_play">0</span> | ⬇ <span id="eoh_dl">0</span></div>
-<a class="download" href="echoes of home.mp3" download onclick="downloadTrack('eoh')">Download</a>
-</div>
-
-<div class="card">
-<h3>Where Do I Begin</h3>
-<audio controls src="where do i begin.mp3" onplay="playTrack('wdi')"></audio>
-<div class="stats">👂 <span id="wdi_play">0</span> | ⬇ <span id="wdi_dl">0</span></div>
-<a class="download" href="where do i begin.mp3" download onclick="downloadTrack('wdi')">Download</a>
-</div>
-
-<div class="card">
-<h3>The Weight of the Silence</h3>
-<audio controls src="the weight of the silence.mp3" onplay="playTrack('wos')"></audio>
-<div class="stats">👂 <span id="wos_play">0</span> | ⬇ <span id="wos_dl">0</span></div>
-<a class="download" href="the weight of the silence.mp3" download onclick="downloadTrack('wos')">Download</a>
-</div>
-
-</div>
-</div>
-
-<div class="support">
-<h2>❤️ Support the Artist</h2>
-<a class="saweria" href="https://saweria.co/WinHart" target="_blank">Donasi via Saweria</a>
-<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">Dukung via Trakteer</a>
-</div>
-
-<div style="text-align:center;margin-top:40px;color:#bbb;font-size:14px;">
-📞 WhatsApp:
-<a href="https://wa.me/6282121785751" style="color:#1db954;text-decoration:none;">
-0821-2178-5751
-</a><br>
-✉ Email:
-<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;text-decoration:none;">
-wijayawimala5@gmail.com
-</a>
-</div>
-
-<footer style="text-align:center;margin-top:25px;padding:15px 0;color:#777;font-size:13px;">
-© 2025 <strong>WIN HART</strong> — All Rights Reserved
-</footer>
-
-<script>
-document.querySelectorAll(".section").forEach(sec=>{
-    const o=new IntersectionObserver(e=>{
-        if(e[0].isIntersecting){sec.classList.add("show");}
-    });
-    o.observe(sec);
-});
-["gop","tgl","red","gra","run","bp","ia","eoh","wdi","wos"].forEach(initTrack);
-</script>
-
-</body>
-</html>
+    background:var
