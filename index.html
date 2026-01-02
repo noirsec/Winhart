@@ -97,4 +97,228 @@ header p{
 
 /* CARD */
 .card{
-    background:var
+    background:var(--card);
+    padding:18px;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+    transition:.35s;
+}
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px rgba(229,9,20,.25);
+}
+.card h3{
+    margin:0 0 10px;
+    font-size:16px;
+    letter-spacing:.5px;
+}
+audio{width:100%}
+.stats{
+    font-size:13px;
+    color:#bbb;
+    margin-top:8px;
+}
+
+/* BUTTON */
+.download{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 18px;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    border-radius:20px;
+    font-size:13px;
+}
+.download:hover{background:#ff1f2d}
+
+/* SUPPORT */
+.support{
+    text-align:center;
+    padding:70px 20px;
+    background:#000;
+}
+.support h2{margin-bottom:20px}
+.support a{
+    display:inline-block;
+    margin:10px;
+    padding:14px 26px;
+    border-radius:30px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+}
+.saweria{background:#1db954}
+.trakteer{background:#ff7a00}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px 15px;
+    font-size:13px;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<strong>WIN HART</strong>
+<div>
+<a href="#music">Music</a>
+<a href="#support">Support</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<header>
+<div>
+<h1>WIN HART</h1>
+<p>
+Techno • DJ • Rock • Religious • Pop<br>
+Independent Music Project & Digital Creator
+</p>
+</div>
+</header>
+
+<script>
+function initTrack(id){
+    if(!localStorage[id+"_play"]) localStorage[id+"_play"]=0;
+    if(!localStorage[id+"_dl"]) localStorage[id+"_dl"]=0;
+    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
+    document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
+}
+function playTrack(id){
+    localStorage[id+"_play"]++;
+    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
+}
+function downloadTrack(id){
+    localStorage[id+"_dl"]++;
+    document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
+}
+</script>
+
+<!-- RELIGIOUS -->
+<div class="section" id="music">
+<h2>🎵 Religious Music</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Glory of the Prophet</h3>
+<audio controls src="glory of the prophet.mp3" onplay="playTrack('gop')"></audio>
+<div class="stats">👂 <span id="gop_play">0</span> | ⬇ <span id="gop_dl">0</span></div>
+<a class="download" href="glory of the prophet.mp3" download onclick="downloadTrack('gop')">Download</a>
+</div>
+
+<div class="card">
+<h3>The Guiding Lights</h3>
+<audio controls src="the guiding lights.mp3" onplay="playTrack('tgl')"></audio>
+<div class="stats">👂 <span id="tgl_play">0</span> | ⬇ <span id="tgl_dl">0</span></div>
+<a class="download" href="the guiding lights.mp3" download onclick="downloadTrack('tgl')">Download</a>
+</div>
+
+</div>
+</div>
+
+<!-- ELECTRONIC -->
+<div class="section">
+<h2>🎧 Electronic / Techno / Rock</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Redline</h3>
+<audio controls src="redline.mp3" onplay="playTrack('red')"></audio>
+<div class="stats">👂 <span id="red_play">0</span> | ⬇ <span id="red_dl">0</span></div>
+<a class="download" href="redline.mp3" download onclick="downloadTrack('red')">Download</a>
+</div>
+
+<div class="card">
+<h3>Gravity</h3>
+<audio controls src="gravity.mp3" onplay="playTrack('gra')"></audio>
+<div class="stats">👂 <span id="gra_play">0</span> | ⬇ <span id="gra_dl">0</span></div>
+<a class="download" href="gravity.mp3" download onclick="downloadTrack('gra')">Download</a>
+</div>
+
+<div class="card">
+<h3>Running Red</h3>
+<audio controls src="Running Red.mp3" onplay="playTrack('run')"></audio>
+<div class="stats">👂 <span id="run_play">0</span> | ⬇ <span id="run_dl">0</span></div>
+<a class="download" href="Running Red.mp3" download onclick="downloadTrack('run')">Download</a>
+</div>
+
+<div class="card">
+<h3>Bullet Proof</h3>
+<audio controls src="bullet proof.mp3" onplay="playTrack('bp')"></audio>
+<div class="stats">👂 <span id="bp_play">0</span> | ⬇ <span id="bp_dl">0</span></div>
+<a class="download" href="bullet proof.mp3" download onclick="downloadTrack('bp')">Download</a>
+</div>
+
+<div class="card">
+<h3>I'm Alive</h3>
+<audio controls src="i'm alive.mp3" onplay="playTrack('ia')"></audio>
+<div class="stats">👂 <span id="ia_play">0</span> | ⬇ <span id="ia_dl">0</span></div>
+<a class="download" href="i'm alive.mp3" download onclick="downloadTrack('ia')">Download</a>
+</div>
+
+</div>
+</div>
+
+<!-- POP -->
+<div class="section">
+<h2>🎸 Pop / Rock</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Echoes of Home</h3>
+<audio controls src="echoes of home.mp3" onplay="playTrack('eoh')"></audio>
+<div class="stats">👂 <span id="eoh_play">0</span> | ⬇ <span id="eoh_dl">0</span></div>
+<a class="download" href="echoes of home.mp3" download onclick="downloadTrack('eoh')">Download</a>
+</div>
+
+<div class="card">
+<h3>Where Do I Begin</h3>
+<audio controls src="where do i begin.mp3" onplay="playTrack('wdi')"></audio>
+<div class="stats">👂 <span id="wdi_play">0</span> | ⬇ <span id="wdi_dl">0</span></div>
+<a class="download" href="where do i begin.mp3" download onclick="downloadTrack('wdi')">Download</a>
+</div>
+
+<div class="card">
+<h3>The Weight of the Silence</h3>
+<audio controls src="the weight of the silence.mp3" onplay="playTrack('wos')"></audio>
+<div class="stats">👂 <span id="wos_play">0</span> | ⬇ <span id="wos_dl">0</span></div>
+<a class="download" href="the weight of the silence.mp3" download onclick="downloadTrack('wos')">Download</a>
+</div>
+
+</div>
+</div>
+
+<div class="support" id="support">
+<h2>❤️ Support the Artist</h2>
+<a class="saweria" href="https://saweria.co/WinHart" target="_blank">Donasi via Saweria</a>
+<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">Dukung via Trakteer</a>
+</div>
+
+<div id="contact" style="text-align:center;margin:50px 0;color:#bbb;font-size:14px;">
+📞 WhatsApp:
+<a href="https://wa.me/6282121785751" style="color:#1db954;text-decoration:none;">0821-2178-5751</a><br>
+✉ Email:
+<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;text-decoration:none;">wijayawimala5@gmail.com</a>
+</div>
+
+<footer>
+© 2025 <strong>WIN HART</strong> — All Rights Reserved
+</footer>
+
+<script>
+document.querySelectorAll(".section").forEach(sec=>{
+    const o=new IntersectionObserver(e=>{
+        if(e[0].isIntersecting){sec.classList.add("show");}
+    });
+    o.observe(sec);
+});
+["gop","tgl","red","gra","run","bp","ia","eoh","wdi","wos"].forEach(initTrack);
+</script>
+
+</body>
+</html>
