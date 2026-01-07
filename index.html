@@ -3,173 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WIN HART — Official Artist</title>
 
-<meta name="description" content="WIN HART Official Artist — Techno, DJ, Rock, Religious & Pop">
+<title>WIN HART — Official Artist | Techno • Electronic • Rock</title>
+
+<meta name="description" content="WIN HART Official Artist. Independent Techno, Electronic, Rock & Pop Music Project.">
+<meta name="keywords" content="WIN HART, techno artist, electronic music, indie musician">
 <meta name="author" content="WIN HART">
+
+<!-- SOCIAL PREVIEW -->
+<meta property="og:title" content="WIN HART — Official Artist">
+<meta property="og:description" content="Techno • Electronic • Rock • Pop">
+<meta property="og:type" content="website">
 
 <style>
 :root{
-    --accent:#e50914;
-    --bg:#0b0b0b;
-    --card:#161616;
-    --soft:#aaa;
-    --spotify:#1db954;
-    --yt:#ff0000;
+--accent:#e50914;
+--bg:#0b0b0b;
+--card:#161616;
+--soft:#aaa;
+--spotify:#1db954;
+--yt:#ff0000;
 }
-
 *{box-sizing:border-box}
-
 body{
-    margin:0;
-    font-family:"Segoe UI",Arial,sans-serif;
-    background:var(--bg);
-    color:#fff;
+margin:0;
+font-family:Segoe UI,Arial,sans-serif;
+background:var(--bg);
+color:#fff;
+line-height:1.6;
 }
 
 /* NAV */
 nav{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:rgba(0,0,0,.85);
-    backdrop-filter:blur(10px);
-    padding:14px 24px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+position:sticky;
+top:0;
+z-index:10;
+background:rgba(0,0,0,.85);
+padding:14px 24px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
-nav strong{letter-spacing:3px;font-size:14px}
 nav a{
-    color:#fff;
-    text-decoration:none;
-    margin-left:18px;
-    font-size:13px;
-    opacity:.85;
+color:#fff;
+text-decoration:none;
+margin-left:18px;
+font-size:13px;
+opacity:.85;
 }
 nav a:hover{opacity:1}
 
 /* HERO */
 header{
-    min-height:70vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
-    background:
-        linear-gradient(180deg,rgba(0,0,0,.6),#000),
-        radial-gradient(circle at top,#222,#000);
+min-height:70vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+background:linear-gradient(180deg,rgba(0,0,0,.6),#000);
 }
 header h1{
-    font-size:52px;
-    letter-spacing:6px;
-    margin:0;
+font-size:54px;
+letter-spacing:6px;
+margin:0;
 }
 header p{
-    color:var(--soft);
-    margin-top:16px;
-    font-size:15px;
+color:var(--soft);
+margin-top:16px;
 }
+
+.btn{
+display:inline-block;
+margin:12px;
+padding:12px 26px;
+border-radius:30px;
+text-decoration:none;
+font-size:14px;
+font-weight:600;
+color:#fff;
+}
+.spotify{background:var(--spotify)}
+.youtube{background:var(--yt)}
 
 /* SECTION */
 .section{
-    padding:70px 20px;
-    max-width:1200px;
-    margin:auto;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .8s ease;
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
 }
-.section.show{opacity:1;transform:none}
 .section h2{
-    font-size:22px;
-    margin-bottom:34px;
-    border-left:4px solid var(--accent);
-    padding-left:12px;
+font-size:24px;
+margin-bottom:30px;
+border-left:4px solid var(--accent);
+padding-left:14px;
 }
 
 /* GRID */
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:26px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:26px;
 }
 
 /* CARD */
 .card{
-    background:var(--card);
-    padding:18px;
-    border-radius:16px;
-    box-shadow:0 10px 30px rgba(0,0,0,.5);
-    transition:.35s;
+background:var(--card);
+padding:20px;
+border-radius:16px;
 }
-.card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 50px rgba(229,9,20,.25);
-}
-.card h3{
-    margin:0 0 12px;
-    font-size:16px;
-}
-
-/* MEDIA */
-audio,iframe{width:100%;border-radius:14px;border:none}
-
-/* STATS */
-.stats{
-    font-size:13px;
-    color:#bbb;
-    margin-top:8px;
-}
-
-/* BUTTON */
-.btn{
-    display:inline-block;
-    margin-top:14px;
-    padding:10px 22px;
-    border-radius:30px;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:600;
-    color:#fff;
-}
-.spotify{background:var(--spotify)}
-.youtube{background:var(--yt)}
-.spotify:hover,.youtube:hover{opacity:.9}
+audio,iframe{width:100%;border-radius:12px}
 
 /* SUPPORT */
 .support{
-    text-align:center;
-    padding:80px 20px;
-    background:#000;
+text-align:center;
+padding:80px 20px;
+background:#000;
 }
 .support a{
-    display:inline-block;
-    margin:10px;
-    padding:14px 28px;
-    border-radius:30px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:600;
+display:inline-block;
+margin:10px;
+padding:14px 28px;
+border-radius:30px;
+color:#fff;
+text-decoration:none;
+font-weight:600;
 }
 .saweria{background:#1db954}
 .trakteer{background:#ff7a00}
 
-/* CONTACT */
-.contact{
-    text-align:center;
-    padding:40px 20px;
-    font-size:14px;
-    color:#bbb;
-}
-
 /* FOOTER */
 footer{
-    text-align:center;
-    padding:28px 15px;
-    font-size:13px;
-    color:#777;
+text-align:center;
+padding:30px 15px;
+font-size:13px;
+color:#777;
 }
 </style>
 </head>
@@ -181,106 +149,81 @@ footer{
 <div>
 <a href="#music">Music</a>
 <a href="#videos">Videos</a>
+<a href="#epk">EPK</a>
 <a href="#support">Support</a>
-<a href="https://youtube.com/@winhart78" target="_blank">YouTube</a>
 </div>
 </nav>
 
 <header>
 <div>
 <h1>WIN HART</h1>
-<p>
-Official Artist • Independent Music Project<br>
-Techno • DJ • Rock • Religious • Pop
-</p>
+<p>Official Artist — Techno • Electronic • Rock • Pop</p>
 
-<a class="btn spotify"
-href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH?si=tiUc0C50RZGpRE7T3iWqQA"
-target="_blank">Listen on Spotify</a>
+<a class="btn spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH?si=tiUc0C50RZGpRE7T3iWqQA" target="_blank">
+Listen on Spotify
+</a>
+
+<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">
+YouTube Channel
+</a>
 </div>
 </header>
 
-<script>
-function initTrack(id){
-    if(!localStorage[id+"_play"]) localStorage[id+"_play"]=0;
-    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
-}
-function playTrack(id){
-    localStorage[id+"_play"]++;
-    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
-}
-</script>
+<!-- SPOTIFY PLAYER -->
+<div class="section">
+<h2>🎧 Featured on Spotify</h2>
+<iframe style="height:380px"
+src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"
+allow="encrypted-media"></iframe>
+</div>
 
-<!-- AUDIO / TECHNO -->
-<div class="section" id="music">
-<h2>🎧 Electronic / Techno</h2>
+<!-- YOUTUBE VIDEOS -->
+<div class="section" id="videos">
+<h2>🎬 Official Videos</h2>
 <div class="grid">
 
 <div class="card">
 <h3>I Already Know You</h3>
-<audio controls src="i already know you.mp3" onplay="playTrack('iaky')"></audio>
-<div class="stats">👂 <span id="iaky_play">0</span></div>
-
-<a class="btn spotify"
-href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH?si=tiUc0C50RZGpRE7T3iWqQA"
-target="_blank">Stream on Spotify</a>
+<iframe height="315" src="https://www.youtube.com/embed/7nEGSYVYHvc" allowfullscreen></iframe>
 </div>
-
-</div>
-</div>
-
-<!-- VIDEOS (YOUTUBE ONLY) -->
-<div class="section" id="videos">
-<h2>🎬 Official Music Videos</h2>
-<div class="grid">
 
 <div class="card">
-<h3>WIN HART — YouTube Channel</h3>
-<iframe height="215"
-src="https://www.youtube.com/embed?listType=user_uploads&list=winhart78"
-allowfullscreen></iframe>
-
-<a class="btn youtube"
-href="https://youtube.com/@winhart78"
-target="_blank">Open YouTube Channel</a>
+<h3>The Weight of the Silence</h3>
+<iframe height="315" src="https://www.youtube.com/embed/_EIroQlk0jU" allowfullscreen></iframe>
 </div>
 
 </div>
 </div>
 
-<!-- SUPPORT -->
+<!-- EPK -->
+<div class="section" id="epk">
+<h2>📄 Electronic Press Kit</h2>
+<div class="card">
+<p><strong>Artist Name:</strong> WIN HART</p>
+<p><strong>Genre:</strong> Techno, Electronic, Rock, Pop</p>
+<p><strong>Location:</strong> Indonesia</p>
+<p><strong>Type:</strong> Independent Artist</p>
+<p><strong>Contact:</strong> wijayawimala5@gmail.com</p>
+</div>
+</div>
+
 <div class="support" id="support">
 <h2>❤️ Support the Artist</h2>
-<a class="saweria" href="https://saweria.co/WinHart" target="_blank">
-Donasi via Saweria
-</a>
-<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">
-Dukung via Trakteer
-</a>
-</div>
-
-<!-- CONTACT -->
-<div class="contact">
-📞 WhatsApp:
-<a href="https://wa.me/6282121785751" style="color:#1db954;text-decoration:none;">
-0821-2178-5751</a><br>
-✉ Email:
-<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;text-decoration:none;">
-wijayawimala5@gmail.com</a>
+<a class="saweria" href="https://saweria.co/WinHart" target="_blank">Saweria</a>
+<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">Trakteer</a>
 </div>
 
 <footer>
-© 2025 <strong>WIN HART</strong> — Official Artist Page
+© 2025 WIN HART — Official Artist Page
 </footer>
 
+<!-- GOOGLE ANALYTICS (PASTE ID DI G-XXXXXXX) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
-document.querySelectorAll(".section").forEach(sec=>{
-    const o=new IntersectionObserver(e=>{
-        if(e[0].isIntersecting){sec.classList.add("show");}
-    });
-    o.observe(sec);
-});
-["iaky"].forEach(initTrack);
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-XXXXXXX');
 </script>
 
 </body>
