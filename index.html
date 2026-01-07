@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WIN HART — Official Artist</title>
 
-<meta name="description" content="WIN HART Official Artist — Techno, DJ, Rock, Religious & Pop Music">
+<meta name="description" content="WIN HART Official Artist — Techno, DJ, Rock, Religious & Pop">
 <meta name="author" content="WIN HART">
 
 <style>
@@ -15,6 +15,7 @@
     --card:#161616;
     --soft:#aaa;
     --spotify:#1db954;
+    --yt:#ff0000;
 }
 
 *{box-sizing:border-box}
@@ -112,14 +113,17 @@ header p{
     font-size:16px;
 }
 
-/* EMBEDS */
-iframe{
-    width:100%;
-    border-radius:14px;
-    border:none;
+/* MEDIA */
+audio,iframe{width:100%;border-radius:14px;border:none}
+
+/* STATS */
+.stats{
+    font-size:13px;
+    color:#bbb;
+    margin-top:8px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn{
     display:inline-block;
     margin-top:14px;
@@ -131,9 +135,8 @@ iframe{
     color:#fff;
 }
 .spotify{background:var(--spotify)}
-.youtube{background:#ff0000}
-.spotify:hover{opacity:.9}
-.youtube:hover{opacity:.9}
+.youtube{background:var(--yt)}
+.spotify:hover,.youtube:hover{opacity:.9}
 
 /* SUPPORT */
 .support{
@@ -152,6 +155,14 @@ iframe{
 }
 .saweria{background:#1db954}
 .trakteer{background:#ff7a00}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    padding:40px 20px;
+    font-size:14px;
+    color:#bbb;
+}
 
 /* FOOTER */
 footer{
@@ -183,48 +194,55 @@ Official Artist • Independent Music Project<br>
 Techno • DJ • Rock • Religious • Pop
 </p>
 
-<a class="btn spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH?si=tiUc0C50RZGpRE7T3iWqQA" target="_blank">
-Listen on Spotify
-</a>
+<a class="btn spotify"
+href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH?si=tiUc0C50RZGpRE7T3iWqQA"
+target="_blank">Listen on Spotify</a>
 </div>
 </header>
 
-<!-- MUSIC / STREAMING REAL -->
+<script>
+function initTrack(id){
+    if(!localStorage[id+"_play"]) localStorage[id+"_play"]=0;
+    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
+}
+function playTrack(id){
+    localStorage[id+"_play"]++;
+    document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
+}
+</script>
+
+<!-- AUDIO / TECHNO -->
 <div class="section" id="music">
-<h2>🎧 Official Streaming (Spotify)</h2>
+<h2>🎧 Electronic / Techno</h2>
 <div class="grid">
 
 <div class="card">
 <h3>I Already Know You</h3>
-<iframe height="352"
-src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
+<audio controls src="i already know you.mp3" onplay="playTrack('iaky')"></audio>
+<div class="stats">👂 <span id="iaky_play">0</span></div>
 
 <a class="btn spotify"
 href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH?si=tiUc0C50RZGpRE7T3iWqQA"
-target="_blank">
-Open in Spotify
-</a>
+target="_blank">Stream on Spotify</a>
 </div>
 
 </div>
 </div>
 
-<!-- VIDEOS -->
+<!-- VIDEOS (YOUTUBE ONLY) -->
 <div class="section" id="videos">
 <h2>🎬 Official Music Videos</h2>
 <div class="grid">
 
 <div class="card">
-<h3>I Already Know You — Official Video</h3>
+<h3>WIN HART — YouTube Channel</h3>
 <iframe height="215"
 src="https://www.youtube.com/embed?listType=user_uploads&list=winhart78"
 allowfullscreen></iframe>
 
-<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">
-Watch on YouTube
-</a>
+<a class="btn youtube"
+href="https://youtube.com/@winhart78"
+target="_blank">Open YouTube Channel</a>
 </div>
 
 </div>
@@ -241,6 +259,16 @@ Dukung via Trakteer
 </a>
 </div>
 
+<!-- CONTACT -->
+<div class="contact">
+📞 WhatsApp:
+<a href="https://wa.me/6282121785751" style="color:#1db954;text-decoration:none;">
+0821-2178-5751</a><br>
+✉ Email:
+<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;text-decoration:none;">
+wijayawimala5@gmail.com</a>
+</div>
+
 <footer>
 © 2025 <strong>WIN HART</strong> — Official Artist Page
 </footer>
@@ -252,6 +280,7 @@ document.querySelectorAll(".section").forEach(sec=>{
     });
     o.observe(sec);
 });
+["iaky"].forEach(initTrack);
 </script>
 
 </body>
