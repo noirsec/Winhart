@@ -6,13 +6,14 @@
 
 <title>WIN HART — Official Artist</title>
 
-<meta name="description" content="WIN HART Official Artist. Techno • Electronic • Rock • Pop. Available on Spotify, Apple Music, Deezer.">
+<meta name="description" content="WIN HART Official Artist. Music for quiet minds and loud thoughts. Available on Spotify, Apple Music, Deezer & YouTube.">
 <meta name="author" content="WIN HART">
 
 <!-- OPEN GRAPH -->
 <meta property="og:title" content="WIN HART — Official Artist">
-<meta property="og:description" content="Listen on Spotify, Apple Music, Deezer & YouTube">
+<meta property="og:description" content="Music for quiet minds and loud thoughts. Listen worldwide.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://winhart.xyz">
 
 <style>
 :root{
@@ -127,25 +128,13 @@ box-shadow:0 10px 30px rgba(0,0,0,.5);
 }
 .card h3{margin:0 0 12px;font-size:16px}
 
-audio,iframe{width:100%;border-radius:12px}
+iframe{width:100%;border-radius:12px;border:none}
 
 /* STATS */
 .stats{
 font-size:13px;
 color:#bbb;
-margin-top:8px;
-}
-
-/* DOWNLOAD */
-.download{
-display:inline-block;
-margin-top:12px;
-padding:8px 18px;
-background:var(--accent);
-color:#fff;
-text-decoration:none;
-border-radius:20px;
-font-size:13px;
+margin-top:10px;
 }
 
 /* STREAM LINKS */
@@ -196,7 +185,8 @@ color:#777;
 <nav>
 <strong>WIN HART</strong>
 <div>
-<a href="#music">Music</a>
+<a href="#story">Story</a>
+<a href="#featured">Featured</a>
 <a href="#streaming">Streaming</a>
 <a href="#videos">Videos</a>
 <a href="#support">Support</a>
@@ -207,7 +197,7 @@ color:#777;
 <header>
 <div>
 <h1>WIN HART</h1>
-<p>Official Artist • Techno • Electronic • Rock • Pop</p>
+<p>Music for quiet minds and loud thoughts</p>
 
 <a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">
 Spotify Artist
@@ -219,33 +209,29 @@ YouTube Channel
 </div>
 </header>
 
-<script>
-function initTrack(id){
-if(!localStorage[id+"_play"]) localStorage[id+"_play"]=0;
-if(!localStorage[id+"_dl"]) localStorage[id+"_dl"]=0;
-document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
-document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
-}
-function playTrack(id){
-localStorage[id+"_play"]++;
-document.getElementById(id+"_play").innerText=localStorage[id+"_play"];
-}
-function downloadTrack(id){
-localStorage[id+"_dl"]++;
-document.getElementById(id+"_dl").innerText=localStorage[id+"_dl"];
-}
-</script>
+<!-- STORY -->
+<div class="section" id="story">
+<h2>🖤 The Story</h2>
+<p style="color:#bbb;max-width:720px">
+WIN HART is an independent artist creating music for those who feel deeply but speak quietly.
+No label. No trend. Just honesty, silence, and late nights.
+</p>
+</div>
 
-<!-- ================= MUSIC GALLERY (ASLI KAMU) ================= -->
-<!-- (SECTION MUSIK KAMU TETAP, TIDAK DIUBAH) -->
-<!-- PASTE MUSIK KAMU DI SINI JIKA MAU UPDATE LAGI -->
+<!-- FEATURED TRACK -->
+<div class="section" id="featured">
+<h2>🎧 Featured Track</h2>
+<iframe style="height:80px"
+src="https://open.spotify.com/embed/track/ISI_TRACK_ID"
+allow="encrypted-media"></iframe>
+<p class="stats">🎧 Played by listeners around the world</p>
+</div>
 
-<!-- ================= STREAMING PLATFORMS ================= -->
+<!-- STREAMING -->
 <div class="section" id="streaming">
 <h2>🌍 Available on Streaming Platforms</h2>
 
 <div class="grid">
-
 <div class="card">
 <h3>Spotify Album</h3>
 <iframe style="height:380px"
@@ -256,27 +242,19 @@ allow="encrypted-media"></iframe>
 <div class="card stream">
 <h3>Listen Everywhere</h3>
 
-<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH" target="_blank">
-Spotify Album
-</a>
+<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH" target="_blank">Spotify Album</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1" target="_blank">Apple Music</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1&app=itunes" target="_blank">iTunes Store</a>
+<a class="deezer" href="https://www.deezer.com/album/882831752" target="_blank">Deezer</a>
 
-<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1" target="_blank">
-Apple Music
-</a>
-
-<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1&app=itunes" target="_blank">
-iTunes Store
-</a>
-
-<a class="deezer" href="https://www.deezer.com/album/882831752" target="_blank">
-Deezer
-</a>
-
+<p class="stats" style="text-align:center">
+🎧 1,000+ Streams • 🌍 Worldwide listeners
+</p>
 </div>
 </div>
 </div>
 
-<!-- ================= YOUTUBE VIDEOS ================= -->
+<!-- VIDEOS -->
 <div class="section" id="videos">
 <h2>🎬 Official Videos</h2>
 <div class="grid">
@@ -294,12 +272,14 @@ Deezer
 </div>
 </div>
 
+<!-- SUPPORT -->
 <div class="support" id="support">
 <h2>❤️ Support the Artist</h2>
 <a class="saweria" href="https://saweria.co/WinHart" target="_blank">Saweria</a>
 <a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">Trakteer</a>
 </div>
 
+<!-- CONTACT -->
 <div id="contact" style="text-align:center;margin:50px 0;color:#bbb;font-size:14px;">
 📞 WhatsApp:
 <a href="https://wa.me/6282121785751" style="color:#1db954;">0821-2178-5751</a><br>
