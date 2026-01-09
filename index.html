@@ -15,6 +15,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
 
+<!-- TAMBAHAN VIRAL: OG IMAGE -->
+<meta property="og:image" content="https://winhart.xyz/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
 <style>
 :root{
 --accent:#e50914;
@@ -178,7 +183,7 @@ font-size:13px;
 color:#777;
 }
 
-/* ===== TAMBAHAN AMAN (VIDEO ONLY) ===== */
+/* ===== TAMBAHAN VIRAL (CSS ONLY) ===== */
 .video-short{
 position:relative;
 padding-top:177%;
@@ -214,13 +219,8 @@ height:100%;
 <h1>WIN HART</h1>
 <p>Music for quiet minds and loud thoughts</p>
 
-<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">
-Spotify Artist
-</a>
-
-<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">
-YouTube Channel
-</a>
+<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
+<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">YouTube Channel</a>
 </div>
 </header>
 
@@ -256,15 +256,11 @@ allow="encrypted-media"></iframe>
 
 <div class="card stream">
 <h3>Listen Everywhere</h3>
-
 <a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH" target="_blank">Spotify Album</a>
 <a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1" target="_blank">Apple Music</a>
 <a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1&app=itunes" target="_blank">iTunes Store</a>
 <a class="deezer" href="https://www.deezer.com/album/882831752" target="_blank">Deezer</a>
-
-<p class="stats" style="text-align:center">
-🎧 1,000+ Streams • 🌍 Worldwide listeners
-</p>
+<p class="stats" style="text-align:center">🎧 1,000+ Streams • 🌍 Worldwide listeners</p>
 </div>
 </div>
 </div>
@@ -280,19 +276,29 @@ allow="encrypted-media"></iframe>
 src="https://www.youtube.com/embed/vBQul9JBqoE?mute=1&loop=1&playlist=vBQul9JBqoE"
 allow="autoplay; encrypted-media"
 allowfullscreen></iframe>
+<p class="stats" style="text-align:center">🎧 If this hits, share it quietly.</p>
 </div>
 
 <div class="card">
 <h3>YouTube Shorts</h3>
 <div class="video-short">
 <iframe loading="lazy"
-src="https://www.youtube.com/embed/b3QoDECJLuo?mute=1&loop=1&playlist=b3QoDECJLuo"
+src="https://www.youtube.com/embed/b3QoDECJLuo?mute=1&loop=1&playlist=b3QoDECJLuo&start=1"
 allow="autoplay; encrypted-media"
 allowfullscreen></iframe>
 </div>
+<p class="stats" style="text-align:center">🎧 If this hits, share it quietly.</p>
 </div>
 
 </div>
+
+<!-- SHARE -->
+<div style="text-align:center;margin-top:30px">
+<a href="https://wa.me/?text=Listen%20WIN%20HART%20https://winhart.xyz" target="_blank" style="margin:6px;color:#1db954">WhatsApp</a> •
+<a href="https://twitter.com/intent/tweet?text=Music%20for%20quiet%20minds%20WIN%20HART%20https://winhart.xyz" target="_blank" style="margin:6px;color:#1da1f2">X</a> •
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://winhart.xyz" target="_blank" style="margin:6px;color:#1877f2">Facebook</a>
+</div>
+
 </div>
 
 <!-- SUPPORT -->
@@ -307,8 +313,7 @@ allowfullscreen></iframe>
 📞 WhatsApp:
 <a href="https://wa.me/6282121785751" style="color:#1db954;">0821-2178-5751</a><br>
 ✉ Email:
-<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;">
-wijayawimala5@gmail.com</a>
+<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;">wijayawimala5@gmail.com</a>
 </div>
 
 <footer>
@@ -316,7 +321,7 @@ wijayawimala5@gmail.com</a>
 </footer>
 
 <script>
-/* SCRIPT ASLI ANDA */
+/* SCRIPT ASLI */
 document.querySelectorAll(".section").forEach(sec=>{
 const o=new IntersectionObserver(e=>{
 if(e[0].isIntersecting) sec.classList.add("show");
@@ -324,7 +329,7 @@ if(e[0].isIntersecting) sec.classList.add("show");
 o.observe(sec);
 });
 
-/* ===== TAMBAHAN AMAN: SMART VIDEO ===== */
+/* ===== TAMBAHAN VIRAL (JS ONLY) ===== */
 const vids=document.querySelectorAll('#videos iframe');
 const vObs=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
@@ -340,6 +345,20 @@ e.target.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args
 
 vids.forEach(v=>vObs.observe(v));
 /* ===== END TAMBAHAN ===== */
+</script>
+
+<!-- TAMBAHAN SEO: SCHEMA ARTIST -->
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"MusicGroup",
+"name":"WIN HART",
+"url":"https://winhart.xyz",
+"sameAs":[
+"https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
+"https://youtube.com/@winhart78"
+]
+}
 </script>
 
 </body>
