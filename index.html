@@ -173,4 +173,174 @@ font-weight:600;
 /* FOOTER */
 footer{
 text-align:center;
-padding:
+padding:30px 15px;
+font-size:13px;
+color:#777;
+}
+
+/* ===== TAMBAHAN AMAN (VIDEO ONLY) ===== */
+.video-short{
+position:relative;
+padding-top:177%;
+max-width:360px;
+margin:auto;
+}
+.video-short iframe{
+position:absolute;
+top:0;left:0;
+width:100%;
+height:100%;
+}
+/* ===== END TAMBAHAN ===== */
+</style>
+</head>
+
+<body>
+
+<nav>
+<strong>WIN HART</strong>
+<div>
+<a href="#story">Story</a>
+<a href="#featured">Featured</a>
+<a href="#streaming">Streaming</a>
+<a href="#videos">Videos</a>
+<a href="#support">Support</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<header>
+<div>
+<h1>WIN HART</h1>
+<p>Music for quiet minds and loud thoughts</p>
+
+<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">
+Spotify Artist
+</a>
+
+<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">
+YouTube Channel
+</a>
+</div>
+</header>
+
+<!-- STORY -->
+<div class="section" id="story">
+<h2>🖤 The Story</h2>
+<p style="color:#bbb;max-width:720px">
+WIN HART is an independent artist creating music for those who feel deeply but speak quietly.
+No label. No trend. Just honesty, silence, and late nights.
+</p>
+</div>
+
+<!-- FEATURED TRACK -->
+<div class="section" id="featured">
+<h2>🎧 Featured Track</h2>
+<iframe style="height:80px"
+src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"
+allow="encrypted-media"></iframe>
+<p class="stats">🎧 Played by listeners around the world</p>
+</div>
+
+<!-- STREAMING -->
+<div class="section" id="streaming">
+<h2>🌍 Available on Streaming Platforms</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Spotify Album</h3>
+<iframe style="height:380px"
+src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"
+allow="encrypted-media"></iframe>
+</div>
+
+<div class="card stream">
+<h3>Listen Everywhere</h3>
+
+<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH" target="_blank">Spotify Album</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1" target="_blank">Apple Music</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1&app=itunes" target="_blank">iTunes Store</a>
+<a class="deezer" href="https://www.deezer.com/album/882831752" target="_blank">Deezer</a>
+
+<p class="stats" style="text-align:center">
+🎧 1,000+ Streams • 🌍 Worldwide listeners
+</p>
+</div>
+</div>
+</div>
+
+<!-- VIDEOS -->
+<div class="section" id="videos">
+<h2>🎬 Official Videos</h2>
+<div class="grid">
+
+<div class="card">
+<h3>running red</h3>
+<iframe loading="lazy"
+src="https://www.youtube.com/embed/vBQul9JBqoE?mute=1&loop=1&playlist=vBQul9JBqoE"
+allow="autoplay; encrypted-media"
+allowfullscreen></iframe>
+</div>
+
+<div class="card">
+<h3>YouTube Shorts</h3>
+<div class="video-short">
+<iframe loading="lazy"
+src="https://www.youtube.com/embed/b3QoDECJLuo?mute=1&loop=1&playlist=b3QoDECJLuo"
+allow="autoplay; encrypted-media"
+allowfullscreen></iframe>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- SUPPORT -->
+<div class="support" id="support">
+<h2>❤️ Support the Artist</h2>
+<a class="saweria" href="https://saweria.co/WinHart" target="_blank">Saweria</a>
+<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">Trakteer</a>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" style="text-align:center;margin:50px 0;color:#bbb;font-size:14px;">
+📞 WhatsApp:
+<a href="https://wa.me/6282121785751" style="color:#1db954;">0821-2178-5751</a><br>
+✉ Email:
+<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;">
+wijayawimala5@gmail.com</a>
+</div>
+
+<footer>
+© 2025 <strong>WIN HART</strong> — Official Artist Page
+</footer>
+
+<script>
+/* SCRIPT ASLI ANDA */
+document.querySelectorAll(".section").forEach(sec=>{
+const o=new IntersectionObserver(e=>{
+if(e[0].isIntersecting) sec.classList.add("show");
+});
+o.observe(sec);
+});
+
+/* ===== TAMBAHAN AMAN: SMART VIDEO ===== */
+const vids=document.querySelectorAll('#videos iframe');
+const vObs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+if(!e.target.src.includes("autoplay")){
+e.target.src += "&autoplay=1";
+}
+}else{
+e.target.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+}
+});
+},{threshold:0.6});
+
+vids.forEach(v=>vObs.observe(v));
+/* ===== END TAMBAHAN ===== */
+</script>
+
+</body>
+</html>
