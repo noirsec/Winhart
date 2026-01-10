@@ -8,8 +8,6 @@
 
 <meta name="description" content="WIN HART Official Artist. Music for quiet minds and loud thoughts. Available on Spotify, Apple Music, Deezer & YouTube.">
 <meta name="author" content="WIN HART">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow">
 
 <!-- OPEN GRAPH -->
 <meta property="og:title" content="WIN HART — Official Artist">
@@ -17,15 +15,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
 
-<!-- ================= GOOGLE ANALYTICS 4 ================= -->
+<!-- ================= GOOGLE ANALYTICS 4 (DITAMBAHKAN) ================= -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VEFS6RS3G3');
 </script>
-<!-- =============== END GA4 ================= -->
+<!-- ================= END GA4 ================= -->
 
 <style>
 :root{
@@ -38,7 +36,9 @@ gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
 --deezer:#00c7f2;
 --yt:#ff0000;
 }
+
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:"Segoe UI",Arial,sans-serif;
@@ -46,6 +46,7 @@ background:var(--bg);
 color:#fff;
 line-height:1.6;
 }
+
 /* NAV */
 nav{
 position:sticky;
@@ -66,6 +67,7 @@ font-size:13px;
 opacity:.85;
 }
 nav a:hover{opacity:1}
+
 /* HERO */
 header{
 min-height:70vh;
@@ -85,6 +87,7 @@ header p{
 color:var(--soft);
 margin-top:16px;
 }
+
 /* BUTTON */
 .btn{
 display:inline-block;
@@ -98,6 +101,7 @@ color:#fff;
 }
 .spotify{background:var(--spotify)}
 .youtube{background:var(--yt)}
+
 /* SECTION */
 .section{
 padding:80px 20px;
@@ -107,19 +111,24 @@ opacity:0;
 transform:translateY(40px);
 transition:all .8s ease;
 }
-.section.show{opacity:1;transform:none;}
+.section.show{
+opacity:1;
+transform:none;
+}
 .section h2{
 font-size:24px;
 margin-bottom:30px;
 border-left:4px solid var(--accent);
 padding-left:14px;
 }
+
 /* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:26px;
 }
+
 /* CARD */
 .card{
 background:var(--card);
@@ -128,9 +137,16 @@ border-radius:16px;
 box-shadow:0 10px 30px rgba(0,0,0,.5);
 }
 .card h3{margin:0 0 12px;font-size:16px}
+
 iframe{width:100%;border-radius:12px;border:none}
+
 /* STATS */
-.stats{font-size:13px;color:#bbb;margin-top:10px}
+.stats{
+font-size:13px;
+color:#bbb;
+margin-top:10px;
+}
+
 /* STREAM LINKS */
 .stream a{
 display:block;
@@ -145,6 +161,7 @@ text-align:center;
 .stream .spotify{background:var(--spotify)}
 .stream .apple{background:var(--apple)}
 .stream .deezer{background:var(--deezer)}
+
 /* SUPPORT */
 .support{
 text-align:center;
@@ -162,6 +179,7 @@ font-weight:600;
 }
 .saweria{background:#1db954}
 .trakteer{background:#ff7a00}
+
 /* FOOTER */
 footer{
 text-align:center;
@@ -169,6 +187,7 @@ padding:30px 15px;
 font-size:13px;
 color:#777;
 }
+
 /* VIDEO SHORT */
 .video-short{
 position:relative;
@@ -183,24 +202,6 @@ width:100%;
 height:100%;
 }
 </style>
-
-<!-- ========== STRUCTURED DATA (SEO) ========== -->
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"MusicGroup",
-"name":"WIN HART",
-"url":"https://winhart.xyz",
-"sameAs":[
-"https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
-"https://youtube.com/@winhart78",
-"https://music.apple.com",
-"https://www.deezer.com"
-]
-}
-</script>
-<!-- ========== END SEO ========== -->
-
 </head>
 
 <body>
@@ -221,8 +222,14 @@ height:100%;
 <div>
 <h1>WIN HART</h1>
 <p>Music for quiet minds and loud thoughts</p>
-<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
-<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">YouTube Channel</a>
+
+<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">
+Spotify Artist
+</a>
+
+<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">
+YouTube Channel
+</a>
 </div>
 </header>
 
@@ -235,26 +242,38 @@ No label. No trend. Just honesty, silence, and late nights.
 </p>
 </div>
 
-<!-- FEATURED -->
+<!-- FEATURED TRACK -->
 <div class="section" id="featured">
 <h2>🎧 Featured Track</h2>
-<iframe style="height:80px" src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1" allow="encrypted-media"></iframe>
+<iframe style="height:80px"
+src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"
+allow="encrypted-media"></iframe>
 <p class="stats">🎧 Played by listeners around the world</p>
 </div>
 
 <!-- STREAMING -->
 <div class="section" id="streaming">
 <h2>🌍 Available on Streaming Platforms</h2>
+
 <div class="grid">
 <div class="card">
 <h3>Spotify Album</h3>
-<iframe style="height:380px" src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"></iframe>
+<iframe style="height:380px"
+src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"
+allow="encrypted-media"></iframe>
 </div>
+
 <div class="card stream">
 <h3>Listen Everywhere</h3>
+
 <a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH" target="_blank">Spotify Album</a>
-<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803" target="_blank">Apple Music</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1" target="_blank">Apple Music</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?ls=1&app=itunes" target="_blank">iTunes Store</a>
 <a class="deezer" href="https://www.deezer.com/album/882831752" target="_blank">Deezer</a>
+
+<p class="stats" style="text-align:center">
+🎧 1,000+ Streams • 🌍 Worldwide listeners
+</p>
 </div>
 </div>
 </div>
@@ -263,16 +282,25 @@ No label. No trend. Just honesty, silence, and late nights.
 <div class="section" id="videos">
 <h2>🎬 Official Videos</h2>
 <div class="grid">
+
 <div class="card">
 <h3>running red</h3>
-<iframe src="https://www.youtube.com/embed/vBQul9JBqoE?mute=1&loop=1&playlist=vBQul9JBqoE" allowfullscreen></iframe>
+<iframe loading="lazy"
+src="https://www.youtube.com/embed/vBQul9JBqoE?mute=1&loop=1&playlist=vBQul9JBqoE"
+allow="autoplay; encrypted-media"
+allowfullscreen></iframe>
 </div>
+
 <div class="card">
 <h3>YouTube Shorts</h3>
 <div class="video-short">
-<iframe src="https://www.youtube.com/embed/b3QoDECJLuo?mute=1&loop=1&playlist=b3QoDECJLuo" allowfullscreen></iframe>
+<iframe loading="lazy"
+src="https://www.youtube.com/embed/b3QoDECJLuo?mute=1&loop=1&playlist=b3QoDECJLuo"
+allow="autoplay; encrypted-media"
+allowfullscreen></iframe>
 </div>
 </div>
+
 </div>
 </div>
 
@@ -284,9 +312,12 @@ No label. No trend. Just honesty, silence, and late nights.
 </div>
 
 <!-- CONTACT -->
-<div id="contact" style="text-align:center;margin:50px 0;color:#bbb;">
-<a href="https://wa.me/6282121785751">WhatsApp</a> •
-<a href="mailto:wijayawimala5@gmail.com">Email</a>
+<div id="contact" style="text-align:center;margin:50px 0;color:#bbb;font-size:14px;">
+📞 WhatsApp:
+<a href="https://wa.me/6282121785751" style="color:#1db954;">0821-2178-5751</a><br>
+✉ Email:
+<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;">
+wijayawimala5@gmail.com</a>
 </div>
 
 <footer>
@@ -294,19 +325,12 @@ No label. No trend. Just honesty, silence, and late nights.
 </footer>
 
 <script>
-/* SCRIPT ASLI */
+/* SCRIPT ASLI ANDA */
 document.querySelectorAll(".section").forEach(sec=>{
 const o=new IntersectionObserver(e=>{
 if(e[0].isIntersecting) sec.classList.add("show");
 });
 o.observe(sec);
-});
-
-/* GA4 EVENT TRACKING (NON VISUAL) */
-document.querySelectorAll("a").forEach(a=>{
-a.addEventListener("click",()=>{
-gtag('event','click',{event_label:a.href});
-});
 });
 </script>
 
