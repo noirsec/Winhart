@@ -31,6 +31,14 @@
 }
 
 *{box-sizing:border-box}
+<script>
+setTimeout(()=>{
+if(!sessionStorage.getItem("followShown")){
+alert("If this resonates, follow WIN HART on Spotify or YouTube.");
+sessionStorage.setItem("followShown","yes");
+}
+},15000);
+</script>
 
 body{
 margin:0;
@@ -150,7 +158,19 @@ height:100%;
 border:none;
 }
 
-iframe{width:100%;border-radius:12px;border:none}
+/* === SHORTS FEED FEEL === */
+#videos .card{
+min-height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+@media(max-width:768px){
+#videos .grid{
+grid-template-columns:1fr;
+}
+}
 
 /* STATS */
 .stats{
@@ -294,6 +314,7 @@ allow="autoplay; encrypted-media"
 allowfullscreen></iframe>
 </div>
 <p class="stats">🎧 If this hits, share it quietly.</p>
+<p class="stats">If you stayed, you’re already part of it.</p>
 </div>
 
 </div>
@@ -327,13 +348,39 @@ allowfullscreen></iframe>
 </footer>
 
 <script>
-document.querySelectorAll(".section").forEach(sec=>{
-const o=new IntersectionObserver(e=>{
-if(e[0].isIntersecting) sec.classList.add("show");
-});
-o.observe(sec);
-});
-</script>
+const videoIframes = document.querySelectorAll('.video-box iframe');
 
+const videoObserver = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.contentWindow.postMessage(
+'{"event":"command","func":"playVideo","args":""}',
+'*'
+);
+}else{
+entry.target.contentWindow.postMessage(
+'{"event":"command","func":"pauseVideo","args":""}',
+'*'
+);
+}
+});
+},{threshold:0.6});
+
+videoIframes.forEach(v => videoObserver.observe(v));
+</script>
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"MusicGroup",
+"name":"WIN HART",
+"url":"https://winhart.xyz",
+"sameAs":[
+"https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
+"https://youtube.com/@winhart78",
+"https://www.deezer.com/artist/000000"
+]
+}
+</script>
+  
 </body>
 </html>
