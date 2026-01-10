@@ -15,6 +15,19 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
 
+<!-- ================================================== -->
+<!-- GOOGLE ANALYTICS 4 (GA4) - TAMBAHAN SAJA -->
+<!-- TIDAK MENGUBAH TAMPILAN -->
+<!-- ================================================== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VEFS6RS3G3');
+</script>
+<!-- ================= END GA4 ======================== -->
+
 <style>
 :root{
 --accent:#e50914;
@@ -316,7 +329,6 @@ wijayawimala5@gmail.com</a>
 </footer>
 
 <script>
-/* SCRIPT ASLI ANDA */
 document.querySelectorAll(".section").forEach(sec=>{
 const o=new IntersectionObserver(e=>{
 if(e[0].isIntersecting) sec.classList.add("show");
@@ -324,7 +336,6 @@ if(e[0].isIntersecting) sec.classList.add("show");
 o.observe(sec);
 });
 
-/* ===== TAMBAHAN AMAN: SMART VIDEO ===== */
 const vids=document.querySelectorAll('#videos iframe');
 const vObs=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
@@ -339,7 +350,6 @@ e.target.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args
 },{threshold:0.6});
 
 vids.forEach(v=>vObs.observe(v));
-/* ===== END TAMBAHAN ===== */
 </script>
 
 </body>
