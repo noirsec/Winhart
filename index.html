@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WIN HART — Official Artist</title>
+<title>WIN HART — Official Artist | Music Worldwide</title>
 
 <meta name="description" content="WIN HART Official Artist. Music for quiet minds and loud thoughts. Available worldwide on Spotify, Apple Music, iTunes, Deezer & YouTube.">
 <meta name="author" content="WIN HART">
@@ -15,6 +15,22 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
 
+<!-- SCHEMA.ORG -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicArtist",
+  "name": "WIN HART",
+  "url": "https://winhart.xyz",
+  "genre": ["POP","EDM"],
+  "sameAs": [
+    "https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
+    "https://youtube.com/@winhart78",
+    "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803"
+  ]
+}
+</script>
+
 <!-- GOOGLE ANALYTICS 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 <script>
@@ -22,6 +38,10 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-VEFS6RS3G3');
+
+function trackEvent(name,label){
+gtag('event', name, {event_label: label});
+}
 </script>
 
 <style>
@@ -38,154 +58,33 @@ gtag('config', 'G-VEFS6RS3G3');
 --paypal:#003087;
 }
 *{box-sizing:border-box}
-body{
-margin:0;
-font-family:"Segoe UI",Arial,sans-serif;
-background:var(--bg);
-color:#fff;
-line-height:1.6;
-}
-
-/* NAV */
-nav{
-position:sticky;
-top:0;
-z-index:10;
-background:rgba(0,0,0,.85);
-padding:14px 24px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-nav strong{letter-spacing:2px}
-nav a{
-color:#fff;
-text-decoration:none;
-margin-left:18px;
-font-size:13px;
-opacity:.85;
-}
+body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
+nav{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.85);padding:14px 24px;display:flex;justify-content:space-between}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:13px;opacity:.85}
 nav a:hover{opacity:1}
-
-/* HERO */
-header{
-min-height:70vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px 20px;
-background:linear-gradient(180deg,rgba(0,0,0,.6),#000);
-}
-header h1{
-font-size:52px;
-letter-spacing:6px;
-margin:0;
-}
-header p{
-color:var(--soft);
-margin-top:16px;
-}
-
-/* BUTTON */
-.btn{
-display:inline-block;
-margin:10px;
-padding:12px 26px;
-border-radius:30px;
-text-decoration:none;
-font-size:14px;
-font-weight:600;
-color:#fff;
-}
+header{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(180deg,rgba(0,0,0,.6),#000)}
+header h1{font-size:52px;letter-spacing:6px;margin:0}
+header p{color:var(--soft)}
+.btn{display:inline-block;margin:10px;padding:12px 26px;border-radius:30px;text-decoration:none;font-size:14px;font-weight:600;color:#fff}
 .spotify{background:var(--spotify)}
 .youtube{background:var(--yt)}
-
-/* SECTION */
-.section{
-padding:80px 20px;
-max-width:1200px;
-margin:auto;
-opacity:0;
-transform:translateY(40px);
-transition:all .8s ease;
-}
-.section.show{
-opacity:1;
-transform:none;
-}
-.section h2{
-font-size:24px;
-margin-bottom:30px;
-border-left:4px solid var(--accent);
-padding-left:14px;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:26px;
-}
-
-/* CARD */
-.card{
-background:var(--card);
-padding:20px;
-border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,.5);
-}
-.card h3{margin:0 0 12px;font-size:16px}
-
-/* TRACK */
-.track{margin-bottom:18px}
-.track strong{
-display:block;
-font-size:14px;
-margin-bottom:6px;
-}
-
-/* STREAM */
-.stream a{
-display:block;
-margin:10px 0;
-padding:14px 20px;
-border-radius:30px;
-color:#fff;
-text-decoration:none;
-font-weight:600;
-text-align:center;
-}
+.section{padding:80px 20px;max-width:1200px;margin:auto;opacity:0;transform:translateY(40px);transition:.8s}
+.section.show{opacity:1;transform:none}
+.section h2{font-size:24px;margin-bottom:30px;border-left:4px solid var(--accent);padding-left:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.card{background:var(--card);padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.track strong{display:block;margin-bottom:6px}
+.stream a{display:block;margin:10px 0;padding:14px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600;text-align:center}
 .stream .spotify{background:var(--spotify)}
 .stream .apple{background:var(--apple)}
 .stream .itunes{background:var(--itunes)}
 .stream .deezer{background:var(--deezer)}
-
-/* SUPPORT */
-.support{
-text-align:center;
-padding:80px 20px;
-background:#000;
-}
-.support a{
-display:inline-block;
-margin:10px;
-padding:14px 28px;
-border-radius:30px;
-color:#fff;
-text-decoration:none;
-font-weight:600;
-}
+.support{text-align:center;padding:80px 20px;background:#000}
+.support a{display:inline-block;margin:10px;padding:14px 28px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600}
 .saweria{background:#1db954}
 .trakteer{background:#ff7a00}
 .paypal{background:var(--paypal)}
-
-footer{
-text-align:center;
-padding:30px 15px;
-font-size:13px;
-color:#777;
-}
+footer{text-align:center;padding:30px;font-size:13px;color:#777}
 </style>
 </head>
 
@@ -197,6 +96,7 @@ color:#777;
 <a href="#story">Story</a>
 <a href="#featured">Featured</a>
 <a href="#streaming">Streaming</a>
+<a href="#videos">Videos</a>
 <a href="#gallery">Music</a>
 <a href="#contact">Contact</a>
 </div>
@@ -206,43 +106,32 @@ color:#777;
 <div>
 <h1>WIN HART</h1>
 <p>Music for quiet minds and loud thoughts</p>
-<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
+<a class="btn spotify" onclick="trackEvent('click','spotify')" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
 <a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">YouTube Channel</a>
 </div>
 </header>
 
-<!-- PHOTO -->
 <div class="section">
-<img src="1000031390.jpg" alt="WIN HART"
-style="max-width:240px;border-radius:50%;display:block;margin:0 auto 30px;
-box-shadow:0 20px 40px rgba(0,0,0,.6)">
+<img src="1000031390.jpg" alt="WIN HART" style="max-width:240px;border-radius:50%;display:block;margin:auto">
 </div>
 
-<!-- STORY -->
 <div class="section" id="story">
 <h2>🖤 The Story</h2>
 <p style="color:#bbb;max-width:720px">
 WIN HART is an independent artist creating music for those who feel deeply but speak quietly.
-No label. No trend. Just honesty, silence, and late nights.
 </p>
 </div>
 
-<!-- FEATURED -->
 <div class="section" id="featured">
 <h2>🎧 Featured Track</h2>
-<iframe style="height:80px;width:100%;border:none;border-radius:12px"
-src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"
-allow="encrypted-media"></iframe>
+<iframe loading="lazy" style="height:80px;width:100%" src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"></iframe>
 </div>
 
-<!-- STREAMING -->
 <div class="section" id="streaming">
 <h2>🌍 Available Worldwide</h2>
 <div class="grid">
 <div class="card">
-<iframe style="height:380px;width:100%;border:none;border-radius:12px"
-src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"
-allow="encrypted-media"></iframe>
+<iframe loading="lazy" style="height:380px;width:100%" src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"></iframe>
 </div>
 <div class="card stream">
 <a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH">Spotify</a>
@@ -253,64 +142,56 @@ allow="encrypted-media"></iframe>
 </div>
 </div>
 
-<!-- MUSIC -->
+<!-- VIDEO SECTION (TIDAK DIHAPUS, DITAMBAHKAN) -->
+<div class="section" id="videos">
+<h2>🎬 Official Videos</h2>
+<div class="grid">
+
+<!-- VIDEO LAMA -->
+<iframe loading="lazy" height="360" src="https://www.youtube.com/embed/vBQul9JBqoE" allowfullscreen></iframe>
+
+<!-- YOUTUBE SHORTS BARU -->
+<iframe loading="lazy" height="360" src="https://www.youtube.com/embed/b3QoDECJLuo" allowfullscreen></iframe>
+
+</div>
+</div>
+
 <div class="section" id="gallery">
 <h2>🎶 Original Music</h2>
 <div class="grid">
-
 <div class="card">
 <h3>POP</h3>
-<div class="track"><strong>Where Do I Begin</strong>
-<audio controls src="music/pop/where do i begin.mp3"></audio></div>
-<div class="track"><strong>Echoes of Home</strong>
-<audio controls src="music/pop/echoes of home.mp3"></audio></div>
-<div class="track"><strong>The weight of the silence</strong>
-<audio controls src="music/pop/the weight of the silence.mp3"></audio></div>
-<div class="track"><strong>Glory of prophet</strong>
-<audio controls src="music/pop/glory of prophet.mp3"></audio></div>
+<div class="track"><strong>where do i begin</strong><audio controls src="music/pop/where i do begin.mp3"></audio></div>
+<div class="track"><strong>echoes of home</strong><audio controls src="music/pop/echoes of home.mp3"></audio></div>
+<div class="track"><strong>the weight of the silence</strong><audio controls src="music/pop/the weight of the silence.mp3"></audio></div>
 </div>
-
 <div class="card">
 <h3>EDM</h3>
-<div class="track"><strong>Running Red</strong>
-<audio controls src="music/edm/running red.mp3"></audio></div>
-<div class="track"><strong>Redline</strong>
-<audio controls src="music/edm/redline.mp3"></audio></div>
-<div class="track"><strong>Bloom collapse</strong>
-<audio controls src="music/pop/bloom collapse.mp3"></audio></div>
-<div class="track"><strong>I already know you</strong>
-<audio controls src="music/pop/i already know you.mp3"></audio></div>
-<div class="track"><strong>Something small</strong>
-<audio controls src="music/pop/something small.mp3"></audio></div>
+<div class="track"><strong>Running Red</strong><audio controls src="music/edm/running-red.mp3"></audio></div>
+<div class="track"><strong>Redline</strong><audio controls src="music/edm/redline.mp3"></audio></div>
 </div>
-
 </div>
 </div>
 
 <div class="support">
 <h2>❤️ Support the Artist</h2>
-<a class="saweria" href="https://saweria.co/WinHart">Saweria</a>
-<a class="trakteer" href="https://trakteer.id/indo_musik2">Trakteer</a>
-<a class="paypal" href="https://paypal.me/WinHart">PayPal (Global)</a>
+<a class="saweria" onclick="trackEvent('donate','saweria')" href="https://saweria.co/WinHart">Saweria</a>
+<a class="trakteer" onclick="trackEvent('donate','trakteer')" href="https://trakteer.id/indo_musik2">Trakteer</a>
+<a class="paypal" onclick="trackEvent('donate','paypal')" href="https://paypal.me/WinHart">PayPal (Global)</a>
 </div>
 
 <div id="contact" style="text-align:center;color:#bbb">
-WhatsApp:
-<a href="https://wa.me/6282121785751" style="color:#1db954">0821-2178-5751</a><br>
-Email:
-<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954">wijayawimala5@gmail.com</a>
+WhatsApp <a href="https://wa.me/6282121785751" style="color:#1db954">0821-2178-5751</a><br>
+Email <a href="mailto:wijayawimala5@gmail.com" style="color:#1db954">wijayawimala5@gmail.com</a>
 </div>
 
-<footer>
-© 2025 <strong>WIN HART</strong> — Official Artist Page
-</footer>
+<footer>© 2025 <strong>WIN HART</strong> — Official Artist Page</footer>
 
 <script>
 document.querySelectorAll(".section").forEach(sec=>{
-const o=new IntersectionObserver(e=>{
+new IntersectionObserver(e=>{
 if(e[0].isIntersecting) sec.classList.add("show");
-});
-o.observe(sec);
+}).observe(sec);
 });
 </script>
 
