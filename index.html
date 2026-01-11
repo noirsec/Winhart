@@ -9,12 +9,13 @@
 <meta name="description" content="WIN HART Official Artist. Music for quiet minds and loud thoughts. Available on Spotify, Apple Music, Deezer & YouTube.">
 <meta name="author" content="WIN HART">
 
+<!-- OPEN GRAPH -->
 <meta property="og:title" content="WIN HART — Official Artist">
 <meta property="og:description" content="Music for quiet minds and loud thoughts. Listen worldwide.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
 
-<!-- ================= GOOGLE ANALYTICS 4 ================= -->
+<!-- GOOGLE ANALYTICS 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -22,7 +23,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-VEFS6RS3G3');
 </script>
-<!-- ================= END GA4 ================= -->
 
 <style>
 :root{
@@ -136,30 +136,36 @@ box-shadow:0 10px 30px rgba(0,0,0,.5);
 .card h3{margin:0 0 12px;font-size:16px}
 
 iframe{width:100%;border-radius:12px;border:none}
-audio{width:100%;margin:8px 0}
 
-/* PHOTO */
-.artist-photo{
+/* TRACK */
+.track{margin-bottom:16px}
+.track strong{
+display:block;
+font-size:13px;
+margin-bottom:6px;
+}
+
+/* STATS */
+.stats{
+font-size:13px;
+color:#bbb;
+margin-top:10px;
+}
+
+/* STREAM */
+.stream a{
+display:block;
+margin:10px 0;
+padding:14px 20px;
+border-radius:30px;
+color:#fff;
+text-decoration:none;
+font-weight:600;
 text-align:center;
-position:relative;
 }
-.artist-photo img{
-max-width:280px;
-width:80%;
-border-radius:18px;
-box-shadow:0 20px 40px rgba(0,0,0,.6);
-}
-.artist-photo span{
-position:absolute;
-bottom:12px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(0,0,0,.6);
-padding:6px 16px;
-border-radius:20px;
-font-size:12px;
-letter-spacing:2px;
-}
+.stream .spotify{background:var(--spotify)}
+.stream .apple{background:var(--apple)}
+.stream .deezer{background:var(--deezer)}
 
 /* SUPPORT */
 .support{
@@ -207,16 +213,16 @@ color:#777;
 <div>
 <h1>WIN HART</h1>
 <p>Music for quiet minds and loud thoughts</p>
-
 <a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
 <a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">YouTube Channel</a>
 </div>
 </header>
 
-<!-- FOTO KEDUA -->
-<div class="section artist-photo">
-<img src="assets/photo2.jpg" alt="WIN HART">
-<span>WIN HART</span>
+<!-- ARTIST PHOTO -->
+<div class="section">
+<img src="1000031390.jpg" alt="WIN HART"
+style="max-width:240px;border-radius:50%;display:block;margin:0 auto 30px;
+box-shadow:0 20px 40px rgba(0,0,0,.6)">
 </div>
 
 <!-- STORY -->
@@ -228,7 +234,7 @@ No label. No trend. Just honesty, silence, and late nights.
 </p>
 </div>
 
-<!-- FEATURED TRACK -->
+<!-- FEATURED -->
 <div class="section" id="featured">
 <h2>🎧 Featured Track</h2>
 <iframe style="height:80px"
@@ -245,55 +251,54 @@ allow="encrypted-media"></iframe>
 src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"
 allow="encrypted-media"></iframe>
 </div>
+<div class="card stream">
+<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH">Spotify</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803">Apple Music</a>
+<a class="deezer" href="https://www.deezer.com/album/882831752">Deezer</a>
+</div>
 </div>
 </div>
 
-<!-- VIDEOS (TINGGAL 1) -->
+<!-- VIDEO (1 SAJA) -->
 <div class="section" id="videos">
 <h2>🎬 Official Video</h2>
-<div class="card">
-<iframe
+<iframe height="360"
 src="https://www.youtube.com/embed/vBQul9JBqoE"
 allowfullscreen></iframe>
 </div>
-</div>
 
-<!-- GALERI MUSIK -->
+<!-- MUSIC GALLERY -->
 <div class="section" id="gallery">
 <h2>🎶 Original Music Gallery</h2>
 <div class="grid">
+
 <div class="card">
 <h3>POP</h3>
-<audio controls src="assets/pop/where-do-i-begin.mp3"></audio>
-<audio controls src="assets/pop/echoes-of-home.mp3"></audio>
-<audio controls src="assets/pop/glory-of-prophet.mp3"></audio>
-<audio controls src="assets/pop/the-weight-of-the-silence.mp3"></audio>
+<div class="track"><strong>Where Do I Begin</strong><audio controls><source src="where do i begin.mp3"></audio></div>
+<div class="track"><strong>Echoes of Home</strong><audio controls><source src="echoes of home.mp3"></audio></div>
+<div class="track"><strong>Gravity</strong><audio controls><source src="gravity.mp3"></audio></div>
 </div>
 
 <div class="card">
 <h3>EDM</h3>
-<audio controls src="assets/edm/something-small.mp3"></audio>
-<audio controls src="assets/edm/bloom-collapse.mp3"></audio>
-<audio controls src="assets/edm/i-already-know-you.mp3"></audio>
-<audio controls src="assets/edm/running-red.mp3"></audio>
-<audio controls src="assets/edm/redline.mp3"></audio>
+<div class="track"><strong>Running Red</strong><audio controls><source src="Running Red.mp3"></audio></div>
+<div class="track"><strong>Redline</strong><audio controls><source src="redline.mp3"></audio></div>
 </div>
+
 </div>
 </div>
 
-<!-- SUPPORT -->
-<div class="support" id="support">
+<div class="support">
 <h2>❤️ Support the Artist</h2>
-<a class="saweria" href="https://saweria.co/WinHart" target="_blank">Saweria</a>
-<a class="trakteer" href="https://trakteer.id/indo_musik2" target="_blank">Trakteer</a>
+<a class="saweria" href="https://saweria.co/WinHart">Saweria</a>
+<a class="trakteer" href="https://trakteer.id/indo_musik2">Trakteer</a>
 </div>
 
-<!-- CONTACT -->
-<div id="contact" style="text-align:center;margin:50px 0;color:#bbb;font-size:14px;">
-📞 WhatsApp:
-<a href="https://wa.me/6282121785751" style="color:#1db954;">0821-2178-5751</a><br>
-✉ Email:
-<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954;">wijayawimala5@gmail.com</a>
+<div id="contact" style="text-align:center;color:#bbb">
+WhatsApp:
+<a href="https://wa.me/6282121785751" style="color:#1db954">0821-2178-5751</a><br>
+Email:
+<a href="mailto:wijayawimala5@gmail.com" style="color:#1db954">wijayawimala5@gmail.com</a>
 </div>
 
 <footer>
