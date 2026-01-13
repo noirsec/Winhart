@@ -15,32 +15,78 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
 
-<!-- SCHEMA.ORG -->
+<!-- INTERNATIONAL LEVEL ADDITION -->
+<meta property="og:site_name" content="WIN HART Official Artist">
+<meta property="og:image" content="https://winhart.xyz/poto2.jpg">
+<link rel="canonical" href="https://winhart.xyz">
+
+<!-- SCHEMA.ORG (UPGRADED - NOT REMOVED) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicArtist",
+  "@id": "https://winhart.xyz/#artist",
   "name": "WIN HART",
   "url": "https://winhart.xyz",
+  "image": "https://winhart.xyz/poto2.jpg",
+  "description": "Independent music artist creating music for quiet minds and loud thoughts.",
   "genre": ["POP","EDM"],
+  "foundingLocation": {
+    "@type": "Country",
+    "name": "Indonesia"
+  },
   "sameAs": [
     "https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
-    "https://youtube.com/@winhart78",
-    "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803"
-  ]
+    "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
+    "https://www.deezer.com/album/882831752",
+    "https://youtube.com/@winhart78"
+  ],
+  "potentialAction": {
+    "@type": "ListenAction",
+    "target": [
+      "https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
+      "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
+      "https://www.deezer.com/album/882831752"
+    ]
+  }
+}
+</script>
+
+<!-- INTERNATIONAL LEVEL ADDITION: VIDEO AUTHORITY -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "WIN HART Official Music Video",
+  "description": "Official music video by WIN HART",
+  "thumbnailUrl": "https://winhart.xyz/poto2.jpg",
+  "uploadDate": "2025-01-01",
+  "publisher": {
+    "@type": "MusicArtist",
+    "name": "WIN HART",
+    "url": "https://winhart.xyz"
+  },
+  "embedUrl": "https://www.youtube.com/embed/vBQul9JBqoE"
 }
 </script>
 
 <!-- GOOGLE ANALYTICS 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RS3G3"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-VEFS6RS3G3');
+gtag('config', 'G-VEFS6RS3G3', {
+  send_page_view: true,
+  anonymize_ip: true
+});
 
+/* INTERNATIONAL LEVEL TRACKING */
 function trackEvent(name,label){
-gtag('event', name, {event_label: label});
+gtag('event', name, {
+  event_label: label,
+  event_category: 'Artist Interaction'
+});
 }
 </script>
 
