@@ -169,11 +169,18 @@ WIN HART is an independent artist creating music for those who feel deeply but s
 </p>
 </div>
 
+<div class="section" id="daily">
+<h2>📝 Today’s Thought</h2>
+<p id="dailyText" style="color:#bbb;max-width:720px">
+Loading today's message...
+</p>
+</div>
+  
 <div class="section" id="featured">
 <h2>🎧 Featured Track</h2>
 <iframe loading="lazy" style="height:80px;width:100%" src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"></iframe>
 </div>
-
+  
 <div class="section" id="streaming">
 <h2>🌍 Available Worldwide</h2>
 <div class="grid">
@@ -289,6 +296,11 @@ WIN HART is an independent artist creating music for those who feel deeply but s
 </div>
 </div>
 
+<div class="section">
+<h2>🎲 Track of The Day</h2>
+<audio id="randomTrack" controls></audio>
+</div>
+  
 <div class="support">
 <h2>❤️ Support the Artist</h2>
 <a class="saweria" onclick="trackEvent('donate','saweria')" href="https://saweria.co/WinHart">Saweria</a>
@@ -337,6 +349,51 @@ audioPlayers.forEach(player => {
     });
   });
 });
+</script>
+  
+<script>
+const dailyMessages = [
+  "Some days are quiet, but they still matter.",
+  "Music exists so feelings don’t disappear.",
+  "If today feels heavy, you’re not alone.",
+  "You don’t have to be loud to be strong.",
+  "Art survives because hearts survive."
+];
+
+const today = new Date().getDate();
+const dailyEl = document.getElementById("dailyText");
+if(dailyEl){
+  dailyEl.innerText = dailyMessages[today % dailyMessages.length];
+}
+</script>  
+  
+<script>
+const lastVisit = localStorage.getItem("lastVisit");
+const now = new Date().toLocaleDateString();
+
+if(lastVisit){
+const note = document.createElement("div");
+note.style.textAlign="center";
+note.style.color="#888";
+note.style.fontSize="13px";
+note.innerText = `Welcome back. You were here on ${lastVisit}`;
+document.body.prepend(note);
+}
+
+localStorage.setItem("lastVisit", now);
+</script>
+
+<script>
+const tracks = [
+  "where do i begin.mp3",
+  "echoes of home.mp3",
+  "the weight of the silence.mp3",
+  "running red.mp3",
+  "redline.mp3"
+];
+
+const random = tracks[Math.floor(Math.random()*tracks.length)];
+document.getElementById("randomTrack").src = random;
 </script>
 
 </body>
