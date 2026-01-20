@@ -9,19 +9,22 @@
 <style>
 body{margin:0;font-family:Segoe UI,Arial;background:#0b0b0b;color:#fff}
 nav{padding:14px 24px;background:#000}
-nav a{color:#fff;text-decoration:none;margin-right:18px;font-size:13px}
+nav a{color:#fff;text-decoration:none}
 .section{padding:80px 20px;max-width:1200px;margin:auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
 .card{background:#161616;padding:20px;border-radius:16px}
 .track strong{display:block;margin-bottom:6px}
+.stream a{display:block;margin:10px 0;padding:14px;border-radius:30px;text-align:center;font-weight:600;color:#fff;text-decoration:none}
+.spotify{background:#1db954}
+.apple{background:#fa243c}
+.itunes{background:#d56dfb}
+.deezer{background:#00c7f2}
 </style>
 </head>
 
 <body>
 
-<nav>
-<a href="index.html">← Back to Home</a>
-</nav>
+<nav><a href="index.html">← Back to Home</a></nav>
 
 <div class="section" id="streaming">
 <h2>🌍 Available Worldwide</h2>
@@ -29,10 +32,11 @@ nav a{color:#fff;text-decoration:none;margin-right:18px;font-size:13px}
 <div class="card">
 <iframe style="height:380px;width:100%" src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"></iframe>
 </div>
-<div class="card">
-<a href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH">Spotify</a><br>
-<a href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803">Apple Music</a><br>
-<a href="https://www.deezer.com/album/882831752">Deezer</a>
+<div class="card stream">
+<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH">Spotify</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803">Apple Music</a>
+<a class="itunes" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?app=itunes">iTunes Store</a>
+<a class="deezer" href="https://www.deezer.com/album/882831752">Deezer</a>
 </div>
 </div>
 </div>
@@ -47,25 +51,34 @@ nav a{color:#fff;text-decoration:none;margin-right:18px;font-size:13px}
 
 <div class="section" id="gallery">
 <h2>🎶 Original Music</h2>
+<div class="grid">
 
+<div class="card">
 <h3>POP</h3>
-<audio controls src="where do i begin.mp3"></audio>
-<audio controls src="echoes of home.mp3"></audio>
-<audio controls src="the weight of the silence.mp3"></audio>
+<div class="track"><strong>Where Do I Begin</strong><audio controls src="where do i begin.mp3"></audio></div>
+<div class="track"><strong>Echoes of Home</strong><audio controls src="echoes of home.mp3"></audio></div>
+<div class="track"><strong>The Weight of the Silence</strong><audio controls src="the weight of the silence.mp3"></audio></div>
+<div class="track"><strong>I Remember</strong><audio controls src="i remember.mp3"></audio></div>
+<div class="track"><strong>Glory of Prophet</strong><audio controls src="glory of the prophet.mp3"></audio></div>
+</div>
 
+<div class="card">
 <h3>EDM</h3>
-<audio controls src="Running Red.mp3"></audio>
-<audio controls src="redline.mp3"></audio>
-<audio controls src="bloom collapse.mp3"></audio>
+<div class="track"><strong>Running Red</strong><audio controls src="Running Red.mp3"></audio></div>
+<div class="track"><strong>Redline</strong><audio controls src="redline.mp3"></audio></div>
+<div class="track"><strong>Bloom Collapse</strong><audio controls src="bloom collapse.mp3"></audio></div>
+<div class="track"><strong>I Already Know You</strong><audio controls src="i already know you.mp3"></audio></div>
+<div class="track"><strong>Something Small</strong><audio controls src="something small.mp3"></audio></div>
+</div>
+
+</div>
 </div>
 
 <script>
 const audios=document.querySelectorAll("audio");
 audios.forEach(a=>{
 a.addEventListener("play",()=>{
-audios.forEach(o=>{
-if(o!==a){o.pause();o.currentTime=0;}
-});
+audios.forEach(o=>{if(o!==a){o.pause();o.currentTime=0;}});
 });
 });
 </script>
