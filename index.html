@@ -14,13 +14,11 @@
 <meta property="og:description" content="Music for quiet minds and loud thoughts. Listen worldwide.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
-
-<!-- INTERNATIONAL LEVEL ADDITION -->
 <meta property="og:site_name" content="WIN HART Official Artist">
 <meta property="og:image" content="https://winhart.xyz/poto2.jpg">
 <link rel="canonical" href="https://winhart.xyz">
 
-<!-- SCHEMA.ORG (UPGRADED - NOT REMOVED) -->
+<!-- SCHEMA.ORG MUSIC ARTIST -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -40,34 +38,7 @@
     "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
     "https://www.deezer.com/album/882831752",
     "https://youtube.com/@winhart78"
-  ],
-  "potentialAction": {
-    "@type": "ListenAction",
-    "target": [
-      "https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
-      "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
-      "https://www.deezer.com/album/882831752"
-    ]
-  }
-}
-</script>
-
-<!-- INTERNATIONAL LEVEL ADDITION: VIDEO AUTHORITY -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "WIN HART Official Music Video",
-  "description": "Official music video by WIN HART",
-  "thumbnailUrl": "https://winhart.xyz/poto2.jpg",
-  "uploadDate": "2025-01-01",
-  "publisher": {
-    "@type": "MusicArtist",
-    "name": "WIN HART",
-    "url": "https://winhart.xyz"
-  },
-  "embedUrl": "https://www.youtube.com/embed/vBQul9JBqoE",
-  "contentUrl": "https://www.youtube.com/watch?v=vBQul9JBqoE"
+  ]
 }
 </script>
 
@@ -77,18 +48,7 @@
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-VEFS6RS3G3', {
-  send_page_view: true,
-  anonymize_ip: true
-});
-
-/* INTERNATIONAL LEVEL TRACKING */
-function trackEvent(name,label){
-gtag('event', name, {
-  event_label: label,
-  event_category: 'Artist Interaction'
-});
-}
+gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
 </script>
 
 <style>
@@ -98,11 +58,7 @@ gtag('event', name, {
 --card:#161616;
 --soft:#aaa;
 --spotify:#1db954;
---apple:#fa243c;
---itunes:#d56dfb;
---deezer:#00c7f2;
 --yt:#ff0000;
---paypal:#003087;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
@@ -118,19 +74,8 @@ header p{color:var(--soft)}
 .section{padding:80px 20px;max-width:1200px;margin:auto;opacity:0;transform:translateY(40px);transition:.8s}
 .section.show{opacity:1;transform:none}
 .section h2{font-size:24px;margin-bottom:30px;border-left:4px solid var(--accent);padding-left:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
-.card{background:var(--card);padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.track strong{display:block;margin-bottom:6px}
-.stream a{display:block;margin:10px 0;padding:14px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600;text-align:center}
-.stream .spotify{background:var(--spotify)}
-.stream .apple{background:var(--apple)}
-.stream .itunes{background:var(--itunes)}
-.stream .deezer{background:var(--deezer)}
 .support{text-align:center;padding:80px 20px;background:#000}
 .support a{display:inline-block;margin:10px;padding:14px 28px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600}
-.saweria{background:#1db954}
-.trakteer{background:#ff7a00}
-.paypal{background:var(--paypal)}
 footer{text-align:center;padding:30px;font-size:13px;color:#777}
 </style>
 </head>
@@ -140,11 +85,10 @@ footer{text-align:center;padding:30px;font-size:13px;color:#777}
 <nav>
 <strong>WIN HART</strong>
 <div>
-<a href="index.html#story">Story</a>
-<a href="index.html#albums">Albums</a>
-<a href="index.html#music">Music</a>
-<a href="media.html">Media</a>
-<a href="index.html#contact">Contact</a>
+<a href="#story">Story</a>
+<a href="media.html#gallery">Music</a>
+<a href="media.html#videos">Media</a>
+<a href="#contact">Contact</a>
 </div>
 </nav>
 
@@ -152,7 +96,7 @@ footer{text-align:center;padding:30px;font-size:13px;color:#777}
 <div>
 <h1>WIN HART</h1>
 <p>Music for quiet minds and loud thoughts</p>
-<a class="btn spotify" onclick="trackEvent('click','spotify')" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
+<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
 <a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">YouTube Channel</a>
 </div>
 </header>
@@ -170,156 +114,24 @@ WIN HART is an independent artist creating music for those who feel deeply but s
 
 <div class="section" id="daily">
 <h2>📝 Today’s Thought</h2>
-<p id="dailyText" style="color:#bbb;max-width:720px">
-Loading today's message...
-</p>
+<p id="dailyText" style="color:#bbb;max-width:720px">Loading...</p>
 </div>
-  
+
 <div class="section" id="featured">
 <h2>🎧 Featured Track</h2>
 <iframe loading="lazy" style="height:80px;width:100%" src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"></iframe>
 </div>
-  
-<div class="section" id="streaming">
-<h2>🌍 Available Worldwide</h2>
-<div class="grid">
-<div class="card">
-<iframe loading="lazy" style="height:380px;width:100%" src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"></iframe>
-</div>
-<div class="card stream">
-<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH">Spotify</a>
-<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803">Apple Music</a>
-<a class="itunes" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?app=itunes">iTunes Store</a>
-<a class="deezer" href="https://www.deezer.com/album/882831752">Deezer</a>
-</div>
-</div>
-</div>
 
-<!-- VIDEO SECTION (TIDAK DIHAPUS, DITAMBAHKAN) -->
-<div class="section" id="videos">
-<h2>🎬 Official Videos</h2>
-<div class="grid">
-
-<!-- VIDEO LAMA -->
-<iframe loading="lazy" height="360" src="https://www.youtube.com/embed/vBQul9JBqoE" allowfullscreen></iframe>
-
-<!-- YOUTUBE SHORTS BARU -->
-<iframe loading="lazy" height="360" src="https://www.youtube.com/embed/b3QoDECJLuo" allowfullscreen></iframe>
-
-</div>
-</div>
-
-<!-- MUSIC GALLERY (FIXED) -->
-<div class="section" id="gallery">
-<h2>🎶 Original Music</h2>
-<div class="grid">
-
-<div class="card">
-<h3>POP</h3>
-
-<div class="track">
-<strong>Where Do I Begin</strong>
-<audio controls preload="metadata">
-<source src="where do i begin.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>Echoes of Home</strong>
-<audio controls preload="metadata">
-<source src="echoes of home.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>The Weight of the Silence</strong>
-<audio controls preload="metadata">
-<source src="the weight of the silence.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>I Remember</strong>
-<audio controls preload="metadata">
-<source src="i remember.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>Glory of Prophet</strong>
-<audio controls preload="metadata">
-<source src="glory of the prophet.mp3" type="audio/mpeg">
-</audio>
-</div>
-</div>
-
-<div class="card">
-<h3>EDM</h3>
-
-<div class="track">
-<strong>Running Red</strong>
-<audio controls preload="metadata">
-<source src="Running Red.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>Redline</strong>
-<audio controls preload="metadata">
-<source src="redline.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>Bloom Collapse</strong>
-<audio controls preload="metadata">
-<source src="bloom collapse.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>I Already Know You</strong>
-<audio controls preload="metadata">
-<source src="i already know you.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="track">
-<strong>Something Small</strong>
-<audio controls preload="metadata">
-<source src="something small.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-</div>
-</div>
-</div>
-
-<div class="section">
-<h2>🎲 Track of The Day</h2>
-<audio id="randomTrack" controls></audio>
-</div>
-  
 <div class="support">
 <h2>❤️ Support the Artist</h2>
-<a class="saweria" onclick="trackEvent('donate','saweria')" href="https://saweria.co/WinHart">Saweria</a>
-<a class="trakteer" onclick="trackEvent('donate','trakteer')" href="https://trakteer.id/indo_musik2">Trakteer</a>
-<a class="paypal" onclick="trackEvent('donate','paypal')" href="https://paypal.me/WinHart">PayPal (Global)</a>
+<a href="https://saweria.co/WinHart">Saweria</a>
+<a href="https://trakteer.id/indo_musik2">Trakteer</a>
+<a href="https://paypal.me/WinHart">PayPal</a>
 </div>
 
 <div id="contact" style="text-align:center;color:#bbb">
-WhatsApp 
-<a href="https://wa.me/6282121785751?text=Hello%20WIN%20HART" 
-   style="color:#1db954" 
-   target="_blank">
-0821-2178-5751
-</a><br>
-
-Email 
-<a href="mailto:wijayawimala5@gmail.com?subject=Music%20Inquiry%20-%20WIN%20HART" 
-   style="color:#1db954">
-wijayawimala5@gmail.com
-</a>
+WhatsApp <a href="https://wa.me/6282121785751" style="color:#1db954">0821-2178-5751</a><br>
+Email <a href="mailto:wijayawimala5@gmail.com" style="color:#1db954">wijayawimala5@gmail.com</a>
 </div>
 
 <footer>© 2025 <strong>WIN HART</strong> — Official Artist Page</footer>
@@ -331,68 +143,15 @@ if(e[0].isIntersecting) sec.classList.add("show");
 }).observe(sec);
 });
 
-/* =========================================
-   PROFESSIONAL AUDIO MANAGER
-   Auto-stop other tracks when one plays
-   ========================================= */
-
-const audioPlayers = document.querySelectorAll("audio");
-
-audioPlayers.forEach(player => {
-  player.addEventListener("play", () => {
-    audioPlayers.forEach(other => {
-      if (other !== player) {
-        other.pause();
-        other.currentTime = 0;
-      }
-    });
-  });
-});
-</script>
-  
-<script>
-const dailyMessages = [
-  "Some days are quiet, but they still matter.",
-  "Music exists so feelings don’t disappear.",
-  "If today feels heavy, you’re not alone.",
-  "You don’t have to be loud to be strong.",
-  "Art survives because hearts survive."
+const dailyMessages=[
+"Some days are quiet, but they still matter.",
+"Music exists so feelings don’t disappear.",
+"If today feels heavy, you’re not alone.",
+"You don’t have to be loud to be strong.",
+"Art survives because hearts survive."
 ];
-
-const today = new Date().getDate();
-const dailyEl = document.getElementById("dailyText");
-if(dailyEl){
-  dailyEl.innerText = dailyMessages[today % dailyMessages.length];
-}
-</script>  
-  
-<script>
-const lastVisit = localStorage.getItem("lastVisit");
-const now = new Date().toLocaleDateString();
-
-if(lastVisit){
-const note = document.createElement("div");
-note.style.textAlign="center";
-note.style.color="#888";
-note.style.fontSize="13px";
-note.innerText = `Welcome back. You were here on ${lastVisit}`;
-document.body.prepend(note);
-}
-
-localStorage.setItem("lastVisit", now);
-</script>
-
-<script>
-const tracks = [
-  "where do i begin.mp3",
-  "echoes of home.mp3",
-  "the weight of the silence.mp3",
-  "running red.mp3",
-  "redline.mp3"
-];
-
-const random = tracks[Math.floor(Math.random()*tracks.length)];
-document.getElementById("randomTrack").src = random;
+document.getElementById("dailyText").innerText=
+dailyMessages[new Date().getDate()%dailyMessages.length];
 </script>
 
 </body>
