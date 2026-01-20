@@ -14,11 +14,13 @@
 <meta property="og:description" content="Music for quiet minds and loud thoughts. Listen worldwide.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz">
+
+<!-- INTERNATIONAL LEVEL ADDITION -->
 <meta property="og:site_name" content="WIN HART Official Artist">
 <meta property="og:image" content="https://winhart.xyz/poto2.jpg">
 <link rel="canonical" href="https://winhart.xyz">
 
-<!-- SCHEMA.ORG MUSIC ARTIST -->
+<!-- SCHEMA.ORG (UPGRADED - NOT REMOVED) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +40,34 @@
     "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
     "https://www.deezer.com/album/882831752",
     "https://youtube.com/@winhart78"
-  ]
+  ],
+  "potentialAction": {
+    "@type": "ListenAction",
+    "target": [
+      "https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
+      "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
+      "https://www.deezer.com/album/882831752"
+    ]
+  }
+}
+</script>
+
+<!-- INTERNATIONAL LEVEL ADDITION: VIDEO AUTHORITY -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "WIN HART Official Music Video",
+  "description": "Official music video by WIN HART",
+  "thumbnailUrl": "https://winhart.xyz/poto2.jpg",
+  "uploadDate": "2025-01-01",
+  "publisher": {
+    "@type": "MusicArtist",
+    "name": "WIN HART",
+    "url": "https://winhart.xyz"
+  },
+  "embedUrl": "https://www.youtube.com/embed/vBQul9JBqoE",
+  "contentUrl": "https://www.youtube.com/watch?v=vBQul9JBqoE"
 }
 </script>
 
@@ -48,7 +77,18 @@
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
+gtag('config', 'G-VEFS6RS3G3', {
+  send_page_view: true,
+  anonymize_ip: true
+});
+
+/* INTERNATIONAL LEVEL TRACKING */
+function trackEvent(name,label){
+gtag('event', name, {
+  event_label: label,
+  event_category: 'Artist Interaction'
+});
+}
 </script>
 
 <style>
@@ -58,7 +98,11 @@ gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
 --card:#161616;
 --soft:#aaa;
 --spotify:#1db954;
+--apple:#fa243c;
+--itunes:#d56dfb;
+--deezer:#00c7f2;
 --yt:#ff0000;
+--paypal:#003087;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
@@ -74,14 +118,20 @@ header p{color:var(--soft)}
 .section{padding:80px 20px;max-width:1200px;margin:auto;opacity:0;transform:translateY(40px);transition:.8s}
 .section.show{opacity:1;transform:none}
 .section h2{font-size:24px;margin-bottom:30px;border-left:4px solid var(--accent);padding-left:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.card{background:var(--card);padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.track strong{display:block;margin-bottom:6px}
+.stream a{display:block;margin:10px 0;padding:14px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600;text-align:center}
+.stream .spotify{background:var(--spotify)}
+.stream .apple{background:var(--apple)}
+.stream .itunes{background:var(--itunes)}
+.stream .deezer{background:var(--deezer)}
 .support{text-align:center;padding:80px 20px;background:#000}
 .support a{display:inline-block;margin:10px;padding:14px 28px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600}
+.saweria{background:#1db954}
+.trakteer{background:#ff7a00}
+.paypal{background:var(--paypal)}
 footer{text-align:center;padding:30px;font-size:13px;color:#777}
-/* RAPATKAN JARAK SECTION ARTIST */
-#artists{
-  padding-top:40px;
-  padding-bottom:40px;
-}
 </style>
 </head>
 
@@ -91,8 +141,7 @@ footer{text-align:center;padding:30px;font-size:13px;color:#777}
 <strong>WIN HART</strong>
 <div>
 <a href="#story">Story</a>
-<a href="media.html#gallery">Music</a>
-<a href="media.html#videos">Media</a>
+<a href="media.html">Music & Media</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
@@ -101,7 +150,7 @@ footer{text-align:center;padding:30px;font-size:13px;color:#777}
 <div>
 <h1>WIN HART</h1>
 <p>Music for quiet minds and loud thoughts</p>
-<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
+<a class="btn spotify" onclick="trackEvent('click','spotify')" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
 <a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">YouTube Channel</a>
 </div>
 </header>
@@ -113,67 +162,29 @@ WIN HART is an independent artist creating music for those who feel deeply but s
 </p>
 </div>
 
-<!-- =========================
-     ARTIST PROFILE (OPSION A)
-     ========================= -->
-
 <div class="section" id="artists">
-  <h2>🎭 Who Is WIN HART</h2>
+<h2>🎭 Who Is WIN HART</h2>
+<div class="grid">
 
-  <div class="grid">
-
-```
-<!-- ARTIST 1 -->
 <div class="card" style="text-align:center">
-<img src="andy.jpg" alt="Andy - WIN HART"
-style="max-width:180px;border-radius:14px;margin-bottom:14px">
-
-<h3 style="margin-bottom:6px">Andy</h3>
-<p style="font-size:13px;color:#888;margin-bottom:14px">
-Producer · Composer · Guitarist
+<img src="andy.jpg" style="max-width:180px;border-radius:14px">
+<h3>Andy</h3>
+<p style="font-size:13px;color:#888">Producer · Composer · Guitarist</p>
+<p style="color:#bbb">
+Since childhood, Andy has been deeply connected to music, starting with guitar and live instruments before evolving into modern EDM & Techno production. His sound blends emotion, atmosphere, and honesty.
 </p>
-
-<p style="color:#bbb;font-size:14px">
-    Andy is the creative foundation of <strong>WIN HART</strong>.
-    Since childhood, he has been deeply connected to music, starting
-    with guitar and live instruments before evolving into electronic sound design.
-    <br><br>
-    Today, Andy blends emotional melodies with modern
-    <strong>EDM and Techno</strong> production, crafting music that feels cinematic,
-    atmospheric, and honest. His work focuses on feeling first,
-    trends second, making every track personal and timeless.
-  </p>
 </div>
 
-<!-- ARTIST 2 -->
 <div class="card" style="text-align:center">
-  <img src="sherly.jpg" alt="Sherly HART - WIN HART"
-       style="max-width:180px;border-radius:14px;margin-bottom:14px">
-
-  <h3 style="margin-bottom:6px">Sherly HART</h3>
-  <p style="font-size:13px;color:#888;margin-bottom:14px">
-    Vocalist · Performer · Wedding Singer
-  </p>
-
-  <p style="color:#bbb;font-size:14px">
-    Sherly HART is the voice and emotional color of <strong>WIN HART</strong>.
-    A passionate music lover with a strong connection to
-    <strong>electronic and modern pop music</strong>.
-    <br><br>
-    Beyond studio recordings, Sherly is also known as a
-    professional wedding singer, bringing warmth, elegance,
-    and sincerity into every performance. Her vocals add a human
-    and intimate touch to WIN HART’s electronic soundscape.
-  </p>
-</div>
-```
-
-  </div>
+<img src="sherly.jpg" style="max-width:180px;border-radius:14px">
+<h3>Sherly HART</h3>
+<p style="font-size:13px;color:#888">Vocalist · Performer · Wedding Singer</p>
+<p style="color:#bbb">
+Sherly is the emotional voice of WIN HART. A passionate lover of electronic and pop music, she is also a professional wedding singer bringing warmth and sincerity to every performance.
+</p>
 </div>
 
-<div class="section" id="daily">
-<h2>📝 Today’s Thought</h2>
-<p id="dailyText" style="color:#bbb;max-width:720px">Loading...</p>
+</div>
 </div>
 
 <div class="section" id="featured">
@@ -181,11 +192,11 @@ Producer · Composer · Guitarist
 <iframe loading="lazy" style="height:80px;width:100%" src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"></iframe>
 </div>
 
-<div class="support">
-<h2>❤️ Support the Artist</h2>
-<a href="https://saweria.co/WinHart">Saweria</a>
-<a href="https://trakteer.id/indo_musik2">Trakteer</a>
-<a href="https://paypal.me/WinHart">PayPal</a>
+<div class="section" id="daily">
+<h2>📝 Today’s Thought</h2>
+<p id="dailyText" style="color:#bbb;max-width:720px">
+Loading today's message...
+</p>
 </div>
 
 <div id="contact" style="text-align:center;color:#bbb">
@@ -193,25 +204,7 @@ WhatsApp <a href="https://wa.me/6282121785751" style="color:#1db954">0821-2178-5
 Email <a href="mailto:wijayawimala5@gmail.com" style="color:#1db954">wijayawimala5@gmail.com</a>
 </div>
 
-<footer>© 2025 <strong>WIN HART</strong> — Official Artist Page</footer>
-
-<script>
-document.querySelectorAll(".section").forEach(sec=>{
-new IntersectionObserver(e=>{
-if(e[0].isIntersecting) sec.classList.add("show");
-}).observe(sec);
-});
-
-const dailyMessages=[
-"Some days are quiet, but they still matter.",
-"Music exists so feelings don’t disappear.",
-"If today feels heavy, you’re not alone.",
-"You don’t have to be loud to be strong.",
-"Art survives because hearts survive."
-];
-document.getElementById("dailyText").innerText=
-dailyMessages[new Date().getDate()%dailyMessages.length];
-</script>
+<footer>© 2025 WIN HART — Official Artist</footer>
 
 </body>
 </html>
