@@ -3,54 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WIN HART — Music & Media</title>
+
+<title>WINHART — Music Catalog & Distribution Showcase</title>
 <link rel="canonical" href="https://winhart.xyz/media.html">
 
+<meta name="description" content="Winhart music catalog showcasing curated releases distributed worldwide via official aggregator partners.">
+
 <style>
-body{margin:0;font-family:Segoe UI,Arial;background:#0b0b0b;color:#fff}
-nav{padding:14px 24px;background:#000}
-nav a{color:#fff;text-decoration:none}
-.section{padding:80px 20px;max-width:1200px;margin:auto}
+:root{
+--bg:#0b0b0b;
+--card:#161616;
+--accent:#e50914;
+--soft:#aaa;
+--spotify:#1db954;
+--apple:#fa243c;
+--itunes:#d56dfb;
+--deezer:#00c7f2;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
+nav{position:sticky;top:0;z-index:10;padding:14px 24px;background:#000;display:flex;justify-content:space-between}
+nav a{color:#fff;text-decoration:none;font-size:13px;opacity:.85}
+nav a:hover{opacity:1}
+header{text-align:center;padding:80px 20px 60px;background:linear-gradient(180deg,rgba(0,0,0,.6),#000)}
+header h1{font-size:42px;letter-spacing:4px;margin:0}
+header p{color:var(--soft);max-width:720px;margin:14px auto 0}
+.section{padding:70px 20px;max-width:1200px;margin:auto}
+.section h2{font-size:24px;margin-bottom:26px;border-left:4px solid var(--accent);padding-left:14px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
-.card{background:#161616;padding:20px;border-radius:16px}
-.track strong{display:block;margin-bottom:6px}
+.card{background:var(--card);padding:22px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.card h3{margin-top:0}
 .stream a{display:block;margin:10px 0;padding:14px;border-radius:30px;text-align:center;font-weight:600;color:#fff;text-decoration:none}
-.spotify{background:#1db954}
-.apple{background:#fa243c}
-.itunes{background:#d56dfb}
-.deezer{background:#00c7f2}
+.spotify{background:var(--spotify)}
+.apple{background:var(--apple)}
+.itunes{background:var(--itunes)}
+.deezer{background:var(--deezer)}
+.track strong{display:block;margin-bottom:6px}
+footer{text-align:center;padding:40px 20px;font-size:13px;color:#777;background:#000}
+.notice{font-size:12px;color:#777;margin-top:12px}
 </style>
 </head>
 
 <body>
 
-<nav><a href="index.html">← Back to Home</a></nav>
+<nav>
+<strong>WINHART</strong>
+<div>
+<a href="index.html">Home</a>
+<a href="#catalog">Catalog</a>
+<a href="#videos">Videos</a>
+<a href="#preview">Audio Preview</a>
+</div>
+</nav>
 
-<div class="section" id="streaming">
-<h2>🌍 Available Worldwide</h2>
+<header>
+<h1>WINHART MUSIC CATALOG</h1>
+<p>
+Curated independent releases distributed worldwide via official aggregator partners.
+This page showcases flagship and selected catalog under the Winhart platform.
+</p>
+</header>
+
+<!-- DISTRIBUTION SHOWCASE -->
+<div class="section" id="catalog">
+<h2>🌍 Global Distribution Release</h2>
 <div class="grid">
+
 <div class="card">
-<iframe style="height:380px;width:100%" src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"></iframe>
+<iframe style="height:380px;width:100%;border-radius:12px"
+src="https://open.spotify.com/embed/album/316WnBnz9AOfyvW9cx2ElH"
+loading="lazy"></iframe>
 </div>
+
 <div class="card stream">
-<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH">Spotify</a>
-<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803">Apple Music</a>
-<a class="itunes" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?app=itunes">iTunes Store</a>
-<a class="deezer" href="https://www.deezer.com/album/882831752">Deezer</a>
+<h3>WIN HART — A Life of What Ifs</h3>
+<p style="color:#bbb">
+Flagship release curated by Winhart and distributed globally through licensed
+digital music aggregators.
+</p>
+<a class="spotify" href="https://open.spotify.com/album/316WnBnz9AOfyvW9cx2ElH" target="_blank">Spotify</a>
+<a class="apple" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803" target="_blank">Apple Music</a>
+<a class="itunes" href="https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803?app=itunes" target="_blank">iTunes Store</a>
+<a class="deezer" href="https://www.deezer.com/album/882831752" target="_blank">Deezer</a>
+<p class="notice">
+Distribution handled via official aggregator partners.  
+Winhart does not act as a direct DSP.
+</p>
 </div>
+
 </div>
 </div>
 
+<!-- VIDEOS -->
 <div class="section" id="videos">
-<h2>🎬 Official Videos</h2>
+<h2>🎬 Official Music Videos</h2>
 <div class="grid">
-<iframe height="360" src="https://www.youtube.com/embed/i1p8o13YvHQ" allowfullscreen></iframe>
-<iframe height="360" src="https://www.youtube.com/embed/b3QoDECJLuo" allowfullscreen></iframe>
+<iframe height="360" src="https://www.youtube.com/embed/i1p8o13YvHQ" loading="lazy" allowfullscreen></iframe>
+<iframe height="360" src="https://www.youtube.com/embed/b3QoDECJLuo" loading="lazy" allowfullscreen></iframe>
 </div>
 </div>
 
-<div class="section" id="gallery">
-<h2>🎶 Original Music</h2>
+<!-- AUDIO PREVIEW -->
+<div class="section" id="preview">
+<h2>🎧 Internal Audio Preview</h2>
+<p style="color:#bbb;max-width:720px">
+Audio previews below are for showcase and evaluation purposes only.
+Official releases are available exclusively on licensed streaming platforms.
+</p>
+
 <div class="grid">
 
 <div class="card">
@@ -74,11 +134,20 @@ nav a{color:#fff;text-decoration:none}
 </div>
 </div>
 
+<footer>
+© 2025 WINHART — Independent Music Curation & Distribution Management Platform<br>
+<span style="font-size:12px;color:#666">
+All digital distribution is managed through official third-party aggregator partners.
+</span>
+</footer>
+
 <script>
 const audios=document.querySelectorAll("audio");
 audios.forEach(a=>{
 a.addEventListener("play",()=>{
-audios.forEach(o=>{if(o!==a){o.pause();o.currentTime=0;}});
+audios.forEach(o=>{
+if(o!==a){o.pause();o.currentTime=0;}
+});
 });
 });
 </script>
