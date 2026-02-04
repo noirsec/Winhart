@@ -4,95 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WIN HART — Official Artist | Music Worldwide</title>
+<title>WINHART — Independent Music Platform</title>
 
-<!-- OPEN GRAPH THUMBNAIL (FIX SHARE PREVIEW) -->
-
-<meta property="og:title" content="WIN HART — Official Artist">
-<meta property="og:description" content="Music for quiet minds and loud thoughts. EDM & Pop Duo from Indonesia.">
+<!-- OPEN GRAPH -->
+<meta property="og:title" content="WINHART — Independent Music Platform">
+<meta property="og:description" content="Independent music curation & distribution management platform supporting emerging artists.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz/">
-<meta property="og:site_name" content="WIN HART Official Artist">
+<meta property="og:site_name" content="WINHART">
 <meta property="og:image" content="https://winhart.xyz/cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WIN HART — Official Artist">
-<meta name="twitter:description" content="Music for quiet minds and loud thoughts.">
+<meta name="twitter:title" content="WINHART — Independent Music Platform">
+<meta name="twitter:description" content="Music curation & distribution management for independent artists.">
 <meta name="twitter:image" content="https://winhart.xyz/cover.png">
 
 <link rel="canonical" href="https://winhart.xyz">
 
-<!-- SCHEMA.ORG (UPGRADED - NOT REMOVED) -->
+<!-- SCHEMA.ORG — PLATFORM -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MusicArtist",
-  "@id": "https://winhart.xyz/#artist",
-  "name": "WIN HART",
+  "@type": "Organization",
+  "name": "WINHART",
   "url": "https://winhart.xyz",
-  "image": "https://winhart.xyz/cover.png",
-  "description": "Independent music artist creating music for quiet minds and loud thoughts.",
-  "genre": ["POP","EDM"],
+  "logo": "https://winhart.xyz/cover.png",
+  "description": "Independent music curation and distribution management platform.",
   "foundingLocation": {
     "@type": "Country",
     "name": "Indonesia"
-  },
-  "sameAs": [
-    "https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
-    "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
-    "https://www.deezer.com/album/882831752",
-    "https://youtube.com/@winhart78"
-  ],
-  "potentialAction": {
-    "@type": "ListenAction",
-    "target": [
-      "https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF",
-      "https://music.apple.com/us/album/a-life-of-what-ifs-single/1863447803",
-      "https://www.deezer.com/album/882831752"
-    ]
   }
 }
 </script>
 
-<!-- INTERNATIONAL LEVEL ADDITION: VIDEO AUTHORITY -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "WIN HART Official Music Video",
-  "description": "Official music video by WIN HART",
-  "thumbnailUrl": "https://winhart.xyz/poto2.jpg",
-  "uploadDate": "2025-12-30",
-  "publisher": {
-    "@type": "MusicArtist",
-    "name": "WIN HART",
-    "url": "https://winhart.xyz"
-  },
-  "embedUrl": "https://www.youtube.com/embed/vBQul9JBqoE",
-  "contentUrl": "https://www.youtube.com/watch?v=vBQul9JBqoE"
-}
-</script>
-
-<!-- GOOGLE ANALYTICS 4 -->
+<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-VEFS6RS3G3', {
-  send_page_view: true,
-  anonymize_ip: true
-});
-
-/* INTERNATIONAL LEVEL TRACKING */
-function trackEvent(name,label){
-gtag('event', name, {
-  event_label: label,
-  event_category: 'Artist Interaction'
-});
-}
+gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
 </script>
 
 <style>
@@ -102,137 +55,107 @@ gtag('event', name, {
 --card:#161616;
 --soft:#aaa;
 --spotify:#1db954;
---apple:#fa243c;
---itunes:#d56dfb;
---deezer:#00c7f2;
 --yt:#ff0000;
---paypal:#003087;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
 nav{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.85);padding:14px 24px;display:flex;justify-content:space-between}
 nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:13px;opacity:.85}
 nav a:hover{opacity:1}
 header{min-height:26vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 15px 0;background:linear-gradient(180deg,rgba(0,0,0,.6),#000)}
-header h1{font-size:52px;letter-spacing:6px;margin:0}
+header h1{font-size:48px;letter-spacing:6px;margin:0}
 header p{color:var(--soft)}
-.btn{display:inline-block;margin:10px;padding:12px 26px;border-radius:30px;text-decoration:none;font-size:14px;font-weight:600;color:#fff}
-.spotify{background:var(--spotify)}
-.youtube{background:var(--yt)}
-.section{padding:22px 15px;max-width:1200px;margin:auto;opacity:0;transform:translateY(40px);transition:.8s}
+.section{padding:30px 15px;max-width:1100px;margin:auto;opacity:0;transform:translateY(40px);transition:.8s}
 .section.show{opacity:1;transform:none}
-.section h2{font-size:24px;margin-bottom:30px;border-left:4px solid var(--accent);padding-left:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
-.card{background:var(--card);padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.track strong{display:block;margin-bottom:6px}
-.stream a{display:block;margin:10px 0;padding:14px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600;text-align:center}
-.stream .spotify{background:var(--spotify)}
-.stream .apple{background:var(--apple)}
-.stream .itunes{background:var(--itunes)}
-.stream .deezer{background:var(--deezer)}
-.support{text-align:center;padding:80px 20px;background:#000}
-.support a{display:inline-block;margin:10px;padding:14px 28px;border-radius:30px;color:#fff;text-decoration:none;font-weight:600}
-.saweria{background:#1db954}
-.trakteer{background:#ff7a00}
-.paypal{background:var(--paypal)}
+.section h2{font-size:24px;margin-bottom:20px;border-left:4px solid var(--accent);padding-left:14px}
+.card{background:var(--card);padding:24px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 footer{text-align:center;padding:30px;font-size:13px;color:#777}
-@media (max-width:768px){
-header{
-min-height:22vh;
-padding:60px 12px 0;
-}
 </style>
 </head>
 
 <body>
 
 <nav>
-<strong>WIN HART</strong>
+<strong>WINHART</strong>
 <div>
-<a href="#story">Story</a>
+<a href="#about">About</a>
 <a href="media.html">Music & Media</a>
+<a href="#submit">Submit Music</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
 <header>
 <div>
-<h1>WIN HART</h1>
-<p>Music for quiet minds and loud thoughts</p>
-<a class="btn spotify" onclick="trackEvent('click','spotify')" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Spotify Artist</a>
-<a class="btn youtube" href="https://youtube.com/@winhart78" target="_blank">YouTube Channel</a>
+<h1>WINHART</h1>
+<p>Independent Music Curation & Distribution Management Platform</p>
 </div>
 </header>
 
-<div class="section" id="story">
-<h2>🖤 The Story</h2>
-<p style="color:#bbb;max-width:720px">
-WIN HART is an independent artist creating music for those who feel deeply but speak quietly.
-</p>
-</div>
-
-<div class="section" id="artists">
-<h2>🎭 Who Is WIN HART</h2>
-<div class="grid">
-
-<div class="card" style="text-align:center">
-<img src="andy.jpg" style="max-width:180px;border-radius:14px">
-<h3>Andy</h3>
-<p style="font-size:13px;color:#888">Producer · Composer · Guitarist</p>
+<div class="section" id="about">
+<h2>🎵 About Winhart</h2>
+<div class="card">
 <p style="color:#bbb">
-Since childhood, Andy has been deeply connected to music, starting with guitar and live instruments before evolving into modern EDM & Techno production. His sound blends emotion, atmosphere, and honesty.
+Winhart is an independent music platform focused on curation, artist development,
+and digital distribution management. We work with official aggregator partners
+to release music globally while artists retain full ownership of their rights.
 </p>
 </div>
+</div>
 
-<div class="card" style="text-align:center">
-<img src="sherly.jpg" style="max-width:180px;border-radius:14px">
-<h3>Sherly HART</h3>
-<p style="font-size:13px;color:#888">Vocalist · Performer · Wedding Singer</p>
+<div class="section">
+<h2>🌟 Flagship Artist</h2>
+<div class="card">
 <p style="color:#bbb">
-Sherly is the emotional voice of WIN HART. A passionate lover of electronic and pop music, she is also a professional wedding singer bringing warmth and sincerity to every performance.
+WIN HART is the flagship artist project under the Winhart platform, representing
+the creative direction and quality standard supported by our ecosystem.
+</p>
+<a class="btn spotify" href="https://open.spotify.com/artist/5RQJB4VhsCTyYiOt1wbtLF" target="_blank">Listen on Spotify</a>
+<a class="btn yt" href="https://youtube.com/@winhart78" target="_blank">YouTube</a>
+</div>
+</div>
+
+<div class="section" id="submit">
+<h2>📩 Submit Your Music</h2>
+<div class="card">
+<p style="color:#bbb">
+Independent artists can submit their music for curation and digital release.
+All accepted releases are distributed via official aggregator partners.
+</p>
+<p style="font-size:13px;color:#777">
+• Non-exclusive distribution<br>
+• Artists keep 100% copyright<br>
+• Revenue sharing model
+</p>
+<p style="font-size:12px;color:#666">
+Winhart is not a direct distributor to streaming platforms.
+Distribution is handled through authorized aggregators.
 </p>
 </div>
-
-</div>
 </div>
 
-<div class="section" id="featured">
-<h2>🎧 Featured Track</h2>
-<iframe loading="lazy" style="height:80px;width:100%" src="https://open.spotify.com/embed/track/3Hia4vHnx4k54zTVr5tQn1"></iframe>
-<iframe loading="lazy" style="height:80px;width:100%"
-src="https://open.spotify.com/embed/artist/0q2QoqCWzvAUloPqhqCnKS"></iframe>
-</div>
-
-<div class="section" id="daily">
-<h2>📝 Today’s Thought</h2>
-<p id="dailyText" style="color:#bbb;max-width:720px">
-Loading today's message...
-</p>
-</div>
-
-<div id="contact" style="text-align:center;color:#bbb">
+<div class="section" id="contact">
+<h2>📞 Contact</h2>
+<div class="card" style="text-align:center">
 WhatsApp <a href="https://wa.me/6282121785751" style="color:#1db954">0821-2178-5751</a><br>
 Email <a href="mailto:wijayawimala5@gmail.com" style="color:#1db954">wijayawimala5@gmail.com</a>
 </div>
+</div>
 
-<footer>© 2025 WIN HART — Official Artist</footer>
+<footer>
+© 2025 WINHART — Independent Music Platform<br>
+<span style="font-size:12px;color:#666">
+Distribution is managed through official aggregator partners.
+</span>
+</footer>
 
 <script>
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-},{threshold:0.2});
-
-sections.forEach(section => observer.observe(section));
+const sections=document.querySelectorAll('.section');
+const observer=new IntersectionObserver(e=>{
+e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('show');});
+},{threshold:.2});
+sections.forEach(s=>observer.observe(s));
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
