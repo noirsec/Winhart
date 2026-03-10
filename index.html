@@ -244,26 +244,54 @@ For interviews, radio promotion, collaboration or media inquiries please contact
 
 </section>
 
-<section class="section">
+<section class="section" id="album">
 
-<h2>Album</h2>
+<h2>Full Album</h2>
 
 <div class="card">
 
-<p>Dengarkan koleksi lagu WINHART:</p>
+<p>Dengarkan lagu lengkap dari WINHART langsung di website:</p>
 
-<ul>
+<ul id="playlist">
 
-<li>Ritme Nusantara</li>
-<li>Sahabat Jadi Pasangan</li>
-<li>Kamu Adalah Cahaya</li>
-<li>Aksara Hati</li>
-<li>Terlanjur Cinta</li>
-<li>Children of Two Worlds</li>
+<li onclick="playSong('Harmoni Sunyi.mp3')">▶ Harmoni Sunyi</li>
+
+<li onclick="playSong('kamu adalah cahaya versi2.mp3')">▶ Kamu Adalah Cahaya</li>
+
+<li onclick="playSong('Jejak Yang Tertinggal.mp3')">▶ Jejak Yang Tertinggal</li>
+
+<li onclick="playSong('Kembali Ke Rumah.mp3')">▶ Kembali Ke Rumah</li>
+
+<li onclick="playSong('masih tentang kamu.mp3')">▶ Masih Tentang Kamu</li>
 
 </ul>
 
+<br>
+
+<audio id="audioPlayer" controls style="width:100%;">
+<source id="audioSource" src="" type="audio/mpeg">
+Browser Anda tidak mendukung audio player.
+</audio>
+
 </div>
+
+</section>
+
+<script>
+
+function playSong(song){
+
+var player=document.getElementById("audioPlayer");
+var source=document.getElementById("audioSource");
+
+source.src=song;
+
+player.load();
+player.play();
+
+}
+
+</script>
 
 </section>
 
