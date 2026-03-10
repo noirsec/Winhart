@@ -4,42 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WINHART — Independent Music Platform</title>
+<title>WINHART — Official Artist Website</title>
 
-<!-- OPEN GRAPH -->
-<meta property="og:title" content="WINHART — Independent Music Platform">
-<meta property="og:description" content="Independent music curation & distribution management platform supporting emerging artists.">
+<meta property="og:title" content="WINHART — Pop / EDM Artist">
+<meta property="og:description" content="Official website of WINHART — Pop & EDM artist from Indonesia. Music, videos and press information.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz/">
-<meta property="og:site_name" content="WINHART">
 <meta property="og:image" content="https://winhart.xyz/winhart.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WINHART — Independent Music Platform">
-<meta name="twitter:description" content="Music curation & distribution management for independent artists.">
-<meta name="twitter:image" content="https://winhart.xyz/winhart.png">
 
 <link rel="canonical" href="https://winhart.xyz">
 
 <!-- SCHEMA -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "WINHART",
-  "url": "https://winhart.xyz",
-  "logo": "https://winhart.xyz/winhart.png",
-  "description": "Independent music curation and distribution management platform.",
-  "foundingLocation": {
-    "@type": "Country",
-    "name": "Indonesia"
-  }
+ "@context":"https://schema.org",
+ "@type":"MusicGroup",
+ "name":"WINHART",
+ "genre":["Pop","EDM"],
+ "url":"https://winhart.xyz",
+ "image":"https://winhart.xyz/winhart.png",
+ "description":"WINHART is a pop and electronic music artist project by Andy Hartanto from Indonesia.",
+ "founder":{
+ "@type":"Person",
+ "name":"Andy Hartanto"
+ }
 }
 </script>
 
-<!-- GOOGLE ANALYTICS -->
+<!-- GOOGLE ANALYTICS (TIDAK DIUBAH) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -57,22 +49,82 @@ gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
-nav{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.9);padding:14px 24px;display:flex;justify-content:space-between}
-nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:13px;opacity:.85}
-nav a:hover{opacity:1}
-header{min-height:30vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 15px 0;background:linear-gradient(180deg,rgba(0,0,0,.6),#000)}
-header h1{font-size:52px;letter-spacing:6px;margin:0}
-header p{color:var(--soft);max-width:720px;margin:auto}
-.section{padding:40px 15px;max-width:1100px;margin:auto;opacity:0;transform:translateY(40px);transition:.8s}
-.section.show{opacity:1;transform:none}
-.section h2{font-size:24px;margin-bottom:20px;border-left:4px solid var(--accent);padding-left:14px}
-.card{background:var(--card);padding:26px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.btn{display:inline-block;margin:10px 8px;padding:14px 28px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px}
-.primary{background:var(--accent);color:#fff}
-.secondary{border:1px solid #444;color:#fff}
-footer{text-align:center;padding:30px;font-size:13px;color:#777}
-.small{font-size:12px;color:#666}
+
+nav{
+position:sticky;
+top:0;
+background:#000;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+z-index:10
+}
+
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:18px;
+font-size:13px;
+opacity:.85
+}
+
+header{
+min-height:40vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:linear-gradient(180deg,#000,#0b0b0b)
+}
+
+header h1{
+font-size:60px;
+letter-spacing:6px;
+margin:0
+}
+
+.section{
+padding:50px 20px;
+max-width:1100px;
+margin:auto
+}
+
+.section h2{
+border-left:4px solid var(--accent);
+padding-left:12px;
+font-size:24px
+}
+
+.card{
+background:var(--card);
+padding:30px;
+border-radius:14px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px
+}
+
+.btn{
+display:inline-block;
+padding:12px 25px;
+border-radius:25px;
+text-decoration:none;
+margin-top:15px
+}
+
+.primary{
+background:var(--accent);
+color:#fff
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#777
+}
 </style>
 </head>
 
@@ -82,109 +134,119 @@ footer{text-align:center;padding:30px;font-size:13px;color:#777}
 <strong>WINHART</strong>
 <div>
 <a href="#about">About</a>
-<a href="#how">How It Works</a>
-<a href="media.html">Music & Media</a>
-<a href="#submit">Submit Music</a>
-<a href="#faq">FAQ</a>
+<a href="#music">Music</a>
+<a href="#press">Press Kit</a>
+<a href="#contact">Contact</a>
 </div>
 </nav>
 
 <header>
 <div>
 <h1>WINHART</h1>
-<p>
-Independent Music Curation & Distribution Management Platform.<br>
-Helping independent artists release music globally while retaining full ownership.
-</p>
+<p>Pop / EDM Artist</p>
 </div>
 </header>
 
-<div class="section" id="about">
-<h2>🎵 About Winhart</h2>
-<div class="card">
-<p style="color:#bbb">
-Winhart is a boutique independent music platform focused on curation and release management.
-We collaborate with official aggregator partners to distribute selected works globally.
-</p>
-</div>
-</div>
+<section class="section" id="about">
+<h2>About Artist</h2>
 
-<div class="section" id="how">
-<h2>⚙️ How It Works</h2>
+<div class="card">
+
+<p>
+<strong>WINHART</strong> is a pop and electronic music project created by Indonesian artist <strong>Andy Hartanto</strong>.
+</p>
+
+<p>
+Blending modern pop songwriting with atmospheric electronic production, WINHART explores emotional storytelling through melodic hooks, cinematic textures and contemporary EDM influences.
+</p>
+
+<p>
+Releasing music independently, WINHART has begun building an audience through digital platforms and independent radio promotion. The project focuses on creating immersive pop-driven electronic music designed for both streaming listeners and radio audiences.
+</p>
+
+<p>
+WINHART is currently developing new releases while collaborating with media platforms, radio stations and independent curators.
+</p>
+
+</div>
+</section>
+
+<section class="section" id="music">
+
+<h2>Music & Videos</h2>
+
 <div class="grid">
-<div class="card"><strong>1. Submission</strong><p class="small">Artists submit music via the official form.</p></div>
-<div class="card"><strong>2. Curation</strong><p class="small">All submissions are reviewed manually.</p></div>
-<div class="card"><strong>3. Agreement</strong><p class="small">Selected artists proceed under a non-exclusive agreement.</p></div>
-<div class="card"><strong>4. Distribution</strong><p class="small">Released through authorized aggregator partners.</p></div>
-</div>
+
+<div class="card">
+<h3>YouTube</h3>
+<p>Listen to official releases and music videos.</p>
+<a class="btn primary" href="https://youtube.com" target="_blank">Watch on YouTube</a>
 </div>
 
-<div class="section" id="submit">
-<h2>📩 Submit Your Music</h2>
+<div class="card">
+<h3>Streaming</h3>
+<p>Music will be available on Spotify, Apple Music and other platforms.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="press">
+
+<h2>Press Kit</h2>
+
 <div class="card">
 
-<ul class="small">
-<li>Non-exclusive distribution</li>
-<li>Artists retain 100% copyright</li>
-<li>No instant upload</li>
-<li>Manual curation only</li>
-</ul>
+<p>
+Media outlets, radio stations and event organizers can request promotional materials including artist photos, biography and music previews.
+</p>
 
-<a class="btn primary" href="Kontrak_Distribusi_Winhart_Professional.pdf" download>
-📄 Download Distribution Agreement
-</a>
+<p>
+Artist Name: WINHART  
+<br>
+Real Name: Andy Hartanto  
+<br>
+Genre: Pop / EDM  
+<br>
+Country: Indonesia
+</p>
 
-<a class="btn primary" href="https://forms.gle/aQ9bbWH5vmWhdTLZ8" target="_blank">
-Submit via Official Form
-</a>
-
-<p class="small">
-Submissions are accepted exclusively through the official form.<br>
-Links sent via WhatsApp, email, or direct messages will not be reviewed.
+<p>
+For interviews, radio promotion or collaborations please contact management.
 </p>
 
 </div>
-</div>
 
-<div class="section" id="faq">
-<h2>❓ FAQ & Transparency</h2>
+</section>
+
+<section class="section" id="contact">
+
+<h2>Management Contact</h2>
+
 <div class="card">
 
-<strong>Is Winhart a direct distributor?</strong>
-<p class="small">No. Distribution is handled through official aggregator partners.</p>
+<p>
+Management & Booking
+</p>
 
-<strong>Is this an instant upload service?</strong>
-<p class="small">No. All submissions are curated manually.</p>
-
-<strong>Do artists keep their rights?</strong>
-<p class="small">Yes. Artists retain 100% copyright.</p>
-
-<strong>Are there any upfront fees?</strong>
-<p class="small">No upfront fees for submission.</p>
-
-<hr style="border:0;border-top:1px solid #333;margin:24px 0">
-
-<strong>⚠️ Anti-Scam Notice</strong>
-<p class="small">
-Winhart never asks for passwords, login credentials, or ownership transfer.<br>
-All official submissions are handled only via this website.
+<p>
+WhatsApp  
+<br>
+<strong>082121785751</strong>
 </p>
 
 </div>
-</div>
+
+</section>
 
 <footer>
-© 2025 WINHART — Independent Music Platform<br>
-<span class="small">Distribution via official aggregator partners.</span>
-</footer>
 
-<script>
-const sections=document.querySelectorAll('.section');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
-},{threshold:.2});
-sections.forEach(s=>observer.observe(s));
-</script>
+© 2026 WINHART  
+<br>
+Independent Pop / EDM Artist
+
+</footer>
 
 </body>
 </html>
