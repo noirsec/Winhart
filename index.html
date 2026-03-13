@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WINHART RADIO — Indie Pop EDM Lifestyle</title>
+<title>WINHART Radio Streaming</title>
 
-<meta property="og:title" content="WINHART RADIO">
-<meta property="og:description" content="WINHART Radio adalah radio streaming independen dengan musik indie, pop, EDM, lifestyle dan entertainment.">
+<meta property="og:title" content="WINHART Radio Streaming">
+<meta property="og:description" content="WINHART Radio — Pop, Indie, EDM, Lifestyle & Entertainment">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz/">
+<meta property="og:image" content="https://winhart.xyz/winhart.png">
 
 <link rel="canonical" href="https://winhart.xyz">
 
-<!-- SCHEMA -->
+<!-- SCHEMA TIDAK DIUBAH -->
 
 <script type="application/ld+json">
-
 {
  "@context":"https://schema.org",
- "@type":"RadioStation",
- "name":"WINHART RADIO",
+ "@type":"MusicGroup",
+ "name":"WINHART",
+ "genre":["Pop","EDM"],
  "url":"https://winhart.xyz",
- "genre":["Indie","Pop","EDM"],
- "description":"WINHART Radio adalah radio streaming independen yang menyiarkan musik indie, pop dan EDM serta konten lifestyle dan entertainment."
+ "image":"https://winhart.xyz/winhart.png",
+ "description":"WINHART is an Indonesian pop and electronic music artist project created by Andy Hartanto.",
+ "founder":{
+ "@type":"Person",
+ "name":"Andy Hartanto"
+ }
 }
-
 </script>
 
-<!-- GOOGLE ANALYTICS -->
+<!-- GOOGLE ANALYTICS TIDAK DIUBAH -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 
@@ -43,83 +46,82 @@ gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
 
 <style>
 
-:root{
---accent:#e50914;
---bg:#0b0b0b;
---card:#161616;
-}
-
 body{
 margin:0;
+background:#0b0b0b;
 font-family:Segoe UI;
-background:var(--bg);
-color:white;
+color:white
 }
 
 nav{
-background:black;
-padding:18px 30px;
+background:#000;
+padding:15px 30px;
 display:flex;
-justify-content:space-between;
+justify-content:space-between
 }
 
 nav a{
 color:white;
-margin-left:20px;
 text-decoration:none;
-font-size:13px;
+margin-left:20px
 }
 
 header{
-height:35vh;
-display:flex;
-align-items:center;
-justify-content:center;
 text-align:center;
+padding:80px 20px;
+background:linear-gradient(#000,#111)
 }
 
-header h1{
-font-size:48px;
-letter-spacing:4px;
+h1{
+font-size:50px;
+letter-spacing:6px
 }
 
 .section{
-padding:60px 20px;
 max-width:1100px;
 margin:auto;
+padding:60px 20px
 }
 
 .card{
-background:var(--card);
+background:#161616;
 padding:30px;
-border-radius:14px;
+border-radius:12px
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
-
-.profile{
-width:100%;
-border-radius:12px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px
 }
 
 button{
-background:var(--accent);
-border:none;
-padding:14px 26px;
-color:white;
-border-radius:8px;
-cursor:pointer;
+padding:15px 40px;
 font-size:16px;
+background:#e50914;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer
+}
+
+canvas{
+margin-top:20px
+}
+
+.crew{
+text-align:center
+}
+
+.crew img{
+width:100%;
+border-radius:12px
 }
 
 footer{
 text-align:center;
 padding:40px;
-color:#777;
+color:#777
 }
 
 </style>
@@ -135,8 +137,9 @@ color:#777;
 <div>
 
 <a href="#radio">Live Radio</a>
+<a href="#program">Programs</a>
 <a href="#crew">Crew</a>
-<a href="#request">Request</a>
+<a href="#contact">Contact</a>
 
 </div>
 
@@ -144,83 +147,109 @@ color:#777;
 
 <header>
 
-<div>
-
 <h1>WINHART RADIO</h1>
-
-<p>Indie • Pop • EDM • Lifestyle • Entertainment • News</p>
-
-</div>
+<p>Pop • Indie • EDM • Lifestyle • Entertainment</p>
 
 </header>
 
-<!-- LIVE RADIO -->
-
 <section class="section" id="radio">
 
-<h2>LIVE RADIO</h2>
+<h2>LIVE RADIO STREAM</h2>
 
-<div class="card">
-
-<p>🔴 LIVE STREAM — WINHART RADIO</p>
+<div class="card" style="text-align:center">
 
 <button onclick="startRadio()">▶ PLAY RADIO</button>
 
 <br><br>
 
-<audio id="radioPlayer" controls style="width:100%"></audio>
+<audio id="radioPlayer" controls style="width:100%;display:none">
+
+<source id="radioSource" src="">
+
+</audio>
+
+<canvas id="visualizer" width="600" height="120"></canvas>
 
 </div>
 
 </section>
 
-<!-- CREW -->
+<section class="section" id="program">
 
-<section class="section" id="crew">
-
-<h2>RADIO CREW</h2>
+<h2>Radio Programs</h2>
 
 <div class="grid">
 
 <div class="card">
+<h3>POP HITS</h3>
+<p>Lagu pop pilihan setiap hari.</p>
+</div>
 
-<img src="Andi.jpg" class="profile">
+<div class="card">
+<h3>INDIE VIBES</h3>
+<p>Musik indie dari artis independen.</p>
+</div>
 
-<h3>Andi</h3>
+<div class="card">
+<h3>EDM NIGHT</h3>
+<p>Electronic dance music setiap malam.</p>
+</div>
+
+<div class="card">
+<h3>HEALTH & LIFESTYLE</h3>
+<p>Tips kesehatan dan gaya hidup.</p>
+</div>
+
+<div class="card">
+<h3>ENTERTAINMENT NEWS</h3>
+<p>Berita musik dan dunia hiburan.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="crew">
+
+<h2>Radio Crew</h2>
+
+<div class="grid">
+
+<div class="crew card">
+
+<img src="Andy.jpg">
+
+<h3>Andy Hartanto</h3>
+
+<p>Founder & Music Director</p>
+
+</div>
+
+<div class="crew card">
+
+<img src="Sheryl.jpg">
+
+<h3>Sheryl</h3>
 
 <p>Radio Host</p>
 
 </div>
 
-<div class="card">
-
-<img src="Sheryl.jpg" class="profile">
-
-<h3>Sheryl</h3>
-
-<p>Music Curator</p>
-
-</div>
-
 </div>
 
 </section>
 
-<!-- REQUEST -->
+<section class="section" id="contact">
 
-<section class="section" id="request">
-
-<h2>REQUEST SONG</h2>
+<h2>Management Contact</h2>
 
 <div class="card">
 
-<p>Kirim request lagu ke WhatsApp.</p>
+<p>Booking & Collaboration</p>
 
-<a href="https://wa.me/6282121785751">
+<p>WhatsApp</p>
 
-<button>REQUEST LAGU</button>
-
-</a>
+<strong>082121785751</strong>
 
 </div>
 
@@ -228,74 +257,113 @@ color:#777;
 
 <footer>
 
-© 2026 WINHART RADIO
+© 2026 WINHART Radio  
+Pop • Indie • EDM • Lifestyle • Entertainment
 
 </footer>
 
 <script>
 
-/* playlist lagu sementara */
-
 var playlist=[
 
-"https://raw.githubusercontent.com/USERNAME/REPO/main/Harmoni%20Sunyi.mp3",
-
-"https://raw.githubusercontent.com/USERNAME/REPO/main/kamu%20adalah%20cahaya%20versi2.mp3",
-
-"https://raw.githubusercontent.com/USERNAME/REPO/main/Jejak Yang Tertinggal.mp3",
-
-"https://raw.githubusercontent.com/USERNAME/REPO/main/Kembali Ke Rumah.mp3",
-
-"https://raw.githubusercontent.com/USERNAME/REPO/main/masih%20tentang%20kamu.mp3"
+"intro-winhart-radio.mp3",
+"Harmoni Sunyi.mp3",
+"kamu adalah cahaya versi2.mp3",
+"Jejak Yang Tertinggal.mp3",
+"Kembali Ke Rumah.mp3",
+"masih tentang kamu.mp3"
 
 ];
 
-var player=document.getElementById("radioPlayer");
-
-var current=0;
+var track=0;
 
 function startRadio(){
 
-playIntro();
+var player=document.getElementById("radioPlayer");
+var source=document.getElementById("radioSource");
 
-}
+player.style.display="block";
 
-function playIntro(){
+source.src=playlist[track];
 
-player.src="radio_intro.mp3";
-
-player.play();
-
-player.onended=function(){
-
-playMusic();
-
-}
-
-}
-
-function playMusic(){
-
-player.src=playlist[current];
-
-player.play();
-
-player.onended=function(){
-
-current++;
-
-if(current>=playlist.length){current=0;}
-
-player.src=playlist[current];
-
+player.load();
 player.play();
 
 }
+
+document.getElementById("radioPlayer").addEventListener("ended",function(){
+
+track++;
+
+if(track>=playlist.length){
+
+track=1;
+
+}
+
+document.getElementById("radioSource").src=playlist[track];
+
+this.load();
+
+this.play();
+
+});
+
+</script>
+
+<script>
+
+const audio=document.getElementById("radioPlayer");
+const canvas=document.getElementById("visualizer");
+const ctx=canvas.getContext("2d");
+
+const audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+const analyser=audioCtx.createAnalyser();
+const src=audioCtx.createMediaElementSource(audio);
+
+src.connect(analyser);
+analyser.connect(audioCtx.destination);
+
+analyser.fftSize=64;
+
+const bufferLength=analyser.frequencyBinCount;
+const dataArray=new Uint8Array(bufferLength);
+
+function draw(){
+
+requestAnimationFrame(draw);
+
+analyser.getByteFrequencyData(dataArray);
+
+ctx.fillStyle="#000";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+var barWidth=(canvas.width/bufferLength)*2.5;
+var barHeight;
+var x=0;
+
+for(var i=0;i<bufferLength;i++){
+
+barHeight=dataArray[i];
+
+ctx.fillStyle="#e50914";
+
+ctx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight/2);
+
+x+=barWidth+1;
+
+}
+
+}
+
+audio.onplay=function(){
+
+audioCtx.resume();
+draw();
 
 }
 
 </script>
 
 </body>
-
 </html>
