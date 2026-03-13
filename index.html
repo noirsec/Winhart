@@ -1,48 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WINHART — Official Artist Website</title>
+<title>WINHART RADIO — Indie Pop EDM Lifestyle</title>
 
-<meta property="og:title" content="WINHART — Pop / EDM Artist">
-<meta property="og:description" content="Official website of WINHART, pop and EDM artist project by Andy Hartanto from Indonesia.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://winhart.xyz/">
-<meta property="og:image" content="https://winhart.xyz/winhart.png">
-
-<link rel="canonical" href="https://winhart.xyz">
-
-<!-- SCHEMA -->
-
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"MusicGroup",
- "name":"WINHART",
- "genre":["Pop","EDM"],
- "url":"https://winhart.xyz",
- "image":"https://winhart.xyz/winhart.png",
- "description":"WINHART is an Indonesian pop and electronic music artist project created by Andy Hartanto.",
- "founder":{
- "@type":"Person",
- "name":"Andy Hartanto"
- }
-}
-</script>
-
-<!-- GOOGLE ANALYTICS (TIDAK DIUBAH) -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
-</script>
+<meta name="description" content="WINHART Radio adalah radio streaming independen yang menyiarkan musik indie, pop, EDM, lifestyle, entertainment dan news.">
 
 <style>
 
@@ -53,87 +19,86 @@ gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
 --soft:#aaa;
 }
 
-*{box-sizing:border-box}
-
 body{
 margin:0;
-font-family:Segoe UI,Arial,sans-serif;
+font-family:Segoe UI,Arial;
 background:var(--bg);
-color:#fff;
-line-height:1.6
+color:white;
 }
 
 nav{
-position:sticky;
-top:0;
-background:#000;
-padding:15px 25px;
+background:black;
+padding:18px 30px;
 display:flex;
 justify-content:space-between;
-z-index:10
 }
 
 nav a{
-color:#fff;
+color:white;
+margin-left:20px;
 text-decoration:none;
-margin-left:18px;
 font-size:13px;
-opacity:.85
 }
 
 header{
-min-height:20vh;
+height:40vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-background:linear-gradient(180deg,#000,#0b0b0b)
+background:linear-gradient(180deg,#000,#0b0b0b);
 }
 
 header h1{
 font-size:46px;
-letter-spacing:5px;
-margin:10px 0;
+letter-spacing:4px;
 }
 
 .section{
 padding:60px 20px;
 max-width:1100px;
-margin:auto
-}
-
-.section h2{
-border-left:4px solid var(--accent);
-padding-left:12px;
-font-size:24px
+margin:auto;
 }
 
 .card{
 background:var(--card);
 padding:30px;
-border-radius:14px
+border-radius:14px;
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px
+gap:25px;
 }
 
-iframe{
-border-radius:10px
+h2{
+border-left:4px solid var(--accent);
+padding-left:12px;
+}
+
+.profile{
+width:100%;
+border-radius:12px;
+}
+
+audio{
+width:100%;
 }
 
 footer{
 text-align:center;
 padding:40px;
-color:#777
+color:#777;
 }
 
-.profile{
-width:220px;
-border-radius:12px;
-margin-bottom:20px
+button{
+background:var(--accent);
+border:none;
+padding:12px 20px;
+color:white;
+border-radius:8px;
+cursor:pointer;
 }
 
 </style>
@@ -143,75 +108,87 @@ margin-bottom:20px
 <body>
 
 <nav>
-<strong>WINHART</strong>
+
+<strong>WINHART RADIO</strong>
+
 <div>
-<a href="#about">About</a>
-<a href="#music">Music</a>
-<a href="#press">Press Kit</a>
-<a href="#contact">Contact</a>
+
+<a href="#radio">Live Radio</a>
+<a href="#program">Program</a>
+<a href="#crew">Crew</a>
+<a href="#request">Request Song</a>
+
 </div>
+
 </nav>
 
 <header>
+
 <div>
-<h1>WINHART</h1>
-<p>Pop / EDM Artist</p>
+
+<h1>WINHART RADIO</h1>
+
+<p>Indie • Pop • EDM • Lifestyle • Entertainment • News</p>
+
 </div>
+
 </header>
 
-<section class="section" id="about">
-<h2>About Artist</h2>
+<section class="section" id="radio">
+
+<h2>LIVE RADIO</h2>
 
 <div class="card">
 
-<img src="profile.jpg" class="profile">
+<p>Streaming WINHART Radio secara live.</p>
 
-<p> 
-<strong>WINHART</strong> adalah proyek musik pop dan elektronik yang dibuat oleh musisi Indonesia <strong>Andy Hartanto</strong>. </p>
+<audio controls autoplay>
 
-<p> Menggabungkan penulisan lagu pop yang emosional dengan produksi musik elektronik modern, WINHART menghadirkan karya yang mengeksplorasi tema kenangan, hubungan, dan perjalanan emosi manusia. </p> 
- 
-<p> Sebagai musisi independen, WINHART merilis lagu secara mandiri melalui platform digital dan mulai membangun pendengar melalui media sosial serta video musik di YouTube. </p> 
- 
-<p> Beberapa lagu WINHART telah mendapatkan ribuan penonton dan terus dikembangkan untuk promosi melalui radio, media digital, dan kolaborasi dengan berbagai kreator musik. 
-</p>
+<source src="STREAM_URL_RADIO" type="audio/mpeg">
+
+</audio>
+
+<p>Status: 🔴 LIVE STREAM</p>
 
 </div>
+
 </section>
 
-<section class="section" id="music">
+<section class="section" id="program">
 
-<h2>Music & Videos</h2>
+<h2>RADIO PROGRAM</h2>
 
 <div class="grid">
 
 <div class="card">
 
-<h3>Ritme Nusantara</h3>
+<h3>Indie Music Hour</h3>
 
-<iframe width="100%" height="315"
-src="https://www.youtube.com/embed/2gQjpel_rk4"
-allowfullscreen></iframe>
+<p>Program musik indie dari musisi independen.</p>
 
 </div>
 
 <div class="card">
 
-<h3>Sahabat Jadi Pasangan</h3>
+<h3>Pop Energy</h3>
 
-<iframe width="100%" height="315"
-src="https://www.youtube.com/embed/SPkdTJu6a6Q"
-allowfullscreen></iframe>
+<p>Lagu pop dan EDM dengan energi tinggi.</p>
 
 </div>
 
 <div class="card">
 
-<h3>Kamu Adalah Cahaya</h3>
+<h3>Lifestyle Talk</h3>
 
-<iframe width="100%" height="315"
-src="https://www.youtube.com/embed/nDsK6Tce39g"
-allowfullscreen></iframe>
+<p>Program talkshow lifestyle dan komunitas.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Entertainment News</h3>
+
+<p>Berita musik dan entertainment.</p>
 
 </div>
 
@@ -219,86 +196,49 @@ allowfullscreen></iframe>
 
 </section>
 
-<section class="section" id="press">
+<section class="section" id="crew">
 
-<h2>Press Kit</h2>
+<h2>RADIO CREW</h2>
+
+<div class="grid">
 
 <div class="card">
 
-<p><strong>Artist Name:</strong> WINHART</p>
-<p><strong>Real Name:</strong> Andy Hartanto</p>
-<p><strong>Genre:</strong> Pop / EDM</p>
-<p><strong>Country:</strong> Indonesia</p>
+<img src="Andi.jpg" class="profile">
 
-<p>
-For interviews, radio promotion, collaboration or media inquiries please contact management.
-</p>
+<h3>Andi</h3>
+
+<p>Radio Host & Producer</p>
+
+</div>
+
+<div class="card">
+
+<img src="Sheryl.jpg" class="profile">
+
+<h3>Sheryl</h3>
+
+<p>Radio Host & Music Curator</p>
+
+</div>
 
 </div>
 
 </section>
 
-<section class="section" id="album">
+<section class="section" id="request">
 
-<h2>Full Album</h2>
-
-<div class="card">
-
-<p>Dengarkan lagu lengkap dari WINHART langsung di website:</p>
-
-<ul id="playlist">
-
-<li onclick="playSong('Harmoni Sunyi')">▶ Harmoni Sunyi</li>
-
-<li onclick="playSong('kamu adalah cahaya versi2')">▶ Kamu Adalah Cahaya</li>
-
-<li onclick="playSong('Jejak Yang Tertinggal')">▶ Jejak Yang Tertinggal</li>
-
-<li onclick="playSong('Kembali Ke Rumah')">▶ Kembali Ke Rumah</li>
-
-<li onclick="playSong('masih tentang kamu')">▶ Masih Tentang Kamu</li>
-
-</ul>
-
-<br>
-
-<audio id="audioPlayer" controls style="width:100%;">
-<source id="audioSource" src="" type="audio/mpeg">
-Browser Anda tidak mendukung audio player.
-</audio>
-
-</div>
-
-</section>
-
-<script>
-
-function playSong(song){
-
-var player=document.getElementById("audioPlayer");
-var source=document.getElementById("audioSource");
-
-source.src=song;
-
-player.load();
-player.play();
-
-}
-
-</script>
-
-<section class="section" id="contact">
-
-<h2>Management Contact</h2>
+<h2>REQUEST SONG</h2>
 
 <div class="card">
 
-<p>Management & Booking</p>
+<p>Kirim request lagu melalui WhatsApp.</p>
 
-<p>
-WhatsApp<br>
-<strong>082121785751</strong>
-</p>
+<a href="https://wa.me/6282121785751">
+
+<button>Request Lagu</button>
+
+</a>
 
 </div>
 
@@ -306,10 +246,11 @@ WhatsApp<br>
 
 <footer>
 
-© 2026 WINHART <br>
-Independent Pop / EDM Artist
+© 2026 WINHART RADIO  
+Independent Internet Radio
 
 </footer>
 
 </body>
+
 </html>
