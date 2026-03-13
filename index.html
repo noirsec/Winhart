@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WINHART Radio Streaming</title>
+<title>WINHART Radio</title>
 
-<meta property="og:title" content="WINHART Radio Streaming">
-<meta property="og:description" content="WINHART Radio — Pop, Indie, EDM, Lifestyle & Entertainment">
+<meta property="og:title" content="WINHART Radio">
+<meta property="og:description" content="Pop • Indie • EDM • Lifestyle • Entertainment">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz/">
 <meta property="og:image" content="https://winhart.xyz/winhart.png">
@@ -36,7 +36,6 @@
 <!-- GOOGLE ANALYTICS TIDAK DIUBAH -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
-
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -96,26 +95,39 @@ gap:25px
 }
 
 button{
-padding:15px 40px;
-font-size:16px;
+padding:15px 35px;
 background:#e50914;
 border:none;
 border-radius:8px;
 color:white;
-cursor:pointer
+cursor:pointer;
+font-size:16px
 }
 
 canvas{
 margin-top:20px
 }
 
-.crew{
-text-align:center
-}
-
 .crew img{
 width:100%;
-border-radius:12px
+border-radius:10px
+}
+
+.chatbox{
+height:200px;
+overflow:auto;
+background:#111;
+padding:10px;
+margin-bottom:10px
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#222;
+border:none;
+color:white
 }
 
 footer{
@@ -136,10 +148,11 @@ color:#777
 
 <div>
 
-<a href="#radio">Live Radio</a>
+<a href="#radio">Live</a>
 <a href="#program">Programs</a>
 <a href="#crew">Crew</a>
-<a href="#contact">Contact</a>
+<a href="#request">Request</a>
+<a href="#chat">Chat</a>
 
 </div>
 
@@ -148,19 +161,22 @@ color:#777
 <header>
 
 <h1>WINHART RADIO</h1>
-<p>Pop • Indie • EDM • Lifestyle • Entertainment</p>
+
+<p>Pop • Indie • EDM • Health • Lifestyle • Entertainment</p>
 
 </header>
 
 <section class="section" id="radio">
 
-<h2>LIVE RADIO STREAM</h2>
+<h2>LIVE RADIO</h2>
 
 <div class="card" style="text-align:center">
 
 <button onclick="startRadio()">▶ PLAY RADIO</button>
 
 <br><br>
+
+<h3 id="nowPlaying">Now Playing: -</h3>
 
 <audio id="radioPlayer" controls style="width:100%;display:none">
 
@@ -182,7 +198,7 @@ color:#777
 
 <div class="card">
 <h3>POP HITS</h3>
-<p>Lagu pop pilihan setiap hari.</p>
+<p>Playlist musik pop terbaru.</p>
 </div>
 
 <div class="card">
@@ -196,8 +212,13 @@ color:#777
 </div>
 
 <div class="card">
-<h3>HEALTH & LIFESTYLE</h3>
-<p>Tips kesehatan dan gaya hidup.</p>
+<h3>HEALTH TALK</h3>
+<p>Tips kesehatan dan wellness.</p>
+</div>
+
+<div class="card">
+<h3>LIFESTYLE</h3>
+<p>Gaya hidup dan inspirasi harian.</p>
 </div>
 
 <div class="card">
@@ -215,17 +236,17 @@ color:#777
 
 <div class="grid">
 
-<div class="crew card">
+<div class="card crew">
 
 <img src="Andy.jpg">
 
 <h3>Andy Hartanto</h3>
 
-<p>Founder & Music Director</p>
+<p>Founder / Music Director</p>
 
 </div>
 
-<div class="crew card">
+<div class="card crew">
 
 <img src="Sheryl.jpg">
 
@@ -239,17 +260,37 @@ color:#777
 
 </section>
 
-<section class="section" id="contact">
+<section class="section" id="request">
 
-<h2>Management Contact</h2>
+<h2>Request Lagu</h2>
 
 <div class="card">
 
-<p>Booking & Collaboration</p>
+<input id="requestName" placeholder="Nama Anda">
 
-<p>WhatsApp</p>
+<input id="requestSong" placeholder="Judul Lagu">
 
-<strong>082121785751</strong>
+<button onclick="sendRequest()">Kirim Request</button>
+
+<p id="requestStatus"></p>
+
+</div>
+
+</section>
+
+<section class="section" id="chat">
+
+<h2>Listener Chat</h2>
+
+<div class="card">
+
+<div class="chatbox" id="chatbox"></div>
+
+<input id="username" placeholder="Nama">
+
+<input id="message" placeholder="Pesan">
+
+<button onclick="sendChat()">Kirim</button>
 
 </div>
 
@@ -265,14 +306,21 @@ Pop • Indie • EDM • Lifestyle • Entertainment
 <script>
 
 var playlist=[
-
 "intro-winhart-radio.mp3",
 "Harmoni Sunyi.mp3",
 "kamu adalah cahaya versi2.mp3",
 "Jejak Yang Tertinggal.mp3",
 "Kembali Ke Rumah.mp3",
 "masih tentang kamu.mp3"
+];
 
+var titles=[
+"Intro WINHART Radio",
+"Harmoni Sunyi",
+"Kamu Adalah Cahaya",
+"Jejak Yang Tertinggal",
+"Kembali Ke Rumah",
+"Masih Tentang Kamu"
 ];
 
 var track=0;
@@ -289,6 +337,8 @@ source.src=playlist[track];
 player.load();
 player.play();
 
+document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
+
 }
 
 document.getElementById("radioPlayer").addEventListener("ended",function(){
@@ -296,15 +346,13 @@ document.getElementById("radioPlayer").addEventListener("ended",function(){
 track++;
 
 if(track>=playlist.length){
-
 track=1;
-
 }
 
 document.getElementById("radioSource").src=playlist[track];
+document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
 
 this.load();
-
 this.play();
 
 });
@@ -360,6 +408,32 @@ audio.onplay=function(){
 
 audioCtx.resume();
 draw();
+
+}
+
+</script>
+
+<script>
+
+function sendRequest(){
+
+var name=document.getElementById("requestName").value;
+var song=document.getElementById("requestSong").value;
+
+document.getElementById("requestStatus").innerText="Request terkirim: "+song+" oleh "+name;
+
+}
+
+function sendChat(){
+
+var user=document.getElementById("username").value;
+var msg=document.getElementById("message").value;
+
+var box=document.getElementById("chatbox");
+
+box.innerHTML+="<p><b>"+user+"</b>: "+msg+"</p>";
+
+box.scrollTop=box.scrollHeight;
 
 }
 
