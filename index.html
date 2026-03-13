@@ -8,7 +8,38 @@
 
 <title>WINHART RADIO — Indie Pop EDM Lifestyle</title>
 
-<meta name="description" content="WINHART Radio adalah radio streaming independen yang menyiarkan musik indie, pop, EDM, lifestyle, entertainment dan news.">
+<meta property="og:title" content="WINHART RADIO">
+<meta property="og:description" content="WINHART Radio adalah radio streaming independen dengan musik indie, pop, EDM, lifestyle dan entertainment.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://winhart.xyz/">
+
+<link rel="canonical" href="https://winhart.xyz">
+
+<!-- SCHEMA -->
+
+<script type="application/ld+json">
+
+{
+ "@context":"https://schema.org",
+ "@type":"RadioStation",
+ "name":"WINHART RADIO",
+ "url":"https://winhart.xyz",
+ "genre":["Indie","Pop","EDM"],
+ "description":"WINHART Radio adalah radio streaming independen yang menyiarkan musik indie, pop dan EDM serta konten lifestyle dan entertainment."
+}
+
+</script>
+
+<!-- GOOGLE ANALYTICS -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
+</script>
 
 <style>
 
@@ -16,12 +47,11 @@
 --accent:#e50914;
 --bg:#0b0b0b;
 --card:#161616;
---soft:#aaa;
 }
 
 body{
 margin:0;
-font-family:Segoe UI,Arial;
+font-family:Segoe UI;
 background:var(--bg);
 color:white;
 }
@@ -41,16 +71,15 @@ font-size:13px;
 }
 
 header{
-height:40vh;
+height:35vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-background:linear-gradient(180deg,#000,#0b0b0b);
 }
 
 header h1{
-font-size:46px;
+font-size:48px;
 letter-spacing:4px;
 }
 
@@ -72,33 +101,25 @@ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 }
 
-h2{
-border-left:4px solid var(--accent);
-padding-left:12px;
-}
-
 .profile{
 width:100%;
 border-radius:12px;
 }
 
-audio{
-width:100%;
+button{
+background:var(--accent);
+border:none;
+padding:14px 26px;
+color:white;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
 }
 
 footer{
 text-align:center;
 padding:40px;
 color:#777;
-}
-
-button{
-background:var(--accent);
-border:none;
-padding:12px 20px;
-color:white;
-border-radius:8px;
-cursor:pointer;
 }
 
 </style>
@@ -114,9 +135,8 @@ cursor:pointer;
 <div>
 
 <a href="#radio">Live Radio</a>
-<a href="#program">Program</a>
 <a href="#crew">Crew</a>
-<a href="#request">Request Song</a>
+<a href="#request">Request</a>
 
 </div>
 
@@ -134,67 +154,27 @@ cursor:pointer;
 
 </header>
 
+<!-- LIVE RADIO -->
+
 <section class="section" id="radio">
 
 <h2>LIVE RADIO</h2>
 
 <div class="card">
 
-<p>Streaming WINHART Radio secara live.</p>
+<p>🔴 LIVE STREAM — WINHART RADIO</p>
 
-<audio controls autoplay>
+<button onclick="startRadio()">▶ PLAY RADIO</button>
 
-<source src="STREAM_URL_RADIO" type="audio/mpeg">
+<br><br>
 
-</audio>
-
-<p>Status: 🔴 LIVE STREAM</p>
+<audio id="radioPlayer" controls style="width:100%"></audio>
 
 </div>
 
 </section>
 
-<section class="section" id="program">
-
-<h2>RADIO PROGRAM</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Indie Music Hour</h3>
-
-<p>Program musik indie dari musisi independen.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Pop Energy</h3>
-
-<p>Lagu pop dan EDM dengan energi tinggi.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Lifestyle Talk</h3>
-
-<p>Program talkshow lifestyle dan komunitas.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Entertainment News</h3>
-
-<p>Berita musik dan entertainment.</p>
-
-</div>
-
-</div>
-
-</section>
+<!-- CREW -->
 
 <section class="section" id="crew">
 
@@ -204,21 +184,21 @@ cursor:pointer;
 
 <div class="card">
 
-<img src="Andi.jpg" class="profile">
+<img src="andi.jpg" class="profile">
 
 <h3>Andi</h3>
 
-<p>Radio Host & Producer</p>
+<p>Radio Host</p>
 
 </div>
 
 <div class="card">
 
-<img src="Sheryl.jpg" class="profile">
+<img src="sheryl.jpg" class="profile">
 
 <h3>Sheryl</h3>
 
-<p>Radio Host & Music Curator</p>
+<p>Music Curator</p>
 
 </div>
 
@@ -226,17 +206,19 @@ cursor:pointer;
 
 </section>
 
+<!-- REQUEST -->
+
 <section class="section" id="request">
 
 <h2>REQUEST SONG</h2>
 
 <div class="card">
 
-<p>Kirim request lagu melalui WhatsApp.</p>
+<p>Kirim request lagu ke WhatsApp.</p>
 
 <a href="https://wa.me/6282121785751">
 
-<button>Request Lagu</button>
+<button>REQUEST LAGU</button>
 
 </a>
 
@@ -246,10 +228,73 @@ cursor:pointer;
 
 <footer>
 
-© 2026 WINHART RADIO  
-Independent Internet Radio
+© 2026 WINHART RADIO
 
 </footer>
+
+<script>
+
+/* playlist lagu sementara */
+
+var playlist=[
+
+"https://raw.githubusercontent.com/USERNAME/REPO/main/Harmoni%20Sunyi.mp3",
+
+"https://raw.githubusercontent.com/USERNAME/REPO/main/kamu%20adalah%20cahaya%20versi2.mp3",
+
+"https://raw.githubusercontent.com/USERNAME/REPO/main/Jejak%20Yang%20Tertinggal.mp3",
+
+"https://raw.githubusercontent.com/USERNAME/REPO/main/Kembali%20Ke%20Rumah.mp3",
+
+"https://raw.githubusercontent.com/USERNAME/REPO/main/masih%20tentang%20kamu.mp3"
+
+];
+
+var player=document.getElementById("radioPlayer");
+
+var current=0;
+
+function startRadio(){
+
+playIntro();
+
+}
+
+function playIntro(){
+
+player.src="radio_intro.mp3";
+
+player.play();
+
+player.onended=function(){
+
+playMusic();
+
+}
+
+}
+
+function playMusic(){
+
+player.src=playlist[current];
+
+player.play();
+
+player.onended=function(){
+
+current++;
+
+if(current>=playlist.length){current=0;}
+
+player.src=playlist[current];
+
+player.play();
+
+}
+
+}
+
+</script>
 
 </body>
 
