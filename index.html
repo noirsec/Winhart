@@ -1,21 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WINHART Radio</title>
+<title>WINHART RADIO</title>
 
 <meta property="og:title" content="WINHART Radio">
-<meta property="og:description" content="Pop • Indie • EDM • Lifestyle • Entertainment">
+<meta property="og:description" content="Sound of Indie Pop & Modern Life">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://winhart.xyz/">
-<meta property="og:image" content="https://winhart.xyz/winhart.png">
+<meta property="og:image" content="winhart-logo.jpg">
 
 <link rel="canonical" href="https://winhart.xyz">
-
-<!-- SCHEMA TIDAK DIUBAH -->
 
 <script type="application/ld+json">
 {
@@ -24,7 +23,7 @@
  "name":"WINHART",
  "genre":["Pop","EDM"],
  "url":"https://winhart.xyz",
- "image":"https://winhart.xyz/winhart.png",
+ "image":"winhart-logo.jpg",
  "description":"WINHART is an Indonesian pop and electronic music artist project created by Andy Hartanto.",
  "founder":{
  "@type":"Person",
@@ -33,9 +32,8 @@
 }
 </script>
 
-<!-- GOOGLE ANALYTICS TIDAK DIUBAH -->
-
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
+
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -56,7 +54,12 @@ nav{
 background:#000;
 padding:15px 30px;
 display:flex;
-justify-content:space-between
+justify-content:space-between;
+align-items:center
+}
+
+nav img{
+height:40px
 }
 
 nav a{
@@ -67,13 +70,12 @@ margin-left:20px
 
 header{
 text-align:center;
-padding:80px 20px;
-background:linear-gradient(#000,#111)
+padding:60px 20px;
+background:#000
 }
 
-h1{
-font-size:50px;
-letter-spacing:6px
+header img{
+width:280px
 }
 
 .section{
@@ -95,13 +97,13 @@ gap:25px
 }
 
 button{
-padding:15px 35px;
+padding:14px 35px;
+font-size:18px;
 background:#e50914;
 border:none;
 border-radius:8px;
 color:white;
-cursor:pointer;
-font-size:16px
+cursor:pointer
 }
 
 canvas{
@@ -121,7 +123,7 @@ padding:10px;
 margin-bottom:10px
 }
 
-input,textarea{
+input{
 width:100%;
 padding:10px;
 margin-top:10px;
@@ -144,15 +146,11 @@ color:#777
 
 <nav>
 
-<strong>WINHART RADIO</strong>
+<img src="winhart-logo.jpg">
 
 <div>
 
-<a href="#radio">Live</a>
-<a href="#program">Programs</a>
-<a href="#crew">Crew</a>
-<a href="#request">Request</a>
-<a href="#chat">Chat</a>
+<a href="#radio">Live</a> <a href="#program">Programs</a> <a href="#crew">Crew</a> <a href="#request">Request</a> <a href="#chat">Chat</a>
 
 </div>
 
@@ -160,15 +158,15 @@ color:#777
 
 <header>
 
-<h1>WINHART RADIO</h1>
+<img src="winhart-logo.jpg">
 
-<p>Pop • Indie • EDM • Health • Lifestyle • Entertainment</p>
+<p>Sound of Indie Pop & Modern Life</p>
 
 </header>
 
 <section class="section" id="radio">
 
-<h2>LIVE RADIO</h2>
+<h2>LIVE STREAM</h2>
 
 <div class="card" style="text-align:center">
 
@@ -179,9 +177,7 @@ color:#777
 <h3 id="nowPlaying">Now Playing: -</h3>
 
 <audio id="radioPlayer" controls style="width:100%;display:none">
-
 <source id="radioSource" src="">
-
 </audio>
 
 <canvas id="visualizer" width="600" height="120"></canvas>
@@ -196,35 +192,17 @@ color:#777
 
 <div class="grid">
 
-<div class="card">
-<h3>POP HITS</h3>
-<p>Playlist musik pop terbaru.</p>
-</div>
+<div class="card"><h3>POP HITS</h3><p>Lagu pop terbaik setiap hari.</p></div>
 
-<div class="card">
-<h3>INDIE VIBES</h3>
-<p>Musik indie dari artis independen.</p>
-</div>
+<div class="card"><h3>INDIE VIBES</h3><p>Musik indie pilihan.</p></div>
 
-<div class="card">
-<h3>EDM NIGHT</h3>
-<p>Electronic dance music setiap malam.</p>
-</div>
+<div class="card"><h3>EDM NIGHT</h3><p>Electronic dance music.</p></div>
 
-<div class="card">
-<h3>HEALTH TALK</h3>
-<p>Tips kesehatan dan wellness.</p>
-</div>
+<div class="card"><h3>HEALTH TALK</h3><p>Tips kesehatan.</p></div>
 
-<div class="card">
-<h3>LIFESTYLE</h3>
-<p>Gaya hidup dan inspirasi harian.</p>
-</div>
+<div class="card"><h3>LIFESTYLE</h3><p>Inspirasi hidup modern.</p></div>
 
-<div class="card">
-<h3>ENTERTAINMENT NEWS</h3>
-<p>Berita musik dan dunia hiburan.</p>
-</div>
+<div class="card"><h3>ENTERTAINMENT NEWS</h3><p>Berita dunia hiburan.</p></div>
 
 </div>
 
@@ -238,11 +216,11 @@ color:#777
 
 <div class="card crew">
 
-<img src="Andy.jpg">
+<img src="Andi.jpg">
 
-<h3>Andy </h3>
+<h3>Andy Hartanto</h3>
 
-<p>Founder / Music Director</p>
+<p>Founder & Music Director</p>
 
 </div>
 
@@ -266,13 +244,13 @@ color:#777
 
 <div class="card">
 
-<input id="requestName" placeholder="Nama Anda">
+<input id="reqname" placeholder="Nama Anda">
 
-<input id="requestSong" placeholder="Judul Lagu">
+<input id="reqsong" placeholder="Judul Lagu">
 
-<button onclick="sendRequest()">Kirim Request</button>
+<button onclick="sendRequest()">Kirim</button>
 
-<p id="requestStatus"></p>
+<p id="status"></p>
 
 </div>
 
@@ -298,8 +276,7 @@ color:#777
 
 <footer>
 
-© 2026 WINHART Radio  
-Pop • Indie • EDM • Lifestyle • Entertainment
+© 2026 WINHART RADIO
 
 </footer>
 
@@ -341,7 +318,9 @@ document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
 
 }
 
-document.getElementById("radioPlayer").addEventListener("ended",function(){
+var player=document.getElementById("radioPlayer");
+
+player.addEventListener("ended",function(){
 
 track++;
 
@@ -350,10 +329,11 @@ track=1;
 }
 
 document.getElementById("radioSource").src=playlist[track];
+
 document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
 
-this.load();
-this.play();
+player.load();
+player.play();
 
 });
 
@@ -417,10 +397,10 @@ draw();
 
 function sendRequest(){
 
-var name=document.getElementById("requestName").value;
-var song=document.getElementById("requestSong").value;
+var name=document.getElementById("reqname").value;
+var song=document.getElementById("reqsong").value;
 
-document.getElementById("requestStatus").innerText="Request terkirim: "+song+" oleh "+name;
+document.getElementById("status").innerText="Request terkirim: "+song+" oleh "+name;
 
 }
 
