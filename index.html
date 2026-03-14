@@ -1,12 +1,12 @@
-4<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WINHART RADIO</title>
+<title>WINHART RADIO — Official Streaming</title>
 
 <meta property="og:title" content="WINHART Radio">
 <meta property="og:type" content="website">
@@ -15,6 +15,7 @@
 
 <link rel="canonical" href="https://winhart.xyz">
 
+<!-- SCHEMA -->
 <script type="application/ld+json">
 {
  "@context":"https://schema.org",
@@ -26,27 +27,28 @@
  "description":"WINHART is an Indonesian pop and electronic music artist project created by Andy Hartanto.",
  "founder":{
  "@type":"Person",
- "name":"Andy"
+ "name":"Andy Hartanto"
  }
 }
 </script>
 
+<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-VEFS6RS3G3', { anonymize_ip: true });
+gtag('config', 'G-VEFS6RS3G3',{ anonymize_ip:true });
 </script>
 
 <style>
 
 body{
 margin:0;
-background:#0b0b0b;
+background:#0a0a0a;
 font-family:Segoe UI;
-color:white
+color:white;
 }
 
 nav{
@@ -54,64 +56,72 @@ background:#000;
 padding:15px 30px;
 display:flex;
 justify-content:space-between;
-align-items:center
+align-items:center;
+border-bottom:1px solid #222;
 }
 
 nav img{
-height:40px
+height:40px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:20px
+margin-left:20px;
+font-weight:500;
 }
 
 header{
 text-align:center;
-padding:60px 20px;
-background:#000
+padding:80px 20px;
+background:linear-gradient(#000,#0b0b0b);
 }
 
 header img{
-width:280px
+width:260px;
+margin-bottom:20px;
 }
 
 .section{
 max-width:1100px;
 margin:auto;
-padding:60px 20px
+padding:60px 20px;
 }
 
 .card{
-background:#161616;
+background:#141414;
 padding:30px;
-border-radius:12px
+border-radius:14px;
+border:1px solid #222;
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px
+gap:25px;
 }
 
 button{
 padding:14px 35px;
-font-size:18px;
+font-size:16px;
 background:#e50914;
 border:none;
 border-radius:8px;
 color:white;
-cursor:pointer
+cursor:pointer;
+}
+
+button:hover{
+background:#ff1d25;
 }
 
 canvas{
-margin-top:20px
+margin-top:20px;
 }
 
 .crew img{
 width:100%;
-border-radius:10px
+border-radius:10px;
 }
 
 .chatbox{
@@ -119,7 +129,8 @@ height:200px;
 overflow:auto;
 background:#111;
 padding:10px;
-margin-bottom:10px
+margin-bottom:10px;
+border-radius:6px;
 }
 
 input{
@@ -128,13 +139,35 @@ padding:10px;
 margin-top:10px;
 background:#222;
 border:none;
-color:white
+color:white;
+border-radius:5px;
 }
 
 footer{
 text-align:center;
 padding:40px;
-color:#777
+color:#777;
+}
+
+/* STICKY PLAYER */
+
+.playerbar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#000;
+padding:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+border-top:1px solid #222;
+}
+
+.playerbar button{
+padding:10px 20px;
+font-size:14px;
 }
 
 </style>
@@ -149,7 +182,11 @@ color:#777
 
 <div>
 
-<a href="#radio">Live</a> <a href="#program">Programs</a> <a href="#crew">Crew</a> <a href="#request">Request</a> <a href="#chat">Chat</a>
+<a href="#radio">Live</a>
+<a href="#program">Programs</a>
+<a href="#crew">Crew</a>
+<a href="#request">Request</a>
+<a href="#chat">Chat</a>
 
 </div>
 
@@ -159,9 +196,13 @@ color:#777
 
 <img src="Logo.jpg">
 
-<p>Sound of Indie Pop & Modern Life</p>
+<h1>WINHART RADIO</h1>
+
+<p>Indie Pop • EDM • Lifestyle Radio</p>
 
 </header>
+
+<!-- LIVE RADIO -->
 
 <section class="section" id="radio">
 
@@ -169,13 +210,9 @@ color:#777
 
 <div class="card" style="text-align:center">
 
-<button onclick="startRadio()">▶ PLAY RADIO</button>
-
-<br><br>
-
 <h3 id="nowPlaying">Now Playing: -</h3>
 
-<audio id="radioPlayer" controls style="width:100%;display:none">
+<audio id="radioPlayer">
 <source id="radioSource" src="">
 </audio>
 
@@ -185,27 +222,49 @@ color:#777
 
 </section>
 
+<!-- PROGRAM -->
+
 <section class="section" id="program">
 
 <h2>Radio Programs</h2>
 
 <div class="grid">
 
-<div class="card"><h3>POP HITS</h3><p>Lagu pop terbaik setiap hari.</p></div>
+<div class="card">
+<h3>POP HITS</h3>
+<p>Top pop songs everyday.</p>
+</div>
 
-<div class="card"><h3>INDIE VIBES</h3><p>Musik indie pilihan.</p></div>
+<div class="card">
+<h3>INDIE VIBES</h3>
+<p>Best independent music.</p>
+</div>
 
-<div class="card"><h3>EDM NIGHT</h3><p>Electronic dance music.</p></div>
+<div class="card">
+<h3>EDM NIGHT</h3>
+<p>Electronic dance session.</p>
+</div>
 
-<div class="card"><h3>HEALTH TALK</h3><p>Tips kesehatan.</p></div>
+<div class="card">
+<h3>HEALTH TALK</h3>
+<p>Tips & wellness program.</p>
+</div>
 
-<div class="card"><h3>LIFESTYLE</h3><p>Inspirasi hidup modern.</p></div>
+<div class="card">
+<h3>LIFESTYLE</h3>
+<p>Modern life inspiration.</p>
+</div>
 
-<div class="card"><h3>ENTERTAINMENT NEWS</h3><p>Berita dunia hiburan.</p></div>
+<div class="card">
+<h3>ENTERTAINMENT NEWS</h3>
+<p>Global entertainment news.</p>
+</div>
 
 </div>
 
 </section>
+
+<!-- CREW -->
 
 <section class="section" id="crew">
 
@@ -237,6 +296,8 @@ color:#777
 
 </section>
 
+<!-- REQUEST -->
+
 <section class="section" id="request">
 
 <h2>Request Lagu</h2>
@@ -247,13 +308,15 @@ color:#777
 
 <input id="reqsong" placeholder="Judul Lagu">
 
-<button onclick="sendRequest()">Kirim</button>
+<button onclick="sendRequest()">Kirim Request</button>
 
 <p id="status"></p>
 
 </div>
 
 </section>
+
+<!-- CHAT -->
 
 <section class="section" id="chat">
 
@@ -279,15 +342,26 @@ color:#777
 
 </footer>
 
+<!-- STICKY PLAYER -->
+
+<div class="playerbar">
+
+<button onclick="startRadio()">▶ PLAY</button>
+
+<button onclick="pauseRadio()">❚❚ PAUSE</button>
+
+<span id="miniNow">OFF AIR</span>
+
+</div>
+
 <script>
 
 var playlist=[
 "Winhart intro.mp4",
-"Harmoni Sunyi",
-"kamu adalah cahaya versi2",
-"Jejak Yang Tertinggal",
-"Kembali Ke Rumah",
-"Kamu Adalah Cahaya"
+"Harmoni Sunyi.mp3",
+"Kamu Adalah Cahaya.mp3",
+"Jejak Yang Tertinggal.mp3",
+"Kembali Ke Rumah.mp3"
 ];
 
 var titles=[
@@ -295,8 +369,7 @@ var titles=[
 "Harmoni Sunyi",
 "Kamu Adalah Cahaya",
 "Jejak Yang Tertinggal",
-"Kembali Ke Rumah",
-"Kamu Adalah Cahaya"
+"Kembali Ke Rumah"
 ];
 
 var track=0;
@@ -306,14 +379,19 @@ function startRadio(){
 var player=document.getElementById("radioPlayer");
 var source=document.getElementById("radioSource");
 
-player.style.display="block";
-
 source.src=playlist[track];
 
 player.load();
 player.play();
 
 document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
+document.getElementById("miniNow").innerText=titles[track];
+
+}
+
+function pauseRadio(){
+
+document.getElementById("radioPlayer").pause();
 
 }
 
@@ -324,71 +402,18 @@ player.addEventListener("ended",function(){
 track++;
 
 if(track>=playlist.length){
-track=1;
+track=0;
 }
 
 document.getElementById("radioSource").src=playlist[track];
 
 document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
+document.getElementById("miniNow").innerText=titles[track];
 
 player.load();
 player.play();
 
 });
-
-</script>
-
-<script>
-
-const audio=document.getElementById("radioPlayer");
-const canvas=document.getElementById("visualizer");
-const ctx=canvas.getContext("2d");
-
-const audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-const analyser=audioCtx.createAnalyser();
-const src=audioCtx.createMediaElementSource(audio);
-
-src.connect(analyser);
-analyser.connect(audioCtx.destination);
-
-analyser.fftSize=64;
-
-const bufferLength=analyser.frequencyBinCount;
-const dataArray=new Uint8Array(bufferLength);
-
-function draw(){
-
-requestAnimationFrame(draw);
-
-analyser.getByteFrequencyData(dataArray);
-
-ctx.fillStyle="#000";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-var barWidth=(canvas.width/bufferLength)*2.5;
-var barHeight;
-var x=0;
-
-for(var i=0;i<bufferLength;i++){
-
-barHeight=dataArray[i];
-
-ctx.fillStyle="#e50914";
-
-ctx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight/2);
-
-x+=barWidth+1;
-
-}
-
-}
-
-audio.onplay=function(){
-
-audioCtx.resume();
-draw();
-
-}
 
 </script>
 
