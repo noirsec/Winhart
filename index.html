@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -73,7 +74,7 @@ color:white;
 text-decoration:none;
 margin-left:18px;
 font-size:14px;
-transition:0.3s
+transition:.3s
 }
 
 nav a:hover{
@@ -107,12 +108,12 @@ background:#151515;
 padding:22px;
 border-radius:12px;
 border:1px solid #222;
-transition:0.3s
+transition:.3s
 }
 
 .card:hover{
 transform:translateY(-6px);
-box-shadow:0 0 25px rgba(229,9,20,0.3)
+box-shadow:0 0 25px rgba(229,9,20,.3)
 }
 
 button{
@@ -123,15 +124,13 @@ border:none;
 border-radius:8px;
 color:white;
 cursor:pointer;
-transition:0.3s
+transition:.3s
 }
 
 button:hover{
 background:#ff1d25;
 transform:scale(1.05)
 }
-
-audio{width:100%}
 
 canvas{
 width:100%;
@@ -198,7 +197,7 @@ align-items:center;
 gap:15px;
 flex-wrap:wrap;
 border-top:1px solid #222;
-box-shadow:0 -2px 20px rgba(0,0,0,0.9)
+box-shadow:0 -2px 20px rgba(0,0,0,.9)
 }
 
 #miniNow{
@@ -206,11 +205,7 @@ color:#ff4040;
 font-weight:bold
 }
 
-/* CREW WA BUTTON */
-
-.crew-photo{
-position:relative;
-}
+.crew-photo{position:relative}
 
 .wa-btn{
 position:absolute;
@@ -228,10 +223,6 @@ color:white;
 font-size:18px;
 }
 
-.wa-btn:hover{
-background:#1ebe5d;
-}
-
 </style>
 
 </head>
@@ -243,13 +234,11 @@ background:#1ebe5d;
 <img src="Logo.jpg">
 
 <div>
-
 <a href="#radio">Live</a>
 <a href="#schedule">Schedule</a>
 <a href="#crew">Crew</a>
 <a href="#request">Request</a>
 <a href="#chat">Chat</a>
-
 </div>
 
 </nav>
@@ -257,9 +246,7 @@ background:#1ebe5d;
 <header>
 
 <img src="Logo.jpg">
-
 <h1>WINHART RADIO</h1>
-
 <p>Indie Pop • EDM • Lifestyle Broadcast</p>
 
 </header>
@@ -282,21 +269,15 @@ background:#1ebe5d;
 
 </section>
 
-<!-- schedule crew request chat tetap sama seperti script Anda -->
-
 <footer>
-
 © 2026 WINHART RADIO
-
 </footer>
 
 <div class="playerbar">
 
-<button onclick="startRadio()">▶ PLAY</button>
-<button onclick="pauseRadio()">❚❚ PAUSE</button>
+<button onclick="startRadio()">▶ PLAY</button> <button onclick="pauseRadio()">❚❚ PAUSE</button>
 
-<span id="miniNow">OFF AIR</span>
-<span id="listeners">Listeners: 0</span>
+<span id="miniNow">OFF AIR</span> <span id="listeners">Listeners: 0</span>
 
 </div>
 
@@ -304,8 +285,8 @@ background:#1ebe5d;
 
 var playlist=[
 "Winhart intro.mp4",
-"Kamu Adalah Cahaya",
-"Kembali Ke Rumah"
+"Kamu Adalah Cahaya.mp3",
+"Kembali Ke Rumah.mp3"
 ];
 
 var titles=[
@@ -331,6 +312,8 @@ player.play();
 
 document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
 document.getElementById("miniNow").innerText=titles[track];
+
+initVisualizer();
 
 }
 
@@ -375,15 +358,6 @@ player.play();
 
 });
 
-function sendRequest(){
-
-var name=document.getElementById("reqname").value;
-var song=document.getElementById("reqsong").value;
-
-document.getElementById("status").innerText="Request terkirim: "+song+" oleh "+name;
-
-}
-
 function sendChat(){
 
 var user=document.getElementById("username").value;
@@ -417,9 +391,7 @@ document.getElementById("listeners").innerText="Listeners: "+listeners;
 document.querySelectorAll('nav a').forEach(anchor=>{
 anchor.addEventListener('click',function(e){
 e.preventDefault();
-document.querySelector(this.getAttribute('href')).scrollIntoView({
-behavior:'smooth'
-});
+document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
 });
 });
 
@@ -427,27 +399,41 @@ behavior:'smooth'
 
 <script>
 
+let audioCtx;
+let analyser;
+let sourceNode;
+
 const audio = document.getElementById("radioPlayer");
 
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const analyser = audioCtx.createAnalyser();
+function initVisualizer(){
 
-const sourceNode = audioCtx.createMediaElementSource(audio);
+if(!audioCtx){
+
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+analyser = audioCtx.createAnalyser();
+
+sourceNode = audioCtx.createMediaElementSource(audio);
 
 sourceNode.connect(analyser);
 analyser.connect(audioCtx.destination);
 
 analyser.fftSize = 128;
 
+draw();
+
+}
+
+}
+
 const canvas = document.getElementById("visualizer");
 const ctx = canvas.getContext("2d");
-
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
 
 function draw(){
 
 requestAnimationFrame(draw);
+
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
 
 analyser.getByteFrequencyData(dataArray);
 
@@ -455,12 +441,11 @@ ctx.fillStyle="#000";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
 let barWidth=(canvas.width/bufferLength)*2;
-let barHeight;
 let x=0;
 
 for(let i=0;i<bufferLength;i++){
 
-barHeight=dataArray[i];
+let barHeight=dataArray[i];
 
 ctx.fillStyle="rgb(229,"+(barHeight+50)+",20)";
 ctx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight/2);
@@ -470,8 +455,6 @@ x+=barWidth+1;
 }
 
 }
-
-draw();
 
 </script>
 
