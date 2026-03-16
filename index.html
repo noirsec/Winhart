@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 
@@ -61,10 +61,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 flex-wrap:wrap;
-border-bottom:1px solid #222;
-position:sticky;
-top:0;
-z-index:999
+border-bottom:1px solid #222
 }
 
 nav img{height:40px}
@@ -73,12 +70,7 @@ nav a{
 color:white;
 text-decoration:none;
 margin-left:18px;
-font-size:14px;
-transition:.3s
-}
-
-nav a:hover{
-color:#ff4040
+font-size:14px
 }
 
 header{
@@ -107,13 +99,7 @@ gap:20px
 background:#151515;
 padding:22px;
 border-radius:12px;
-border:1px solid #222;
-transition:.3s
-}
-
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 25px rgba(229,9,20,.3)
+border:1px solid #222
 }
 
 button{
@@ -123,29 +109,18 @@ background:#e50914;
 border:none;
 border-radius:8px;
 color:white;
-cursor:pointer;
-transition:.3s
+cursor:pointer
 }
 
 button:hover{
-background:#ff1d25;
-transform:scale(1.05)
+background:#ff1d25
 }
+
+audio{width:100%}
 
 canvas{
 width:100%;
 max-width:100%
-}
-
-#nowPlaying{
-font-size:20px;
-font-weight:600;
-animation:glow 2s infinite alternate
-}
-
-@keyframes glow{
-from{color:white}
-to{color:#ff3b3b}
 }
 
 .chatbox{
@@ -155,17 +130,6 @@ background:#111;
 padding:10px;
 border-radius:6px;
 margin-bottom:10px
-}
-
-.chatbox p{
-background:#1a1a1a;
-padding:8px 10px;
-border-radius:6px;
-margin:6px 0
-}
-
-.chatbox b{
-color:#ff4040
 }
 
 input{
@@ -196,16 +160,14 @@ justify-content:center;
 align-items:center;
 gap:15px;
 flex-wrap:wrap;
-border-top:1px solid #222;
-box-shadow:0 -2px 20px rgba(0,0,0,.9)
+border-top:1px solid #222
 }
 
-#miniNow{
-color:#ff4040;
-font-weight:bold
-}
+/* CREW WA BUTTON */
 
-.crew-photo{position:relative}
+.crew-photo{
+position:relative;
+}
 
 .wa-btn{
 position:absolute;
@@ -223,6 +185,10 @@ color:white;
 font-size:18px;
 }
 
+.wa-btn:hover{
+background:#1ebe5d;
+}
+
 </style>
 
 </head>
@@ -234,11 +200,13 @@ font-size:18px;
 <img src="Logo.jpg">
 
 <div>
+
 <a href="#radio">Live</a>
 <a href="#schedule">Schedule</a>
 <a href="#crew">Crew</a>
 <a href="#request">Request</a>
 <a href="#chat">Chat</a>
+
 </div>
 
 </nav>
@@ -246,7 +214,9 @@ font-size:18px;
 <header>
 
 <img src="Logo.jpg">
+
 <h1>WINHART RADIO</h1>
+
 <p>Indie Pop • EDM • Lifestyle Broadcast</p>
 
 </header>
@@ -269,15 +239,124 @@ font-size:18px;
 
 </section>
 
+<section class="section" id="schedule">
+
+<h2>PROGRAM SCHEDULE</h2>
+
+<div class="grid">
+
+<div class="card"><h3>POP HITS</h3><p>Top pop songs everyday.</p></div>
+<div class="card"><h3>INDIE VIBES</h3><p>Independent artist showcase.</p></div>
+<div class="card"><h3>EDM NIGHT</h3><p>Electronic dance session.</p></div>
+<div class="card"><h3>HEALTH TALK</h3><p>Health & lifestyle tips.</p></div>
+<div class="card"><h3>LIFESTYLE</h3><p>Modern life inspiration.</p></div>
+<div class="card"><h3>ENTERTAINMENT NEWS</h3><p>Music & pop culture news.</p></div>
+
+</div>
+
+</section>
+
+<section class="section" id="crew">
+
+<h2>RADIO CREW</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="crew-photo">
+<img src="Andi.jpg" style="width:100%;border-radius:8px">
+</div>
+<h3>Andy Hartanto</h3>
+<p>Founder & Music Director</p>
+</div>
+
+<div class="card">
+<div class="crew-photo">
+<img src="Sheryl.jpg" style="width:100%;border-radius:8px">
+</div>
+<h3>Sheryl</h3>
+<p>Music Curator</p>
+</div>
+
+<div class="card">
+<div class="crew-photo">
+<img src="Rina.jpg" style="width:100%;border-radius:8px">
+<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+<h3>Miss Selena Prabowo</h3>
+<p>Sponsorship & Brand Partnership Manager</p>
+</div>
+
+<div class="card">
+<div class="crew-photo">
+<img src="Nandar.jpg" style="width:100%;border-radius:8px">
+<a class="wa-btn" href="https://wa.me/6285846561354" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+<h3>Kang Nandar</h3>
+<p>Public Relations & Community Partnership</p>
+<p></p>
+</div>
+
+<div class="card">
+<div class="crew-photo">
+<img src="Denis.jpg" style="width:100%;border-radius:8px">
+<a class="wa-btn" href="https://wa.me/6285353871166" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+<h3>Kang Denis Baskara</h3>
+<p>Programming & Advertising Director</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="request">
+
+<h2>REQUEST SONG</h2>
+
+<div class="card">
+
+<input id="reqname" placeholder="Nama">
+<input id="reqsong" placeholder="Judul Lagu">
+
+<button onclick="sendRequest()">Kirim Request</button>
+
+<p id="status"></p>
+
+</div>
+
+</section>
+
+<section class="section" id="chat">
+
+<h2>LISTENER CHAT</h2>
+
+<div class="card">
+
+<div class="chatbox" id="chatbox"></div>
+
+<input id="username" placeholder="Nama">
+<input id="message" placeholder="Pesan">
+
+<button onclick="sendChat()">Kirim</button>
+
+</div>
+
+</section>
+
 <footer>
+
 © 2026 WINHART RADIO
+
 </footer>
 
 <div class="playerbar">
 
-<button onclick="startRadio()">▶ PLAY</button> <button onclick="pauseRadio()">❚❚ PAUSE</button>
+<button onclick="startRadio()">▶ PLAY</button>
+<button onclick="pauseRadio()">❚❚ PAUSE</button>
 
-<span id="miniNow">OFF AIR</span> <span id="listeners">Listeners: 0</span>
+<span id="miniNow">OFF AIR</span>
+<span id="listeners">Listeners: 0</span>
 
 </div>
 
@@ -285,8 +364,8 @@ font-size:18px;
 
 var playlist=[
 "Winhart intro.mp4",
-"Kamu Adalah Cahaya.mp3",
-"Kembali Ke Rumah.mp3"
+"Kamu Adalah Cahaya",
+"Kembali Ke Rumah"
 ];
 
 var titles=[
@@ -312,8 +391,6 @@ player.play();
 
 document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
 document.getElementById("miniNow").innerText=titles[track];
-
-initVisualizer();
 
 }
 
@@ -358,82 +435,61 @@ player.play();
 
 });
 
+function sendRequest(){
+
+var name=document.getElementById("reqname").value;
+var song=document.getElementById("reqsong").value;
+
+document.getElementById("status").innerText="Request terkirim: "+song+" oleh "+name;
+
+}
+
 function sendChat(){
 
 var user=document.getElementById("username").value;
 var msg=document.getElementById("message").value;
 
-var time=new Date().toLocaleTimeString();
-
 var box=document.getElementById("chatbox");
 
-box.innerHTML+="<p><b>"+user+"</b> <small>"+time+"</small><br>"+msg+"</p>";
+box.innerHTML+="<p><b>"+user+"</b>: "+msg+"</p>";
 
 box.scrollTop=box.scrollHeight;
 
 }
 
-let listeners=20;
-
 setInterval(function(){
 
-let change=Math.floor(Math.random()*6)-3;
+var fakeListeners=Math.floor(Math.random()*40)+10;
 
-listeners+=change;
+document.getElementById("listeners").innerText="Listeners: "+fakeListeners;
 
-if(listeners<10)listeners=10;
-if(listeners>120)listeners=120;
-
-document.getElementById("listeners").innerText="Listeners: "+listeners;
-
-},4000);
-
-document.querySelectorAll('nav a').forEach(anchor=>{
-anchor.addEventListener('click',function(e){
-e.preventDefault();
-document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-});
-});
+},5000);
 
 </script>
 
 <script>
 
-let audioCtx;
-let analyser;
-let sourceNode;
-
 const audio = document.getElementById("radioPlayer");
 
-function initVisualizer(){
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const analyser = audioCtx.createAnalyser();
 
-if(!audioCtx){
-
-audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-analyser = audioCtx.createAnalyser();
-
-sourceNode = audioCtx.createMediaElementSource(audio);
+const sourceNode = audioCtx.createMediaElementSource(audio);
 
 sourceNode.connect(analyser);
 analyser.connect(audioCtx.destination);
 
-analyser.fftSize = 128;
-
-draw();
-
-}
-
-}
+analyser.fftSize = 64;
 
 const canvas = document.getElementById("visualizer");
 const ctx = canvas.getContext("2d");
 
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
 function draw(){
 
 requestAnimationFrame(draw);
-
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
 
 analyser.getByteFrequencyData(dataArray);
 
@@ -441,11 +497,12 @@ ctx.fillStyle="#000";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
 let barWidth=(canvas.width/bufferLength)*2;
+let barHeight;
 let x=0;
 
 for(let i=0;i<bufferLength;i++){
 
-let barHeight=dataArray[i];
+barHeight=dataArray[i];
 
 ctx.fillStyle="rgb(229,"+(barHeight+50)+",20)";
 ctx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight/2);
@@ -455,6 +512,8 @@ x+=barWidth+1;
 }
 
 }
+
+draw();
 
 </script>
 
