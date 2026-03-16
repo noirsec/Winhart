@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 
@@ -150,6 +149,37 @@ padding:40px;
 color:#777
 }
 
+/* EQUALIZER TAMBAHAN */
+
+.equalizer{
+display:flex;
+justify-content:center;
+align-items:flex-end;
+gap:5px;
+height:50px;
+margin-top:15px
+}
+
+.equalizer span{
+width:6px;
+background:#e50914;
+height:10px;
+animation:wave 1s infinite
+}
+
+.equalizer span:nth-child(2){animation-delay:.1s}
+.equalizer span:nth-child(3){animation-delay:.2s}
+.equalizer span:nth-child(4){animation-delay:.3s}
+.equalizer span:nth-child(5){animation-delay:.4s}
+.equalizer span:nth-child(6){animation-delay:.5s}
+.equalizer span:nth-child(7){animation-delay:.6s}
+
+@keyframes wave{
+0%{height:10px}
+50%{height:45px}
+100%{height:10px}
+}
+
 /* STICKY RADIO BAR */
 
 .playerbar{
@@ -206,7 +236,11 @@ grid-template-columns:1fr
 
 <div>
 
-<a href="#radio">Live</a> <a href="#schedule">Schedule</a> <a href="#crew">Crew</a> <a href="#request">Request</a> <a href="#chat">Chat</a>
+<a href="#radio">Live</a>
+<a href="#schedule">Schedule</a>
+<a href="#crew">Crew</a>
+<a href="#request">Request</a>
+<a href="#chat">Chat</a>
 
 </div>
 
@@ -234,7 +268,11 @@ grid-template-columns:1fr
 <source id="radioSource">
 </audio>
 
-<canvas id="visualizer" width="600" height="120"></canvas>
+<div class="equalizer">
+<span></span><span></span><span></span>
+<span></span><span></span><span></span>
+<span></span>
+</div>
 
 </div>
 
@@ -269,53 +307,33 @@ grid-template-columns:1fr
 <div class="grid">
 
 <div class="card">
-
 <img src="Andi.jpg" style="width:100%;border-radius:8px">
-
 <h3>Andy Hartanto</h3>
-
 <p>Founder & Music Director</p>
-
 </div>
 
 <div class="card">
-
 <img src="Sheryl.jpg" style="width:100%;border-radius:8px">
-
 <h3>Sheryl</h3>
-
 <p>Music Curator</p>
-
 </div>
 
 <div class="card">
-
 <img src="Rina.jpg" style="width:100%;border-radius:8px">
-
-<h3>Miss Rina Prabowo</h3>
-
+<h3>Miss Selena Prabowo</h3>
 <p>Entertainment</p>
-
 </div>
 
 <div class="card">
-
 <img src="Nandar.jpg" style="width:100%;border-radius:8px">
-
 <h3>Kang Nandar</h3>
-
 <p>Morning POP Hits</p>
-
 </div>
 
 <div class="card">
-
 <img src="Denis.jpg" style="width:100%;border-radius:8px">
-
 <h3>Kang Denis Baskara</h3>
-
 <p>EDM Nights</p>
-
 </div>
 
 </div>
@@ -329,7 +347,6 @@ grid-template-columns:1fr
 <div class="card">
 
 <input id="reqname" placeholder="Nama">
-
 <input id="reqsong" placeholder="Judul Lagu">
 
 <button onclick="sendRequest()">Kirim Request</button>
@@ -349,7 +366,6 @@ grid-template-columns:1fr
 <div class="chatbox" id="chatbox"></div>
 
 <input id="username" placeholder="Nama">
-
 <input id="message" placeholder="Pesan">
 
 <button onclick="sendChat()">Kirim</button>
@@ -367,34 +383,37 @@ grid-template-columns:1fr
 <div class="playerbar">
 
 <button onclick="startRadio()">▶ PLAY</button>
-
 <button onclick="pauseRadio()">❚❚ PAUSE</button>
 
 <span id="miniNow">OFF AIR</span>
-
 <span id="listeners">Listeners: 0</span>
 
 </div>
 
 <script>
 
+/* PLAYLIST */
+
 var playlist=[
 "Winhart intro.mp4",
-"Harmoni Sunyi",
+"Harmoni Sunyi.mp3",
 "Kamu Adalah Cahaya.mp3",
-"Jejak Yang Tertinggal",
-"Kembali Ke Rumah"
+"Jejak Yang Tertinggal.mp3",
+"Kembali Ke Rumah.mp3"
 ];
 
 var titles=[
 "Intro WINHART Radio",
 "Harmoni Sunyi",
-"Kamu Adalah Cahaya.mp3",
+"Kamu Adalah Cahaya",
 "Jejak Yang Tertinggal",
 "Kembali Ke Rumah"
 ];
 
+var radioID="winhart-id.mp3";
+
 var track=0;
+var songCount=0;
 
 function startRadio(){
 
@@ -421,6 +440,19 @@ var player=document.getElementById("radioPlayer");
 
 player.addEventListener("ended",function(){
 
+songCount++;
+
+if(songCount==4){
+
+document.getElementById("radioSource").src=radioID;
+
+document.getElementById("nowPlaying").innerText="WINHART RADIO ID";
+document.getElementById("miniNow").innerText="WINHART RADIO ID";
+
+songCount=0;
+
+}else{
+
 track++;
 
 if(track>=playlist.length){
@@ -432,14 +464,12 @@ document.getElementById("radioSource").src=playlist[track];
 document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
 document.getElementById("miniNow").innerText=titles[track];
 
+}
+
 player.load();
 player.play();
 
 });
-
-</script>
-
-<script>
 
 function sendRequest(){
 
@@ -463,9 +493,7 @@ box.scrollTop=box.scrollHeight;
 
 }
 
-</script>
-
-<script>
+/* LISTENER COUNTER */
 
 setInterval(function(){
 
