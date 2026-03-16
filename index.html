@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 
 <link rel="canonical" href="https://winhart.xyz">
 
-<!-- SCHEMA -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <script type="application/ld+json">
 {
@@ -31,8 +32,6 @@
  }
 }
 </script>
-
-<!-- GOOGLE ANALYTICS -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 
@@ -149,39 +148,6 @@ padding:40px;
 color:#777
 }
 
-/* EQUALIZER TAMBAHAN */
-
-.equalizer{
-display:flex;
-justify-content:center;
-align-items:flex-end;
-gap:5px;
-height:50px;
-margin-top:15px
-}
-
-.equalizer span{
-width:6px;
-background:#e50914;
-height:10px;
-animation:wave 1s infinite
-}
-
-.equalizer span:nth-child(2){animation-delay:.1s}
-.equalizer span:nth-child(3){animation-delay:.2s}
-.equalizer span:nth-child(4){animation-delay:.3s}
-.equalizer span:nth-child(5){animation-delay:.4s}
-.equalizer span:nth-child(6){animation-delay:.5s}
-.equalizer span:nth-child(7){animation-delay:.6s}
-
-@keyframes wave{
-0%{height:10px}
-50%{height:45px}
-100%{height:10px}
-}
-
-/* STICKY RADIO BAR */
-
 .playerbar{
 position:fixed;
 bottom:0;
@@ -197,31 +163,30 @@ flex-wrap:wrap;
 border-top:1px solid #222
 }
 
-/* MOBILE */
+/* CREW WA BUTTON */
 
-@media(max-width:768px){
-
-nav{
-flex-direction:column;
-align-items:flex-start
+.crew-photo{
+position:relative;
 }
 
-nav div{
-margin-top:10px
+.wa-btn{
+position:absolute;
+bottom:10px;
+right:10px;
+background:#25D366;
+width:38px;
+height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+text-decoration:none;
+color:white;
+font-size:18px;
 }
 
-nav a{
-margin:5px 8px 0 0
-}
-
-header{
-padding:40px 10px
-}
-
-.grid{
-grid-template-columns:1fr
-}
-
+.wa-btn:hover{
+background:#1ebe5d;
 }
 
 </style>
@@ -268,11 +233,7 @@ grid-template-columns:1fr
 <source id="radioSource">
 </audio>
 
-<div class="equalizer">
-<span></span><span></span><span></span>
-<span></span><span></span><span></span>
-<span></span>
-</div>
+<canvas id="visualizer" width="600" height="120"></canvas>
 
 </div>
 
@@ -285,15 +246,10 @@ grid-template-columns:1fr
 <div class="grid">
 
 <div class="card"><h3>POP HITS</h3><p>Top pop songs everyday.</p></div>
-
 <div class="card"><h3>INDIE VIBES</h3><p>Independent artist showcase.</p></div>
-
 <div class="card"><h3>EDM NIGHT</h3><p>Electronic dance session.</p></div>
-
 <div class="card"><h3>HEALTH TALK</h3><p>Health & lifestyle tips.</p></div>
-
 <div class="card"><h3>LIFESTYLE</h3><p>Modern life inspiration.</p></div>
-
 <div class="card"><h3>ENTERTAINMENT NEWS</h3><p>Music & pop culture news.</p></div>
 
 </div>
@@ -307,13 +263,17 @@ grid-template-columns:1fr
 <div class="grid">
 
 <div class="card">
+<div class="crew-photo">
 <img src="Andi.jpg" style="width:100%;border-radius:8px">
+</div>
 <h3>Andy Hartanto</h3>
 <p>Founder & Music Director</p>
 </div>
 
 <div class="card">
+<div class="crew-photo">
 <img src="Sheryl.jpg" style="width:100%;border-radius:8px">
+</div>
 <h3>Sheryl</h3>
 <p>Music Curator</p>
 </div>
@@ -321,24 +281,26 @@ grid-template-columns:1fr
 <div class="card">
 <div class="crew-photo">
 <img src="Rina.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-
+<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
-
 <h3>Miss Selena Prabowo</h3>
-<p>Entertainment and marketing comunication</p>
+<p>Entertainment</p>
 </div>
 
 <div class="card">
+<div class="crew-photo">
 <img src="Nandar.jpg" style="width:100%;border-radius:8px">
+<a class="wa-btn" href="https://wa.me/6285846561354" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
 <h3>Kang Nandar</h3>
 <p>Morning POP Hits</p>
 </div>
 
 <div class="card">
+<div class="crew-photo">
 <img src="Denis.jpg" style="width:100%;border-radius:8px">
+<a class="wa-btn" href="https://wa.me/6285353871166" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
 <h3>Kang Denis Baskara</h3>
 <p>EDM Nights</p>
 </div>
@@ -398,8 +360,6 @@ grid-template-columns:1fr
 </div>
 
 <script>
-
-/* PLAYLIST */
 
 var playlist=[
 "Winhart intro.mp4",
@@ -500,8 +460,6 @@ box.scrollTop=box.scrollHeight;
 
 }
 
-/* LISTENER COUNTER */
-
 setInterval(function(){
 
 var fakeListeners=Math.floor(Math.random()*40)+10;
@@ -512,5 +470,56 @@ document.getElementById("listeners").innerText="Listeners: "+fakeListeners;
 
 </script>
 
+<script>
+
+const audio = document.getElementById("radioPlayer");
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const analyser = audioCtx.createAnalyser();
+
+const sourceNode = audioCtx.createMediaElementSource(audio);
+
+sourceNode.connect(analyser);
+analyser.connect(audioCtx.destination);
+
+analyser.fftSize = 64;
+
+const canvas = document.getElementById("visualizer");
+const ctx = canvas.getContext("2d");
+
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
+function draw(){
+
+requestAnimationFrame(draw);
+
+analyser.getByteFrequencyData(dataArray);
+
+ctx.fillStyle="#000";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+let barWidth=(canvas.width/bufferLength)*2;
+let barHeight;
+let x=0;
+
+for(let i=0;i<bufferLength;i++){
+
+barHeight=dataArray[i];
+
+ctx.fillStyle="rgb(229,"+(barHeight+50)+",20)";
+ctx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight/2);
+
+x+=barWidth+1;
+
+}
+
+}
+
+draw();
+
+</script>
+
 </body>
 </html>
+```
