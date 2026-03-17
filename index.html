@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,22 +16,6 @@
 <link rel="canonical" href="https://winhart.xyz">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"MusicGroup",
- "name":"WINHART",
- "genre":["Pop","EDM"],
- "url":"https://winhart.xyz",
- "image":"Logo.jpg",
- "description":"WINHART Radio is an indie pop and electronic music station created by Andy Hartanto.",
- "founder":{
- "@type":"Person",
- "name":"Andy Hartanto"
- }
-}
-</script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 
@@ -101,9 +86,78 @@ border-radius:12px;
 border:1px solid #222
 }
 
+/* LIVE PLAYER */
+
+.live-player{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px
+}
+
+.nowbox{
+background:#0f0f0f;
+border:1px solid #333;
+border-radius:14px;
+padding:20px;
+width:100%;
+max-width:420px;
+text-align:center;
+box-shadow:0 0 20px rgba(229,9,20,0.2)
+}
+
+.cover-art{
+width:140px;
+height:140px;
+border-radius:10px;
+border:2px solid #333;
+margin-bottom:10px
+}
+
+.live-indicator{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:6px;
+color:#ff3b3b;
+font-size:12px;
+margin-bottom:6px
+}
+
+.live-dot{
+width:8px;
+height:8px;
+background:red;
+border-radius:50%;
+animation:blink 1s infinite
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0.3}
+100%{opacity:1}
+}
+
+.now-title{
+font-size:12px;
+color:#aaa
+}
+
+.now-song{
+font-size:20px;
+font-weight:bold;
+margin:6px 0
+}
+
+.player-controls{
+display:flex;
+gap:10px;
+justify-content:center
+}
+
 button{
-padding:12px 25px;
-font-size:15px;
+padding:11px 22px;
+font-size:14px;
 background:#e50914;
 border:none;
 border-radius:8px;
@@ -111,16 +165,11 @@ color:white;
 cursor:pointer
 }
 
-button:hover{
-background:#ff1d25
-}
+button:hover{background:#ff1d25}
 
 audio{width:100%}
 
-canvas{
-width:100%;
-max-width:100%
-}
+canvas{width:100%}
 
 .chatbox{
 height:200px;
@@ -158,15 +207,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 gap:15px;
-flex-wrap:wrap;
 border-top:1px solid #222
 }
 
-/* CREW WA BUTTON */
-
-.crew-photo{
-position:relative;
-}
+.crew-photo{position:relative}
 
 .wa-btn{
 position:absolute;
@@ -179,13 +223,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 border-radius:50%;
-text-decoration:none;
 color:white;
 font-size:18px;
-}
-
-.wa-btn:hover{
-background:#1ebe5d;
+text-decoration:none
 }
 
 </style>
@@ -224,9 +264,27 @@ background:#1ebe5d;
 
 <h2>LIVE RADIO</h2>
 
-<div class="card" style="text-align:center">
+<div class="card live-player">
 
-<h3 id="nowPlaying">Now Playing : -</h3>
+<div class="nowbox">
+
+<div class="live-indicator">
+<div class="live-dot"></div>
+LIVE BROADCAST
+</div>
+
+<img src="Logo.jpg" class="cover-art">
+
+<div class="now-title">NOW PLAYING</div>
+
+<div class="now-song" id="nowPlaying">OFF AIR</div>
+
+<div class="player-controls">
+<button onclick="startRadio()">▶ PLAY</button>
+<button onclick="pauseRadio()">❚❚ PAUSE</button>
+</div>
+
+</div>
 
 <audio id="radioPlayer">
 <source id="radioSource">
@@ -280,29 +338,28 @@ background:#1ebe5d;
 <div class="card">
 <div class="crew-photo">
 <img src="Rina.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a class="wa-btn" href="https://wa.me/6285720858250"><i class="fab fa-whatsapp"></i></a>
 </div>
 <h3>Miss Selena Prabowo</h3>
-<p>Sponsorship & Brand Partnership Manager</p>
+<p>Sponsorship Manager</p>
 </div>
 
 <div class="card">
 <div class="crew-photo">
 <img src="Nandar.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285846561354" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a class="wa-btn" href="https://wa.me/6285846561354"><i class="fab fa-whatsapp"></i></a>
 </div>
 <h3>Kang Nandar</h3>
-<p>Public Relations & Community Partnership</p>
-<p></p>
+<p>Public Relations</p>
 </div>
 
 <div class="card">
 <div class="crew-photo">
 <img src="Denis.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285353871166" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a class="wa-btn" href="https://wa.me/6285353871166"><i class="fab fa-whatsapp"></i></a>
 </div>
 <h3>Kang Denis Baskara</h3>
-<p>Programming & Advertising Director</p>
+<p>Programming Director</p>
 </div>
 
 </div>
@@ -351,9 +408,6 @@ background:#1ebe5d;
 
 <div class="playerbar">
 
-<button onclick="startRadio()">▶ PLAY</button>
-<button onclick="pauseRadio()">❚❚ PAUSE</button>
-
 <span id="miniNow">OFF AIR</span>
 <span id="listeners">Listeners: 0</span>
 
@@ -373,10 +427,7 @@ var titles=[
 "Kembali Ke Rumah"
 ];
 
-var radioID="winhart-id.mp3";
-
 var track=0;
-var songCount=0;
 
 function startRadio(){
 
@@ -388,51 +439,14 @@ source.src=playlist[track];
 player.load();
 player.play();
 
-document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
+document.getElementById("nowPlaying").innerText=titles[track];
 document.getElementById("miniNow").innerText=titles[track];
 
 }
 
 function pauseRadio(){
-
 document.getElementById("radioPlayer").pause();
-
 }
-
-var player=document.getElementById("radioPlayer");
-
-player.addEventListener("ended",function(){
-
-songCount++;
-
-if(songCount==4){
-
-document.getElementById("radioSource").src=radioID;
-
-document.getElementById("nowPlaying").innerText="WINHART RADIO ID";
-document.getElementById("miniNow").innerText="WINHART RADIO ID";
-
-songCount=0;
-
-}else{
-
-track++;
-
-if(track>=playlist.length){
-track=0;
-}
-
-document.getElementById("radioSource").src=playlist[track];
-
-document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
-document.getElementById("miniNow").innerText=titles[track];
-
-}
-
-player.load();
-player.play();
-
-});
 
 function sendRequest(){
 
@@ -468,23 +482,23 @@ document.getElementById("listeners").innerText="Listeners: "+fakeListeners;
 
 <script>
 
-const audio = document.getElementById("radioPlayer");
+const audio=document.getElementById("radioPlayer");
 
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const analyser = audioCtx.createAnalyser();
+const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+const analyser=audioCtx.createAnalyser();
 
-const sourceNode = audioCtx.createMediaElementSource(audio);
+const sourceNode=audioCtx.createMediaElementSource(audio);
 
 sourceNode.connect(analyser);
 analyser.connect(audioCtx.destination);
 
-analyser.fftSize = 64;
+analyser.fftSize=64;
 
-const canvas = document.getElementById("visualizer");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("visualizer");
+const ctx=canvas.getContext("2d");
 
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
+const bufferLength=analyser.frequencyBinCount;
+const dataArray=new Uint8Array(bufferLength);
 
 function draw(){
 
@@ -518,3 +532,4 @@ draw();
 
 </body>
 </html>
+```
