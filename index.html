@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>WINHART RADIO — AUTO DJ</title>
+<title>WINHART RADIO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -12,123 +12,249 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background:#0b0b0b;
 color:white;
-text-align:center;
+display:flex;
 }
 
-.hero{
-padding:60px 20px;
+/* SIDEBAR */
+.sidebar{
+width:230px;
+background:#000;
+height:100vh;
+padding:20px;
 }
 
-.hero img{
-width:140px;
-border-radius:50%;
-box-shadow:0 0 30px #ff0050;
+.sidebar img{
+width:100%;
+margin-bottom:20px;
 }
 
-.player{
-margin-top:30px;
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:20px;
-display:inline-block;
+.sidebar a{
+display:block;
+color:#aaa;
+text-decoration:none;
+margin:12px 0;
+}
+.sidebar a:hover{color:white}
+
+/* MAIN */
+.main{
+flex:1;
+padding:30px;
+overflow:auto;
 }
 
-button{
-padding:12px 25px;
-border:none;
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+/* CARD */
+.card{
+background:#181818;
+padding:15px;
+border-radius:10px;
+transition:.3s;
+}
+.card:hover{background:#282828;}
+
+.card img{
+width:100%;
 border-radius:8px;
-background:#ff0050;
+}
+
+/* PLAYER BAR */
+.playerbar{
+position:fixed;
+bottom:0;
+left:230px;
+right:0;
+background:#111;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.controls button{
+padding:10px 15px;
+border:none;
+border-radius:6px;
+background:#1db954;
 color:white;
-margin:10px;
+margin-right:10px;
 cursor:pointer;
 }
 
-#nowPlaying{
-margin-top:10px;
-font-size:18px;
+/* MOBILE */
+@media(max-width:768px){
+.sidebar{display:none}
+.playerbar{left:0}
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="hero">
+<!-- SIDEBAR -->
+<div class="sidebar">
 <img src="Logo.jpg">
+
+<a href="#">🏠 Home</a>
+<a href="#">📻 Live Radio</a>
+<a href="#">📅 Schedule</a>
+<a href="#">👥 Crew</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
 <h1>WINHART RADIO</h1>
-<p>Auto DJ Streaming</p>
+<p>Indie Pop • EDM • 24/7 Auto DJ</p>
 
-<div class="player">
+<br>
 
-<h3 id="nowPlaying">Loading...</h3>
+<!-- SCHEDULE -->
+<h2>📅 Program Radio</h2>
 
-<audio id="radioPlayer" autoplay>
-<source id="radioSource">
-</audio>
+<div class="grid">
 
-<button onclick="startRadio()">START RADIO</button>
+<div class="card"><h3>POP HITS</h3><p>Top pop songs everyday</p></div>
+<div class="card"><h3>INDIE VIBES</h3><p>Independent artists</p></div>
+<div class="card"><h3>EDM NIGHT</h3><p>Electronic session</p></div>
+<div class="card"><h3>HEALTH TALK</h3><p>Lifestyle & health</p></div>
+<div class="card"><h3>LIFESTYLE</h3><p>Modern inspiration</p></div>
+<div class="card"><h3>ENTERTAINMENT NEWS</h3><p>Pop culture update</p></div>
 
 </div>
+
+<br><br>
+
+<!-- CREW -->
+<h2>🎧 Radio Crew</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="Andi.jpg">
+<h3>Andy Hartanto</h3>
+<p>Founder & Music Director</p>
 </div>
+
+<div class="card">
+<img src="Sheryl.jpg">
+<h3>Sheryl</h3>
+<p>Music Curator</p>
+</div>
+
+<div class="card">
+<img src="Rina.jpg">
+<h3>Miss Selena Prabowo</h3>
+<p>Entertainment</p>
+</div>
+
+<div class="card">
+<img src="Nandar.jpg">
+<h3>Kang Nandar</h3>
+<p>Morning POP Hits</p>
+</div>
+
+<div class="card">
+<img src="Denis.jpg">
+<h3>Kang Denis Baskara</h3>
+<p>EDM Nights</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- PLAYER BAR -->
+<div class="playerbar">
+
+<div>
+<strong>WINHART RADIO</strong><br>
+<span id="nowPlaying">Loading playlist...</span>
+</div>
+
+<div class="controls">
+<button onclick="startRadio()">▶</button>
+<button onclick="pauseRadio()">❚❚</button>
+</div>
+
+</div>
+
+<audio id="radioPlayer"></audio>
 
 <script>
 
-/* =====================
-   AUTO DJ STREAM FIX
-===================== */
+/* =========================
+   AUTO LOAD GITHUB SONGS
+========================= */
 
-var playlist=[
-"https://raw.githubusercontent.com/noirsec/Winhart/main/Kamu%20Adalah%20Cahaya.mp3",
-"https://raw.githubusercontent.com/noirsec/Winhart/main/kembali%20ke%20rumah"
-];
+let playlist = [];
+let titles = [];
+let track = 0;
 
-var titles=[
-"Kamu Adalah Cahaya",
-"kembali ke rumah"
-];
+fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
+.then(res=>res.json())
+.then(data=>{
 
-var track=0;
-var player=document.getElementById("radioPlayer");
-var source=document.getElementById("radioSource");
+data.forEach(file=>{
+
+if(file.name.endsWith(".mp3")){
+playlist.push(file.download_url);
+titles.push(file.name.replace(".mp3",""));
+}
+
+});
+
+document.getElementById("nowPlaying").innerText="Klik Play untuk mulai";
+
+});
+
+/* =========================
+   AUTO DJ ENGINE
+========================= */
+
+const player = document.getElementById("radioPlayer");
 
 function playTrack(){
 
-source.src=playlist[track];
+if(playlist.length === 0) return;
 
-player.load();
+player.src = playlist[track];
 
-player.play().then(()=>{
-console.log("PLAYING");
-}).catch(()=>{
-document.getElementById("nowPlaying").innerText="Klik START RADIO";
+player.play().catch(()=>{
+document.getElementById("nowPlaying").innerText="Klik Play dulu";
 });
 
-document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
+document.getElementById("nowPlaying").innerText =
+"Now Playing: " + titles[track];
+
 }
 
-/* AUTO NEXT */
-player.addEventListener("ended",function(){
-
-track++;
-
-if(track>=playlist.length){
-track=0;
-}
-
-playTrack();
-
-});
-
-/* START BUTTON (WAJIB UNTUK BROWSER) */
 function startRadio(){
 playTrack();
 }
 
-/* AUTO LOAD (COBA PLAY) */
-window.addEventListener("load",()=>{
-setTimeout(playTrack,1000);
+function pauseRadio(){
+player.pause();
+}
+
+player.addEventListener("ended",()=>{
+
+track++;
+
+if(track >= playlist.length){
+track = 0;
+}
+
+playTrack();
+
 });
 
 </script>
