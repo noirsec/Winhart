@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WINHART RADIO</title>
+<title>WINHART RADIO APP</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -12,99 +12,139 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-background:#0b0b0b;
+background:linear-gradient(180deg,#0b0b0b,#121212);
 color:white;
-display:flex;
-height:100vh;
-overflow:hidden;
 }
 
-/* LEFT */
-.left{
-flex:2;
-padding:25px;
-overflow:auto;
-}
-
-/* RIGHT (CHAT) */
-.right{
-flex:1;
-background:#111;
+/* APP CONTAINER */
+.app{
+max-width:500px;
+margin:auto;
 padding:20px;
-display:flex;
-flex-direction:column;
 }
 
-/* HEADER */
-.header{
+/* COVER */
+.cover{
+width:100%;
+height:260px;
+border-radius:15px;
+background:#222;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+text-align:center;
 margin-bottom:20px;
 }
 
-.onair{
-color:#ff0040;
-font-weight:bold;
+/* TITLE */
+.title{
+font-size:18px;
+margin-bottom:5px;
 }
 
-/* PLAYER */
-.player{
-background:#181818;
-padding:20px;
-border-radius:15px;
-margin-bottom:25px;
+.artist{
+font-size:13px;
+color:#aaa;
+margin-bottom:15px;
+}
+
+/* PROGRESS */
+.progress{
+width:100%;
+height:5px;
+background:#333;
+border-radius:5px;
+overflow:hidden;
+margin-bottom:15px;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:#1db954;
+}
+
+/* CONTROLS */
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-bottom:20px;
 }
 
 button{
-padding:10px 20px;
+padding:12px 18px;
 background:#1db954;
 border:none;
-border-radius:8px;
+border-radius:50px;
 color:white;
 cursor:pointer;
-margin-right:10px;
 }
 
-/* GRID CREW */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
+/* VISUALIZER */
+.visualizer{
+display:flex;
+justify-content:center;
+align-items:flex-end;
+gap:3px;
+height:40px;
+margin-bottom:20px;
 }
 
-.card{
-background:#181818;
-padding:10px;
-border-radius:10px;
-text-align:center;
+.bar{
+width:4px;
+background:#1db954;
+height:10px;
+animation:beat 1s infinite;
 }
 
-.card img{
-width:100%;
-border-radius:8px;
+.bar:nth-child(2){animation-delay:.2s;}
+.bar:nth-child(3){animation-delay:.4s;}
+.bar:nth-child(4){animation-delay:.6s;}
+.bar:nth-child(5){animation-delay:.8s;}
+
+@keyframes beat{
+0%,100%{height:10px;}
+50%{height:35px;}
 }
 
 /* CHAT */
-.chatbox{
-flex:1;
-overflow:auto;
-background:#000;
+.chat{
+background:#111;
 padding:10px;
 border-radius:10px;
+height:200px;
+overflow:auto;
 margin-bottom:10px;
-font-size:14px;
 }
 
-.chatbox p{
+.chat p{
+background:#1a1a1a;
+padding:6px;
+border-radius:6px;
 margin:5px 0;
+font-size:12px;
 }
 
 input{
 width:100%;
 padding:10px;
-margin-top:8px;
+margin-top:5px;
 background:#222;
 border:none;
 color:white;
 border-radius:6px;
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+.app{
+max-width:900px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
 }
 
 </style>
@@ -112,43 +152,41 @@ border-radius:6px;
 
 <body>
 
+<div class="app">
+
 <!-- LEFT -->
-<div class="left">
+<div>
 
-<div class="header">
-<h1>WINHART RADIO</h1>
-<p class="onair">🔴 ON AIR</p>
-<p>Listeners: <span id="listenerCount">0</span></p>
+<div class="cover" id="cover">WINHART RADIO</div>
+
+<div class="title" id="title">Loading...</div>
+<div class="artist">Auto DJ • Live 24/7</div>
+
+<div class="progress">
+<div class="progress-bar" id="progress"></div>
 </div>
 
-<!-- PLAYER -->
-<div class="player">
-<h3 id="nowPlaying">Loading...</h3>
-<button onclick="startRadio()">PLAY</button>
-<button onclick="pauseRadio()">PAUSE</button>
+<div class="controls">
+<button onclick="startRadio()">▶</button>
+<button onclick="pauseRadio()">❚❚</button>
 </div>
 
-<!-- CREW -->
-<h2>Radio Crew</h2>
-
-<div class="grid">
-
-<div class="card"><img src="Andi.jpg"><p>Andy Hartanto</p></div>
-<div class="card"><img src="Sheryl.jpg"><p>Sheryl</p></div>
-<div class="card"><img src="Rina.jpg"><p>Miss Selena</p></div>
-<div class="card"><img src="Nandar.jpg"><p>Kang Nandar</p></div>
-<div class="card"><img src="Denis.jpg"><p>Kang Denis</p></div>
-
+<div class="visualizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
 </div>
 
 </div>
 
-<!-- RIGHT CHAT -->
-<div class="right">
+<!-- RIGHT -->
+<div>
 
-<h3>Live Chat</h3>
+<h3>💬 Live Chat</h3>
 
-<div class="chatbox" id="chatbox"></div>
+<div class="chat" id="chatbox"></div>
 
 <input id="username" placeholder="Nama">
 <input id="message" placeholder="Pesan">
@@ -156,13 +194,15 @@ border-radius:6px;
 
 </div>
 
-<audio id="radioPlayer"></audio>
+</div>
+
+<audio id="player"></audio>
 
 <script type="module">
 
 /* FIREBASE */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getDatabase, ref, push, onChildAdded, set, onValue } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
 const app = initializeApp({
 apiKey:"AIzaSyBCwucuNtJnzFWXSqfwbK0_mti2sFH6ySk",
@@ -171,26 +211,15 @@ databaseURL:"https://winhart-radio-default-rtdb.firebaseio.com"
 
 const db = getDatabase(app);
 
-/* LISTENER */
-const userId = Date.now();
-
-set(ref(db,"listeners/"+userId),true);
-
-window.addEventListener("beforeunload",()=>{
-set(ref(db,"listeners/"+userId),null);
-});
-
-onValue(ref(db,"listeners"),snap=>{
-let val = snap.val() || {};
-document.getElementById("listenerCount").innerText = Object.keys(val).length;
-});
-
 /* CHAT */
 window.sendChat=function(){
+if(!username.value||!message.value)return;
+
 push(ref(db,"chat"),{
 user:username.value,
 msg:message.value
 });
+
 message.value="";
 }
 
@@ -203,40 +232,48 @@ chatbox.scrollTop=chatbox.scrollHeight;
 /* AUTO DJ */
 let playlist=[];
 let titles=[];
-let track=0;
+let i=0;
 
 fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
 .then(r=>r.json())
 .then(data=>{
-data.forEach(file=>{
-if(file.name.endsWith(".mp3")){
-playlist.push(file.download_url);
-titles.push(file.name.replace(".mp3",""));
+data.forEach(f=>{
+if(f.name.endsWith(".mp3")){
+playlist.push(f.download_url);
+titles.push(f.name.replace(".mp3",""));
 }
 });
-document.getElementById("nowPlaying").innerText="Klik PLAY";
+title.innerText="Klik Play";
 });
 
-const player=document.getElementById("radioPlayer");
+const player=document.getElementById("player");
 
+/* PLAY */
 function playTrack(){
-if(playlist.length===0)return;
+if(!playlist.length)return;
 
-player.src=playlist[track];
+player.src=playlist[i];
 player.play();
 
-document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
+title.innerText=titles[i];
+cover.innerText=titles[i];
 }
 
 window.startRadio=playTrack;
-
 window.pauseRadio=()=>player.pause();
 
+/* NEXT AUTO */
 player.addEventListener("ended",()=>{
-track++;
-if(track>=playlist.length)track=0;
+i++;
+if(i>=playlist.length)i=0;
 playTrack();
 });
+
+/* PROGRESS */
+player.ontimeupdate=()=>{
+let percent=(player.currentTime/player.duration)*100;
+progress.style.width=percent+"%";
+};
 
 </script>
 
