@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>WINHART RADIO — Live Streaming</title>
+<title>WINHART RADIO — AUTO DJ</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -14,185 +14,101 @@
 body{
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
+text-align:center;
 }
 
-/* NAV */
-nav{
-display:flex;
-justify-content:space-between;
-padding:15px 30px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-position:sticky;
-top:0;
+.hero{
+padding:60px 20px;
 }
 
-nav img{height:40px}
-
-/* HERO */
-.hero{text-align:center;padding:50px}
 .hero img{
 width:140px;
 border-radius:50%;
-box-shadow:0 0 30px rgba(255,0,80,0.6);
+box-shadow:0 0 30px #ff0050;
 }
 
-/* PLAYER */
 .player{
-max-width:500px;
-margin:30px auto;
+margin-top:30px;
 background:rgba(255,255,255,0.05);
 padding:25px;
 border-radius:20px;
-text-align:center;
-backdrop-filter:blur(15px);
+display:inline-block;
 }
 
 button{
-padding:10px 20px;
-margin:10px;
+padding:12px 25px;
 border:none;
 border-radius:8px;
 background:#ff0050;
 color:white;
+margin:10px;
 cursor:pointer;
 }
 
-/* GRID */
-.section{max-width:1100px;margin:auto;padding:40px 20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-
-.card{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-}
-
-.card img{width:100%;border-radius:10px}
-
-/* CHAT */
-.chatbox{
-height:200px;
-overflow:auto;
-background:#000;
-padding:10px;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-input{
-width:100%;
-padding:12px;
+#nowPlaying{
 margin-top:10px;
-background:#111;
-border:none;
-border-radius:8px;
-color:white;
+font-size:18px;
 }
+
 </style>
 </head>
 
 <body>
 
-<nav>
-<img src="Logo.jpg">
-</nav>
-
 <div class="hero">
 <img src="Logo.jpg">
 <h1>WINHART RADIO</h1>
-<p>Indie Pop • EDM • 24/7 Streaming</p>
-</div>
+<p>Auto DJ Streaming</p>
 
-<!-- PLAYER -->
 <div class="player">
-<h3 id="nowPlaying">Now Playing: -</h3>
 
-<audio id="radioPlayer">
+<h3 id="nowPlaying">Loading...</h3>
+
+<audio id="radioPlayer" autoplay>
 <source id="radioSource">
 </audio>
 
-<button onclick="startRadio()">PLAY</button>
-<button onclick="pauseRadio()">PAUSE</button>
+<button onclick="startRadio()">START RADIO</button>
 
 </div>
-
-<!-- CREW -->
-<div class="section">
-<h2>RADIO CREW</h2>
-<div class="grid">
-
-<div class="card"><img src="Andi.jpg"><h3>Andy Hartanto</h3></div>
-<div class="card"><img src="Sheryl.jpg"><h3>Sheryl</h3></div>
-<div class="card"><img src="Rina.jpg"><h3>Miss Selena</h3></div>
-<div class="card"><img src="Nandar.jpg"><h3>Kang Nandar</h3></div>
-<div class="card"><img src="Denis.jpg"><h3>Kang Denis</h3></div>
-
-</div>
-</div>
-
-<!-- REQUEST -->
-<div class="section">
-<h2>Request Lagu</h2>
-<input id="reqname" placeholder="Nama">
-<input id="reqsong" placeholder="Judul Lagu">
-<button onclick="sendRequest()">Kirim via WhatsApp</button>
-</div>
-
-<!-- CHAT -->
-<div class="section">
-<h2>Live Chat</h2>
-
-<div class="chatbox" id="chatbox"></div>
-
-<input id="username" placeholder="Nama">
-<input id="message" placeholder="Pesan">
-
-<button onclick="sendChat()">Kirim</button>
-
 </div>
 
 <script>
 
 /* =====================
-   FIX AUDIO (ASLI ANDA)
+   AUTO DJ STREAM FIX
 ===================== */
 
 var playlist=[
-"Kamu Adalah Cahaya.mp3",
-"Kembali Ke Rumah.mp3"
+"https://raw.githubusercontent.com/noirsec/Winhart/main/Kamu%20Adalah%20Cahaya.mp3",
+"https://raw.githubusercontent.com/noirsec/Winhart/main/Kembali%20Ke%20Rumah.mp3"
 ];
 
 var titles=[
-"Kamu Adalah Cahaya.mp3",
-"Kembali Ke Rumah.mp3"
+"Kamu Adalah Cahaya",
+"Kembali Ke Rumah"
 ];
 
 var track=0;
-
-function startRadio(){
-
 var player=document.getElementById("radioPlayer");
 var source=document.getElementById("radioSource");
 
-source.src=playlist[track]; // JANGAN DIUBAH
+function playTrack(){
+
+source.src=playlist[track];
 
 player.load();
 
-player.play().catch(()=>{
-alert("Klik PLAY sekali lagi (izin browser)");
+player.play().then(()=>{
+console.log("PLAYING");
+}).catch(()=>{
+document.getElementById("nowPlaying").innerText="Klik START RADIO";
 });
 
-document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
+document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
 }
 
-function pauseRadio(){
-document.getElementById("radioPlayer").pause();
-}
-
-var player=document.getElementById("radioPlayer");
-
+/* AUTO NEXT */
 player.addEventListener("ended",function(){
 
 track++;
@@ -201,56 +117,18 @@ if(track>=playlist.length){
 track=0;
 }
 
-document.getElementById("radioSource").src=playlist[track];
-document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
-
-player.load();
-player.play();
+playTrack();
 
 });
 
-/* =====================
-   REQUEST WA
-===================== */
-
-function sendRequest(){
-
-var name=document.getElementById("reqname").value;
-var song=document.getElementById("reqsong").value;
-
-var url="https://wa.me/6282121785751?text="+encodeURIComponent(
-"Halo Winhart Radio\nNama: "+name+"\nRequest: "+song
-);
-
-window.open(url);
-
+/* START BUTTON (WAJIB UNTUK BROWSER) */
+function startRadio(){
+playTrack();
 }
 
-/* =====================
-   FIREBASE CHAT
-===================== */
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
-
-const app = initializeApp({
-apiKey:"AIzaSyBCwucuNtJnzFWXSqfwbK0_mti2sFH6ySk",
-databaseURL:"https://winhart-radio-default-rtdb.firebaseio.com"
-});
-
-const db=getDatabase(app);
-
-window.sendChat=function(){
-push(ref(db,"chat"),{
-user:username.value,
-msg:message.value
-});
-message.value="";
-}
-
-onChildAdded(ref(db,"chat"),(data)=>{
-const v=data.val();
-chatbox.innerHTML+=`<p><b>${v.user}</b>: ${v.msg}</p>`;
+/* AUTO LOAD (COBA PLAY) */
+window.addEventListener("load",()=>{
+setTimeout(playTrack,1000);
 });
 
 </script>
