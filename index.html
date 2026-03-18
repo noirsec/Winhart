@@ -541,7 +541,6 @@ const analyser = ctx.createAnalyser();
 const src = ctx.createMediaElementSource(player);
 
 src.connect(analyser);
-src.connect(ctx.destination);
 
 const canvas = document.getElementById("visualizer");
 const c = canvas.getContext("2d");
