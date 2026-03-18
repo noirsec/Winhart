@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -14,7 +15,7 @@
 
 <link rel="canonical" href="https://winhart.xyz">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- SCHEMA -->
 
 <script type="application/ld+json">
 {
@@ -31,6 +32,8 @@
  }
 }
 </script>
+
+<!-- GOOGLE ANALYTICS -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
 
@@ -147,6 +150,8 @@ padding:40px;
 color:#777
 }
 
+/* STICKY RADIO BAR */
+
 .playerbar{
 position:fixed;
 bottom:0;
@@ -162,30 +167,31 @@ flex-wrap:wrap;
 border-top:1px solid #222
 }
 
-/* CREW WA BUTTON */
+/* MOBILE */
 
-.crew-photo{
-position:relative;
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+align-items:flex-start
 }
 
-.wa-btn{
-position:absolute;
-bottom:10px;
-right:10px;
-background:#25D366;
-width:38px;
-height:38px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-text-decoration:none;
-color:white;
-font-size:18px;
+nav div{
+margin-top:10px
 }
 
-.wa-btn:hover{
-background:#1ebe5d;
+nav a{
+margin:5px 8px 0 0
+}
+
+header{
+padding:40px 10px
+}
+
+.grid{
+grid-template-columns:1fr
+}
+
 }
 
 </style>
@@ -200,11 +206,7 @@ background:#1ebe5d;
 
 <div>
 
-<a href="#radio">Live</a>
-<a href="#schedule">Schedule</a>
-<a href="#crew">Crew</a>
-<a href="#request">Request</a>
-<a href="#chat">Chat</a>
+<a href="#radio">Live</a> <a href="#schedule">Schedule</a> <a href="#crew">Crew</a> <a href="#request">Request</a> <a href="#chat">Chat</a>
 
 </div>
 
@@ -245,10 +247,15 @@ background:#1ebe5d;
 <div class="grid">
 
 <div class="card"><h3>POP HITS</h3><p>Top pop songs everyday.</p></div>
+
 <div class="card"><h3>INDIE VIBES</h3><p>Independent artist showcase.</p></div>
+
 <div class="card"><h3>EDM NIGHT</h3><p>Electronic dance session.</p></div>
+
 <div class="card"><h3>HEALTH TALK</h3><p>Health & lifestyle tips.</p></div>
+
 <div class="card"><h3>LIFESTYLE</h3><p>Modern life inspiration.</p></div>
+
 <div class="card"><h3>ENTERTAINMENT NEWS</h3><p>Music & pop culture news.</p></div>
 
 </div>
@@ -262,47 +269,53 @@ background:#1ebe5d;
 <div class="grid">
 
 <div class="card">
-<div class="crew-photo">
+
 <img src="Andi.jpg" style="width:100%;border-radius:8px">
-</div>
+
 <h3>Andy Hartanto</h3>
+
 <p>Founder & Music Director</p>
+
 </div>
 
 <div class="card">
-<div class="crew-photo">
+
 <img src="Sheryl.jpg" style="width:100%;border-radius:8px">
-</div>
+
 <h3>Sheryl</h3>
+
 <p>Music Curator</p>
+
 </div>
 
 <div class="card">
-<div class="crew-photo">
+
 <img src="Rina.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
-<h3>Miss Selena Prabowo</h3>
-<p>Sponsorship & Brand Partnership Manager</p>
+
+<h3>Miss Rina Prabowo</h3>
+
+<p>Entertainment</p>
+
 </div>
 
 <div class="card">
-<div class="crew-photo">
+
 <img src="Nandar.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285846561354" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
+
 <h3>Kang Nandar</h3>
-<p>Public Relations & Community Partnership</p>
-<p></p>
+
+<p>Morning POP Hits</p>
+
 </div>
 
 <div class="card">
-<div class="crew-photo">
+
 <img src="Denis.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285353871166" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
+
 <h3>Kang Denis Baskara</h3>
-<p>Programming & Advertising Director</p>
+
+<p>EDM Nights</p>
+
 </div>
 
 </div>
@@ -316,6 +329,7 @@ background:#1ebe5d;
 <div class="card">
 
 <input id="reqname" placeholder="Nama">
+
 <input id="reqsong" placeholder="Judul Lagu">
 
 <button onclick="sendRequest()">Kirim Request</button>
@@ -335,6 +349,7 @@ background:#1ebe5d;
 <div class="chatbox" id="chatbox"></div>
 
 <input id="username" placeholder="Nama">
+
 <input id="message" placeholder="Pesan">
 
 <button onclick="sendChat()">Kirim</button>
@@ -352,9 +367,11 @@ background:#1ebe5d;
 <div class="playerbar">
 
 <button onclick="startRadio()">▶ PLAY</button>
+
 <button onclick="pauseRadio()">❚❚ PAUSE</button>
 
 <span id="miniNow">OFF AIR</span>
+
 <span id="listeners">Listeners: 0</span>
 
 </div>
@@ -362,19 +379,22 @@ background:#1ebe5d;
 <script>
 
 var playlist=[
+"Winhart intro.mp4",
+"Harmoni Sunyi",
 "Kamu Adalah Cahaya.mp3",
+"Jejak Yang Tertinggal",
 "Kembali Ke Rumah"
 ];
 
 var titles=[
-"Kamu Adalah Cahaya",
+"Intro WINHART Radio",
+"Harmoni Sunyi",
+"Kamu Adalah Cahaya.mp3",
+"Jejak Yang Tertinggal",
 "Kembali Ke Rumah"
 ];
 
-var radioID="winhart-id.mp3";
-
 var track=0;
-var songCount=0;
 
 function startRadio(){
 
@@ -401,19 +421,6 @@ var player=document.getElementById("radioPlayer");
 
 player.addEventListener("ended",function(){
 
-songCount++;
-
-if(songCount==4){
-
-document.getElementById("radioSource").src=radioID;
-
-document.getElementById("nowPlaying").innerText="WINHART RADIO ID";
-document.getElementById("miniNow").innerText="WINHART RADIO ID";
-
-songCount=0;
-
-}else{
-
 track++;
 
 if(track>=playlist.length){
@@ -425,12 +432,14 @@ document.getElementById("radioSource").src=playlist[track];
 document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
 document.getElementById("miniNow").innerText=titles[track];
 
-}
-
 player.load();
 player.play();
 
 });
+
+</script>
+
+<script>
 
 function sendRequest(){
 
@@ -454,6 +463,10 @@ box.scrollTop=box.scrollHeight;
 
 }
 
+</script>
+
+<script>
+
 setInterval(function(){
 
 var fakeListeners=Math.floor(Math.random()*40)+10;
@@ -461,56 +474,6 @@ var fakeListeners=Math.floor(Math.random()*40)+10;
 document.getElementById("listeners").innerText="Listeners: "+fakeListeners;
 
 },5000);
-
-</script>
-
-<script>
-
-const audio = document.getElementById("radioPlayer");
-
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const analyser = audioCtx.createAnalyser();
-
-const sourceNode = audioCtx.createMediaElementSource(audio);
-
-sourceNode.connect(analyser);
-analyser.connect(audioCtx.destination);
-
-analyser.fftSize = 64;
-
-const canvas = document.getElementById("visualizer");
-const ctx = canvas.getContext("2d");
-
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
-
-function draw(){
-
-requestAnimationFrame(draw);
-
-analyser.getByteFrequencyData(dataArray);
-
-ctx.fillStyle="#000";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-let barWidth=(canvas.width/bufferLength)*2;
-let barHeight;
-let x=0;
-
-for(let i=0;i<bufferLength;i++){
-
-barHeight=dataArray[i];
-
-ctx.fillStyle="rgb(229,"+(barHeight+50)+",20)";
-ctx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight/2);
-
-x+=barWidth+1;
-
-}
-
-}
-
-draw();
 
 </script>
 
