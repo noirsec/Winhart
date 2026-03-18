@@ -465,5 +465,124 @@ document.getElementById("listeners").innerText="Listeners: "+fakeListeners;
 
 </script>
 
+<script>
+
+<!-- FIREBASE REALTIME + VISUALIZER (SAFE ADDON) -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBCwucuNtJnzFWXSqfwbK0_mti2sFH6ySk",
+authDomain: "winhart-radio.firebaseapp.com",
+databaseURL: "https://winhart-radio-default-rtdb.firebaseio.com",
+projectId: "winhart-radio",
+storageBucket: "winhart-radio.appspot.com",
+messagingSenderId: "175933549849",
+appId: "1:175933549849:web:5af452f7c6fedea59fa988"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+/* =========================
+   REQUEST LAGU (REALTIME)
+========================= */
+
+window.sendRequest = function(){
+
+var name=document.getElementById("reqname").value;
+var song=document.getElementById("reqsong").value;
+
+push(ref(db,"requests"),{
+name:name,
+song:song,
+time:Date.now()
+});
+
+document.getElementById("status").innerText="Request terkirim (LIVE)";
+}
+
+/* =========================
+   CHAT REALTIME
+========================= */
+
+window.sendChat = function(){
+
+var user=document.getElementById("username").value;
+var msg=document.getElementById("message").value;
+
+push(ref(db,"chat"),{
+user:user,
+msg:msg
+});
+
+document.getElementById("message").value="";
+}
+
+const chatRef = ref(db,"chat");
+
+onChildAdded(chatRef,(data)=>{
+
+const val=data.val();
+
+const box=document.getElementById("chatbox");
+
+box.innerHTML += `<p><b>${val.user}</b>: ${val.msg}</p>`;
+
+box.scrollTop=box.scrollHeight;
+
+});
+
+/* =========================
+   VISUALIZER (SAFE)
+========================= */
+
+const player = document.getElementById("radioPlayer");
+
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+const analyser = ctx.createAnalyser();
+const src = ctx.createMediaElementSource(player);
+
+src.connect(analyser);
+analyser.connect(ctx.destination);
+
+const canvas = document.getElementById("visualizer");
+const c = canvas.getContext("2d");
+
+const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+function draw(){
+requestAnimationFrame(draw);
+
+analyser.getByteFrequencyData(dataArray);
+
+c.fillStyle="#000";
+c.fillRect(0,0,canvas.width,canvas.height);
+
+let x=0;
+
+for(let i=0;i<dataArray.length;i++){
+let h=dataArray[i]/2;
+c.fillStyle="#e50914";
+c.fillRect(x,canvas.height-h,2,h);
+x+=3;
+}
+}
+
+draw();
+
+/* =========================
+   AUTOPLAY FIX (TANPA UBAH SCRIPT ANDA)
+========================= */
+
+document.body.addEventListener("click",()=>{
+if(ctx.state==="suspended"){
+ctx.resume();
+}
+});
+
+</script>
+ 
 </body>
 </html>
