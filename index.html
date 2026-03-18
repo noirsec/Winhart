@@ -461,43 +461,6 @@ startRadio();
 
 });
 
-</script>
-
-var playlist=[
-
-"Winhart%20intro.mp4",
-"Kamu%20Adalah%20Cahaya.mp3",
-"Kembali%20Ke%20Rumah.mp3"
-
-];
-
-var titles=[
-"Intro WINHART Radio",
-"Kamu Adalah Cahaya",
-"Kembali Ke Rumah"
-];
-
-var track=0;
-
-function startRadio(){
-
-var player=document.getElementById("radioPlayer");
-var source=document.getElementById("radioSource");
-
-source.src=playlist[track];
-
-player.load();
-player.play();
-
-document.getElementById("nowPlaying").innerText=titles[track];
-document.getElementById("miniNow").innerText=titles[track];
-
-}
-
-function pauseRadio(){
-document.getElementById("radioPlayer").pause();
-}
-
 function sendRequest(){
 
 var name=document.getElementById("reqname").value;
