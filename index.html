@@ -9,12 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
@@ -30,39 +25,16 @@ background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 position:sticky;
 top:0;
-z-index:999;
 }
 
 nav img{height:40px}
 
-nav a{
-color:white;
-margin-left:15px;
-text-decoration:none;
-font-size:14px;
-opacity:.8;
-}
-nav a:hover{opacity:1}
-
 /* HERO */
-.hero{
-text-align:center;
-padding:60px 20px;
-}
-
+.hero{text-align:center;padding:50px}
 .hero img{
 width:140px;
 border-radius:50%;
 box-shadow:0 0 30px rgba(255,0,80,0.6);
-}
-
-.hero h1{
-margin-top:15px;
-font-size:32px;
-}
-
-.hero p{
-opacity:.7;
 }
 
 /* PLAYER */
@@ -72,15 +44,13 @@ margin:30px auto;
 background:rgba(255,255,255,0.05);
 padding:25px;
 border-radius:20px;
-backdrop-filter:blur(15px);
 text-align:center;
+backdrop-filter:blur(15px);
 }
 
-.player h3{margin-bottom:10px}
-
-.controls button{
-margin:10px;
+button{
 padding:10px 20px;
+margin:10px;
 border:none;
 border-radius:8px;
 background:#ff0050;
@@ -89,47 +59,17 @@ cursor:pointer;
 }
 
 /* GRID */
-.section{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-}
+.section{max-width:1100px;margin:auto;padding:40px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-/* CARD */
 .card{
 background:rgba(255,255,255,0.05);
 padding:20px;
 border-radius:15px;
 backdrop-filter:blur(10px);
-transition:.3s;
 }
 
-.card:hover{
-transform:translateY(-5px);
-}
-
-/* CREW */
-.card img{
-width:100%;
-border-radius:10px;
-}
-
-/* INPUT */
-input{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#111;
-border:none;
-border-radius:8px;
-color:white;
-}
+.card img{width:100%;border-radius:10px}
 
 /* CHAT */
 .chatbox{
@@ -141,11 +81,14 @@ border-radius:10px;
 margin-bottom:10px;
 }
 
-/* FOOTER */
-footer{
-text-align:center;
-padding:30px;
-opacity:.6;
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#111;
+border:none;
+border-radius:8px;
+color:white;
 }
 </style>
 </head>
@@ -154,12 +97,6 @@ opacity:.6;
 
 <nav>
 <img src="Logo.jpg">
-<div>
-<a href="#radio">Live</a>
-<a href="#crew">Crew</a>
-<a href="#request">Request</a>
-<a href="#chat">Chat</a>
-</div>
 </nav>
 
 <div class="hero">
@@ -169,68 +106,42 @@ opacity:.6;
 </div>
 
 <!-- PLAYER -->
-<div class="player" id="radio">
+<div class="player">
 <h3 id="nowPlaying">Now Playing: -</h3>
 
 <audio id="radioPlayer">
 <source id="radioSource">
 </audio>
 
-<div class="controls">
 <button onclick="startRadio()">PLAY</button>
 <button onclick="pauseRadio()">PAUSE</button>
-</div>
+
 </div>
 
 <!-- CREW -->
-<div class="section" id="crew">
+<div class="section">
 <h2>RADIO CREW</h2>
 <div class="grid">
 
-<div class="card">
-<img src="Andi.jpg">
-<h3>Andy Hartanto</h3>
-<p>Founder</p>
-</div>
-
-<div class="card">
-<img src="Sheryl.jpg">
-<h3>Sheryl</h3>
-<p>Music Curator</p>
-</div>
-
-<div class="card">
-<img src="Rina.jpg">
-<h3>Miss Selena</h3>
-<p>Entertainment</p>
-</div>
-
-<div class="card">
-<img src="Nandar.jpg">
-<h3>Kang Nandar</h3>
-</div>
-
-<div class="card">
-<img src="Denis.jpg">
-<h3>Kang Denis</h3>
-</div>
+<div class="card"><img src="Andi.jpg"><h3>Andy Hartanto</h3></div>
+<div class="card"><img src="Sheryl.jpg"><h3>Sheryl</h3></div>
+<div class="card"><img src="Rina.jpg"><h3>Miss Selena</h3></div>
+<div class="card"><img src="Nandar.jpg"><h3>Kang Nandar</h3></div>
+<div class="card"><img src="Denis.jpg"><h3>Kang Denis</h3></div>
 
 </div>
 </div>
 
 <!-- REQUEST -->
-<div class="section" id="request">
+<div class="section">
 <h2>Request Lagu</h2>
-
 <input id="reqname" placeholder="Nama">
 <input id="reqsong" placeholder="Judul Lagu">
-
 <button onclick="sendRequest()">Kirim via WhatsApp</button>
-
 </div>
 
 <!-- CHAT -->
-<div class="section" id="chat">
+<div class="section">
 <h2>Live Chat</h2>
 
 <div class="chatbox" id="chatbox"></div>
@@ -242,34 +153,38 @@ opacity:.6;
 
 </div>
 
-<footer>
-© 2026 WINHART RADIO
-</footer>
-
 <script>
 
-/* PLAYER (TIDAK DIUBAH LOGIC) */
+/* =====================
+   FIX AUDIO (ASLI ANDA)
+===================== */
+
 var playlist=[
 "Kamu Adalah Cahaya.mp3",
 "Kembali Ke Rumah.mp3"
 ];
 
 var titles=[
-"Kamu Adalah Cahaya",
-"Kembali Ke Rumah"
+"Kamu Adalah Cahaya.mp3",
+"Kembali Ke Rumah.mp3"
 ];
 
 var track=0;
 
 function startRadio(){
+
 var player=document.getElementById("radioPlayer");
 var source=document.getElementById("radioSource");
 
-source.src=playlist[track];
-player.load();
-player.play();
+source.src=playlist[track]; // JANGAN DIUBAH
 
-document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
+player.load();
+
+player.play().catch(()=>{
+alert("Klik PLAY sekali lagi (izin browser)");
+});
+
+document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
 }
 
 function pauseRadio(){
@@ -279,29 +194,42 @@ document.getElementById("radioPlayer").pause();
 var player=document.getElementById("radioPlayer");
 
 player.addEventListener("ended",function(){
+
 track++;
-if(track>=playlist.length){track=0;}
+
+if(track>=playlist.length){
+track=0;
+}
 
 document.getElementById("radioSource").src=playlist[track];
-document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
+document.getElementById("nowPlaying").innerText="Now Playing : "+titles[track];
 
 player.load();
 player.play();
+
 });
 
-/* REQUEST WA */
+/* =====================
+   REQUEST WA
+===================== */
+
 function sendRequest(){
+
 var name=document.getElementById("reqname").value;
 var song=document.getElementById("reqsong").value;
 
 var url="https://wa.me/6282121785751?text="+encodeURIComponent(
-"Halo Winhart Radio\n\nNama: "+name+"\nRequest: "+song
+"Halo Winhart Radio\nNama: "+name+"\nRequest: "+song
 );
 
 window.open(url);
+
 }
 
-/* FIREBASE CHAT */
+/* =====================
+   FIREBASE CHAT
+===================== */
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
 import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
@@ -314,9 +242,10 @@ const db=getDatabase(app);
 
 window.sendChat=function(){
 push(ref(db,"chat"),{
-user:document.getElementById("username").value,
-msg:document.getElementById("message").value
+user:username.value,
+msg:message.value
 });
+message.value="";
 }
 
 onChildAdded(ref(db,"chat"),(data)=>{
