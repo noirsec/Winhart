@@ -416,6 +416,55 @@ LIVE BROADCAST
 
 var playlist=[
 
+"https://raw.githubusercontent.com/noirsec/Winhart/main/Winhart%20intro.mp4",
+"https://raw.githubusercontent.com/noirsec/Winhart/main/Kamu%20Adalah%20Cahaya.mp3",
+"https://raw.githubusercontent.com/noirsec/Winhart/main/Kembali%20Ke%20Rumah.mp3"
+
+];
+
+var titles=[
+"Intro WINHART Radio",
+"Kamu Adalah Cahaya",
+"Kembali Ke Rumah"
+];
+
+var track=0;
+
+function startRadio(){
+
+var player=document.getElementById("radioPlayer");
+var source=document.getElementById("radioSource");
+
+source.src=playlist[track];
+
+player.load();
+player.play();
+
+document.getElementById("nowPlaying").innerText=titles[track];
+document.getElementById("miniNow").innerText=titles[track];
+
+}
+
+function pauseRadio(){
+document.getElementById("radioPlayer").pause();
+}
+
+document.getElementById("radioPlayer").addEventListener("ended",function(){
+
+track++;
+
+if(track>=playlist.length){
+track=0;
+}
+
+startRadio();
+
+});
+
+</script>
+
+var playlist=[
+
 "Winhart%20intro.mp4",
 "Kamu%20Adalah%20Cahaya.mp3",
 "Kembali%20Ke%20Rumah.mp3"
@@ -531,5 +580,25 @@ draw();
 
 </script>
 
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBCwucuNtJnzFWXSqfwbK0_mti2sFH6ySk",
+authDomain: "winhart-radio.firebaseapp.com",
+projectId: "winhart-radio",
+storageBucket: "winhart-radio.firebasestorage.app",
+messagingSenderId: "175933549849",
+appId: "1:175933549849:web:5af452f7c6fedea59fa988",
+measurementId: "G-K435YW4Y07"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+</script>
+  
 </body>
 </html>
