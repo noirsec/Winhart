@@ -485,18 +485,19 @@ const db = getDatabase(app);
    REQUEST LAGU (REALTIME)
 ========================= */
 
-window.sendRequest = function(){
+function sendRequest(){
 
 var name=document.getElementById("reqname").value;
 var song=document.getElementById("reqsong").value;
 
-push(ref(db,"requests"),{
-name:name,
-song:song,
-time:Date.now()
-});
+var nomor = "6282121785751";
 
-document.getElementById("status").innerText="Request terkirim (LIVE)";
+var pesan = `Halo Winhart Radio!\n\nSaya ${name}\nRequest lagu: ${song}`;
+
+var url = "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan);
+
+window.open(url, "_blank");
+
 }
 
 /* =========================
