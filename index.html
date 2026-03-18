@@ -530,53 +530,6 @@ box.scrollTop=box.scrollHeight;
 
 });
 
-/* =========================
-   VISUALIZER (SAFE)
-========================= */
-
-const player = document.getElementById("radioPlayer");
-
-const ctx = new (window.AudioContext || window.webkitAudioContext)();
-const analyser = ctx.createAnalyser();
-const src = ctx.createMediaElementSource(player);
-
-src.connect(analyser);
-
-const canvas = document.getElementById("visualizer");
-const c = canvas.getContext("2d");
-
-const dataArray = new Uint8Array(analyser.frequencyBinCount);
-
-function draw(){
-requestAnimationFrame(draw);
-
-analyser.getByteFrequencyData(dataArray);
-
-c.fillStyle="#000";
-c.fillRect(0,0,canvas.width,canvas.height);
-
-let x=0;
-
-for(let i=0;i<dataArray.length;i++){
-let h=dataArray[i]/2;
-c.fillStyle="#e50914";
-c.fillRect(x,canvas.height-h,2,h);
-x+=3;
-}
-}
-
-draw();
-
-/* =========================
-   AUTOPLAY FIX (TANPA UBAH SCRIPT ANDA)
-========================= */
-
-document.body.addEventListener("click",()=>{
-if(ctx.state==="suspended"){
-ctx.resume();
-}
-});
-
 </script>
  
 </body>
