@@ -423,14 +423,16 @@ var playlist=[
 ];
 
 var titles=[
-"Intro WINHART Radio",
-"Kamu Adalah Cahaya",
-"Kembali Ke Rumah"
+"Winhart radio.mp4",
+"Kamu Adalah Cahaya.mp3",
+"Kembali Ke rumah"
 ];
 
 var track=0;
 
 function startRadio(){
+
+audioCtx.resume();
 
 var player=document.getElementById("radioPlayer");
 var source=document.getElementById("radioSource");
