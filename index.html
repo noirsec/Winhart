@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>WINHART RADIO PRO</title>
+<title>WINHART RADIO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -15,153 +15,144 @@ body{
 background:#0b0b0b;
 color:white;
 display:flex;
-}
-
-/* SIDEBAR */
-.sidebar{
-width:230px;
-background:#000;
 height:100vh;
-padding:20px;
+overflow:hidden;
 }
 
-.sidebar img{width:100%;margin-bottom:20px;}
-.sidebar a{display:block;color:#aaa;margin:10px 0;text-decoration:none;}
-.sidebar a:hover{color:white}
+/* LEFT */
+.left{
+flex:2;
+padding:25px;
+overflow:auto;
+}
 
-/* MAIN */
-.main{
+/* RIGHT (CHAT) */
+.right{
 flex:1;
-padding:30px;
-overflow:auto;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-/* CARD */
-.card{
-background:#181818;
-padding:15px;
-border-radius:10px;
-}
-
-/* PLAYER BAR */
-.playerbar{
-position:fixed;
-bottom:0;
-left:230px;
-right:0;
 background:#111;
-padding:15px;
+padding:20px;
 display:flex;
-justify-content:space-between;
-align-items:center;
+flex-direction:column;
 }
 
-.controls button{
-padding:10px 15px;
-background:#1db954;
-border:none;
-border-radius:6px;
-color:white;
-cursor:pointer;
+/* HEADER */
+.header{
+margin-bottom:20px;
 }
 
-/* CHAT */
-.chatbox{
-height:200px;
-overflow:auto;
-background:#000;
-padding:10px;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-input{
-width:100%;
-padding:10px;
-margin-top:10px;
-background:#111;
-border:none;
-color:white;
-border-radius:6px;
-}
-
-/* ON AIR */
 .onair{
 color:#ff0040;
 font-weight:bold;
 }
 
-.listeners{
-color:#1db954;
+/* PLAYER */
+.player{
+background:#181818;
+padding:20px;
+border-radius:15px;
+margin-bottom:25px;
 }
+
+button{
+padding:10px 20px;
+background:#1db954;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+margin-right:10px;
+}
+
+/* GRID CREW */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
+
+.card{
+background:#181818;
+padding:10px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+border-radius:8px;
+}
+
+/* CHAT */
+.chatbox{
+flex:1;
+overflow:auto;
+background:#000;
+padding:10px;
+border-radius:10px;
+margin-bottom:10px;
+font-size:14px;
+}
+
+.chatbox p{
+margin:5px 0;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:8px;
+background:#222;
+border:none;
+color:white;
+border-radius:6px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="sidebar">
-<img src="Logo.jpg">
-<a>🏠 Home</a>
-<a>📻 Live</a>
-<a>👥 Crew</a>
-<a>💬 Chat</a>
+<!-- LEFT -->
+<div class="left">
+
+<div class="header">
+<h1>WINHART RADIO</h1>
+<p class="onair">🔴 ON AIR</p>
+<p>Listeners: <span id="listenerCount">0</span></p>
 </div>
 
-<div class="main">
+<!-- PLAYER -->
+<div class="player">
+<h3 id="nowPlaying">Loading...</h3>
+<button onclick="startRadio()">PLAY</button>
+<button onclick="pauseRadio()">PAUSE</button>
+</div>
 
-<h1>WINHART RADIO</h1>
-<p>Indie Pop • EDM • 24/7 Streaming</p>
-
-<br>
-
-<h2 class="onair">🔴 ON AIR LIVE</h2>
-<p class="listeners">Listeners: <span id="listenerCount">0</span></p>
-
-<br>
-
-<h2>🎧 Radio Crew</h2>
+<!-- CREW -->
+<h2>Radio Crew</h2>
 
 <div class="grid">
 
-<div class="card"><img src="Andi.jpg"><h3>Andy Hartanto</h3></div>
-<div class="card"><img src="Sheryl.jpg"><h3>Sheryl</h3></div>
-<div class="card"><img src="Rina.jpg"><h3>Miss Selena</h3></div>
-<div class="card"><img src="Nandar.jpg"><h3>Kang Nandar</h3></div>
-<div class="card"><img src="Denis.jpg"><h3>Kang Denis</h3></div>
+<div class="card"><img src="Andi.jpg"><p>Andy Hartanto</p></div>
+<div class="card"><img src="Sheryl.jpg"><p>Sheryl</p></div>
+<div class="card"><img src="Rina.jpg"><p>Miss Selena</p></div>
+<div class="card"><img src="Nandar.jpg"><p>Kang Nandar</p></div>
+<div class="card"><img src="Denis.jpg"><p>Kang Denis</p></div>
 
 </div>
 
-<br><br>
+</div>
 
-<h2>💬 Live Chat</h2>
+<!-- RIGHT CHAT -->
+<div class="right">
+
+<h3>Live Chat</h3>
 
 <div class="chatbox" id="chatbox"></div>
 
 <input id="username" placeholder="Nama">
 <input id="message" placeholder="Pesan">
-
 <button onclick="sendChat()">Kirim</button>
-
-</div>
-
-<div class="playerbar">
-
-<div>
-<strong>WINHART RADIO</strong><br>
-<span id="nowPlaying">Loading...</span>
-</div>
-
-<div class="controls">
-<button onclick="startRadio()">▶</button>
-<button onclick="pauseRadio()">❚❚</button>
-</div>
 
 </div>
 
@@ -180,7 +171,7 @@ databaseURL:"https://winhart-radio-default-rtdb.firebaseio.com"
 
 const db = getDatabase(app);
 
-/* LISTENER COUNT */
+/* LISTENER */
 const userId = Date.now();
 
 set(ref(db,"listeners/"+userId),true);
@@ -190,8 +181,8 @@ set(ref(db,"listeners/"+userId),null);
 });
 
 onValue(ref(db,"listeners"),snap=>{
-document.getElementById("listenerCount").innerText =
-snap.size || Object.keys(snap.val()||{}).length;
+let val = snap.val() || {};
+document.getElementById("listenerCount").innerText = Object.keys(val).length;
 });
 
 /* CHAT */
@@ -209,7 +200,7 @@ chatbox.innerHTML+=`<p><b>${v.user}</b>: ${v.msg}</p>`;
 chatbox.scrollTop=chatbox.scrollHeight;
 });
 
-/* AUTO DJ FROM GITHUB */
+/* AUTO DJ */
 let playlist=[];
 let titles=[];
 let track=0;
@@ -223,7 +214,7 @@ playlist.push(file.download_url);
 titles.push(file.name.replace(".mp3",""));
 }
 });
-document.getElementById("nowPlaying").innerText="Klik Play";
+document.getElementById("nowPlaying").innerText="Klik PLAY";
 });
 
 const player=document.getElementById("radioPlayer");
@@ -232,7 +223,7 @@ function playTrack(){
 if(playlist.length===0)return;
 
 player.src=playlist[track];
-player.play().catch(()=>{});
+player.play();
 
 document.getElementById("nowPlaying").innerText="Now Playing: "+titles[track];
 }
