@@ -12,7 +12,7 @@ body{
 background:#0b0b0b;
 color:white;
 font-family:Poppins;
-max-width:900px;
+max-width:1100px;
 margin:auto;
 padding:20px;
 }
@@ -20,25 +20,42 @@ padding:20px;
 /* COVER */
 .cover img{
 width:100%;
-height:260px;
+height:280px;
 object-fit:cover;
 border-radius:15px;
 }
 
 /* TITLE */
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
 h3{
-margin:10px 0;
+margin:15px 0 10px;
+}
+
+/* PLAYER CONTROL */
+.controls{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
 }
 
 /* BUTTON */
 button{
 padding:10px 15px;
-margin:5px;
 background:#1db954;
 border:none;
 border-radius:8px;
 color:white;
 cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#17a74a;
 }
 
 /* PROGRESS */
@@ -66,6 +83,12 @@ margin-top:15px;
 }
 
 /* REQUEST */
+.request-box{
+background:#181818;
+padding:15px;
+border-radius:10px;
+}
+
 input{
 width:100%;
 padding:10px;
@@ -79,30 +102,65 @@ border-radius:6px;
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:10px;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
 margin-top:20px;
 }
 
+/* CARD */
 .card{
 background:#181818;
-padding:10px;
-border-radius:10px;
+padding:12px;
+border-radius:12px;
 text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .card img{
 width:100%;
-height:120px;
+height:140px;
 object-fit:cover;
-border-radius:8px;
+border-radius:10px;
+margin-bottom:8px;
 }
 
+/* WHATSAPP BUTTON */
+.wa-btn{
+display:inline-block;
+margin-top:8px;
+background:#25D366;
+padding:8px 12px;
+border-radius:8px;
+text-decoration:none;
+color:white;
+font-size:14px;
+}
+
+.wa-btn:hover{
+background:#1ebe5d;
+}
+
+/* PROGRAM */
 .program{
 background:#181818;
 padding:15px;
 border-radius:10px;
 margin-top:20px;
+}
+
+/* DESKTOP IMPROVEMENT */
+@media(min-width:768px){
+.cover img{
+height:320px;
+}
+
+canvas{
+height:100px;
+}
 }
 </style>
 </head>
@@ -118,8 +176,10 @@ margin-top:20px;
 
 <h3 id="title">Loading...</h3>
 
+<div class="controls">
 <button onclick="playRadio()">▶ Play</button>
 <button onclick="pauseRadio()">❚❚ Pause</button>
+</div>
 
 <div class="progress">
 <div class="bar" id="progress"></div>
@@ -128,20 +188,49 @@ margin-top:20px;
 <canvas id="viz"></canvas>
 
 <!-- REQUEST WA -->
+<div class="request-box">
 <h3>🎵 Request Lagu</h3>
 <input id="nama" placeholder="Nama">
 <input id="lagu" placeholder="Judul lagu">
 <button onclick="kirimWA()">Kirim ke WhatsApp</button>
+</div>
 
 <!-- CREW -->
 <h3>👥 Radio Crew</h3>
 
 <div class="grid">
-<div class="card"><img src="Andi.jpg"><p>Andy Hart</p><p>Music Director</p></div>
-<div class="card"><img src="Sheryl.jpg"><p>Sheryl</p><p>Music Curator</p></div>
-<div class="card"><img src="Rina.jpg"><p>Miss Selena Prabowo</p><p>Marketing & Partnership Director</p><p>WA: 085720858250</p></div>
-<div class="card"><img src="Nandar.jpg"><p>Kang Nandar</p><p>Comunity & Media Relations Partners</p><p>WA: 085846561354</p></div>
-<div class="card"><img src="Denis.jpg"><p>Kang Denis Baskara</p><p>Program & Advertising Director</p><p>WA: 085353871166</p></div>
+<div class="card">
+<img src="Andi.jpg">
+<p>Andy Hart</p>
+<p>Music Director</p>
+</div>
+
+<div class="card">
+<img src="Sheryl.jpg">
+<p>Sheryl</p>
+<p>Music Curator</p>
+</div>
+
+<div class="card">
+<img src="Rina.jpg">
+<p>Miss Selena Prabowo</p>
+<p>Marketing & Partnership Director</p>
+<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank">WhatsApp</a>
+</div>
+
+<div class="card">
+<img src="Nandar.jpg">
+<p>Kang Nandar</p>
+<p>Comunity & Media Relations Partners</p>
+<a class="wa-btn" href="https://wa.me/6285846561354" target="_blank">WhatsApp</a>
+</div>
+
+<div class="card">
+<img src="Denis.jpg">
+<p>Kang Denis Baskara</p>
+<p>Program & Advertising Director</p>
+<a class="wa-btn" href="https://wa.me/6285353871166" target="_blank">WhatsApp</a>
+</div>
 </div>
 
 <!-- PROGRAM -->
