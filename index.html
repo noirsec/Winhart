@@ -1,567 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WINHART RADIO — PRO</title>
 
-<title>WINHART RADIO — Live Indie Pop Station</title>
-
-<meta property="og:title" content="WINHART Radio">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://winhart.xyz">
-<meta property="og:image" content="Logo.jpg">
-
-<link rel="canonical" href="https://winhart.xyz">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEFS6RS3G3"></script>
-
 <script>
 window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
+function gtag(){dataLayer.push(arguments);} 
 gtag('js',new Date());
-gtag('config','G-VEFS6RS3G3',{anonymize_ip:true});
+gtag('config','G-VEFS6RS3G3');
 </script>
 
 <style>
-
-*{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Segoe UI,Arial;
-background:#0a0a0a;
-color:white;
-overflow-x:hidden
-}
-
-nav{
-background:#000;
-padding:14px 20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-border-bottom:1px solid #222
-}
-
-nav img{height:40px}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:18px;
-font-size:14px
-}
-
-header{
-text-align:center;
-padding:60px 20px
-}
-
-header img{
-width:180px;
-max-width:80%
-}
-
-.section{
-max-width:1100px;
-margin:auto;
-padding:50px 15px
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px
-}
-
-.card{
-background:#151515;
-padding:22px;
-border-radius:12px;
-border:1px solid #222
-}
-
-/* LIVE PLAYER */
-
-.live-player{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:15px
-}
-
-.nowbox{
-background:#0f0f0f;
-border:1px solid #333;
-border-radius:14px;
-padding:20px;
-width:100%;
-max-width:420px;
-text-align:center;
-box-shadow:0 0 20px rgba(229,9,20,0.2)
-}
-
-.cover-art{
-width:140px;
-height:140px;
-border-radius:10px;
-border:2px solid #333;
-margin-bottom:10px
-}
-
-.live-indicator{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:6px;
-color:#ff3b3b;
-font-size:12px;
-margin-bottom:6px
-}
-
-.live-dot{
-width:8px;
-height:8px;
-background:red;
-border-radius:50%;
-animation:blink 1s infinite
-}
-
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:0.3}
-100%{opacity:1}
-}
-
-.now-title{
-font-size:12px;
-color:#aaa
-}
-
-.now-song{
-font-size:20px;
-font-weight:bold;
-margin:6px 0
-}
-
-.player-controls{
-display:flex;
-gap:10px;
-justify-content:center
-}
-
-button{
-padding:11px 22px;
-font-size:14px;
-background:#e50914;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer
-}
-
-button:hover{background:#ff1d25}
-
-audio{width:100%}
-
-canvas{width:100%}
-
-.chatbox{
-height:200px;
-overflow:auto;
-background:#111;
-padding:10px;
-border-radius:6px;
-margin-bottom:10px
-}
-
-input{
-width:100%;
-padding:11px;
-margin-top:10px;
-background:#222;
-border:none;
-color:white;
-border-radius:6px
-}
-
-footer{
-text-align:center;
-padding:40px;
-color:#777
-}
-
-.playerbar{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#000;
-padding:10px;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:15px;
-border-top:1px solid #222
-}
-
-.crew-photo{position:relative}
-
-.wa-btn{
-position:absolute;
-bottom:10px;
-right:10px;
-background:#25D366;
-width:38px;
-height:38px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-color:white;
-font-size:18px;
-text-decoration:none
-}
-
+body{margin:0;font-family:Arial;background:#0a0a0a;color:#fff}
+nav{background:#000;padding:15px;display:flex;justify-content:space-between}
+nav a{color:#fff;margin-left:15px;text-decoration:none}
+.section{padding:40px}
+.card{background:#151515;padding:20px;border-radius:10px;margin-bottom:20px}
+button{padding:10px 20px;background:red;border:none;color:#fff;border-radius:6px;cursor:pointer}
+.playerbar{position:fixed;bottom:0;width:100%;background:#000;padding:10px;text-align:center}
 </style>
-
 </head>
 
 <body>
 
 <nav>
-
-<img src="Logo.jpg">
-
+<div>WINHART RADIO</div>
 <div>
-
 <a href="#radio">Live</a>
 <a href="#schedule">Schedule</a>
 <a href="#crew">Crew</a>
-<a href="#request">Request</a>
-<a href="#chat">Chat</a>
-
 </div>
-
 </nav>
 
-<header>
-
-<img src="Logo.jpg">
-
-<h1>WINHART RADIO</h1>
-
-<p>Indie Pop • EDM • Lifestyle Broadcast</p>
-
-</header>
-
-<section class="section" id="radio">
-
+<section id="radio" class="section">
 <h2>LIVE RADIO</h2>
-
-<div class="card live-player">
-
-<div class="nowbox">
-
-<div class="live-indicator">
-<div class="live-dot"></div>
-LIVE BROADCAST
+<div class="card">
+<div id="nowPlaying">OFF AIR</div>
+<button onclick="startRadio()">PLAY</button>
+<button onclick="pauseRadio()">PAUSE</button>
+<audio id="radioPlayer"></audio>
 </div>
-
-<img src="Logo.jpg" class="cover-art">
-
-<div class="now-title">NOW PLAYING</div>
-
-<div class="now-song" id="nowPlaying">OFF AIR</div>
-
-<div class="player-controls">
-<button onclick="startRadio()">▶ PLAY</button>
-<button onclick="pauseRadio()">❚❚ PAUSE</button>
-</div>
-
-</div>
-
-<audio id="radioPlayer">
-<source id="radioSource">
-</audio>
-
-<canvas id="visualizer" width="600" height="120"></canvas>
-
-</div>
-
 </section>
 
-<section class="section" id="schedule">
-
-<h2>PROGRAM SCHEDULE</h2>
-
-<div class="grid">
-
-<div class="card"><h3>POP HITS</h3><p>Top pop songs everyday.</p></div>
-<div class="card"><h3>INDIE VIBES</h3><p>Independent artist showcase.</p></div>
-<div class="card"><h3>EDM NIGHT</h3><p>Electronic dance session.</p></div>
-<div class="card"><h3>HEALTH TALK</h3><p>Health & lifestyle tips.</p></div>
-<div class="card"><h3>LIFESTYLE</h3><p>Modern life inspiration.</p></div>
-<div class="card"><h3>ENTERTAINMENT NEWS</h3><p>Music & pop culture news.</p></div>
-
-</div>
-
+<section id="schedule" class="section">
+<h2>PROGRAM</h2>
+<div class="card">POP HITS</div>
+<div class="card">INDIE VIBES</div>
+<div class="card">EDM NIGHT</div>
 </section>
 
-<section class="section" id="crew">
-
-<h2>RADIO CREW</h2>
-
-<div class="grid">
-
-<div class="card">
-<div class="crew-photo">
-<img src="Andi.jpg" style="width:100%;border-radius:8px">
-</div>
-<h3>Andy Hartanto</h3>
-<p>Founder & Music Director</p>
-</div>
-
-<div class="card">
-<div class="crew-photo">
-<img src="Sheryl.jpg" style="width:100%;border-radius:8px">
-</div>
-<h3>Sheryl</h3>
-<p>Music Curator</p>
-</div>
-
-<div class="card">
-<div class="crew-photo">
-<img src="Rina.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285720858250"><i class="fab fa-whatsapp"></i></a>
-</div>
-<h3>Miss Selena Prabowo</h3>
-<p>Sponsorship & Brand Partnership Manager</p>
-</div>
-
-<div class="card">
-<div class="crew-photo">
-<img src="Nandar.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285846561354"><i class="fab fa-whatsapp"></i></a>
-</div>
-<h3>Kang Nandar</h3>
-<p>Public Relations & Community Partnership</p>
-</div>
-
-<div class="card">
-<div class="crew-photo">
-<img src="Denis.jpg" style="width:100%;border-radius:8px">
-<a class="wa-btn" href="https://wa.me/6285353871166"><i class="fab fa-whatsapp"></i></a>
-</div>
-<h3>Kang Denis Baskara</h3>
-<p>Programming Director & Advertising Director</p>
-</div>
-
-</div>
-
+<section id="crew" class="section">
+<h2>CREW</h2>
+<div class="card">Andy Hartanto</div>
+<div class="card">Sheryl</div>
+<div class="card">Selena</div>
 </section>
-
-<section class="section" id="request">
-
-<h2>REQUEST SONG</h2>
-
-<div class="card">
-
-<input id="reqname" placeholder="Nama">
-<input id="reqsong" placeholder="Judul Lagu">
-
-<button onclick="sendRequest()">Kirim Request</button>
-
-<p id="status"></p>
-
-</div>
-
-</section>
-
-<section class="section" id="chat">
-
-<h2>LISTENER CHAT</h2>
-
-<div class="card">
-
-<div class="chatbox" id="chatbox"></div>
-
-<input id="username" placeholder="Nama">
-<input id="message" placeholder="Pesan">
-
-<button onclick="sendChat()">Kirim</button>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 WINHART RADIO
-
-</footer>
 
 <div class="playerbar">
-
 <span id="miniNow">OFF AIR</span>
-<span id="listeners">Listeners: 0</span>
-
 </div>
 
 <script>
-
-var playlist=[
-
-"https://raw.githubusercontent.com/noirsec/Winhart/main/Kamu Adalah Cahaya.mp3",
-"https://raw.githubusercontent.com/noirsec/Winhart/main/kembali ke rumah"
-
+const playlist=[
+"https://raw.githubusercontent.com/noirsec/Winhart/main/Kamu%20Adalah%20Cahaya.mp3",
+"https://raw.githubusercontent.com/noirsec/Winhart/main/Kembali%20Ke%20Rumah.mp3"
 ];
 
-var titles=[
-"Kamu Adalah Cahaya.mp3",
-"Kembali Ke rumah"
+const titles=[
+"Kamu Adalah Cahaya",
+"Kembali Ke Rumah"
 ];
 
-var track=0;
+let track=0;
+const player=document.getElementById("radioPlayer");
 
 function startRadio(){
-
-audioCtx.resume();
-
-var player=document.getElementById("radioPlayer");
-var source=document.getElementById("radioSource");
-
-source.src=playlist[track];
-
-player.load();
-player.play();
-
+player.src=playlist[track];
+player.play().then(()=>{
 document.getElementById("nowPlaying").innerText=titles[track];
 document.getElementById("miniNow").innerText=titles[track];
-
+}).catch(e=>console.log(e));
 }
 
-function pauseRadio(){
-document.getElementById("radioPlayer").pause();
-}
+function pauseRadio(){player.pause();}
 
-document.getElementById("radioPlayer").addEventListener("ended",function(){
-
-track++;
-
-if(track>=playlist.length){
-track=0;
-}
-
+player.addEventListener("ended",()=>{
+track=(track+1)%playlist.length;
 startRadio();
-
 });
-
-function sendRequest(){
-
-var name=document.getElementById("reqname").value;
-var song=document.getElementById("reqsong").value;
-
-document.getElementById("status").innerText="Request terkirim: "+song+" oleh "+name;
-
-}
-
-function sendChat(){
-
-var user=document.getElementById("username").value;
-var msg=document.getElementById("message").value;
-
-var box=document.getElementById("chatbox");
-
-box.innerHTML+="<p><b>"+user+"</b>: "+msg+"</p>";
-
-box.scrollTop=box.scrollHeight;
-
-}
-
-setInterval(function(){
-
-var fakeListeners=Math.floor(Math.random()*40)+10;
-
-document.getElementById("listeners").innerText="Listeners: "+fakeListeners;
-
-},5000);
-
 </script>
 
-<script>
-
-const audio=document.getElementById("radioPlayer");
-
-const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-const analyser=audioCtx.createAnalyser();
-
-const sourceNode=audioCtx.createMediaElementSource(audio);
-
-sourceNode.connect(analyser);
-analyser.connect(audioCtx.destination);
-
-analyser.fftSize=64;
-
-const canvas=document.getElementById("visualizer");
-const ctx=canvas.getContext("2d");
-
-const bufferLength=analyser.frequencyBinCount;
-const dataArray=new Uint8Array(bufferLength);
-
-function draw(){
-
-requestAnimationFrame(draw);
-
-analyser.getByteFrequencyData(dataArray);
-
-ctx.fillStyle="#000";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-let barWidth=(canvas.width/bufferLength)*2;
-let barHeight;
-let x=0;
-
-for(let i=0;i<bufferLength;i++){
-
-barHeight=dataArray[i];
-
-ctx.fillStyle="rgb(229,"+(barHeight+50)+",20)";
-ctx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight/2);
-
-x+=barWidth+1;
-
-}
-
-}
-
-draw();
-
-</script>
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyBCwucuNtJnzFWXSqfwbK0_mti2sFH6ySk",
-authDomain: "winhart-radio.firebaseapp.com",
-projectId: "winhart-radio",
-storageBucket: "winhart-radio.firebasestorage.app",
-messagingSenderId: "175933549849",
-appId: "1:175933549849:web:5af452f7c6fedea59fa988",
-measurementId: "G-K435YW4Y07"
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-</script>
-  
 </body>
 </html>
