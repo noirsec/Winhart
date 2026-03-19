@@ -3,74 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WINHART RADIO PRO</title>
+
+<title>WINHART RADIO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+
 body{
 background:#0b0b0b;
 color:white;
-font-family:Poppins;
+}
+
+/* CONTAINER */
+.container{
 max-width:1100px;
 margin:auto;
 padding:20px;
 }
 
-/* COVER */
+/* PLAYER */
+.player{
+text-align:center;
+margin-bottom:30px;
+}
+
 .cover img{
 width:100%;
-height:280px;
+max-height:320px;
 object-fit:cover;
 border-radius:15px;
 }
 
-/* TITLE */
 h2{
-text-align:center;
-margin-bottom:20px;
+margin:15px 0;
 }
 
-h3{
-margin:15px 0 10px;
-}
-
-/* PLAYER CONTROL */
+/* CONTROLS */
 .controls{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
+margin:10px 0;
 }
 
-/* BUTTON */
 button{
 padding:10px 15px;
+margin:5px;
 background:#1db954;
 border:none;
 border-radius:8px;
 color:white;
 cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#17a74a;
-}
-
-/* PROGRESS */
-.progress{
-width:100%;
-height:5px;
-background:#333;
-border-radius:5px;
-overflow:hidden;
-margin-top:10px;
-}
-.bar{
-height:100%;
-width:0%;
-background:#1db954;
 }
 
 /* VISUALIZER */
@@ -79,69 +61,46 @@ width:100%;
 height:80px;
 background:#000;
 border-radius:10px;
-margin-top:15px;
+margin-top:10px;
 }
 
 /* REQUEST */
-.request-box{
+.request{
 background:#181818;
 padding:15px;
 border-radius:10px;
+margin:20px 0;
 }
 
-input{
-width:100%;
-padding:10px;
-margin:5px 0;
-background:#222;
-border:none;
-color:white;
-border-radius:6px;
-}
-
-/* GRID */
+/* CREW */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:15px;
-margin-top:20px;
 }
 
-/* CARD */
 .card{
 background:#181818;
-padding:12px;
 border-radius:12px;
+overflow:hidden;
 text-align:center;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
+padding-bottom:10px;
 }
 
 .card img{
 width:100%;
-height:140px;
+height:180px;
 object-fit:cover;
-border-radius:10px;
-margin-bottom:8px;
 }
 
-/* WHATSAPP BUTTON */
-.wa-btn{
-display:inline-block;
-margin-top:8px;
-background:#25D366;
-padding:8px 12px;
-border-radius:8px;
-text-decoration:none;
-color:white;
-font-size:14px;
+.card h4{
+margin:8px 0 3px;
+font-size:16px;
 }
 
-.wa-btn:hover{
-background:#1ebe5d;
+.card p{
+font-size:13px;
+color:#bbb;
 }
 
 /* PROGRAM */
@@ -149,46 +108,46 @@ background:#1ebe5d;
 background:#181818;
 padding:15px;
 border-radius:10px;
-margin-top:20px;
+margin-top:25px;
 }
 
-/* DESKTOP IMPROVEMENT */
-@media(min-width:768px){
-.cover img{
-height:320px;
+/* DESKTOP FIX */
+@media(min-width:900px){
+.player{
+max-width:700px;
+margin:auto;
+}
 }
 
-canvas{
-height:100px;
-}
-}
 </style>
 </head>
 
 <body>
 
-<h2>WINHART RADIO 🔴 ON AIR</h2>
+<div class="container">
 
-<!-- COVER -->
+<!-- PLAYER -->
+<div class="player">
+
 <div class="cover">
-<img id="cover" src="">
+<img id="cover">
 </div>
 
-<h3 id="title">Loading...</h3>
+<h2 id="title">Loading...</h2>
 
 <div class="controls">
 <button onclick="playRadio()">▶ Play</button>
 <button onclick="pauseRadio()">❚❚ Pause</button>
-</div>
-
-<div class="progress">
-<div class="bar" id="progress"></div>
+<button onclick="startDJ()">🎙 Live DJ</button>
+<button onclick="stopDJ()">⛔ Stop DJ</button>
 </div>
 
 <canvas id="viz"></canvas>
 
-<!-- REQUEST WA -->
-<div class="request-box">
+</div>
+
+<!-- REQUEST -->
+<div class="request">
 <h3>🎵 Request Lagu</h3>
 <input id="nama" placeholder="Nama">
 <input id="lagu" placeholder="Judul lagu">
@@ -201,35 +160,30 @@ height:100px;
 <div class="grid">
 <div class="card">
 <img src="Andi.jpg">
-<p>Andy Hart</p>
+<h4>Andy Hartanto</h4>
 <p>Music Director</p>
+<p>WA: 0821xxxxxxx</p>
 </div>
 
 <div class="card">
 <img src="Sheryl.jpg">
-<p>Sheryl</p>
+<h4>Sheryl</h4>
 <p>Music Curator</p>
+<p>WA: 0821xxxxxxx</p>
 </div>
 
 <div class="card">
 <img src="Rina.jpg">
-<p>Miss Selena Prabowo</p>
-<p>Marketing & Partnership Director</p>
-<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank">WhatsApp</a>
+<h4>Miss Selena</h4>
+<p>Marketing Director</p>
+<p>WA: 0821xxxxxxx</p>
 </div>
 
 <div class="card">
 <img src="Nandar.jpg">
-<p>Kang Nandar</p>
-<p>Comunity & Media Relations Partners</p>
-<a class="wa-btn" href="https://wa.me/6285846561354" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card">
-<img src="Denis.jpg">
-<p>Kang Denis Baskara</p>
-<p>Program & Advertising Director</p>
-<a class="wa-btn" href="https://wa.me/6285353871166" target="_blank">WhatsApp</a>
+<h4>Kang Nandar</h4>
+<p>Community & Media</p>
+<p>WA: 0821xxxxxxx</p>
 </div>
 </div>
 
@@ -238,19 +192,19 @@ height:100px;
 <h3>📻 Program Radio</h3>
 <p>04:00 - Morning Energy</p>
 <p>08:00 - Winhart Hits</p>
-<p>12:00 - Chill & Relax</p>
+<p>12:00 - Chill</p>
 <p>16:00 - Drive Time</p>
-<p>20:00 - EDM Night</p>
+<p>20:00 - Night EDM</p>
+</div>
+
 </div>
 
 <audio id="player"></audio>
 
 <script>
 
-/* AUTO DJ + AUTO COVER */
-let tracks=[];
-let covers={};
-let i=0;
+/* AUTO DJ */
+let tracks=[],covers={},i=0;
 
 fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
 .then(r=>r.json())
@@ -258,93 +212,91 @@ fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
 data.forEach(f=>{
 let name=f.name.replace(/\.(mp3|jpg)/i,"");
 
-if(f.name.toLowerCase().endsWith(".mp3")){
+if(f.name.endsWith(".mp3")){
 tracks.push({title:name,url:f.download_url});
 }
 
-if(f.name.toLowerCase().endsWith(".jpg")){
+if(f.name.endsWith(".jpg")){
 covers[name]=f.download_url;
 }
 });
-title.innerText="Klik Play";
 });
 
+/* PLAYER */
 const player=document.getElementById("player");
 
-/* PLAY */
 function playRadio(){
-if(!tracks.length)return;
+let t=tracks[i];
+if(!t)return;
 
-let track=tracks[i];
-player.src=track.url;
-player.play().catch(()=>{});
+player.src=t.url;
+player.play();
 
-title.innerText=track.title;
-
-/* SET COVER */
-if(covers[track.title]){
-cover.src=covers[track.title];
-}else{
-cover.src="";
-}
+title.innerText=t.title;
+cover.src=covers[t.title] || "";
 }
 
 function pauseRadio(){player.pause();}
 
-/* NEXT AUTO */
-player.addEventListener("ended",()=>{
-i++;
-if(i>=tracks.length)i=0;
+player.onended=()=>{
+i++; if(i>=tracks.length)i=0;
 playRadio();
-});
-
-/* PROGRESS */
-player.ontimeupdate=()=>{
-let p=(player.currentTime/player.duration)*100;
-progress.style.width=p+"%";
 };
 
-/* VISUALIZER REAL */
-const canvas=document.getElementById("viz");
-const ctx=canvas.getContext("2d");
+/* VISUALIZER */
+const ctx=new AudioContext();
+const analyser=ctx.createAnalyser();
+const src=ctx.createMediaElementSource(player);
+src.connect(analyser);
+analyser.connect(ctx.destination);
 
-let audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-let analyser=audioCtx.createAnalyser();
-let source=audioCtx.createMediaElementSource(player);
-
-source.connect(analyser);
-analyser.connect(audioCtx.destination);
-
-analyser.fftSize=64;
-
-let bufferLength=analyser.frequencyBinCount;
-let dataArray=new Uint8Array(bufferLength);
+let canvas=document.getElementById("viz");
+let c=canvas.getContext("2d");
 
 function draw(){
 requestAnimationFrame(draw);
 
-analyser.getByteFrequencyData(dataArray);
+let data=new Uint8Array(analyser.frequencyBinCount);
+analyser.getByteFrequencyData(data);
 
-ctx.fillStyle="#000";
-ctx.fillRect(0,0,canvas.width,canvas.height);
+c.fillStyle="#000";
+c.fillRect(0,0,canvas.width,canvas.height);
 
-let barWidth=(canvas.width/bufferLength);
+let w=canvas.width/data.length;
 
-for(let i=0;i<bufferLength;i++){
-let barHeight=dataArray[i];
-ctx.fillStyle="#1db954";
-ctx.fillRect(i*barWidth,canvas.height-barHeight/2,barWidth-2,barHeight);
+for(let i=0;i<data.length;i++){
+c.fillStyle="#1db954";
+c.fillRect(i*w,canvas.height-data[i],w-2,data[i]);
 }
 }
 draw();
 
-/* REQUEST WA */
+/* LIVE DJ */
+let micStream;
+
+async function startDJ(){
+player.pause();
+
+micStream = await navigator.mediaDevices.getUserMedia({audio:true});
+let mic = ctx.createMediaStreamSource(micStream);
+mic.connect(analyser);
+alert("LIVE DJ AKTIF");
+}
+
+function stopDJ(){
+if(micStream){
+micStream.getTracks().forEach(t=>t.stop());
+alert("LIVE DJ OFF");
+}
+}
+
+/* WA */
 function kirimWA(){
 let nama=document.getElementById("nama").value;
 let lagu=document.getElementById("lagu").value;
 
 let text=`Halo Winhart Radio!%0ASaya ${nama}%0ARequest lagu: ${lagu}`;
-window.open(`https://wa.me/6282121785751?text=${text}`,"_blank");
+window.open(`https://wa.me/6282121785751?text=${text}`);
 }
 
 </script>
