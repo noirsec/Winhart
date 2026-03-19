@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WINHART RADIO PRO</title>
+<title>WINHART RADIO 🔴 LIVE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- GOOGLE ANALYTICS (ISI ID KAMU) -->
+<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -22,8 +22,7 @@ gtag('config', 'G-XXXX');
 "@context": "https://schema.org",
 "@type": "RadioStation",
 "name": "Winhart Radio",
-"url": "https://winhart.xyz",
-"genre": ["POP","EDM"]
+"url": "https://winhart.xyz"
 }
 </script>
 
@@ -37,18 +36,17 @@ margin:auto;
 padding:20px;
 }
 
+h2{text-align:center;}
+h3{margin-top:20px;}
+
 /* COVER */
 .cover img{
 width:100%;
 height:260px;
-object-fit:contain; /* FIX POTONG */
+object-fit:contain;
 background:#000;
 border-radius:15px;
 }
-
-/* TITLE */
-h2{text-align:center;}
-h3{margin:15px 0;}
 
 /* BUTTON */
 .controls{
@@ -56,6 +54,7 @@ display:flex;
 justify-content:center;
 gap:10px;
 flex-wrap:wrap;
+margin-top:10px;
 }
 
 button{
@@ -65,6 +64,14 @@ border:none;
 border-radius:8px;
 color:white;
 cursor:pointer;
+}
+
+/* STATUS */
+#liveStatus{
+text-align:center;
+font-weight:bold;
+margin-top:10px;
+color:#1db954;
 }
 
 /* PROGRESS */
@@ -90,6 +97,17 @@ border-radius:10px;
 margin-top:10px;
 }
 
+/* INPUT */
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+background:#222;
+border:none;
+color:white;
+border-radius:6px;
+}
+
 /* GRID */
 .grid{
 display:grid;
@@ -106,13 +124,13 @@ text-align:center;
 
 .card img{
 width:100%;
-height:160px;
-object-fit:contain; /* FIX FOTO CREW */
+height:150px;
+object-fit:contain;
 background:#000;
 border-radius:10px;
 }
 
-/* WA BUTTON */
+/* WA */
 .wa{
 display:inline-block;
 margin-top:8px;
@@ -138,15 +156,17 @@ margin-top:20px;
 <h2>WINHART RADIO 🔴 ON AIR</h2>
 
 <div class="cover">
-<img id="cover">
+<img id="cover" src="Logo.jpg">
 </div>
 
-<h3 id="title">Loading...</h3>
+<h3 id="title">Klik Play untuk Live</h3>
 
 <div class="controls">
 <button onclick="playRadio()">▶ Play</button>
 <button onclick="pauseRadio()">❚❚ Pause</button>
 </div>
+
+<div id="liveStatus">🔴 OFFLINE</div>
 
 <div class="progress">
 <div class="bar" id="progress"></div>
@@ -164,6 +184,7 @@ margin-top:20px;
 <h3>👥 Radio Crew</h3>
 
 <div class="grid">
+
 <div class="card">
 <img src="Andi.jpg">
 <p>Andy Hart</p>
@@ -199,8 +220,10 @@ margin-top:20px;
 <p>WA: 085353871166</p>
 <a class="wa" href="https://wa.me/6285353871166">Chat</a>
 </div>
+
 </div>
 
+<!-- PROGRAM -->
 <div class="program">
 <h3>📻 Program Radio</h3>
 <p>04:00 - Morning Energy</p>
@@ -214,74 +237,49 @@ margin-top:20px;
 
 <script>
 
-let tracks=[];
-let covers={};
-let i=0;
+const STREAM = "http://s41.myradiostream.com:40062/;";
 
-fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
-.then(r=>r.json())
-.then(data=>{
-data.forEach(f=>{
-let name=f.name.replace(/\.(mp3|jpg)/i,"");
+const player = document.getElementById("player");
+const statusEl = document.getElementById("liveStatus");
 
-if(f.name.toLowerCase().endsWith(".mp3")){
-tracks.push({title:name,url:f.download_url});
-}
-
-if(f.name.toLowerCase().endsWith(".jpg")){
-covers[name]=f.download_url;
-}
-});
-title.innerText="Klik Play";
-});
-
-const player=document.getElementById("player");
-
-/* AUDIO FIX */
-let audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-let analyser=audioCtx.createAnalyser();
+let audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+let analyser = audioCtx.createAnalyser();
 let source;
 
 /* PLAY */
 function playRadio(){
 
-audioCtx.resume(); // 🔥 WAJIB biar bunyi
+audioCtx.resume();
 
-if(!tracks.length)return;
+player.src = STREAM;
 
-let track=tracks[i];
+player.play().then(()=>{
+statusEl.innerText="🔴 LIVE ON AIR";
+title.innerText="Winhart Radio Live Streaming";
+}).catch(()=>{
+alert("Klik lagi untuk mulai");
+});
 
-player.src=track.url;
-player.play().catch(()=>{});
-
-title.innerText=track.title;
-
-if(covers[track.title]){
-cover.src=covers[track.title];
-}
-
-/* CONNECT AUDIO (ANTI BUG MOBILE) */
 if(!source){
-source=audioCtx.createMediaElementSource(player);
+source = audioCtx.createMediaElementSource(player);
 source.connect(analyser);
 analyser.connect(audioCtx.destination);
 }
 }
 
-function pauseRadio(){player.pause();}
+/* PAUSE */
+function pauseRadio(){
+player.pause();
+statusEl.innerText="⏸️ PAUSED";
+}
 
-/* NEXT */
-player.addEventListener("ended",()=>{
-i++;
-if(i>=tracks.length)i=0;
-playRadio();
-});
-
-/* PROGRESS */
-player.ontimeupdate=()=>{
-let p=(player.currentTime/player.duration)*100;
-progress.style.width=p+"%";
-};
+/* AUTO RECONNECT */
+setInterval(()=>{
+if(!player.paused && player.readyState < 3){
+player.load();
+player.play();
+}
+},5000);
 
 /* VISUALIZER */
 const canvas=document.getElementById("viz");
@@ -298,17 +296,17 @@ analyser.getByteFrequencyData(dataArray);
 ctx.fillStyle="#000";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-let barWidth=(canvas.width/bufferLength);
+let w=(canvas.width/bufferLength);
 
 for(let i=0;i<bufferLength;i++){
 let h=dataArray[i];
 ctx.fillStyle="#1db954";
-ctx.fillRect(i*barWidth,canvas.height-h/2,barWidth-2,h);
+ctx.fillRect(i*w,canvas.height-h/2,w-2,h);
 }
 }
 draw();
 
-/* WA */
+/* REQUEST WA */
 function kirimWA(){
 let nama=document.getElementById("nama").value;
 let lagu=document.getElementById("lagu").value;
