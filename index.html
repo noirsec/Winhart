@@ -18,7 +18,7 @@ color:white;
 
 /* CONTAINER */
 .container{
-max-width:1100px;
+max-width:1000px;
 margin:auto;
 padding:20px;
 }
@@ -26,25 +26,16 @@ padding:20px;
 /* PLAYER */
 .player{
 text-align:center;
-margin-bottom:30px;
 }
 
 .cover img{
 width:100%;
-max-height:320px;
+height:300px;
 object-fit:cover;
 border-radius:15px;
 }
 
-h2{
-margin:15px 0;
-}
-
-/* CONTROLS */
-.controls{
-margin:10px 0;
-}
-
+/* BUTTON */
 button{
 padding:10px 15px;
 margin:5px;
@@ -55,28 +46,12 @@ color:white;
 cursor:pointer;
 }
 
-/* VISUALIZER */
-canvas{
-width:100%;
-height:80px;
-background:#000;
-border-radius:10px;
-margin-top:10px;
-}
-
-/* REQUEST */
-.request{
-background:#181818;
-padding:15px;
-border-radius:10px;
-margin:20px 0;
-}
-
-/* CREW */
+/* GRID CREW */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(3,1fr);
 gap:15px;
+margin-top:20px;
 }
 
 .card{
@@ -84,39 +59,52 @@ background:#181818;
 border-radius:12px;
 overflow:hidden;
 text-align:center;
-padding-bottom:10px;
 }
 
 .card img{
 width:100%;
-height:180px;
+height:200px;
 object-fit:cover;
 }
 
 .card h4{
-margin:8px 0 3px;
-font-size:16px;
+margin:10px 0 5px;
 }
 
 .card p{
 font-size:13px;
-color:#bbb;
+color:#aaa;
 }
 
-/* PROGRAM */
-.program{
+/* REQUEST */
+.request{
 background:#181818;
 padding:15px;
 border-radius:10px;
-margin-top:25px;
+margin-top:20px;
 }
 
-/* DESKTOP FIX */
-@media(min-width:900px){
-.player{
-max-width:700px;
-margin:auto;
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+background:#222;
+border:none;
+color:white;
+border-radius:6px;
 }
+
+/* MOBILE FIX */
+@media(max-width:768px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.cover img{
+height:auto;
+}
+
 }
 
 </style>
@@ -135,14 +123,8 @@ margin:auto;
 
 <h2 id="title">Loading...</h2>
 
-<div class="controls">
-<button onclick="playRadio()">▶ Play</button>
+<button onclick="startRadio()">▶ Play</button>
 <button onclick="pauseRadio()">❚❚ Pause</button>
-<button onclick="startDJ()">🎙 Live DJ</button>
-<button onclick="stopDJ()">⛔ Stop DJ</button>
-</div>
-
-<canvas id="viz"></canvas>
 
 </div>
 
@@ -158,6 +140,7 @@ margin:auto;
 <h3>👥 Radio Crew</h3>
 
 <div class="grid">
+
 <div class="card">
 <img src="Andi.jpg">
 <h4>Andy Hartanto</h4>
@@ -185,16 +168,14 @@ margin:auto;
 <p>Community & Media</p>
 <p>WA: 0821xxxxxxx</p>
 </div>
+
+<div class="card">
+<img src="Denis.jpg">
+<h4>Kang Denis</h4>
+<p>Support & Crew</p>
+<p>WA: 0821xxxxxxx</p>
 </div>
 
-<!-- PROGRAM -->
-<div class="program">
-<h3>📻 Program Radio</h3>
-<p>04:00 - Morning Energy</p>
-<p>08:00 - Winhart Hits</p>
-<p>12:00 - Chill</p>
-<p>16:00 - Drive Time</p>
-<p>20:00 - Night EDM</p>
 </div>
 
 </div>
@@ -204,7 +185,9 @@ margin:auto;
 <script>
 
 /* AUTO DJ */
-let tracks=[],covers={},i=0;
+let tracks=[];
+let covers={};
+let i=0;
 
 fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
 .then(r=>r.json())
@@ -212,11 +195,11 @@ fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
 data.forEach(f=>{
 let name=f.name.replace(/\.(mp3|jpg)/i,"");
 
-if(f.name.endsWith(".mp3")){
+if(f.name.toLowerCase().endsWith(".mp3")){
 tracks.push({title:name,url:f.download_url});
 }
 
-if(f.name.endsWith(".jpg")){
+if(f.name.toLowerCase().endsWith(".jpg")){
 covers[name]=f.download_url;
 }
 });
@@ -225,69 +208,43 @@ covers[name]=f.download_url;
 /* PLAYER */
 const player=document.getElementById("player");
 
-function playRadio(){
+function startRadio(){
+if(!tracks.length)return;
+
 let t=tracks[i];
-if(!t)return;
 
 player.src=t.url;
-player.play();
+player.play().then(()=>{
+initAudio(); // aktifkan audio context setelah play
+});
 
 title.innerText=t.title;
 cover.src=covers[t.title] || "";
 }
 
-function pauseRadio(){player.pause();}
+function pauseRadio(){
+player.pause();
+}
 
+/* NEXT */
 player.onended=()=>{
-i++; if(i>=tracks.length)i=0;
-playRadio();
+i++;
+if(i>=tracks.length)i=0;
+startRadio();
 };
 
-/* VISUALIZER */
-const ctx=new AudioContext();
-const analyser=ctx.createAnalyser();
-const src=ctx.createMediaElementSource(player);
+/* FIX AUDIO CONTEXT */
+let audioCtx, analyser;
+
+function initAudio(){
+if(audioCtx) return;
+
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+analyser = audioCtx.createAnalyser();
+
+let src = audioCtx.createMediaElementSource(player);
 src.connect(analyser);
-analyser.connect(ctx.destination);
-
-let canvas=document.getElementById("viz");
-let c=canvas.getContext("2d");
-
-function draw(){
-requestAnimationFrame(draw);
-
-let data=new Uint8Array(analyser.frequencyBinCount);
-analyser.getByteFrequencyData(data);
-
-c.fillStyle="#000";
-c.fillRect(0,0,canvas.width,canvas.height);
-
-let w=canvas.width/data.length;
-
-for(let i=0;i<data.length;i++){
-c.fillStyle="#1db954";
-c.fillRect(i*w,canvas.height-data[i],w-2,data[i]);
-}
-}
-draw();
-
-/* LIVE DJ */
-let micStream;
-
-async function startDJ(){
-player.pause();
-
-micStream = await navigator.mediaDevices.getUserMedia({audio:true});
-let mic = ctx.createMediaStreamSource(micStream);
-mic.connect(analyser);
-alert("LIVE DJ AKTIF");
-}
-
-function stopDJ(){
-if(micStream){
-micStream.getTracks().forEach(t=>t.stop());
-alert("LIVE DJ OFF");
-}
+analyser.connect(audioCtx.destination);
 }
 
 /* WA */
