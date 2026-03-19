@@ -7,6 +7,26 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+<!-- GOOGLE ANALYTICS (ISI ID KAMU) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXX');
+</script>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "RadioStation",
+"name": "Winhart Radio",
+"url": "https://winhart.xyz",
+"genre": ["POP","EDM"]
+}
+</script>
+
 <style>
 body{
 background:#0b0b0b;
@@ -20,22 +40,17 @@ padding:20px;
 /* COVER */
 .cover img{
 width:100%;
-height:280px;
-object-fit:cover;
+height:260px;
+object-fit:contain; /* FIX POTONG */
+background:#000;
 border-radius:15px;
 }
 
 /* TITLE */
-h2{
-text-align:center;
-margin-bottom:20px;
-}
+h2{text-align:center;}
+h3{margin:15px 0;}
 
-h3{
-margin:15px 0 10px;
-}
-
-/* PLAYER CONTROL */
+/* BUTTON */
 .controls{
 display:flex;
 justify-content:center;
@@ -43,7 +58,6 @@ gap:10px;
 flex-wrap:wrap;
 }
 
-/* BUTTON */
 button{
 padding:10px 15px;
 background:#1db954;
@@ -51,11 +65,6 @@ border:none;
 border-radius:8px;
 color:white;
 cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#17a74a;
 }
 
 /* PROGRESS */
@@ -65,7 +74,6 @@ height:5px;
 background:#333;
 border-radius:5px;
 overflow:hidden;
-margin-top:10px;
 }
 .bar{
 height:100%;
@@ -79,24 +87,7 @@ width:100%;
 height:80px;
 background:#000;
 border-radius:10px;
-margin-top:15px;
-}
-
-/* REQUEST */
-.request-box{
-background:#181818;
-padding:15px;
-border-radius:10px;
-}
-
-input{
-width:100%;
-padding:10px;
-margin:5px 0;
-background:#222;
-border:none;
-color:white;
-border-radius:6px;
+margin-top:10px;
 }
 
 /* GRID */
@@ -104,44 +95,32 @@ border-radius:6px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:15px;
-margin-top:20px;
 }
 
-/* CARD */
 .card{
 background:#181818;
 padding:12px;
-border-radius:12px;
+border-radius:10px;
 text-align:center;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
 }
 
 .card img{
 width:100%;
-height:140px;
-object-fit:cover;
+height:160px;
+object-fit:contain; /* FIX FOTO CREW */
+background:#000;
 border-radius:10px;
-margin-bottom:8px;
 }
 
-/* WHATSAPP BUTTON */
-.wa-btn{
+/* WA BUTTON */
+.wa{
 display:inline-block;
 margin-top:8px;
+padding:6px 10px;
 background:#25D366;
-padding:8px 12px;
-border-radius:8px;
-text-decoration:none;
+border-radius:6px;
 color:white;
-font-size:14px;
-}
-
-.wa-btn:hover{
-background:#1ebe5d;
+text-decoration:none;
 }
 
 /* PROGRAM */
@@ -151,17 +130,6 @@ padding:15px;
 border-radius:10px;
 margin-top:20px;
 }
-
-/* DESKTOP IMPROVEMENT */
-@media(min-width:768px){
-.cover img{
-height:320px;
-}
-
-canvas{
-height:100px;
-}
-}
 </style>
 </head>
 
@@ -169,9 +137,8 @@ height:100px;
 
 <h2>WINHART RADIO 🔴 ON AIR</h2>
 
-<!-- COVER -->
 <div class="cover">
-<img id="cover" src="">
+<img id="cover">
 </div>
 
 <h3 id="title">Loading...</h3>
@@ -187,13 +154,11 @@ height:100px;
 
 <canvas id="viz"></canvas>
 
-<!-- REQUEST WA -->
-<div class="request-box">
+<!-- REQUEST -->
 <h3>🎵 Request Lagu</h3>
 <input id="nama" placeholder="Nama">
 <input id="lagu" placeholder="Judul lagu">
 <button onclick="kirimWA()">Kirim ke WhatsApp</button>
-</div>
 
 <!-- CREW -->
 <h3>👥 Radio Crew</h3>
@@ -215,25 +180,27 @@ height:100px;
 <img src="Rina.jpg">
 <p>Miss Selena Prabowo</p>
 <p>Marketing & Partnership Director</p>
-<a class="wa-btn" href="https://wa.me/6285720858250" target="_blank">WhatsApp</a>
+<p>WA: 085720858250</p>
+<a class="wa" href="https://wa.me/6285720858250">Chat</a>
 </div>
 
 <div class="card">
 <img src="Nandar.jpg">
 <p>Kang Nandar</p>
 <p>Comunity & Media Relations Partners</p>
-<a class="wa-btn" href="https://wa.me/6285846561354" target="_blank">WhatsApp</a>
+<p>WA: 085846561354</p>
+<a class="wa" href="https://wa.me/6285846561354">Chat</a>
 </div>
 
 <div class="card">
 <img src="Denis.jpg">
 <p>Kang Denis Baskara</p>
 <p>Program & Advertising Director</p>
-<a class="wa-btn" href="https://wa.me/6285353871166" target="_blank">WhatsApp</a>
+<p>WA: 085353871166</p>
+<a class="wa" href="https://wa.me/6285353871166">Chat</a>
 </div>
 </div>
 
-<!-- PROGRAM -->
 <div class="program">
 <h3>📻 Program Radio</h3>
 <p>04:00 - Morning Energy</p>
@@ -243,11 +210,10 @@ height:100px;
 <p>20:00 - EDM Night</p>
 </div>
 
-<audio id="player"></audio>
+<audio id="player" crossorigin="anonymous"></audio>
 
 <script>
 
-/* AUTO DJ + AUTO COVER */
 let tracks=[];
 let covers={};
 let i=0;
@@ -271,27 +237,40 @@ title.innerText="Klik Play";
 
 const player=document.getElementById("player");
 
+/* AUDIO FIX */
+let audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+let analyser=audioCtx.createAnalyser();
+let source;
+
 /* PLAY */
 function playRadio(){
+
+audioCtx.resume(); // 🔥 WAJIB biar bunyi
+
 if(!tracks.length)return;
 
 let track=tracks[i];
+
 player.src=track.url;
 player.play().catch(()=>{});
 
 title.innerText=track.title;
 
-/* SET COVER */
 if(covers[track.title]){
 cover.src=covers[track.title];
-}else{
-cover.src="";
+}
+
+/* CONNECT AUDIO (ANTI BUG MOBILE) */
+if(!source){
+source=audioCtx.createMediaElementSource(player);
+source.connect(analyser);
+analyser.connect(audioCtx.destination);
 }
 }
 
 function pauseRadio(){player.pause();}
 
-/* NEXT AUTO */
+/* NEXT */
 player.addEventListener("ended",()=>{
 i++;
 if(i>=tracks.length)i=0;
@@ -304,25 +283,16 @@ let p=(player.currentTime/player.duration)*100;
 progress.style.width=p+"%";
 };
 
-/* VISUALIZER REAL */
+/* VISUALIZER */
 const canvas=document.getElementById("viz");
 const ctx=canvas.getContext("2d");
 
-let audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-let analyser=audioCtx.createAnalyser();
-let source=audioCtx.createMediaElementSource(player);
-
-source.connect(analyser);
-analyser.connect(audioCtx.destination);
-
 analyser.fftSize=64;
-
 let bufferLength=analyser.frequencyBinCount;
 let dataArray=new Uint8Array(bufferLength);
 
 function draw(){
 requestAnimationFrame(draw);
-
 analyser.getByteFrequencyData(dataArray);
 
 ctx.fillStyle="#000";
@@ -331,14 +301,14 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 let barWidth=(canvas.width/bufferLength);
 
 for(let i=0;i<bufferLength;i++){
-let barHeight=dataArray[i];
+let h=dataArray[i];
 ctx.fillStyle="#1db954";
-ctx.fillRect(i*barWidth,canvas.height-barHeight/2,barWidth-2,barHeight);
+ctx.fillRect(i*barWidth,canvas.height-h/2,barWidth-2,h);
 }
 }
 draw();
 
-/* REQUEST WA */
+/* WA */
 function kirimWA(){
 let nama=document.getElementById("nama").value;
 let lagu=document.getElementById("lagu").value;
