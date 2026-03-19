@@ -1,224 +1,264 @@
-<!DOCTYPE html&gt;<br>
-<html lang=&quot;en&quot;&gt;<br>
-<head&gt;<br>
-<meta charset=&quot;UTF-8&quot;&gt;<br>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>
-<title&gt;WINHART RADIO PRO&lt;/title&gt;<br>
-<br>
-<link href=&quot;https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;<br>
-<br>
-<style&gt;<br>
-body{<br>
-background:#0b0b0b;<br>
-color:white;<br>
-font-family:Poppins;<br>
-max-width:900px;<br>
-margin:auto;<br>
-padding:20px;<br>
-}<br>
-<br>
-/* COVER */<br>
-.cover img{<br>
-width:100%;<br>
-height:260px;<br>
-object-fit:cover;<br>
-border-radius:15px;<br>
-}<br>
-<br>
-/* TITLE */<br>
-h3{<br>
-margin:10px 0;<br>
-}<br>
-<br>
-/* BUTTON */<br>
-button{<br>
-padding:10px 15px;<br>
-margin:5px;<br>
-background:#1db954;<br>
-border:none;<br>
-border-radius:8px;<br>
-color:white;<br>
-cursor:pointer;<br>
-}<br>
-<br>
-/* PROGRESS */<br>
-.progress{<br>
-width:100%;<br>
-height:5px;<br>
-background:#333;<br>
-border-radius:5px;<br>
-overflow:hidden;<br>
-margin-top:10px;<br>
-}<br>
-.bar{<br>
-height:100%;<br>
-width:0%;<br>
-background:#1db954;<br>
-}<br>
-<br>
-/* VISUALIZER */<br>
-canvas{<br>
-width:100%;<br>
-height:80px;<br>
-background:#000;<br>
-border-radius:10px;<br>
-margin-top:15px;<br>
-}<br>
-<br>
-/* REQUEST */<br>
-input{<br>
-width:100%;<br>
-padding:10px;<br>
-margin:5px 0;<br>
-background:#222;<br>
-border:none;<br>
-color:white;<br>
-border-radius:6px;<br>
-}<br>
-<br>
-/* GRID */<br>
-.grid{<br>
-display:grid;<br>
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));<br>
-gap:10px;<br>
-margin-top:20px;<br>
-}<br>
-<br>
-.card{<br>
-background:#181818;<br>
-padding:10px;<br>
-border-radius:10px;<br>
-text-align:center;<br>
-}<br>
-<br>
-.card img{<br>
-width:100%;<br>
-height:120px;<br>
-object-fit:cover;<br>
-border-radius:8px;<br>
-}<br>
-<br>
-.program{<br>
-background:#181818;<br>
-padding:15px;<br>
-border-radius:10px;<br>
-margin-top:20px;<br>
-}<br>
-&lt;/style&gt;<br>
-&lt;/head&gt;<br>
-<br>
-&lt;body&gt;<br>
-<br>
-&lt;h2&gt;WINHART RADIO 🔴 ON AIR&lt;/h2&gt;<br>
-<br>
-&lt;!-- COVER --&gt;<br>
-&lt;div class=&quot;cover&quot;&gt;<br>
-&lt;img id=&quot;cover&quot; src=&quot;&quot;&gt;<br>
-&lt;/div&gt;<br>
-<br>
-&lt;h3 id=&quot;title&quot;&gt;Loading...&lt;/h3&gt;<br>
-<br>
-&lt;button onclick=&quot;playRadio()&quot;&gt;▶ Play&lt;/button&gt;<br>
-&lt;button onclick=&quot;pauseRadio()&quot;&gt;❚❚ Pause&lt;/button&gt;<br>
-<br>
-&lt;div class=&quot;progress&quot;&gt;<br>
-&lt;div class=&quot;bar&quot; id=&quot;progress&quot;&gt;&lt;/div&gt;<br>
-&lt;/div&gt;<br>
-<br>
-&lt;canvas id=&quot;viz&quot;&gt;&lt;/canvas&gt;<br>
-<br>
-&lt;!-- REQUEST WA --&gt;<br>
-&lt;h3&gt;🎵 Request Lagu&lt;/h3&gt;<br>
-&lt;input id=&quot;nama&quot; placeholder=&quot;Nama&quot;&gt;<br>
-&lt;input id=&quot;lagu&quot; placeholder=&quot;Judul lagu&quot;&gt;<br>
-&lt;button onclick=&quot;kirimWA()&quot;&gt;Kirim ke WhatsApp&lt;/button&gt;<br>
-<br>
-&lt;!-- CREW --&gt;<br>
-&lt;h3&gt;👥 Radio Crew&lt;/h3&gt;<br>
-<br>
-&lt;div class=&quot;grid&quot;&gt;<br>
-&lt;div class=&quot;card&quot;&gt;&lt;img src=&quot;Andi.jpg&quot;&gt;&lt;p&gt;Andy Hart&lt;/p&gt;&lt;p&gt;Music Director&lt;/p&gt;&lt;/div&gt;<br>
-&lt;div class=&quot;card&quot;&gt;&lt;img src=&quot;Sheryl.jpg&quot;&gt;&lt;p&gt;Sheryl&lt;/p&gt;&lt;p&gt;Music Curator&lt;/p&gt;&lt;/div&gt;<br>
-&lt;div class=&quot;card&quot;&gt;&lt;img src=&quot;Rina.jpg&quot;&gt;&lt;p&gt;Miss Selena Prabowo&lt;/p&gt;&lt;p&gt;Marketing &amp; Partnership Director&lt;/p&gt;&lt;p&gt;WA: 085720858250&lt;/p&gt;&lt;/div&gt;<br>
-&lt;div class=&quot;card&quot;&gt;&lt;img src=&quot;Nandar.jpg&quot;&gt;&lt;p&gt;Kang Nandar&lt;/p&gt;&lt;p&gt;Comunity &amp; Media Relations Partners&lt;/p&gt;&lt;p&gt;WA: 085846561354&lt;/p&gt;&lt;/div&gt;<br>
-&lt;div class=&quot;card&quot;&gt;&lt;img src=&quot;Denis.jpg&quot;&gt;&lt;p&gt;Kang Denis Baskara&lt;/p&gt;&lt;p&gt;Program &amp; Advertising Director&lt;/p&gt;&lt;p&gt;WA: 085353871166&lt;/p&gt;&lt;/div&gt;<br>
-&lt;/div&gt;<br>
-<br>
-&lt;!-- PROGRAM --&gt;<br>
-&lt;div class=&quot;program&quot;&gt;<br>
-&lt;h3&gt;📻 Program Radio&lt;/h3&gt;<br>
-&lt;p&gt;04:00 - Morning Energy&lt;/p&gt;<br>
-&lt;p&gt;08:00 - Winhart Hits&lt;/p&gt;<br>
-&lt;p&gt;12:00 - Chill &amp; Relax&lt;/p&gt;<br>
-&lt;p&gt;16:00 - Drive Time&lt;/p&gt;<br>
-&lt;p&gt;20:00 - EDM Night&lt;/p&gt;<br>
-&lt;/div&gt;<br>
-<br>
-&lt;audio id=&quot;player&quot;&gt;&lt;/audio&gt;<br>
-<br>
-&lt;script&gt;<br>
-<br>
-/* AUTO DJ + AUTO COVER */<br>
-let tracks=[];<br>
-let covers={};<br>
-let i=0;<br>
-<br>
-fetch(&quot;https://api.github.com/repos/noirsec/Winhart/contents/&quot;)<br>
-.then(r=&gt;r.json())<br>
-.then(data=&gt;{<br>
-data.forEach(f=&gt;{<br>
-let name=f.name.replace(/\.(mp3|jpg)/i,&quot;&quot;);<br>
-<br>
-if(f.name.toLowerCase().endsWith(&quot;.mp3&quot;)){<br>
-tracks.push({title:name,url:f.download_url});<br>
-}<br>
-<br>
-if(f.name.toLowerCase().endsWith(&quot;.jpg&quot;)){<br>
-covers[name]=f.download_url;<br>
-}<br>
-});<br>
-title.innerText=&quot;Klik Play&quot;;<br>
-});<br>
-<br>
-const player=document.getElementById(&quot;player&quot;);<br>
-<br>
-/* PLAY */<br>
-function playRadio(){<br>
-if(!tracks.length)return;<br>
-<br>
-let track=tracks[i];<br>
-player.src=track.url;<br>
-player.play().catch(()=&gt;{});<br>
-<br>
-title.innerText=track.title;<br>
-<br>
-/* SET COVER */<br>
-if(covers[track.title]){<br>
-cover.src=covers[track.title];<br>
-}else{<br>
-cover.src=&quot;&quot;;<br>
-}<br>
-}<br>
-<br>
-function pauseRadio(){player.pause();}<br>
-<br>
-/* NEXT AUTO */<br>
-player.addEventListener(&quot;ended&quot;,()=&gt;{<br>
-i++;<br>
-if(i&gt;=tracks.length)i=0;<br>
-playRadio();<br>
-});<br>
-<br>
-/* PROGRESS */<br>
-player.ontimeupdate=()=&gt;{<br>
-let p=(player.currentTime/player.duration)*100;<br>
-progress.style.width=p+&quot;%&quot;;<br>
-};<br>
-<br>
-/* VISUALIZER REAL */<br>
-const canvas=document.getElementById(&quot;viz&quot;);<br>
-const ctx=canvas.getContext(&quot;2d&quot;);<br>
-<br>
-let audioCtx=new (window.AudioContext||window.webkitAudioContext)();<br>
-let analyser=audioCtx.createAnalyser();<br>
-let source=audioCtx.createMediaElementSource(player
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WINHART RADIO PRO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+background:#0b0b0b;
+color:white;
+font-family:Poppins;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* COVER */
+.cover img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:15px;
+}
+
+/* TITLE */
+h3{
+margin:10px 0;
+}
+
+/* BUTTON */
+button{
+padding:10px 15px;
+margin:5px;
+background:#1db954;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+}
+
+/* PROGRESS */
+.progress{
+width:100%;
+height:5px;
+background:#333;
+border-radius:5px;
+overflow:hidden;
+margin-top:10px;
+}
+.bar{
+height:100%;
+width:0%;
+background:#1db954;
+}
+
+/* VISUALIZER */
+canvas{
+width:100%;
+height:80px;
+background:#000;
+border-radius:10px;
+margin-top:15px;
+}
+
+/* REQUEST */
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+background:#222;
+border:none;
+color:white;
+border-radius:6px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+margin-top:20px;
+}
+
+.card{
+background:#181818;
+padding:10px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.program{
+background:#181818;
+padding:15px;
+border-radius:10px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>WINHART RADIO 🔴 ON AIR</h2>
+
+<!-- COVER -->
+<div class="cover">
+<img id="cover" src="">
+</div>
+
+<h3 id="title">Loading...</h3>
+
+<button onclick="playRadio()">▶ Play</button>
+<button onclick="pauseRadio()">❚❚ Pause</button>
+
+<div class="progress">
+<div class="bar" id="progress"></div>
+</div>
+
+<canvas id="viz"></canvas>
+
+<!-- REQUEST WA -->
+<h3>🎵 Request Lagu</h3>
+<input id="nama" placeholder="Nama">
+<input id="lagu" placeholder="Judul lagu">
+<button onclick="kirimWA()">Kirim ke WhatsApp</button>
+
+<!-- CREW -->
+<h3>👥 Radio Crew</h3>
+
+<div class="grid">
+<div class="card"><img src="Andi.jpg"><p>Andy Hartanto</p><p>WA: 0821xxxxxxx</p></div>
+<div class="card"><img src="Sheryl.jpg"><p>Sheryl</p><p>WA: 0821xxxxxxx</p></div>
+<div class="card"><img src="Rina.jpg"><p>Miss Selena</p><p>WA: 0821xxxxxxx</p></div>
+<div class="card"><img src="Nandar.jpg"><p>Kang Nandar</p><p>WA: 0821xxxxxxx</p></div>
+<div class="card"><img src="Denis.jpg"><p>Kang Denis</p><p>WA: 0821xxxxxxx</p></div>
+</div>
+
+<!-- PROGRAM -->
+<div class="program">
+<h3>📻 Program Radio</h3>
+<p>04:00 - Morning Energy</p>
+<p>08:00 - Winhart Hits</p>
+<p>12:00 - Chill & Relax</p>
+<p>16:00 - Drive Time</p>
+<p>20:00 - EDM Night</p>
+</div>
+
+<audio id="player"></audio>
+
+<script>
+
+/* AUTO DJ + AUTO COVER */
+let tracks=[];
+let covers={};
+let i=0;
+
+fetch("https://api.github.com/repos/noirsec/Winhart/contents/")
+.then(r=>r.json())
+.then(data=>{
+data.forEach(f=>{
+let name=f.name.replace(/\.(mp3|jpg)/i,"");
+
+if(f.name.toLowerCase().endsWith(".mp3")){
+tracks.push({title:name,url:f.download_url});
+}
+
+if(f.name.toLowerCase().endsWith(".jpg")){
+covers[name]=f.download_url;
+}
+});
+title.innerText="Klik Play";
+});
+
+const player=document.getElementById("player");
+
+/* PLAY */
+function playRadio(){
+if(!tracks.length)return;
+
+let track=tracks[i];
+player.src=track.url;
+player.play().catch(()=>{});
+
+title.innerText=track.title;
+
+/* SET COVER */
+if(covers[track.title]){
+cover.src=covers[track.title];
+}else{
+cover.src="";
+}
+}
+
+function pauseRadio(){player.pause();}
+
+/* NEXT AUTO */
+player.addEventListener("ended",()=>{
+i++;
+if(i>=tracks.length)i=0;
+playRadio();
+});
+
+/* PROGRESS */
+player.ontimeupdate=()=>{
+let p=(player.currentTime/player.duration)*100;
+progress.style.width=p+"%";
+};
+
+/* VISUALIZER REAL */
+const canvas=document.getElementById("viz");
+const ctx=canvas.getContext("2d");
+
+let audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+let analyser=audioCtx.createAnalyser();
+let source=audioCtx.createMediaElementSource(player);
+
+source.connect(analyser);
+analyser.connect(audioCtx.destination);
+
+analyser.fftSize=64;
+
+let bufferLength=analyser.frequencyBinCount;
+let dataArray=new Uint8Array(bufferLength);
+
+function draw(){
+requestAnimationFrame(draw);
+
+analyser.getByteFrequencyData(dataArray);
+
+ctx.fillStyle="#000";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+let barWidth=(canvas.width/bufferLength);
+
+for(let i=0;i<bufferLength;i++){
+let barHeight=dataArray[i];
+ctx.fillStyle="#1db954";
+ctx.fillRect(i*barWidth,canvas.height-barHeight/2,barWidth-2,barHeight);
+}
+}
+draw();
+
+/* REQUEST WA */
+function kirimWA(){
+let nama=document.getElementById("nama").value;
+let lagu=document.getElementById("lagu").value;
+
+let text=`Halo Winhart Radio!%0ASaya ${nama}%0ARequest lagu: ${lagu}`;
+window.open(`https://wa.me/6282121785751?text=${text}`,"_blank");
+}
+
+</script>
+
+</body>
+</html>
