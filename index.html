@@ -1,30 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WINHART RADIO 🔴 LIVE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<!-- GOOGLE ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XXXX');
-</script>
-
-<!-- SCHEMA -->
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "RadioStation",
-"name": "Winhart Radio",
-"url": "https://winhart.xyz"
-}
-</script>
 
 <style>
 body{
@@ -33,37 +14,28 @@ color:white;
 font-family:Poppins;
 max-width:1100px;
 margin:auto;
-padding:20px;
+padding:15px;
 }
 
-h2{text-align:center;}
-h3{margin-top:20px;}
+/* TITLE */
+h2{text-align:center;margin-bottom:10px;}
+h3{margin-top:25px}
 
-/* COVER */
+/* COVER FIX MOBILE */
 .cover img{
 width:100%;
-height:260px;
+max-height:300px;
 object-fit:contain;
 background:#000;
 border-radius:15px;
 }
 
-/* BUTTON */
-.controls{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-margin-top:10px;
-}
-
-button{
-padding:10px 15px;
-background:#1db954;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
+/* PLAYER */
+.player-box{
+margin-top:15px;
+background:#181818;
+padding:10px;
+border-radius:12px;
 }
 
 /* STATUS */
@@ -74,27 +46,21 @@ margin-top:10px;
 color:#1db954;
 }
 
-/* PROGRESS */
-.progress{
-width:100%;
-height:5px;
-background:#333;
-border-radius:5px;
-overflow:hidden;
-}
-.bar{
-height:100%;
-width:0%;
-background:#1db954;
+/* BUTTON */
+.controls{
+display:flex;
+justify-content:center;
+margin-top:10px;
 }
 
-/* VISUALIZER */
-canvas{
-width:100%;
-height:80px;
-background:#000;
-border-radius:10px;
-margin-top:10px;
+button{
+padding:12px 20px;
+background:#1db954;
+border:none;
+border-radius:8px;
+color:white;
+font-size:15px;
+cursor:pointer;
 }
 
 /* INPUT */
@@ -108,37 +74,37 @@ color:white;
 border-radius:6px;
 }
 
-/* GRID */
+/* GRID CREW */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
 }
 
 .card{
 background:#181818;
-padding:12px;
+padding:10px;
 border-radius:10px;
 text-align:center;
 }
 
 .card img{
 width:100%;
-height:150px;
-object-fit:contain;
-background:#000;
+height:140px;
+object-fit:cover;
 border-radius:10px;
 }
 
-/* WA */
+/* WA BUTTON */
 .wa{
 display:inline-block;
-margin-top:8px;
+margin-top:6px;
 padding:6px 10px;
 background:#25D366;
 border-radius:6px;
 color:white;
 text-decoration:none;
+font-size:13px;
 }
 
 /* PROGRAM */
@@ -153,35 +119,25 @@ margin-top:20px;
 
 <body>
 
-<h2>WINHART RADIO 🔴 ON AIR</h2>
+<h2>🎧 WINHART RADIO 🔴 ON AIR</h2>
 
 <div class="cover">
-<img id="cover" src="Logo.jpg">
+<img src="Logo.jpg">
 </div>
 
-<h3 id="title">Klik Play untuk Live</h3>
-
 <div class="controls">
-<button onclick="playRadio()">▶ Play</button>
-<button onclick="pauseRadio()">❚❚ Pause</button>
+<button onclick="playRadio()">▶ PLAY RADIO</button>
 </div>
 
 <div id="liveStatus">🔴 OFFLINE</div>
 
-<div class="progress">
-<div class="bar" id="progress"></div>
-</div>
+<div class="player-box" id="radioPlayer"></div>
 
-<canvas id="viz"></canvas>
-
-<!-- TAMBAHAN PLAYER FIX -->
-<div id="radioPlayer" style="margin-top:15px;"></div>
-  
 <!-- REQUEST -->
 <h3>🎵 Request Lagu</h3>
-<input id="nama" placeholder="Nama">
+<input id="nama" placeholder="Nama kamu">
 <input id="lagu" placeholder="Judul lagu">
-<button onclick="kirimWA()">Kirim ke WhatsApp</button>
+<button onclick="kirimWA()">Kirim Request</button>
 
 <!-- CREW -->
 <h3>👥 Radio Crew</h3>
@@ -203,24 +159,21 @@ margin-top:20px;
 <div class="card">
 <img src="Rina.jpg">
 <p>Miss Selena Prabowo</p>
-<p>Marketing & Partnership Director</p>
-<p>WA: 085720858250</p>
+<p>Marketing & Partnership</p>
 <a class="wa" href="https://wa.me/6285720858250">Chat</a>
 </div>
 
 <div class="card">
 <img src="Nandar.jpg">
 <p>Kang Nandar</p>
-<p>Comunity & Media Relations Partners</p>
-<p>WA: 085846561354</p>
+<p>Community & Media</p>
 <a class="wa" href="https://wa.me/6285846561354">Chat</a>
 </div>
 
 <div class="card">
 <img src="Denis.jpg">
 <p>Kang Denis Baskara</p>
-<p>Program & Advertising Director</p>
-<p>WA: 085353871166</p>
+<p>Program & Advertising</p>
 <a class="wa" href="https://wa.me/6285353871166">Chat</a>
 </div>
 
@@ -236,114 +189,40 @@ margin-top:20px;
 <p>20:00 - EDM Night</p>
 </div>
 
-<audio id="player" crossorigin="anonymous"></audio>
-
 <script>
 
-const STREAM = "http://s41.myradiostream.com:40062/;";
-
-const player = document.getElementById("player");
-const statusEl = document.getElementById("liveStatus");
-
-let audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-let analyser = audioCtx.createAnalyser();
-let source;
-
-/* PLAY */
-function loadLiveRadio(){
-document.getElementById("radioPlayer").innerHTML =
-'<iframe src="https://myradiostream.com/embed/Winandya" width="100%" height="110" frameborder="0" allow="autoplay"></iframe>';
-}
-
-/* PLAY */
+/* PLAY RADIO (FIX SUARA) */
 function playRadio(){
 
-audioCtx.resume();
+document.getElementById("radioPlayer").innerHTML = `
+<iframe 
+src="http://winandya.on-air.fm/free/" 
+width="100%" 
+height="120" 
+frameborder="0" 
+allow="autoplay">
+</iframe>
+`;
 
-/* COBA STREAM LANGSUNG */
-player.src = STREAM;
+document.getElementById("liveStatus").innerText="🔴 LIVE ON AIR";
 
-player.play().then(()=>{
-statusEl.innerText="🔴 LIVE ON AIR";
-title.innerText="Winhart Radio Live Streaming";
-}).catch(()=>{
-/* JIKA GAGAL → PAKAI PLAYER RESMI */
-loadLiveRadio();
-statusEl.innerText="🔴 LIVE (Fallback Mode)";
-});
-
-/* CONNECT ANALYSER */
-if(!source){
-source = audioCtx.createMediaElementSource(player);
-source.connect(analyser);
-analyser.connect(audioCtx.destination);
 }
-}
-
-audioCtx.resume();
-
-player.src = STREAM;
-
-player.play().then(()=>{
-statusEl.innerText="🔴 LIVE ON AIR";
-title.innerText="Winhart Radio Live Streaming";
-}).catch(()=>{
-alert("Klik lagi untuk mulai");
-});
-
-if(!source){
-source = audioCtx.createMediaElementSource(player);
-source.connect(analyser);
-analyser.connect(audioCtx.destination);
-}
-}
-
-/* PAUSE */
-function pauseRadio(){
-player.pause();
-statusEl.innerText="⏸️ PAUSED";
-}
-
-/* AUTO RECONNECT */
-setInterval(()=>{
-if(!player.paused && player.readyState < 3){
-player.load();
-player.play();
-}
-},5000);
-
-/* VISUALIZER */
-const canvas=document.getElementById("viz");
-const ctx=canvas.getContext("2d");
-
-analyser.fftSize=64;
-let bufferLength=analyser.frequencyBinCount;
-let dataArray=new Uint8Array(bufferLength);
-
-function draw(){
-requestAnimationFrame(draw);
-analyser.getByteFrequencyData(dataArray);
-
-ctx.fillStyle="#000";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-let w=(canvas.width/bufferLength);
-
-for(let i=0;i<bufferLength;i++){
-let h=dataArray[i];
-ctx.fillStyle="#1db954";
-ctx.fillRect(i*w,canvas.height-h/2,w-2,h);
-}
-}
-draw();
 
 /* REQUEST WA */
 function kirimWA(){
+
 let nama=document.getElementById("nama").value;
 let lagu=document.getElementById("lagu").value;
 
+if(nama=="" || lagu==""){
+alert("Isi dulu nama & lagu");
+return;
+}
+
 let text=`Halo Winhart Radio!%0ASaya ${nama}%0ARequest lagu: ${lagu}`;
+
 window.open(`https://wa.me/6282121785751?text=${text}`,"_blank");
+
 }
 
 </script>
