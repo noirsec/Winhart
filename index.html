@@ -203,26 +203,38 @@ margin-top:20px;
 
 <script>
 
-const STREAM = "https://play.radioking.io/winhart-radio";
+const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 const player = document.getElementById("player");
 
 function playRadio(){
 
-/* SET STREAM */
+/* RESET TOTAL (WAJIB) */
+player.pause();
+player.removeAttribute("src");
+player.load();
+
+/* SET ULANG */
+setTimeout(()=>{
+
 player.src = STREAM;
 
-/* PLAY (HARUS DARI KLIK USER) */
+player.load();
+
 player.play()
 .then(()=>{
 document.getElementById("liveStatus").innerText="🔴 LIVE ON AIR";
 })
 .catch((e)=>{
-console.log(e);
+console.log("ERROR:", e);
 document.getElementById("liveStatus").innerText="Klik lagi ▶";
 });
 
+},300);
+
 }
 
+</script>
+  
 /* REQUEST WA */
 function kirimWA(){
 
