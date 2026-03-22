@@ -190,19 +190,35 @@ margin-top:20px;
 <script>
 
 /* STREAM RADIOKING (VALID) */
-const STREAM = "https://link.radioking.com/winhart-radio";
 
+<div class="player-box">
+
+<button onclick="playRadio()">▶ PLAY RADIO</button>
+
+<audio id="player" controls playsinline></audio>
+
+<div id="liveStatus">🔴 OFFLINE</div>
+
+</div>
+
+<script>
+
+const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 const player = document.getElementById("player");
 
-/* PLAY */
 function playRadio(){
 
+/* SET STREAM */
 player.src = STREAM;
 
-player.play().then(()=>{
+/* PLAY (HARUS DARI KLIK USER) */
+player.play()
+.then(()=>{
 document.getElementById("liveStatus").innerText="🔴 LIVE ON AIR";
-}).catch(()=>{
-alert("Klik play lagi (browser block autoplay)");
+})
+.catch((e)=>{
+console.log(e);
+document.getElementById("liveStatus").innerText="Klik lagi ▶";
 });
 
 }
