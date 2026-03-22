@@ -17,14 +17,12 @@ margin:auto;
 padding:15px;
 }
 
-/* TITLE */
-h2{text-align:center;margin-bottom:10px;}
-h3{margin-top:25px}
+h2{text-align:center}
 
-/* COVER FIX MOBILE */
+/* COVER */
 .cover img{
 width:100%;
-max-height:300px;
+max-height:280px;
 object-fit:contain;
 background:#000;
 border-radius:15px;
@@ -34,33 +32,32 @@ border-radius:15px;
 .player-box{
 margin-top:15px;
 background:#181818;
-padding:10px;
+padding:15px;
 border-radius:12px;
+text-align:center;
 }
 
-/* STATUS */
-#liveStatus{
-text-align:center;
-font-weight:bold;
+audio{
+width:100%;
 margin-top:10px;
-color:#1db954;
 }
 
 /* BUTTON */
-.controls{
-display:flex;
-justify-content:center;
-margin-top:10px;
-}
-
 button{
 padding:12px 20px;
 background:#1db954;
 border:none;
 border-radius:8px;
 color:white;
-font-size:15px;
 cursor:pointer;
+}
+
+/* STATUS */
+#liveStatus{
+text-align:center;
+margin-top:10px;
+color:#1db954;
+font-weight:bold;
 }
 
 /* INPUT */
@@ -74,7 +71,7 @@ color:white;
 border-radius:6px;
 }
 
-/* GRID CREW */
+/* CREW FIX (NO CROP) */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -90,12 +87,11 @@ text-align:center;
 
 .card img{
 width:100%;
-height:140px;
-object-fit:cover;
+height:auto; /* FIX NO CROP */
 border-radius:10px;
 }
 
-/* WA BUTTON */
+/* WA */
 .wa{
 display:inline-block;
 margin-top:6px;
@@ -125,13 +121,15 @@ margin-top:20px;
 <img src="Logo.jpg">
 </div>
 
-<div class="controls">
+<div class="player-box">
+
 <button onclick="playRadio()">▶ PLAY RADIO</button>
-</div>
+
+<audio id="player" controls></audio>
 
 <div id="liveStatus">🔴 OFFLINE</div>
 
-<div class="player-box" id="radioPlayer"></div>
+</div>
 
 <!-- REQUEST -->
 <h3>🎵 Request Lagu</h3>
@@ -191,20 +189,21 @@ margin-top:20px;
 
 <script>
 
-/* PLAY RADIO (FIX SUARA) */
+/* STREAM RADIOKING (VALID) */
+const STREAM = "https://link.radioking.com/winhart-radio";
+
+const player = document.getElementById("player");
+
+/* PLAY */
 function playRadio(){
 
-document.getElementById("radioPlayer").innerHTML = `
-<iframe 
-src="http://winandya.on-air.fm/free/" 
-width="100%" 
-height="120" 
-frameborder="0" 
-allow="autoplay">
-</iframe>
-`;
+player.src = STREAM;
 
+player.play().then(()=>{
 document.getElementById("liveStatus").innerText="🔴 LIVE ON AIR";
+}).catch(()=>{
+alert("Klik play lagi (browser block autoplay)");
+});
 
 }
 
