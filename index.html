@@ -16,7 +16,6 @@ max-width:1100px;
 margin:auto;
 padding:15px;
 }
-
 h2{text-align:center}
 
 /* COVER */
@@ -42,7 +41,6 @@ width:100%;
 margin-top:10px;
 }
 
-/* BUTTON */
 button{
 padding:12px 20px;
 background:#1db954;
@@ -52,7 +50,6 @@ color:white;
 cursor:pointer;
 }
 
-/* STATUS */
 #liveStatus{
 text-align:center;
 margin-top:10px;
@@ -60,18 +57,7 @@ color:#1db954;
 font-weight:bold;
 }
 
-/* INPUT */
-input{
-width:100%;
-padding:10px;
-margin:5px 0;
-background:#222;
-border:none;
-color:white;
-border-radius:6px;
-}
-
-/* CREW FIX (NO CROP) */
+/* CREW FIX */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -87,7 +73,7 @@ text-align:center;
 
 .card img{
 width:100%;
-height:auto; /* FIX NO CROP */
+height:auto;
 border-radius:10px;
 }
 
@@ -100,15 +86,6 @@ background:#25D366;
 border-radius:6px;
 color:white;
 text-decoration:none;
-font-size:13px;
-}
-
-/* PROGRAM */
-.program{
-background:#181818;
-padding:15px;
-border-radius:10px;
-margin-top:20px;
 }
 </style>
 </head>
@@ -122,26 +99,19 @@ margin-top:20px;
 </div>
 
 <div class="player-box">
-
 <button onclick="playRadio()">▶ PLAY RADIO</button>
-
-<audio id="player" controls></audio>
-
+<audio id="player" controls playsinline></audio>
 <div id="liveStatus">🔴 OFFLINE</div>
-
 </div>
 
-<!-- REQUEST -->
 <h3>🎵 Request Lagu</h3>
 <input id="nama" placeholder="Nama kamu">
 <input id="lagu" placeholder="Judul lagu">
 <button onclick="kirimWA()">Kirim Request</button>
 
-<!-- CREW -->
 <h3>👥 Radio Crew</h3>
 
 <div class="grid">
-
 <div class="card">
 <img src="Andi.jpg">
 <p>Andy Hart</p>
@@ -174,67 +144,35 @@ margin-top:20px;
 <p>Program & Advertising</p>
 <a class="wa" href="https://wa.me/6285353871166">Chat</a>
 </div>
-
-</div>
-
-<!-- PROGRAM -->
-<div class="program">
-<h3>📻 Program Radio</h3>
-<p>04:00 - Morning Energy</p>
-<p>08:00 - Winhart Hits</p>
-<p>12:00 - Chill & Relax</p>
-<p>16:00 - Drive Time</p>
-<p>20:00 - EDM Night</p>
-</div>
-
-<script>
-
-/* STREAM RADIOKING (VALID) */
-
-<div class="player-box">
-
-<button onclick="playRadio()">▶ PLAY RADIO</button>
-
-<audio id="player" controls playsinline></audio>
-
-<div id="liveStatus">🔴 OFFLINE</div>
-
 </div>
 
 <script>
 
 const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
-const player = document.getElementById("player");
 
 function playRadio(){
 
-/* RESET TOTAL (WAJIB) */
+const player = document.getElementById("player");
+
+/* FORCE RESET */
 player.pause();
-player.removeAttribute("src");
+player.src = "";
 player.load();
 
-/* SET ULANG */
 setTimeout(()=>{
-
 player.src = STREAM;
-
-player.load();
 
 player.play()
 .then(()=>{
 document.getElementById("liveStatus").innerText="🔴 LIVE ON AIR";
 })
-.catch((e)=>{
-console.log("ERROR:", e);
+.catch(()=>{
 document.getElementById("liveStatus").innerText="Klik lagi ▶";
 });
-
-},300);
+},200);
 
 }
 
-</script>
-  
 /* REQUEST WA */
 function kirimWA(){
 
