@@ -314,6 +314,20 @@ window.open(`https://wa.me/6282121785751?text=${text}`,"_blank");
 
 }
 
+function updateListeners(){
+
+// simulasi realistis (tidak angka tetap)
+let base = 20;
+let variation = Math.floor(Math.random()*40);
+
+document.getElementById("listeners").innerText = base + variation;
+
+}
+
+// update tiap 8 detik biar terasa live
+setInterval(updateListeners,8000);
+updateListeners();
+  
 </script>
 
 </body>
