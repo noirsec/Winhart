@@ -213,7 +213,7 @@ box-shadow:0 0 25px rgba(29,185,84,0.2);
 </div>
 
 <div class="banner">
-<img src="Banner.jpg">
+<img id="bannerSlider" src="banner1.jpg">
 </div>
 
 <div class="player-box">
@@ -266,6 +266,12 @@ box-shadow:0 0 25px rgba(29,185,84,0.2);
 <p style="font-size:12px;opacity:0.7;">+ Request Lagu</p>
 </div>
 
+</div>
+
+<h3>📢 Sponsor Highlight</h3>
+
+<div class="banner">
+<img src="iklan-umkm.jpg">
 </div>
   
 <h3>👥 Radio Crew</h3>
@@ -452,8 +458,56 @@ document.getElementById("listeners").innerText = base + variation;
 // update tiap 8 detik biar terasa live
 setInterval(updateListeners,8000);
 updateListeners();
+
+const banners = [
+"banner1.jpg",
+"banner2.jpg",
+"banner3.jpg"
+];
+
+let bannerIndex = 0;
+
+function rotateBanner(){
+bannerIndex = (bannerIndex + 1) % banners.length;
+document.getElementById("bannerSlider").src = banners[bannerIndex];
+}
+
+setInterval(rotateBanner,5000);  
+
+function showAds(){
+let popup = document.getElementById("adsPopup");
+popup.style.display="block";
+
+setTimeout(()=>{
+popup.style.display="none";
+},8000);
+}
+
+// muncul tiap 30 detik
+setInterval(showAds,30000);
   
 </script>
 
+<div id="adsPopup" style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:#181818;
+padding:15px;
+border-radius:12px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+display:none;
+z-index:999;
+max-width:250px;
+">
+
+<p style="font-size:13px;">
+🔥 Promo UMKM! Pasang iklan di Winhart Radio
+</p>
+
+<a class="wa" href="https://wa.me/6285846561354">Hubungi Sekarang</a>
+
+</div>
+  
 </body>
 </html>
