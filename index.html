@@ -230,7 +230,7 @@ box-shadow:0 0 25px rgba(29,185,84,0.2);
 
 /* Logo partner & crew */
 .card img{
-  max-height:80px;
+  max-height:90px;
   object-fit:contain;
   background:#111;
   padding:10px;
@@ -238,7 +238,7 @@ box-shadow:0 0 25px rgba(29,185,84,0.2);
 
 /* Versi lebih kecil khusus grid */
 .grid .card img{
-  max-height:70px;
+  max-height:80px;
 }
 
 /* SPONSOR SLIDER */
@@ -251,7 +251,7 @@ box-shadow:0 0 25px rgba(29,185,84,0.2);
 }
 
 .sponsor-slider img{
-  height:70px;
+  height:80px;
   object-fit:contain;
   opacity:0.8;
 }
@@ -266,9 +266,14 @@ box-shadow:0 0 25px rgba(29,185,84,0.2);
 }
 
 .partner-strip img{
-  height:50px;
+  height:70px;
   object-fit:contain;
-  opacity:0.8;
+  opacity:0.9;
+  transition:0.3s;
+}
+
+.partner-strip img:hover{
+  transform:scale(1.1);
 }
 
 h3{
@@ -288,6 +293,32 @@ iframe{
   }
 }
 
+.card img{
+  max-height:80px;
+}
+.grid .card img{
+  max-height:70px;
+}
+
+/* CREW LEBIH BESAR */
+.crew .card img{
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.grid .card img{
+  max-height:90px;
+}
+
+.crew .card{
+  background:#1a1a1a;
+}
+
+.crew .card:hover{
+  transform:translateY(-5px) scale(1.03);
+}
+  
 </style>
 </head>
 
@@ -382,10 +413,9 @@ iframe{
 <div class="sponsor-slider">
   <img id="sponsorSlide" src="alkukers.jpg">
 </div>
-  
-<h3>👥 Radio Crew</h3>
 
-<div class="grid">
+<h3>👥 Radio Crew</h3>
+<div class="grid crew">
 <div class="card">
 <img src="Andi.jpg">
 <p>Andy</p>
