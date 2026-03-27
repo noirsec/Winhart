@@ -318,7 +318,69 @@ iframe{
 .crew .card:hover{
   transform:translateY(-5px) scale(1.03);
 }
-  
+
+/* CREW SLIDER PRO */
+.crew-slider{
+  position:relative;
+  overflow:hidden;
+  margin-top:15px;
+}
+
+.crew-track{
+  display:flex;
+  gap:15px;
+  transition:transform 0.4s ease;
+}
+
+.crew-card{
+  min-width:140px;
+  background:#181818;
+  padding:10px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.crew-card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.crew-card p{
+  margin:8px 0 2px;
+  font-weight:bold;
+}
+
+.crew-card span{
+  font-size:12px;
+  opacity:0.7;
+}
+
+/* NAV BUTTON */
+.nav{
+  position:absolute;
+  top:40%;
+  transform:translateY(-50%);
+  background:#1db954;
+  border:none;
+  color:white;
+  font-size:20px;
+  padding:5px 10px;
+  cursor:pointer;
+  border-radius:6px;
+  z-index:2;
+}
+
+.prev{ left:0; }
+.next{ right:0; }
+
+@media(max-width:600px){
+  .crew-card{
+    min-width:120px;
+  }
+}
+
 </style>
 </head>
 
@@ -415,39 +477,50 @@ iframe{
 </div>
 
 <h3>👥 Radio Crew</h3>
-<div class="grid crew">
-<div class="card">
-<img src="Andi.jpg">
-<p>Andy</p>
-<p>Music Director</p>
+
+<div class="crew-slider">
+
+  <button class="nav prev" onclick="slideCrew(-1)">‹</button>
+
+  <div class="crew-track" id="crewTrack">
+
+    <div class="crew-card">
+      <img src="Andi.jpg">
+      <p>Andy</p>
+      <span>Music Director</span>
+    </div>
+
+    <div class="crew-card">
+      <img src="Sheryl.jpg">
+      <p>Sheryl</p>
+      <span>Music Curator</span>
+    </div>
+
+    <div class="crew-card">
+      <img src="Indri.jpg">
+      <p>Indri</p>
+      <span>Marketing</span>
+      <a class="wa" href="https://wa.me/6289509290778">Chat</a>
+    </div>
+
+    <div class="crew-card">
+      <img src="Nandar.jpg">
+      <p>Nandar</p>
+      <span>Community & Media</span>
+      <a class="wa" href="https://wa.me/6285846561354">Chat</a>
 </div>
 
-<div class="card">
-<img src="Sheryl.jpg">
-<p>Sheryl</p>
-<p>Music Curator</p>
+    <div class="crew-card">
+      <img src="Denis.jpg">
+      <p>Denis</p>
+      <span>Advertising & Program</span>
+      <a class="wa" href="https://wa.me/6285353871166">Chat</a>
 </div>
 
-<div class="card">
-<img src="Indri.jpg">
-<p>Indri</p>
-<p>Marketing & Partnership</p>
-<a class="wa" href="https://wa.me/6289509290778">Chat</a>
-</div>
+  </div>
 
-<div class="card">
-<img src="Nandar.jpg">
-<p>Nandar</p>
-<p>Community & Media Partners</p>
-<a class="wa" href="https://wa.me/6285846561354">Chat</a>
-</div>
+  <button class="nav next" onclick="slideCrew(1)">›</button>
 
-<div class="card">
-<img src="Denis.jpg">
-<p>Denis Baskara</p>
-<p>Program & Advertising</p>
-<a class="wa" href="https://wa.me/6285353871166">Chat</a>
-</div>
 </div>
 
 <!-- PARTNER SECTION -->
@@ -628,6 +701,27 @@ function rotateSponsor(){
 }
 
 setInterval(rotateSponsor,4000);
+
+let scrollPos = 0;
+
+function slideCrew(direction){
+  const track = document.getElementById("crewTrack");
+  const cardWidth = 160; // lebar + gap
+
+  scrollPos += direction * cardWidth;
+
+  if(scrollPos < 0) scrollPos = 0;
+  if(scrollPos > track.scrollWidth - 300){
+    scrollPos = track.scrollWidth - 300;
+  }
+
+  track.style.transform = `translateX(-${scrollPos}px)`;
+}
+
+/* AUTO SLIDE */
+setInterval(()=>{
+  slideCrew(1);
+},4000);
   
 </script>
 
