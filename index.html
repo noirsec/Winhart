@@ -427,6 +427,27 @@ iframe{
   }
 }
 
+.chat-box{
+  background:#181818;
+  padding:15px;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+#chatMessages{
+  height:150px;
+  overflow-y:auto;
+  background:#111;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:10px;
+  font-size:13px;
+}
+
+.chat-msg{
+  margin-bottom:6px;
+}
+  
 </style>
 </head>
 
@@ -473,6 +494,17 @@ iframe{
 <input id="lagu" placeholder="Judul lagu">
 <button onclick="kirimWA()">Kirim Request</button>
 
+<h3>💬 Live Chat Listener</h3>
+
+<div class="chat-box">
+  <div id="chatMessages"></div>
+
+  <input id="chatName" placeholder="Nama">
+  <input id="chatText" placeholder="Tulis pesan...">
+
+  <button onclick="sendChat()">Kirim</button>
+</div>
+  
 <h3>📻 Program Siaran</h3>
 
 <div class="grid">
@@ -506,19 +538,19 @@ iframe{
   <div class="video-track" id="videoTrack">
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/nDsK6Tce39g" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/nDsK6Tce39g?enablejsapi=1&mute=1"></iframe>
       <p>Arunika</p>
       <span>Indie Pop Indonesia</span>
     </div>
 
     <div class="video-card">
-      <iframe src="https://youtube.com/embed/2gQjpel_rk4" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/2gQjpel_rk4?enablejsapi=1&mute=1"></iframe>
       <p>Artist 2</p>
       <span>Genre</span>
     </div>
 
     <div class="video-card">
-      <iframe src="https://youtube.com/embed/SPkdTJu6a6Q" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/SPkdTJu6a6Q?enablejsapi=1&mute=1"></iframe>
       <p>Artist 3</p>
       <span>Genre</span>
     </div>
@@ -814,6 +846,41 @@ videoSlider.addEventListener("mouseleave",()=>{
     slideVideo(1);
   },5000);
 });
+
+function sendChat(){
+  const name = document.getElementById("chatName").value;
+  const text = document.getElementById("chatText").value;
+
+  if(name=="" || text=="") return;
+
+  const msgBox = document.getElementById("chatMessages");
+
+  const msg = document.createElement("div");
+  msg.className="chat-msg";
+  msg.innerHTML = `<b>${name}:</b> ${text}`;
+
+  msgBox.appendChild(msg);
+
+  msgBox.scrollTop = msgBox.scrollHeight;
+
+  document.getElementById("chatText").value="";
+}
+
+function autoPlayVisibleVideo(){
+  const cards = document.querySelectorAll(".video-card iframe");
+
+  cards.forEach((iframe)=>{
+    const rect = iframe.getBoundingClientRect();
+
+    if(rect.left >= 0 && rect.right <= window.innerWidth){
+      iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    }else{
+      iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    }
+  });
+}
+
+setInterval(autoPlayVisibleVideo,2000);
   
 </script>
 
