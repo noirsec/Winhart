@@ -784,18 +784,6 @@ document.getElementById("bannerSlider").src = banners[bannerIndex];
 
 setInterval(rotateBanner,5000);  
 
-function showAds(){
-let popup = document.getElementById("adsPopup");
-popup.style.display="block";
-
-setTimeout(()=>{
-popup.style.display="none";
-},8000);
-}
-
-// muncul tiap 30 detik
-setInterval(showAds,30000);
-
 const sponsorList = [
   "alkukers.jpg",
   "Banner2.jpg",
@@ -911,27 +899,6 @@ db.ref("chat").on("child_added", function(snapshot){
 });
   
 </script>
-
-<div id="adsPopup" style="
-position:fixed;
-bottom:20px;
-right:20px;
-background:#181818;
-padding:15px;
-border-radius:12px;
-box-shadow:0 0 20px rgba(0,0,0,0.5);
-display:none;
-z-index:999;
-max-width:250px;
-">
-
-<p style="font-size:13px;">
-🔥 Promo UMKM! Pasang iklan di Winhart Radio
-</p>
-
-<a class="wa" href="https://wa.me/6285846561354">Hubungi Sekarang</a>
-
-</div>
   
 </body>
 </html>
