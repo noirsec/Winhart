@@ -449,6 +449,11 @@ iframe{
 }
   
 </style>
+
+<!-- FIREBASE SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+  
 </head>
 
 <body>
@@ -695,6 +700,20 @@ iframe{
 
 <script>
 
+// FIREBASE INIT
+const firebaseConfig = {
+  apiKey: "AIzaSyBCwucuNtJnzFWXSqfwbK0_mti2sFH6ySk",
+  authDomain: "winhart-radio.firebaseapp.com",
+  databaseURL: "https://winhart-radio-default-rtdb.firebaseio.com/",
+  projectId: "winhart-radio",
+  storageBucket: "winhart-radio.firebasestorage.app",
+  messagingSenderId: "175933549849",
+  appId: "1:175933549849:web:5af452f7c6fedea59fa988"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
 const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 
 function playRadio(){
@@ -853,15 +872,11 @@ function sendChat(){
 
   if(name=="" || text=="") return;
 
-  const msgBox = document.getElementById("chatMessages");
-
-  const msg = document.createElement("div");
-  msg.className="chat-msg";
-  msg.innerHTML = `<b>${name}:</b> ${text}`;
-
-  msgBox.appendChild(msg);
-
-  msgBox.scrollTop = msgBox.scrollHeight;
+  db.ref("chat").push({
+    name: name,
+    text: text,
+    time: Date.now()
+  });
 
   document.getElementById("chatText").value="";
 }
@@ -881,6 +896,19 @@ function autoPlayVisibleVideo(){
 }
 
 setInterval(autoPlayVisibleVideo,2000);
+
+db.ref("chat").on("child_added", function(snapshot){
+  const data = snapshot.val();
+
+  const msgBox = document.getElementById("chatMessages");
+
+  const msg = document.createElement("div");
+  msg.className="chat-msg";
+  msg.innerHTML = `<b>${data.name}:</b> ${data.text}`;
+
+  msgBox.appendChild(msg);
+  msgBox.scrollTop = msgBox.scrollHeight;
+});
   
 </script>
 
