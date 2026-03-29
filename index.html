@@ -942,6 +942,24 @@ db.ref("chat").on("child_added", function(snapshot){
   msgBox.appendChild(msg);
   msgBox.scrollTop = msgBox.scrollHeight;
 });
+
+function autoClearChat(){
+  const now = new Date();
+  const hour = now.getHours();
+
+  // Jam 00:00 - 00:05
+  if(hour === 0){
+    db.ref("chat").remove();
+    console.log("Chat direset otomatis");
+  }
+}
+
+// cek tiap 5 menit
+setInterval(autoClearChat, 300000);
+
+window.onload = () => {
+  playRadio();
+}
   
 </script>
 
