@@ -447,6 +447,45 @@ iframe{
 .chat-msg{
   margin-bottom:6px;
 }
+
+#miniPlayer{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#181818;
+  padding:10px 15px;
+  border-radius:30px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 0 15px rgba(0,0,0,0.5);
+  z-index:999;
+}
+
+#miniPlayer button{
+  background:#1db954;
+  border:none;
+  padding:6px 10px;
+  border-radius:50%;
+  color:white;
+  cursor:pointer;
+}
+
+#liveStatus{
+  font-weight:bold;
+  font-size:14px;
+  margin-top:10px;
+}
+
+.chat-msg b{
+  color:#1db954;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(5px);}
+  to{opacity:1; transform:translateY(0);}
+}
   
 </style>
 
@@ -475,7 +514,7 @@ iframe{
 <button onclick="playRadio()">▶ PLAY RADIO</button>
 <audio id="player" controls playsinline></audio>
 <div id="liveStatus">
-<span class="live-dot"></span> OFFLINE
+🔴 OFFLINE
 </div>
 <div class="now-playing" id="nowPlaying">Menunggu siaran...</div>
 <div id="listenerBox" style="margin-top:10px;font-size:14px;">
@@ -483,6 +522,10 @@ iframe{
 </div>
 
 <div class="marquee">
+<div style="margin-top:8px;font-size:12px;opacity:0.7;">
+📢 Pasang iklan? 
+<a href="https://wa.me/6285846561354" style="color:#1db954;">Hubungi sekarang</a>
+</div>
 <span>
 🔥 Promo UMKM • Pasang Iklan di Winhart Radio • Hubungi Sekarang • Jangkau Ribuan Pendengar • 🔥
 </span>
@@ -730,6 +773,7 @@ player.src = STREAM;
 player.play()
 .then(()=>{
 document.getElementById("liveStatus").innerHTML="<span class='live-dot'></span> LIVE ON AIR";
+document.getElementById("miniStatus").innerText="🟢 LIVE";
 document.getElementById("nowPlaying").innerText="Sedang memutar streaming...";
 })
 .catch(()=>{
@@ -756,16 +800,16 @@ window.open(`https://wa.me/6282121785751?text=${text}`,"_blank");
 
 }
 
+let currentListeners = 40;
+
 function updateListeners(){
+  let change = Math.floor(Math.random()*6) - 3;
+  currentListeners += change;
 
-// simulasi realistis (tidak angka tetap)
-let base = 20;
-let variation = Math.floor(Math.random()*40);
+  if(currentListeners < 10) currentListeners = 10;
 
-document.getElementById("listeners").innerText = base + variation;
-
+  document.getElementById("listeners").innerText = currentListeners;
 }
-
 // update tiap 8 detik biar terasa live
 setInterval(updateListeners,8000);
 updateListeners();
@@ -892,13 +936,19 @@ db.ref("chat").on("child_added", function(snapshot){
 
   const msg = document.createElement("div");
   msg.className="chat-msg";
-  msg.innerHTML = `<b>${data.name}:</b> ${data.text}`;
+  msg.innerHTML = `<b>${data.name}</b>: ${data.text}`;
+  msg.style.animation="fadeIn 0.3s ease";
 
   msgBox.appendChild(msg);
   msgBox.scrollTop = msgBox.scrollHeight;
 });
   
 </script>
+
+<div id="miniPlayer">
+  <span id="miniStatus">🔴 OFFLINE</span>
+  <button onclick="playRadio()">▶</button>
+</div>
   
 </body>
 </html>
