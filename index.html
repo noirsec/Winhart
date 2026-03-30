@@ -996,23 +996,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   });
-
-// kosongkan chat dulu biar gak dobel
-document.getElementById("chatMessages").innerHTML = "";
-
-db.ref("chat/" + today).limitToLast(50).on("child_added", function(snapshot){
-  const data = snapshot.val();
-
-  const msgBox = document.getElementById("chatMessages");
-
-  const msg = document.createElement("div");
-  msg.className="chat-msg";
-  msg.innerHTML = `<b>${data.name}</b>: ${data.text}`;
-  msg.style.animation="fadeIn 0.3s ease";
-
-  msgBox.appendChild(msg);
-  msgBox.scrollTop = msgBox.scrollHeight;
-});
   
 </script>
 
