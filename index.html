@@ -757,6 +757,27 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+function checkDailyReset(){
+  const today = new Date().toISOString().split("T")[0]; // format: YYYY-MM-DD
+
+  db.ref("chat_reset").once("value", snapshot => {
+    const lastReset = snapshot.val();
+
+    if(lastReset !== today){
+      // hapus chat
+      db.ref("chat").remove();
+
+      // simpan tanggal baru
+      db.ref("chat_reset").set(today);
+
+      console.log("✅ Chat reset harian berhasil");
+    }
+  });
+}
+
+// jalankan saat halaman dibuka
+checkDailyReset();
+
 const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 
 function playRadio(){
@@ -904,11 +925,12 @@ function sendChat(){
 
   if(name=="" || text=="") return;
 
-  db.ref("chat").push({
-    name: name,
-    text: text,
-    time: Date.now()
-  });
+const today = new Date().toISOString().split("T")[0];
+db.ref("chat/" + today).push({
+  name: name,
+  text: text,
+  time: Date.now()
+});
 
   document.getElementById("chatText").value="";
 }
@@ -960,6 +982,10 @@ setInterval(autoClearChat, 300000);
 window.onload = () => {
   playRadio();
 }
+
+const today = new Date().toISOString().split("T")[0];
+
+db.ref("chat/" + today).limitToLast(50).on("child_added", function(snapshot){
   
 </script>
 
