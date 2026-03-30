@@ -972,25 +972,30 @@ function autoPlayVisibleVideo(){
 
 setInterval(autoPlayVisibleVideo,2000);
 
-function autoClearChat(){
-  const now = new Date();
-  const hour = now.getHours();
-
-  // Jam 00:00 - 00:05
-  if(hour === 0){
-    db.ref("chat").remove();
-    console.log("Chat direset otomatis");
-  }
-}
-
-// cek tiap 5 menit
-setInterval(autoClearChat, 300000);
-
 window.onload = () => {
   playRadio();
 }
 
-const today = new Date().toISOString().split("T")[0];
+window.addEventListener("DOMContentLoaded", () => {
+
+  const today = new Date().toISOString().split("T")[0];
+
+  const msgBox = document.getElementById("chatMessages");
+  msgBox.innerHTML = "";
+
+  db.ref("chat/" + today).limitToLast(50).on("child_added", function(snapshot){
+    const data = snapshot.val();
+
+    const msg = document.createElement("div");
+    msg.className="chat-msg";
+    msg.innerHTML = `<b>${data.name}</b>: ${data.text}`;
+    msg.style.animation="fadeIn 0.3s ease";
+
+    msgBox.appendChild(msg);
+    msgBox.scrollTop = msgBox.scrollHeight;
+  });
+
+  });
 
 // kosongkan chat dulu biar gak dobel
 document.getElementById("chatMessages").innerHTML = "";
@@ -1007,14 +1012,6 @@ db.ref("chat/" + today).limitToLast(50).on("child_added", function(snapshot){
 
   msgBox.appendChild(msg);
   msgBox.scrollTop = msgBox.scrollHeight;
-});
-
-db.ref("banner").on("value", snapshot => {
-  const banner = snapshot.val();
-
-  if(banner){
-    document.getElementById("bannerSlider").src = banner;
-  }
 });
   
 </script>
