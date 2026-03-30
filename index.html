@@ -483,6 +483,11 @@ iframe{
 <!-- FIREBASE SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+<meta property="og:title" content="Winhart Radio Live">
+<meta property="og:description" content="Radio digital Indonesia - Live Streaming 24 Jam">
+<meta property="og:image" content="Logo.jpg">
+<meta property="og:type" content="website">
   
 </head>
 
@@ -768,7 +773,18 @@ function checkDailyReset(){
 checkDailyReset();
 
 const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
+function checkStream(){
+  fetch(STREAM, { method: "HEAD" })
+    .then(() => {
+      document.getElementById("liveStatus").innerHTML = "<span class='live-dot'></span> LIVE ON AIR";
+    })
+    .catch(() => {
+      document.getElementById("liveStatus").innerHTML = "🔴 OFFLINE (Server)";
+    });
+}
 
+setInterval(checkStream, 15000);
+  
 /* REQUEST WA (TIDAK DIUBAH) */
 function kirimWA(){
 
@@ -817,7 +833,7 @@ connectedRef.on("value", function(snap) {
 
 const banners = [
 "Banner2.jpg",
-"Banner3.jpg"
+"alkukers.jpg"
 ];
 
 let bannerIndex = 0;
@@ -955,10 +971,6 @@ function autoPlayVisibleVideo(){
 
 setInterval(autoPlayVisibleVideo,2000);
 
-window.onload = () => {
-  console.log("Ready");
-  }
-
 window.addEventListener("DOMContentLoaded", () => {
 
   const today = new Date().toISOString().split("T")[0];
@@ -996,17 +1008,21 @@ function playRadio(){
   localStorage.setItem("radio_playing","yes");
 
   player.src = STREAM;
-  player.play();
+  player.play().catch(() => {
+  console.log("Autoplay diblokir browser");
+});
 
   document.getElementById("liveStatus").innerHTML="<span class='live-dot'></span> LIVE ON AIR";
   document.getElementById("miniStatus").innerText="🟢 LIVE";
 }
 
 window.onload = () => {
+  console.log("Ready");
+
   if(localStorage.getItem("radio_playing") === "yes"){
     playRadio();
   }
-}
+};
 
 const player = document.getElementById("player");
 
