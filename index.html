@@ -905,6 +905,18 @@ let videoAuto = setInterval(()=>{
 /* HOVER PAUSE (desktop) */
 const videoSlider = document.querySelector(".video-slider");
 
+if(videoSlider){
+  videoSlider.addEventListener("mouseenter",()=>{
+    clearInterval(videoAuto);
+  });
+
+  videoSlider.addEventListener("mouseleave",()=>{
+    videoAuto = setInterval(()=>{
+      slideVideo(1);
+    },7000);
+  });
+}
+
 videoSlider.addEventListener("mouseenter",()=>{
   clearInterval(videoAuto);
 });
@@ -954,6 +966,14 @@ function sendChat(){
 
   document.getElementById("chatText").value="";
 }
+
+const lastUserMsg = localStorage.getItem("lastMsg");
+
+if(lastUserMsg && (Date.now() - lastUserMsg < 10000)){
+  return alert("Tunggu 10 detik sebelum kirim lagi");
+}
+
+localStorage.setItem("lastMsg", Date.now());
       
 function autoPlayVisibleVideo(){
   const cards = document.querySelectorAll(".video-card iframe");
@@ -969,7 +989,7 @@ function autoPlayVisibleVideo(){
   });
 }
 
-setInterval(autoPlayVisibleVideo,2000);
+setInterval(autoPlayVisibleVideo,4000);
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -996,10 +1016,6 @@ window.addEventListener("DOMContentLoaded", () => {
     msgBox.scrollTop = msgBox.scrollHeight;
   });
 
-});
-
-window.addEventListener("load", () => {
-  playRadio();
 });
 
 function playRadio(){
@@ -1030,11 +1046,23 @@ player.addEventListener("error", () => {
   document.getElementById("liveStatus").innerHTML="🔴 OFFLINE (Server)";
 });
 
+ function toggleRadio(){
+  const player = document.getElementById("player");
+
+  if(player.paused){
+    playRadio();
+  } else {
+    player.pause();
+    document.getElementById("miniStatus").innerText="⏸ PAUSED";
+  }
+} 
+  
 </script>
 
 <div id="miniPlayer">
   <span id="miniStatus">🔴 OFFLINE</span>
-  <button onclick="playRadio()">▶</button>
+  <button onclick="toggleRadio()">▶</button>
+  
 </div>
   
 </body>
