@@ -801,18 +801,6 @@ document.getElementById("liveStatus").innerHTML="▶ Klik untuk mulai";
 },200);
 
 }
-// ===== CONTROL LIVE DARI ADMIN =====
-db.ref("radio_status").on("value", snapshot => {
-  const status = snapshot.val();
-
-  const liveBox = document.getElementById("liveStatus");
-
-  if(status){
-    liveBox.innerHTML = "<span class='live-dot'></span> LIVE ON AIR";
-  } else {
-    liveBox.innerHTML = "🔴 OFFLINE";
-  }
-});
 
 /* REQUEST WA (TIDAK DIUBAH) */
 function kirimWA(){
@@ -858,15 +846,6 @@ document.getElementById("bannerSlider").src = banners[bannerIndex];
 }
 
 setInterval(rotateBanner,5000);  
-
-// ===== CONTROL BANNER DARI ADMIN =====
-db.ref("banner").on("value", snapshot => {
-  const banner = snapshot.val();
-
-  if(banner){
-    document.getElementById("bannerSlider").src = banner;
-  }
-});
 
 const sponsorList = [
   "alkukers.jpg",
@@ -972,9 +951,15 @@ setInterval(autoPlayVisibleVideo,2000);
 
 window.onload = () => {
   console.log("Ready");
-}
+  }
 
-  // 🔒 ANTI DOBEL
+window.addEventListener("DOMContentLoaded", () => {
+
+  const today = new Date().toISOString().split("T")[0];
+  const msgBox = document.getElementById("chatMessages");
+
+  msgBox.innerHTML = "";
+
   const loadedMessages = new Set();
 
   db.ref("chat/" + today).limitToLast(50).on("child_added", function(snapshot){
@@ -993,24 +978,6 @@ window.onload = () => {
     msgBox.scrollTop = msgBox.scrollHeight;
   });
 
-});
-  
-// ===== TERIMA BROADCAST =====
-db.ref("broadcast").limitToLast(5).on("child_added", function(snapshot){
-
-  const data = snapshot.val();
-  const msgBox = document.getElementById("chatMessages");
-
-  const msg = document.createElement("div");
-  msg.className="chat-msg";
-  msg.innerHTML = `
-<div style="background:#222;padding:6px;border-radius:6px;">
-<b style="color:#1db954;">📢 ADMIN</b><br>
-${data.text}
-</div>
-`;
-  msgBox.appendChild(msg);
-  msgBox.scrollTop = msgBox.scrollHeight;
 });
   
 </script>
