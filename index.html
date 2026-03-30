@@ -782,6 +782,18 @@ const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 
 function playRadio(){
 
+db.ref("radio_status").on("value", snapshot => {
+  const status = snapshot.val();
+
+  const liveBox = document.getElementById("liveStatus");
+
+  if(status){
+    liveBox.innerHTML = "<span class='live-dot'></span> LIVE ON AIR";
+  } else {
+    liveBox.innerHTML = "🔴 OFFLINE";
+  }
+});
+
 const player = document.getElementById("player");
 
 player.pause();
@@ -986,6 +998,14 @@ db.ref("chat/" + today).limitToLast(50).on("child_added", function(snapshot){
 
   msgBox.appendChild(msg);
   msgBox.scrollTop = msgBox.scrollHeight;
+});
+
+db.ref("banner").on("value", snapshot => {
+  const banner = snapshot.val();
+
+  if(banner){
+    document.getElementById("bannerSlider").src = banner;
+  }
 });
   
 </script>
