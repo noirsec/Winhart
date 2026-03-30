@@ -1033,6 +1033,76 @@ function deleteMsg(id){
   const today = new Date().toISOString().split("T")[0];
   db.ref("chat/" + today + "/" + id).remove();
 }
+
+// ===== ADMIN SYSTEM =====
+const ADMIN_KEY = "winhartonair";
+
+function isAdmin(){
+  const key = document.getElementById("adminKey").value;
+  return key === ADMIN_KEY;
+}
+
+function setLive(status){
+  if(!isAdmin()) return alert("Bukan admin!");
+  db.ref("radio_status").set(status);
+}
+
+function updateBanner(){
+  if(!isAdmin()) return alert("Bukan admin!");
+
+  const url = document.getElementById("bannerInput").value;
+  if(url=="") return;
+
+  db.ref("banner").set(url);
+}
+
+// ===== ADMIN SYSTEM =====
+const ADMIN_KEY = "winhartonair";
+
+function isAdmin(){
+  const key = document.getElementById("adminKey").value;
+  return key === ADMIN_KEY;
+}
+
+function setLive(status){
+  if(!isAdmin()) return alert("Bukan admin!");
+  db.ref("radio_status").set(status);
+}
+
+function updateBanner(){
+  if(!isAdmin()) return alert("Bukan admin!");
+
+  const url = document.getElementById("bannerInput").value;
+  if(url=="") return;
+
+db.ref("banner").set(url);
+}
+
+function sendBroadcast(){
+  if(!isAdmin()) return alert("Bukan admin!");
+
+  const text = document.getElementById("broadcastText").value;
+  if(text=="") return;
+
+  db.ref("broadcast").push({
+    text: text,
+    time: Date.now()
+  });
+}
+
+// ===== TERIMA BROADCAST =====
+db.ref("broadcast").limitToLast(5).on("child_added", function(snapshot){
+
+  const data = snapshot.val();
+  const msgBox = document.getElementById("chatMessages");
+
+  const msg = document.createElement("div");
+  msg.className="chat-msg";
+  msg.innerHTML = `<b style="color:yellow;">📢 ADMIN</b>: ${data.text}`;
+
+  msgBox.appendChild(msg);
+  msgBox.scrollTop = msgBox.scrollHeight;
+});
   
 </script>
 
