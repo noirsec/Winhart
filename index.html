@@ -486,6 +486,10 @@ iframe{
   from{opacity:0; transform:translateY(5px);}
   to{opacity:1; transform:translateY(0);}
 }
+
+#adminPanel{
+  display:none;
+}
   
 </style>
 
@@ -497,6 +501,8 @@ iframe{
 
 <body>
 
+<div id="adminPanel">
+  
 <div class="header">
 <h1>🎧 WINHART RADIO</h1>
 <p>Entertainment • Music • Digital Media Platform</p>
@@ -792,6 +798,25 @@ function checkDailyReset(){
   });
 }
 
+const ADMIN_KEY = "winhartonair";
+
+// LOGIN ADMIN
+function loginAdmin(){
+  const key = document.getElementById("adminKey").value;
+
+  if(key === ADMIN_KEY){
+    localStorage.setItem("admin", "true");
+    alert("✅ Login Admin Berhasil");
+  }else{
+    alert("❌ Key salah");
+  }
+}
+
+// CEK ADMIN
+function isAdmin(){
+  return localStorage.getItem("admin") === "true";
+}
+
 // jalankan saat halaman dibuka
 checkDailyReset();
 
@@ -1056,28 +1081,6 @@ function updateBanner(){
   db.ref("banner").set(url);
 }
 
-// ===== ADMIN SYSTEM =====
-const ADMIN_KEY = "winhartonair";
-
-function isAdmin(){
-  const key = document.getElementById("adminKey").value;
-  return key === ADMIN_KEY;
-}
-
-function setLive(status){
-  if(!isAdmin()) return alert("Bukan admin!");
-  db.ref("radio_status").set(status);
-}
-
-function updateBanner(){
-  if(!isAdmin()) return alert("Bukan admin!");
-
-  const url = document.getElementById("bannerInput").value;
-  if(url=="") return;
-
-db.ref("banner").set(url);
-}
-
 function sendBroadcast(){
   if(!isAdmin()) return alert("Bukan admin!");
 
@@ -1103,6 +1106,12 @@ db.ref("broadcast").limitToLast(5).on("child_added", function(snapshot){
   msgBox.appendChild(msg);
   msgBox.scrollTop = msgBox.scrollHeight;
 });
+
+window.onload = () => {
+  if(isAdmin()){
+    document.getElementById("adminPanel").style.display="block";
+  }
+}
   
 </script>
 
