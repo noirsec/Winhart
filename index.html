@@ -751,6 +751,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+  db.ref("nowPlaying").on("value", snap => {
+  document.getElementById("nowPlaying").innerText = snap.val() || "On Air";
+});
+
 function checkDailyReset(){
   const today = new Date().toISOString().split("T")[0]; // format: YYYY-MM-DD
 
@@ -774,9 +778,13 @@ checkDailyReset();
 
 const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 function checkStream(){
-  fetch(STREAM, { method: "HEAD" })
-    .then(() => {
-      document.getElementById("liveStatus").innerHTML = "<span class='live-dot'></span> LIVE ON AIR";
+  fetch(STREAM)
+    .then(res => {
+      if(res.ok){
+        document.getElementById("liveStatus").innerHTML = "<span class='live-dot'></span> LIVE ON AIR";
+      } else {
+        throw new Error();
+      }
     })
     .catch(() => {
       document.getElementById("liveStatus").innerHTML = "🔴 OFFLINE (Server)";
@@ -917,16 +925,6 @@ if(videoSlider){
   });
 }
 
-videoSlider.addEventListener("mouseenter",()=>{
-  clearInterval(videoAuto);
-});
-
-videoSlider.addEventListener("mouseleave",()=>{
-  videoAuto = setInterval(()=>{
-    slideVideo(1);
-  },7000);
-});
-
 let lastSendTime = 0;
 
 function sendChat(){
@@ -936,6 +934,15 @@ function sendChat(){
   // VALIDASI
   if(name === "" || text === "") return alert("Isi nama & pesan dulu");
 
+  // ✅ PINDAHKAN KE SINI
+  const lastUserMsg = localStorage.getItem("lastMsg");
+
+  if(lastUserMsg && (Date.now() - lastUserMsg < 10000)){
+    return alert("Tunggu 10 detik sebelum kirim lagi");
+  }
+
+  localStorage.setItem("lastMsg", Date.now());
+  
   // BATAS PANJANG
   if(text.length > 100) return alert("Pesan max 100 karakter");
 
@@ -966,14 +973,6 @@ function sendChat(){
 
   document.getElementById("chatText").value="";
 }
-
-const lastUserMsg = localStorage.getItem("lastMsg");
-
-if(lastUserMsg && (Date.now() - lastUserMsg < 10000)){
-  return alert("Tunggu 10 detik sebelum kirim lagi");
-}
-
-localStorage.setItem("lastMsg", Date.now());
       
 function autoPlayVisibleVideo(){
   const cards = document.querySelectorAll(".video-card iframe");
