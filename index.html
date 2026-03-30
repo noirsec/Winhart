@@ -486,10 +486,6 @@ iframe{
   from{opacity:0; transform:translateY(5px);}
   to{opacity:1; transform:translateY(0);}
 }
-
-#adminPanel{
-  display:none;
-}
   
 </style>
 
@@ -738,28 +734,6 @@ iframe{
 <p>AL-Kukers Food</p>
 </div>
 </div>
-
-<div style="margin-top:20px;">
-<input id="adminKey" placeholder="Masukkan Admin Key">
-<button onclick="loginAdmin()">Login Admin</button>
-</div>
-
-<div id="adminPanel" style="display:none;">
-<h3>⚙️ ADMIN PANEL</h3>
-
-<div style="background:#111;padding:15px;border-radius:10px;margin-top:10px;">
-<input id="adminKeyPanel" placeholder="Admin Key (optional)">
-
-<button onclick="setLive(true)">🟢 LIVE</button>
-<button onclick="setLive(false)">🔴 OFF</button>
-
-<input id="bannerInput" placeholder="URL Banner">
-<button onclick="updateBanner()">Ganti Banner</button>
-
-<input id="broadcastText" placeholder="Pesan Broadcast">
-<button onclick="sendBroadcast()">Kirim</button>
-</div>
-</div>
   
 <footer>
 © 2026 Winhart Radio • All Rights Reserved
@@ -1000,13 +974,6 @@ window.onload = () => {
   console.log("Ready");
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-
-  const today = new Date().toISOString().split("T")[0];
-
-  const msgBox = document.getElementById("chatMessages");
-  msgBox.innerHTML = "";
-
   // 🔒 ANTI DOBEL
   const loadedMessages = new Set();
 
@@ -1020,86 +987,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const msg = document.createElement("div");
     msg.className="chat-msg";
 
-    const isAdmin = localStorage.getItem("admin") === "true";
-
-msg.innerHTML = `
-  <b>${data.name}</b>: ${data.text}
-  ${isAdmin ? `<span style="color:red;cursor:pointer;margin-left:10px;" onclick="deleteMsg('${snapshot.key}')">❌</span>` : ""}
-`;
+    msg.innerHTML = `<b>${data.name}</b>: ${data.text}`;
 
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
   });
 
 });
-
-function deleteMsg(id){
-  const key = prompt("Masukkan admin key:");
-  if(key !== "winhartonair") return alert("Bukan admin!");
-
-  const today = new Date().toISOString().split("T")[0];
-  db.ref("chat/" + today + "/" + id).remove();
-}
-
-// ===== ADMIN SYSTEM CLEAN =====
-const ADMIN_KEY = "winhartonair";
-
-// LOGIN
-function loginAdmin(){
-  const key = document.getElementById("adminKey").value;
-
-  if(key === ADMIN_KEY){
-    localStorage.setItem("admin", "true");
-    alert("✅ Login berhasil");
-
-    document.getElementById("adminPanel").style.display = "block";
-
-    // optional: kosongkan input
-    document.getElementById("adminKey").value = "";
-  }else{
-    alert("❌ Key salah");
-  }
-}
-// CEK ADMIN
-function isAdmin(){
-  return localStorage.getItem("admin") === "true";
-}
-
-// AUTO SHOW PANEL
-window.addEventListener("DOMContentLoaded", ()=>{
-  if(isAdmin()){
-    document.getElementById("adminPanel").style.display = "block";
-  }
-});
-
-// CONTROL
-function setLive(status){
-  if(!isAdmin()) return alert("Bukan admin!");
-  db.ref("radio_status").set(status);
-}
-
-function updateBanner(){
-  if(!isAdmin()) return alert("Bukan admin!");
-
-  const url = document.getElementById("bannerInput").value;
-  if(url=="") return;
-
-  db.ref("banner").set(url);
-}
-
-function sendBroadcast(){
-  if(!isAdmin()) return alert("Bukan admin!");
-
-  const text = document.getElementById("broadcastText").value;
-  if(text=="") return;
-
-  db.ref("broadcast").push({
-    text: text,
-    time: Date.now()
-  });
-
-  document.getElementById("broadcastText").value="";
-}
   
 // ===== TERIMA BROADCAST =====
 db.ref("broadcast").limitToLast(5).on("child_added", function(snapshot){
