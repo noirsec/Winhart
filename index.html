@@ -996,17 +996,26 @@ window.addEventListener("DOMContentLoaded", () => {
     const msg = document.createElement("div");
     msg.className="chat-msg";
 
-    msg.innerHTML = `
-      <b>${data.name}</b>: ${data.text}
-      <span style="color:red;cursor:pointer;margin-left:10px;"
-      onclick="deleteMsg('${snapshot.key}')">❌</span>
-    `;
+    const isAdmin = localStorage.getItem("admin") === "true";
+
+msg.innerHTML = `
+  <b>${data.name}</b>: ${data.text}
+  ${isAdmin ? `<span style="color:red;cursor:pointer;margin-left:10px;" onclick="deleteMsg('${snapshot.key}')">❌</span>` : ""}
+`;
 
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
   });
 
 });
+
+function deleteMsg(id){
+  const key = prompt("Masukkan admin key:");
+  if(key !== "winhartonair") return alert("Bukan admin!");
+
+  const today = new Date().toISOString().split("T")[0];
+  db.ref("chat/" + today + "/" + id).remove();
+}
   
 </script>
 
