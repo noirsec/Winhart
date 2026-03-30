@@ -819,16 +819,33 @@ window.open(`https://wa.me/6282121785751?text=${text}`,"_blank");
 
 }
 
-let currentListeners = 148;
+const listenerRef = db.ref("listeners");
 
-function updateListeners(){
-  let change = Math.floor(Math.random()*6) - 3;
-  currentListeners += change;
+const userId = "user_" + Math.random().toString(36).substr(2,9);
 
-  if(currentListeners < 10) currentListeners = 10;
+// TAMBAH USER
+listenerRef.child(userId).set(true);
 
-  document.getElementById("listeners").innerText = currentListeners;
-}
+// HAPUS SAAT KELUAR
+window.addEventListener("beforeunload", () => {
+  listenerRef.child(userId).remove();
+});
+
+// HITUNG REALTIME
+listenerRef.on("value", snapshot => {
+  const total = snapshot.numChildren();
+  document.getElementById("listeners").innerText = total;
+});
+
+// AUTO REMOVE JIKA KONEKSI PUTUS
+const connectedRef = db.ref(".info/connected");
+
+connectedRef.on("value", function(snap) {
+  if (snap.val() === true) {
+    listenerRef.child(userId).onDisconnect().remove();
+  }
+});
+  
 // update tiap 8 detik biar terasa live
 setInterval(updateListeners,8000);
 updateListeners();
@@ -917,22 +934,46 @@ videoSlider.addEventListener("mouseleave",()=>{
   },5000);
 });
 
+let lastSendTime = 0;
+
 function sendChat(){
-  const name = document.getElementById("chatName").value;
-  const text = document.getElementById("chatText").value;
+  const name = document.getElementById("chatName").value.trim();
+  const text = document.getElementById("chatText").value.trim();
 
-  if(name=="" || text=="") return;
+  // VALIDASI
+  if(name === "" || text === "") return alert("Isi nama & pesan dulu");
 
-const today = new Date().toISOString().split("T")[0];
-db.ref("chat/" + today).push({
-  name: name,
-  text: text,
-  time: Date.now()
+  // BATAS PANJANG
+  if(text.length > 100) return alert("Pesan max 100 karakter");
+
+  // ANTI SPAM DELAY (5 DETIK)
+  const now = Date.now();
+  if(now - lastSendTime < 5000){
+    return alert("Tunggu 5 detik sebelum kirim lagi");
+  }
+ lastSendTime = now;
+
+  // FILTER KATA KASAR (SIMPLE)
+  const banned = ["anjing","babi","kontol","tolol"];
+  const lowerText = text.toLowerCase();
+
+  for(let word of banned){
+    if(lowerText.includes(word)){
+      return alert("Pesan mengandung kata tidak pantas");
+    }
+  }
+
+  const today = new Date().toISOString().split("T")[0];
+
+  db.ref("chat/" + today).push({
+    name: name,
+    text: text,
+    time: Date.now() 
 });
 
   document.getElementById("chatText").value="";
 }
-
+      
 function autoPlayVisibleVideo(){
   const cards = document.querySelectorAll(".video-card iframe");
 
