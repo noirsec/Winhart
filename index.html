@@ -500,8 +500,6 @@ iframe{
 </head>
 
 <body>
-
-<div id="adminPanel">
   
 <div class="header">
 <h1>🎧 WINHART RADIO</h1>
@@ -535,8 +533,6 @@ iframe{
 <span>
 🔥 Promo UMKM • Pasang Iklan di Winhart Radio • Hubungi Sekarang • Jangkau Ribuan Pendengar • 🔥
 </span>
-</div>
-
 </div>
 
 <div style="font-size:12px;opacity:0.6;margin-top:5px;">
@@ -743,10 +739,15 @@ iframe{
 </div>
 </div>
 
+<div style="margin-top:20px;">
+<input id="adminKey" placeholder="Masukkan Admin Key">
+<button onclick="loginAdmin()">Login Admin</button>
+</div>
+
+<div id="adminPanel" style="display:none;">
 <h3>⚙️ ADMIN PANEL</h3>
 
 <div style="background:#111;padding:15px;border-radius:10px;margin-top:10px;">
-
 <input id="adminKey" placeholder="Admin Key">
 
 <button onclick="setLive(true)">🟢 LIVE</button>
@@ -757,7 +758,7 @@ iframe{
 
 <input id="broadcastText" placeholder="Pesan Broadcast">
 <button onclick="sendBroadcast()">Kirim</button>
-
+</div>
 </div>
   
 <footer>
@@ -1059,14 +1060,35 @@ function deleteMsg(id){
   db.ref("chat/" + today + "/" + id).remove();
 }
 
-// ===== ADMIN SYSTEM =====
+// ===== ADMIN SYSTEM CLEAN =====
 const ADMIN_KEY = "winhartonair";
 
-function isAdmin(){
+// LOGIN
+function loginAdmin(){
   const key = document.getElementById("adminKey").value;
-  return key === ADMIN_KEY;
+
+  if(key === ADMIN_KEY){
+    localStorage.setItem("admin", "true");
+    alert("✅ Login berhasil");
+
+    document.getElementById("adminPanel").style.display = "block";
+  }else{
+    alert("❌ Key salah");
+  }
+}
+// CEK ADMIN
+function isAdmin(){
+  return localStorage.getItem("admin") === "true";
 }
 
+// AUTO SHOW PANEL
+window.addEventListener("DOMContentLoaded", ()=>{
+  if(isAdmin()){
+    document.getElementById("adminPanel").style.display = "block";
+  }
+});
+
+// CONTROL
 function setLive(status){
   if(!isAdmin()) return alert("Bukan admin!");
   db.ref("radio_status").set(status);
@@ -1091,8 +1113,10 @@ function sendBroadcast(){
     text: text,
     time: Date.now()
   });
-}
 
+  document.getElementById("broadcastText").value="";
+}
+  
 // ===== TERIMA BROADCAST =====
 db.ref("broadcast").limitToLast(5).on("child_added", function(snapshot){
 
@@ -1101,8 +1125,12 @@ db.ref("broadcast").limitToLast(5).on("child_added", function(snapshot){
 
   const msg = document.createElement("div");
   msg.className="chat-msg";
-  msg.innerHTML = `<b style="color:yellow;">📢 ADMIN</b>: ${data.text}`;
-
+  msg.innerHTML = `
+<div style="background:#222;padding:6px;border-radius:6px;">
+<b style="color:#1db954;">📢 ADMIN</b><br>
+${data.text}
+</div>
+`;
   msgBox.appendChild(msg);
   msgBox.scrollTop = msgBox.scrollHeight;
 });
