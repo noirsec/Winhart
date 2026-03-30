@@ -44,14 +44,6 @@ border-radius:15px;
 }
 
 /* PLAYER */
-.player-box{
-margin-top:15px;
-background:#181818;
-padding:20px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 0 20px rgba(0,0,0,0.5);
-}
 
 audio{
 width:100%;
@@ -198,17 +190,16 @@ overflow:hidden;
 
 /* GLOW EFFECT */
 .player-box{
-box-shadow:0 0 25px rgba(29,185,84,0.2);
-}
-
-.player-box{
+  margin-top:15px;
+  background:#181818;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
   position:sticky;
   top:10px;
   z-index:10;
-}
-
-.player-box{
   border:1px solid rgba(29,185,84,0.3);
+  box-shadow:0 0 25px rgba(29,185,84,0.2);
 }
   
 /* ===== FIX SIZE IKLAN & PARTNER ===== */
@@ -507,7 +498,7 @@ iframe{
 </div>
 
 <div class="banner">
-<img id="bannerSlider" src="Banner2.jpg">
+<img id="bannerSlider" src="Banner2.jpg" loading="lazy">
 </div>
 
 <div class="player-box">
@@ -610,7 +601,7 @@ iframe{
 <h3>📢 Sponsor Highlight</h3>
 
 <div class="sponsor-slider">
-  <img id="sponsorSlide" src="alkukers.jpg">
+  <img id="sponsorSlide" src="alkukers.jpg" loading="lazy">
 </div>
 
 <h3>👥 Radio Crew</h3>
@@ -622,33 +613,33 @@ iframe{
   <div class="crew-track" id="crewTrack">
 
     <div class="crew-card">
-      <img src="Andi.jpg">
+      <img src="Andi.jpg" loading="lazy">
       <p>Andy</p>
       <span>Music Director</span>
     </div>
 
     <div class="crew-card">
-      <img src="Sheryl.jpg">
+      <img src="Sheryl.jpg" loading="lazy">
       <p>Sheryl</p>
       <span>Music Curator</span>
     </div>
 
     <div class="crew-card">
-      <img src="Indri.jpg">
+      <img src="Indri.jpg" loading="lazy">
       <p>Indri</p>
       <span>Marketing</span>
       <a class="wa" href="https://wa.me/6289509290778">Chat</a>
     </div>
 
     <div class="crew-card">
-      <img src="Nandar.jpg">
+      <img src="Nandar.jpg" loading="lazy">
       <p>Nandar</p>
       <span>Community</span>
       <a class="wa" href="https://wa.me/6285846561354">Chat</a>
 </div>
 
     <div class="crew-card">
-      <img src="Denis.jpg">
+      <img src="Denis.jpg" loading="lazy">
       <p>Denis</p>
       <span>Program</span>
       <a class="wa" href="https://wa.me/6285353871166">Chat</a>
@@ -665,9 +656,9 @@ iframe{
 <h3>🤝 Official Partners</h3>
 
 <div class="partner-strip">
-  <img src="Trans.jpg">
-  <img src="Rumahku.jpg">
-  <img src="media.jpg">
+  <img src="Trans.jpg" loading="lazy">
+  <img src="Rumahku.jpg" loading="lazy">
+  <img src="media.jpg" loading="lazy">
   
 </div>
 
@@ -730,7 +721,7 @@ iframe{
 <h3>💼 Sponsored UMKM</h3>
 <div class="grid">
 <div class="card">
-<img src="alkukers.jpg">
+<img src="alkukers.jpg" loading="lazy">  
 <p>AL-Kukers Food</p>
 </div>
 </div>
@@ -847,8 +838,6 @@ connectedRef.on("value", function(snap) {
 });
   
 // update tiap 8 detik biar terasa live
-setInterval(updateListeners,8000);
-updateListeners();
 
 const banners = [
 "Banner2.jpg",
@@ -1020,6 +1009,44 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+window.addEventListener("load", () => {
+  playRadio();
+});
+
+function playRadio(){
+  const player = document.getElementById("player");
+
+  localStorage.setItem("radio_playing","yes");
+
+  player.src = STREAM;
+  player.play();
+
+  document.getElementById("liveStatus").innerHTML="<span class='live-dot'></span> LIVE ON AIR";
+  document.getElementById("miniStatus").innerText="🟢 LIVE";
+}
+
+window.onload = () => {
+  if(localStorage.getItem("radio_playing") === "yes"){
+    playRadio();
+  }
+}
+
+player.addEventListener("error", () => {
+  document.getElementById("liveStatus").innerHTML="🔴 OFFLINE (Server)";
+});
+
+const lastChat = localStorage.getItem("lastChatTime") || 0;
+
+if(Date.now() - lastChat < 5000){
+  return alert("Tunggu 5 detik");
+}
+
+localStorage.setItem("lastChatTime", Date.now());
+
+const time = new Date(data.time).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"});
+
+msg.innerHTML = `<b>${data.name}</b> <span style="opacity:0.5;font-size:11px">(${time})</span><br>${data.text}`;
   
 </script>
 
