@@ -833,7 +833,7 @@ window.open(`https://wa.me/6282121785751?text=${text}`,"_blank");
 
 }
 
-let currentListeners = 158;
+let currentListeners = 148;
 
 function updateListeners(){
   let change = Math.floor(Math.random()*6) - 3;
@@ -983,19 +983,30 @@ window.addEventListener("DOMContentLoaded", () => {
   const msgBox = document.getElementById("chatMessages");
   msgBox.innerHTML = "";
 
+  // 🔒 ANTI DOBEL
+  const loadedMessages = new Set();
+
   db.ref("chat/" + today).limitToLast(50).on("child_added", function(snapshot){
+
+    if(loadedMessages.has(snapshot.key)) return;
+    loadedMessages.add(snapshot.key);
+
     const data = snapshot.val();
 
     const msg = document.createElement("div");
     msg.className="chat-msg";
-    msg.innerHTML = `<b>${data.name}</b>: ${data.text}`;
-    msg.style.animation="fadeIn 0.3s ease";
+
+    msg.innerHTML = `
+      <b>${data.name}</b>: ${data.text}
+      <span style="color:red;cursor:pointer;margin-left:10px;"
+      onclick="deleteMsg('${snapshot.key}')">❌</span>
+    `;
 
     msgBox.appendChild(msg);
     msgBox.scrollTop = msgBox.scrollHeight;
   });
 
-  });
+});
   
 </script>
 
