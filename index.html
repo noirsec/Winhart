@@ -782,18 +782,6 @@ const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 
 function playRadio(){
 
-db.ref("radio_status").on("value", snapshot => {
-  const status = snapshot.val();
-
-  const liveBox = document.getElementById("liveStatus");
-
-  if(status){
-    liveBox.innerHTML = "<span class='live-dot'></span> LIVE ON AIR";
-  } else {
-    liveBox.innerHTML = "🔴 OFFLINE";
-  }
-});
-
 const player = document.getElementById("player");
 
 player.pause();
@@ -815,6 +803,18 @@ document.getElementById("liveStatus").innerHTML="▶ Klik untuk mulai";
 },200);
 
 }
+// ===== CONTROL LIVE DARI ADMIN =====
+db.ref("radio_status").on("value", snapshot => {
+  const status = snapshot.val();
+
+  const liveBox = document.getElementById("liveStatus");
+
+  if(status){
+    liveBox.innerHTML = "<span class='live-dot'></span> LIVE ON AIR";
+  } else {
+    liveBox.innerHTML = "🔴 OFFLINE";
+  }
+});
 
 /* REQUEST WA (TIDAK DIUBAH) */
 function kirimWA(){
@@ -860,6 +860,15 @@ document.getElementById("bannerSlider").src = banners[bannerIndex];
 }
 
 setInterval(rotateBanner,5000);  
+
+// ===== CONTROL BANNER DARI ADMIN =====
+db.ref("banner").on("value", snapshot => {
+  const banner = snapshot.val();
+
+  if(banner){
+    document.getElementById("bannerSlider").src = banner;
+  }
+});
 
 const sponsorList = [
   "alkukers.jpg",
