@@ -748,7 +748,7 @@ iframe{
 <h3>⚙️ ADMIN PANEL</h3>
 
 <div style="background:#111;padding:15px;border-radius:10px;margin-top:10px;">
-<input id="adminKey" placeholder="Admin Key">
+<input id="adminKeyPanel" placeholder="Admin Key (optional)">
 
 <button onclick="setLive(true)">🟢 LIVE</button>
 <button onclick="setLive(false)">🔴 OFF</button>
@@ -797,25 +797,6 @@ function checkDailyReset(){
       console.log("✅ Chat reset harian berhasil");
     }
   });
-}
-
-const ADMIN_KEY = "winhartonair";
-
-// LOGIN ADMIN
-function loginAdmin(){
-  const key = document.getElementById("adminKey").value;
-
-  if(key === ADMIN_KEY){
-    localStorage.setItem("admin", "true");
-    alert("✅ Login Admin Berhasil");
-  }else{
-    alert("❌ Key salah");
-  }
-}
-
-// CEK ADMIN
-function isAdmin(){
-  return localStorage.getItem("admin") === "true";
 }
 
 // jalankan saat halaman dibuka
@@ -1072,6 +1053,9 @@ function loginAdmin(){
     alert("✅ Login berhasil");
 
     document.getElementById("adminPanel").style.display = "block";
+
+    // optional: kosongkan input
+    document.getElementById("adminKey").value = "";
   }else{
     alert("❌ Key salah");
   }
@@ -1134,12 +1118,6 @@ ${data.text}
   msgBox.appendChild(msg);
   msgBox.scrollTop = msgBox.scrollHeight;
 });
-
-window.onload = () => {
-  if(isAdmin()){
-    document.getElementById("adminPanel").style.display="block";
-  }
-}
   
 </script>
 
