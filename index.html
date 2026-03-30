@@ -769,30 +769,6 @@ checkDailyReset();
 
 const STREAM = "https://listen.radioking.com/radio/845506/stream/915071";
 
-function playRadio(){
-
-const player = document.getElementById("player");
-
-player.pause();
-player.src = "";
-player.load();
-
-setTimeout(()=>{
-player.src = STREAM;
-
-player.play()
-.then(()=>{
-document.getElementById("liveStatus").innerHTML="<span class='live-dot'></span> LIVE ON AIR";
-document.getElementById("miniStatus").innerText="🟢 LIVE";
-document.getElementById("nowPlaying").innerText="Sedang memutar streaming...";
-})
-.catch(()=>{
-document.getElementById("liveStatus").innerHTML="▶ Klik untuk mulai"; 
-});
-},200);
-
-}
-
 /* REQUEST WA (TIDAK DIUBAH) */
 function kirimWA(){
 
@@ -851,7 +827,7 @@ bannerIndex = (bannerIndex + 1) % banners.length;
 document.getElementById("bannerSlider").src = banners[bannerIndex];
 }
 
-setInterval(rotateBanner,5000);  
+setInterval(rotateBanner,8000);  
 
 const sponsorList = [
   "alkukers.jpg",
@@ -866,7 +842,7 @@ function rotateSponsor(){
   document.getElementById("sponsorSlide").src = sponsorList[sponsorIndex];
 }
 
-setInterval(rotateSponsor,4000);
+setInterval(rotateSponsor,8000);
 
 let scrollPos = 0;
 
@@ -887,7 +863,7 @@ function slideCrew(direction){
 /* AUTO SLIDE */
 setInterval(()=>{
   slideCrew(1);
-},4000);
+},6000);
 
 let videoScroll = 0;
 
@@ -908,7 +884,7 @@ function slideVideo(direction){
 /* AUTO SLIDE */
 let videoAuto = setInterval(()=>{
   slideVideo(1);
-},5000);
+},7000);
 
 /* HOVER PAUSE (desktop) */
 const videoSlider = document.querySelector(".video-slider");
@@ -920,7 +896,7 @@ videoSlider.addEventListener("mouseenter",()=>{
 videoSlider.addEventListener("mouseleave",()=>{
   videoAuto = setInterval(()=>{
     slideVideo(1);
-  },5000);
+  },7000);
 });
 
 let lastSendTime = 0;
@@ -1032,22 +1008,12 @@ window.onload = () => {
   }
 }
 
+const player = document.getElementById("player");
+
 player.addEventListener("error", () => {
   document.getElementById("liveStatus").innerHTML="🔴 OFFLINE (Server)";
 });
 
-const lastChat = localStorage.getItem("lastChatTime") || 0;
-
-if(Date.now() - lastChat < 5000){
-  return alert("Tunggu 5 detik");
-}
-
-localStorage.setItem("lastChatTime", Date.now());
-
-const time = new Date(data.time).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"});
-
-msg.innerHTML = `<b>${data.name}</b> <span style="opacity:0.5;font-size:11px">(${time})</span><br>${data.text}`;
-  
 </script>
 
 <div id="miniPlayer">
