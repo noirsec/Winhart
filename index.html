@@ -195,7 +195,7 @@ overflow:hidden;
   padding:20px;
   border-radius:15px;
   text-align:center;
-  position:sticky;
+  position:relative;
   top:10px;
   z-index:10;
   border:1px solid rgba(29,185,84,0.3);
@@ -463,6 +463,10 @@ iframe{
   cursor:pointer;
 }
 
+  body{
+  padding-bottom:80px;
+}
+
 #liveStatus{
   font-weight:bold;
   font-size:14px;
@@ -619,11 +623,6 @@ iframe{
   <input id="chatText" placeholder="Tulis pesan...">
 
   <button onclick="sendChat()">Kirim</button>
-</div>
-
-  </div>
-</div>
-
 </div>
   
 <h3>📻 Program Siaran</h3>
