@@ -445,10 +445,12 @@ iframe{
 
 .event-card img{
   width:100%;
-  max-height:420px; /* ⬅️ BESARIN */
-  object-fit:cover;
+  height:auto;              /* ⬅️ BIAR FULL */
+  max-height:none;          /* ⬅️ HAPUS BATAS */
+  object-fit:contain;       /* ⬅️ TIDAK DIPOTONG */
   border-radius:12px;
   margin-bottom:15px;
+  background:#000;          /* ⬅️ BIAR RAPI (OPSIONAL) */
 }
 
 .event-card h2{
