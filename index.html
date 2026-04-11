@@ -485,7 +485,58 @@ iframe{
   transform:scale(1.05);
   background:#ffcc00;
 }
- 
+
+.chart-box{
+  background:#111;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+.chart-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px;
+  margin-bottom:10px;
+  background:#181818;
+  border-radius:12px;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.chart-item:hover{
+  background:#1db954;
+  transform:scale(1.02);
+}
+
+.rank{
+  font-size:18px;
+  font-weight:bold;
+  width:40px;
+}
+
+.song-info{
+  flex:1;
+  text-align:left;
+}
+
+.song-info p{
+  font-size:12px;
+  opacity:0.7;
+  margin:2px 0 0;
+}
+
+.play-btn{
+  background:#1db954;
+  border:none;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  color:white;
+  font-size:14px;
+}
+  
 </style>
 
 <!-- FIREBASE SDK -->
@@ -527,36 +578,53 @@ iframe{
 
 <h3>🔥 Top 5 Indonesia Winhart Chart</h3>
 
-<div class="grid">
+<div class="chart-box">
 
-<div class="card" onclick="playSong('lagu1.mp3','NOAH x Ramengvrl - Suara Dalam Kepala')">
-<p><b>#1</b></p>
-<p>NOAH x Ramengvrl</p>
-<p style="font-size:12px;opacity:0.7;">Suara Dalam Kepala</p>
+<div class="chart-item" onclick="playSong('lagu1.mp3','NOAH x Ramengvrl - Suara Dalam Kepala')">
+<span class="rank">#1</span>
+<div class="song-info">
+<b>NOAH x Ramengvrl</b>
+<p>Suara Dalam Kepala</p>
+</div>
+<button class="play-btn">▶</button>
 </div>
 
-<div class="card" onclick="playSong('lagu2.mp3','Nidji - Rahasia Hati')">
-<p><b>#2</b></p>
-<p>Nidji</p>
-<p style="font-size:12px;opacity:0.7;">Rahasia Hati</p>
+<div class="chart-item" onclick="playSong('lagu2.mp3','Nidji - Rahasia Hati')">
+<span class="rank">#2</span>
+<div class="song-info">
+<b>Nidji</b>
+<p>Rahasia Hati</p>
+</div>
+<button class="play-btn">▶</button>
 </div>
 
-<div class="card" onclick="playSong('lagu3.mp3','Vierra - Rasa Ini')">
-<p><b>#3</b></p>
-<p>Vierra</p>
-<p style="font-size:12px;opacity:0.7;">Rasa Ini</p>
+<div class="chart-item" onclick="playSong('lagu3.mp3','Vierra - Rasa Ini')">
+<span class="rank">#3</span>
+<div class="song-info">
+<b>Vierra</b>
+<p>Rasa Ini</p>
+</div>
+<button class="play-btn">▶</button>
 </div>
 
-<div class="card" onclick="playSong('lagu4.mp3','ARUNIKA - Cinta Tanpa Harapan')">
-<p><b>#4</b></p>
-<p>ARUNIKA</p>
-<p style="font-size:12px;opacity:0.7;">Cinta Tanpa Harapan</p>
+<div class="chart-item" onclick="playSong('lagu4.mp3','ARUNIKA - Cinta Tanpa Harapan')">
+<span class="rank">#4</span>
+<div class="song-info">
+<b>ARUNIKA</b>
+<p>Cinta Tanpa Harapan</p>
+</div>
+<button class="play-btn">▶</button>
 </div>
 
-<div class="card" onclick="playSong('lagu5.mp3','Shakira Jasmine - Geureoke')">
-<p><b>#5</b></p>
-<p>Shakira Jasmine</p>
-<p style="font-size:12px;opacity:0.7;">Geureoke</p>
+<div class="chart-item" onclick="playSong('lagu5.mp3','Shakira Jasmine - Geureoke')">
+<span class="rank">#5</span>
+<div class="song-info">
+<b>Shakira Jasmine</b>
+<p>Geureoke</p>
+</div>
+<button class="play-btn">▶</button>
+</div>
+
 </div>
 
 <!-- EVENT KIDS CASTING -->
@@ -1070,8 +1138,14 @@ function playSong(src, title){
   player.play();
 
   document.getElementById("nowPlaying").innerText = "🎵 " + title;
-
   document.getElementById("liveStatus").innerHTML = "🎧 PLAYING CHART";
+
+  // highlight aktif
+  document.querySelectorAll(".chart-item").forEach(el=>{
+    el.style.border = "none";
+  });
+
+  event.currentTarget.style.border = "2px solid #1db954";
 }
   
 </script>
