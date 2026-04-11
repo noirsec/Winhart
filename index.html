@@ -525,6 +525,40 @@ iframe{
 👥 Live Listeners: <span id="listeners">--</span>
 </div>
 
+<h3>🔥 Top 5 Indonesia Winhart Chart</h3>
+
+<div class="grid">
+
+<div class="card" onclick="playSong('lagu1.mp3','NOAH x Ramengvrl - Suara Dalam Kepala')">
+<p><b>#1</b></p>
+<p>NOAH x Ramengvrl</p>
+<p style="font-size:12px;opacity:0.7;">Suara Dalam Kepala</p>
+</div>
+
+<div class="card" onclick="playSong('lagu2.mp3','Nidji - Rahasia Hati')">
+<p><b>#2</b></p>
+<p>Nidji</p>
+<p style="font-size:12px;opacity:0.7;">Rahasia Hati</p>
+</div>
+
+<div class="card" onclick="playSong('lagu3.mp3','Vierra - Rasa Ini')">
+<p><b>#3</b></p>
+<p>Vierra</p>
+<p style="font-size:12px;opacity:0.7;">Rasa Ini</p>
+</div>
+
+<div class="card" onclick="playSong('lagu4.mp3','ARUNIKA - Cinta Tanpa Harapan')">
+<p><b>#4</b></p>
+<p>ARUNIKA</p>
+<p style="font-size:12px;opacity:0.7;">Cinta Tanpa Harapan</p>
+</div>
+
+<div class="card" onclick="playSong('lagu5.mp3','Shakira Jasmine - Geureoke')">
+<p><b>#5</b></p>
+<p>Shakira Jasmine</p>
+<p style="font-size:12px;opacity:0.7;">Geureoke</p>
+</div>
+
 <!-- EVENT KIDS CASTING -->
 <h3>🌟 EVENT TERBARU</h3>
 
@@ -1027,6 +1061,18 @@ player.addEventListener("error", () => {
     document.getElementById("miniStatus").innerText="⏸ PAUSED";
   }
 } 
+
+function playSong(src, title){
+
+  const player = document.getElementById("player");
+
+  player.src = src;
+  player.play();
+
+  document.getElementById("nowPlaying").innerText = "🎵 " + title;
+
+  document.getElementById("liveStatus").innerHTML = "🎧 PLAYING CHART";
+}
   
 </script>
 
