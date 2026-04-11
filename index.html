@@ -536,6 +536,78 @@ iframe{
   color:white;
   font-size:14px;
 }
+
+.chart-box{
+  background:#111;
+  padding:15px;
+  border-radius:18px;
+}
+
+.chart-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#181818;
+  padding:10px;
+  border-radius:12px;
+  margin-bottom:10px;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.chart-item:hover{
+  background:#1db954;
+  transform:scale(1.02);
+}
+
+.chart-item img{
+  width:55px;
+  height:55px;
+  border-radius:8px;
+  object-fit:cover;
+}
+
+.song-info{
+  flex:1;
+}
+
+.song-info p{
+  font-size:12px;
+  opacity:0.7;
+}
+
+.play-btn{
+  background:#1db954;
+  border:none;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  color:white;
+}
+
+.equalizer{
+  display:flex;
+  gap:3px;
+  margin-right:5px;
+}
+
+.equalizer span{
+  width:3px;
+  height:10px;
+  background:#1db954;
+  animation:equalize 1s infinite;
+  opacity:0;
+}
+
+.chart-item.active .equalizer span{
+  opacity:1;
+}
+
+@keyframes equalize{
+  0%{height:5px;}
+  50%{height:15px;}
+  100%{height:5px;}
+}
   
 </style>
 
@@ -580,47 +652,62 @@ iframe{
 
 <div class="chart-box">
 
-<div class="chart-item" onclick="playSong('lagu1.mp3','NOAH x Ramengvrl - Suara Dalam Kepala')">
-<span class="rank">#1</span>
+<div class="chart-item" onclick="playSong('lagu1.mp3','NOAH x Ramengvrl - Suara Dalam Kepala', this)">
+<img src="cover1.jpg">
 <div class="song-info">
 <b>NOAH x Ramengvrl</b>
 <p>Suara Dalam Kepala</p>
 </div>
+<div class="equalizer">
+<span></span><span></span><span></span>
+</div>
 <button class="play-btn">▶</button>
 </div>
 
-<div class="chart-item" onclick="playSong('lagu2.mp3','Nidji - Rahasia Hati')">
-<span class="rank">#2</span>
+<div class="chart-item" onclick="playSong('lagu2.mp3','Nidji - Rahasia Hati', this)">
+<img src="cover2.jpg">
 <div class="song-info">
 <b>Nidji</b>
 <p>Rahasia Hati</p>
 </div>
+<div class="equalizer">
+<span></span><span></span><span></span>
+</div>
 <button class="play-btn">▶</button>
 </div>
 
-<div class="chart-item" onclick="playSong('lagu3.mp3','Vierra - Rasa Ini')">
-<span class="rank">#3</span>
+<div class="chart-item" onclick="playSong('lagu3.mp3','Vierra - Rasa Ini', this)">
+<img src="cover3.jpg">
 <div class="song-info">
 <b>Vierra</b>
 <p>Rasa Ini</p>
 </div>
+<div class="equalizer">
+<span></span><span></span><span></span>
+</div>
 <button class="play-btn">▶</button>
 </div>
 
-<div class="chart-item" onclick="playSong('lagu4.mp3','ARUNIKA - Cinta Tanpa Harapan')">
-<span class="rank">#4</span>
+<div class="chart-item" onclick="playSong('lagu4.mp3','ARUNIKA - Cinta Tanpa Harapan', this)">
+<img src="cover4.jpg">
 <div class="song-info">
 <b>ARUNIKA</b>
 <p>Cinta Tanpa Harapan</p>
 </div>
+<div class="equalizer">
+<span></span><span></span><span></span>
+</div>
 <button class="play-btn">▶</button>
 </div>
 
-<div class="chart-item" onclick="playSong('lagu5.mp3','Shakira Jasmine - Geureoke')">
-<span class="rank">#5</span>
+<div class="chart-item" onclick="playSong('lagu5.mp3','Shakira Jasmine - Geureoke', this)">
+<img src="cover5.jpg">
 <div class="song-info">
 <b>Shakira Jasmine</b>
 <p>Geureoke</p>
+</div>
+<div class="equalizer">
+<span></span><span></span><span></span>
 </div>
 <button class="play-btn">▶</button>
 </div>
@@ -1130,9 +1217,12 @@ player.addEventListener("error", () => {
   }
 } 
 
-function playSong(src, title){
+function playSong(src, title, el){
 
   const player = document.getElementById("player");
+
+  // STOP RADIO
+  player.pause();
 
   player.src = src;
   player.play();
@@ -1140,12 +1230,14 @@ function playSong(src, title){
   document.getElementById("nowPlaying").innerText = "🎵 " + title;
   document.getElementById("liveStatus").innerHTML = "🎧 PLAYING CHART";
 
-  // highlight aktif
-  document.querySelectorAll(".chart-item").forEach(el=>{
-    el.style.border = "none";
+  // RESET ACTIVE
+  document.querySelectorAll(".chart-item").forEach(item=>{
+    item.classList.remove("active");
   });
 
-  event.currentTarget.style.border = "2px solid #1db954";
+  // SET ACTIVE
+  el.classList.add("active");
+
 }
   
 </script>
@@ -1154,6 +1246,22 @@ function playSong(src, title){
   <span id="miniStatus">🔴 OFFLINE</span>
   <button onclick="toggleRadio()">▶</button>
   
+</div>
+
+<div id="songMini" style="
+position:fixed;
+bottom:70px;
+left:50%;
+transform:translateX(-50%);
+background:#111;
+padding:10px 15px;
+border-radius:20px;
+display:none;
+gap:10px;
+align-items:center;
+">
+<span id="songTitle">-</span>
+<button onclick="toggleSong()">▶</button>
 </div>
   
 </body>
