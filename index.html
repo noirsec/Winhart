@@ -648,6 +648,16 @@ iframe{
 👥 Live Listeners: <span id="listeners">--</span>
 </div>
 
+<!-- VIDEO OST JUMBO -->
+<div style="margin-top:15px;">
+  <h4 style="font-size:14px;opacity:0.8;">🎬 OST Jumbo - BCL</h4>
+  
+  <video id="videoJumbo" width="100%" controls poster="coverjumbo.jpg" style="border-radius:12px;">
+    <source src="jumbo.mp4" type="video/mp4">
+    Browser tidak mendukung video.
+  </video>
+</div>
+  
 <h3>🔥 Top 5 Indonesia Winhart Chart</h3>
 
 <div class="chart-box">
@@ -1239,6 +1249,14 @@ function playSong(src, title, el){
   el.classList.add("active");
 
 }
+
+const videoJumbo = document.getElementById("videoJumbo");
+
+videoJumbo.addEventListener("play", () => {
+  const player = document.getElementById("player");
+  player.pause();
+  document.getElementById("liveStatus").innerHTML = "🎬 PLAYING VIDEO";
+});
   
 </script>
 
